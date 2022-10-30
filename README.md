@@ -20,7 +20,7 @@ module.exports = defineConfig({
 
 ## Why
 
-Improve your eslint configuration experience with:
+Improve your TaroJS project configuration experience with:
 
 -   auto-suggestions
 -   type checking (Use // @ts-check at the first line in your config file)
