@@ -204,6 +204,8 @@ export interface TaroConfig {
   mini?: PlatformMini
 }
 
+export * from './common'
+
 export * from './copy'
 export * from './sass'
 export * from './cache'

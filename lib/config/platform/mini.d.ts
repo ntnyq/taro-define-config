@@ -1,4 +1,36 @@
 import ChainableWebpackConfig = require('webpack-chain')
+import type { SourceMapType } from '../common'
+
+export interface PlatformMiniCompile {
+  include?: string[]
+  exclude?: string[]
+}
+
+export interface PlatformMiniMinifyXML {
+  /**
+   * 是否合并 xml 文件中的空格
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#miniminifyxmlcollapsewhitespace
+   */
+  collapseWhitespace?: boolean
+}
+
+export type PlatformMiniCommonChunksFn<T extends string> = (commonChunks: T[]) => T[]
+export type PlatformMiniCommonChunks = string[] | PlatformMiniCommonChunksFn
+
+export type PlatformMiniAddChunkPages = (pages: Map<string, string[]>, pagesNames: string[]) => void
+
+export interface PlatformMiniOptimizeMainPackage {
+  enable?: boolean
+  exclude?: string[]
+}
+
+export interface PlatformMiniPostcss {
+  autoprefixer?: Record<string, any>
+  pxtransform?: Record<string, any>
+  url?: Record<string, any>
+  cssModules?: Record<string, any>
+}
 
 /**
  * 小程序端专用配置
@@ -14,6 +46,28 @@ export interface PlatformMini {
   baseLevel?: number
 
   /**
+   * 小程序编译过程的相关配置
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minicompile
+   */
+  compile?: PlatformMiniCompile
+
+  /**
+   * `SourceMap` 类型
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minisourcemaptype
+   */
+  sourceMapType?: SourceMapType
+
+  /**
+   * 关于压缩小程序 `xml` 文件的相关配置
+   *
+   * @since `Taro v3.0.8`
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#miniminifyxml
+   */
+  minifyXML?: PlatformMiniMinifyXML
+
+  /**
    * 是否注入兼容微信小程序热重载的代码
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#minihot
@@ -26,6 +80,34 @@ export interface PlatformMini {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#minidebugreact
    */
   debugReact?: boolean
+
+  /**
+   * 用于告诉 Taro 编译器需要抽取的公共文件
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minicommonchunks
+   */
+  commonChunks?: PlatformMiniCommonChunks
+
+  /**
+   * 为某些页面单独指定需要引用的公共文件
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#miniaddchunkpages
+   */
+  addChunkPages?: PlatformMiniAddChunkPages
+
+  /**
+   * 优化主包的体积大小
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minioptimizemainpackage
+   */
+  optimizeMainPackage?: PlatformMiniOptimizeMainPackage
+
+  /**
+   * 配置 `postcss` 相关插件
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minipostcss
+   */
+  postcss?: PlatformMiniPostcss
 
   /**
    * 自定义 `Webpack` 配置

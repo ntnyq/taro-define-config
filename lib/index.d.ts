@@ -6,6 +6,6 @@ import type { TaroConfig } from './config'
  * @param config Taro config
  * @returns Taro config
  */
-export function defineConfig<Config extends TaroConfig> (config: Config): TaroConfig
+export function defineConfig(config: TaroConfig): TaroConfig
 
 export * from './config'
