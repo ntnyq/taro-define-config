@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+.cache
+*.log*
+*.local
+coverage
+lib-cov
+dist
+temp

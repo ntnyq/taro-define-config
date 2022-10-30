@@ -1,0 +1,17 @@
+{
+  "[typescript][markdown][javascript]": {
+    "editor.formatOnSave": false
+  },
+  "cSpell.words": [
+    "bumpp",
+    "changelogithub",
+    "csso",
+    "esbuild",
+    "nerv",
+    "nosources",
+    "pnpm",
+    "pxtransform",
+    "tarojs"
+  ],
+  "cSpell.allowCompoundWords": true
+}
