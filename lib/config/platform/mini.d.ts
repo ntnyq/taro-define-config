@@ -15,8 +15,8 @@ export interface PlatformMiniMinifyXML {
   collapseWhitespace?: boolean
 }
 
-export type PlatformMiniCommonChunksFn<T extends string> = (commonChunks: T[]) => T[]
-export type PlatformMiniCommonChunks = string[] | PlatformMiniCommonChunksFn
+export type PlatformMiniCommonChunksFn<T extends string = string> = (commonChunks: T[]) => T[]
+export type PlatformMiniCommonChunks = string[] | PlatformMiniCommonChunksFn<string>
 
 export type PlatformMiniAddChunkPages = (pages: Map<string, string[]>, pagesNames: string[]) => void
 
