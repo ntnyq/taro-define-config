@@ -1,6 +1,10 @@
 import ChainableWebpackConfig = require('webpack-chain')
 import type { LiteralUnion } from '../../utility-types'
 import type { SourceMapType } from '../common'
+import type {
+  AutoprefixerOptions,
+  URLLoaderOptions,
+} from '../npm'
 
 /**
  * H5端专用配置
@@ -48,7 +52,7 @@ export interface PlatformH5Router {
 }
 
 export interface PlatformH5Postcss {
-  autoprefixer?: Record<string, any>
+  autoprefixer?: AutoprefixerOptions
   pxtransform?: Record<string, any>
   htmltransform?: Record<string, any>
   cssModules?: Record<string, any>
@@ -201,21 +205,21 @@ export interface PlatformH5 {
    *
    * @see https://github.com/webpack-contrib/url-loader
    */
-  imageUrlLoaderOption?: Record<string, any>
+  imageUrlLoaderOption?: URLLoaderOptions
 
   /**
    * 针对 `mp4 | webm | ogg | mp3 | wav | flac | aac` 文件 `url-loader` 的配置
    *
    * @see https://github.com/webpack-contrib/url-loader
    */
-  mediaUrlLoaderOption?: Record<string, any>
+  mediaUrlLoaderOption?: URLLoaderOptions
 
   /**
    * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
    *
    * @see https://github.com/webpack-contrib/url-loader
    */
-  fontUrlLoaderOption?: Record<string, any>
+  fontUrlLoaderOption?: URLLoaderOptions
 
   /**
    * 自定义 `Webpack` 配置

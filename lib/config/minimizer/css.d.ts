@@ -1,9 +1,7 @@
 import type { LiteralUnion } from '../../utility-types'
+import type { CSSNanoOptions } from '../npm'
 
 export type CSSMinimizer = LiteralUnion<'csso' | 'esbuild' | 'parcelCss'>
-
-// TODO: https://cssnano.co/docs/config-file/
-export type CSSOConfig = Record<string, any>
 
 export interface CSSO {
   /**
@@ -14,5 +12,5 @@ export interface CSSO {
   /**
    * `csso` 的具体配置
    */
-  config?: CSSOConfig
+  config?: CSSNanoOptions
 }

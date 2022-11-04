@@ -1,7 +1,10 @@
 # taro-define-config
 
+> Provide a defineConfig function for tarojs config
+
 [![CI](https://github.com/ntnyq/taro-define-config/workflows/CI/badge.svg)](https://github.com/ntnyq/taro-define-config/actions)
 [![NPM VERSION](https://img.shields.io/npm/v/taro-define-config.svg)](https://www.npmjs.com/package/taro-define-config)
+[![NPM DOWNLOADS](https://img.shields.io/npm/dy/taro-define-config.svg)](https://www.npmjs.com/package/taro-define-config)
 [![LICENSE](https://img.shields.io/github/license/ntnyq/taro-define-config.svg)](https://github.com/ntnyq/taro-define-config/blob/main/LICENSE)
 
 ## Usage
@@ -18,7 +21,7 @@ module.exports = defineConfig({
 })
 ```
 
-## Why
+## Why this package
 
 Improve your TaroJS project configuration experience with:
 
@@ -30,6 +33,14 @@ Improve your TaroJS project configuration experience with:
 ## Prior Art
 
 - [eslint-define-config](https://github.com/Shinigami92/eslint-define-config)
+
+## Todo
+
+- [ ] Migrate npm packages types related to `lib/config/npm`
+
+## Related link
+
+- [Taro - Config detail](https://nervjs.github.io/taro-docs/docs/config-detail)
 
 ## License
 

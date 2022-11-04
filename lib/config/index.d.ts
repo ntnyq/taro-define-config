@@ -1,6 +1,6 @@
 import type { LiteralUnion } from '../utility-types'
+import type { SassOptions } from './npm'
 import type { Copy } from './copy'
-import type { Sass } from './sass'
 import type { Cache } from './cache'
 import type { Logger } from './logger'
 import type { Plugin } from './plugin'
@@ -130,7 +130,7 @@ export interface TaroConfig {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#sass
    */
-  sass?: Sass
+  sass?: SassOptions
 
   /**
    * Taro 插件配置
@@ -206,6 +206,7 @@ export interface TaroConfig {
 
 export * from './common'
 
+export * from './npm'
 export * from './copy'
 export * from './sass'
 export * from './cache'

@@ -1,5 +1,9 @@
-
-export interface Sass {
+/**
+ * `sass` 配置
+ *
+ * @see https://sass-lang.com/documentation/js-api/interfaces/Options
+ */
+export interface SassOptions {
   /**
    * 需要全局注入的 `scss` 文件的绝对路径
    *
