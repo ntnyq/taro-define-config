@@ -1,5 +1,4 @@
-import { expectTypeOf } from 'expect-type'
-import { describe, it } from 'vitest'
+import { describe, expectTypeOf, it } from 'vitest'
 import type { TaroConfig } from '../lib'
 import { defineConfig } from '../lib'
 
