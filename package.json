@@ -46,13 +46,13 @@
     "bumpp": "^8.2.1",
     "eslint": "^8.28.0",
     "husky": "^8.0.2",
-    "lint-staged": "^13.0.4",
+    "nano-staged": "^0.8.0",
     "pnpm": "^7.17.1",
     "tsx": "^3.12.1",
     "typescript": "^4.9.3",
     "vitest": "^0.25.3"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*.{js,ts,json,md,yml,yaml}": "eslint --fix"
   }
 }
