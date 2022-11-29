@@ -17,9 +17,23 @@ describe(`define`, () => {
       sass: {},
       plugins: [],
       presets: [],
-      h5: {},
+      h5: {
+        postcss: {
+          autoprefixer: {},
+          pxtransform: {},
+          htmltransform: {},
+          cssModules: {},
+        },
+      },
       rn: {},
-      mini: {},
+      mini: {
+        postcss: {
+          autoprefixer: {},
+          cssModules: {},
+          url: {},
+          pxtransform: {},
+        },
+      },
     })).toMatchTypeOf<TaroConfig>()
   })
 })

@@ -3,6 +3,7 @@
  *
  * @see https://github.com/cssnano/cssnano/blob/master/packages/cssnano/types/index.d.ts
  */
+
 export interface CSSNanoOptions {
   /**
    * https://cssnano.co/docs/config-file/#choose-a-preset

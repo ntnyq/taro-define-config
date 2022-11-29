@@ -3,6 +3,7 @@
  *
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
+
 export interface PlatformRN {
   /**
    * 设置 `RN bundle` 中注册应用的名称

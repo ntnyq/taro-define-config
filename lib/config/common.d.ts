@@ -32,3 +32,8 @@ export type SourceMapType = LiteralUnion<
   | 'hidden-cheap-module-source-map'
   | 'hidden-source-map'
 >
+
+export interface ConfigurablePlugin<T extends Record<string, any>> {
+  enable?: boolean
+  config?: T
+}

@@ -3,6 +3,7 @@
  *
  * @see https://github.com/webpack-contrib/url-loader#options
  */
+
 export interface URLLoaderOptions {
   /**
    * Specifying the maximum size of a file in bytes

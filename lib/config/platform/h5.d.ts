@@ -1,8 +1,14 @@
 import ChainableWebpackConfig = require('webpack-chain')
 import type { LiteralUnion } from '../../utility-types'
-import type { SourceMapType } from '../common'
+import type {
+  ConfigurablePlugin,
+  SourceMapType,
+} from '../common'
 import type {
   AutoprefixerOptions,
+  PostcssHtmlTransformOptions,
+  PostcssModulesOptions,
+  PostcssPxtransformOptions,
   URLLoaderOptions,
 } from '../npm'
 
@@ -52,10 +58,10 @@ export interface PlatformH5Router {
 }
 
 export interface PlatformH5Postcss {
-  autoprefixer?: AutoprefixerOptions
-  pxtransform?: Record<string, any>
-  htmltransform?: Record<string, any>
-  cssModules?: Record<string, any>
+  autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
+  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
+  htmltransform?: ConfigurablePlugin<PostcssHtmlTransformOptions>
+  cssModules?: ConfigurablePlugin<PostcssModulesOptions>
 }
 
 export interface PlatformH5 {

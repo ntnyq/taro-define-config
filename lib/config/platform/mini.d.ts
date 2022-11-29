@@ -1,7 +1,13 @@
 import ChainableWebpackConfig = require('webpack-chain')
-import type { SourceMapType } from '../common'
+import type {
+  ConfigurablePlugin,
+  SourceMapType,
+} from '../common'
 import type {
   AutoprefixerOptions,
+  PostcssModulesOptions,
+  PostcssPxtransformOptions,
+  PostcssUrlOptions,
   URLLoaderOptions,
 } from '../npm'
 
@@ -30,10 +36,10 @@ export interface PlatformMiniOptimizeMainPackage {
 }
 
 export interface PlatformMiniPostcss {
-  autoprefixer?: AutoprefixerOptions
-  pxtransform?: Record<string, any>
-  url?: Record<string, any>
-  cssModules?: Record<string, any>
+  autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
+  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
+  url?: ConfigurablePlugin<PostcssUrlOptions>
+  cssModules?: ConfigurablePlugin<PostcssModulesOptions>
 }
 
 /**
