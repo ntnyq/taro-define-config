@@ -9,7 +9,10 @@ describe(`define`, () => {
 
   it(`define taro config`, () => {
     expectTypeOf(defineConfig({
+      deviceRatio: {},
       compiler: {},
+      alias: {},
+      env: {},
       defineConstants: {},
       cache: {},
       logger: {},
@@ -17,6 +20,9 @@ describe(`define`, () => {
       sass: {},
       plugins: [],
       presets: [],
+      terser: {},
+      esbuild: {},
+      csso: {},
       h5: {
         postcss: {
           autoprefixer: {},
@@ -25,14 +31,42 @@ describe(`define`, () => {
           cssModules: {},
         },
       },
-      rn: {},
+      rn: {
+        appName: ``,
+        output: {},
+        postcss: {},
+        sass: {},
+        less: {},
+        stylus: {},
+        resolve: {
+          include: [],
+        },
+        enableMultipleClassName: false,
+        enableMergeStyle: true,
+        enableSvgTransform: true,
+      },
       mini: {
+        hot: true,
+        debugReact: false,
+        compile: {},
+        minifyXML: {},
+        commonChunks: [],
+        optimizeMainPackage: {},
         postcss: {
           autoprefixer: {},
           cssModules: {},
           url: {},
           pxtransform: {},
         },
+        styleLoaderOption: {},
+        cssLoaderOption: {},
+        lessLoaderOption: {},
+        sassLoaderOption: {},
+        stylusLoaderOption: {},
+        miniCssExtractPluginOption: {},
+        imageUrlLoaderOption: {},
+        mediaUrlLoaderOption: {},
+        fontUrlLoaderOption: {},
       },
     })).toMatchTypeOf<TaroConfig>()
   })
