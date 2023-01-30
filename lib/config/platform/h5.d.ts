@@ -6,9 +6,16 @@ import type {
 } from '../common'
 import type {
   AutoprefixerOptions,
+  CSSLoaderOptions,
+  HtmlWebpackPluginOptions,
+  LessLoaderOptions,
+  MiniCSSExtractPluginOptions,
   PostcssHtmlTransformOptions,
   PostcssModulesOptions,
   PostcssPxtransformOptions,
+  SassLoaderOptions,
+  StyleLoaderOptions,
+  StylusLoaderOptions,
   URLLoaderOptions,
 } from '../npm'
 
@@ -162,49 +169,49 @@ export interface PlatformH5 {
    * @since `Taro v3.5`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5htmlpluginoption
    */
-  htmlPluginOption?: Record<string, any>
+  htmlPluginOption?: HtmlWebpackPluginOptions
 
   /**
    * `style-loader` 的附加配置
    *
    * @see https://github.com/webpack-contrib/style-loader
    */
-  styleLoaderOption?: Record<string, any>
+  styleLoaderOption?: StyleLoaderOptions
 
   /**
    * `css-loader` 的附加配置
    *
    * @see https://github.com/webpack-contrib/css-loader
    */
-  cssLoaderOption?: Record<string, any>
+  cssLoaderOption?: CSSLoaderOptions
 
   /**
    * `sass-loader` 的附加配置
    *
    * @see https://github.com/webpack-contrib/sass-loader
    */
-  sassLoaderOption?: Record<string, any>
+  sassLoaderOption?: SassLoaderOptions
 
   /**
    * `less-loader` 的附加配置
    *
    * @see https://github.com/webpack-contrib/less-loader
    */
-  lessLoaderOption?: Record<string, any>
+  lessLoaderOption?: LessLoaderOptions
 
   /**
    * `stylus-loader` 的附加配置
    *
    * @see https://github.com/webpack-contrib/stylus-loader
    */
-  stylusLoaderOption?: Record<string, any>
+  stylusLoaderOption?: StylusLoaderOptions
 
   /**
    * `mini-css-extract-plugin` 的附加配置
    *
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin
    */
-  miniCssExtractPluginOption?: Record<string, any>
+  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
 
   /**
    * 针对 `png | jpg | jpeg | gif | bpm | svg` 文件 `url-loader` 的配置

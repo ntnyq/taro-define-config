@@ -11,7 +11,8 @@
     "nosources",
     "pnpm",
     "pxtransform",
-    "tarojs"
+    "tarojs",
+    "weapp"
   ],
   "cSpell.allowCompoundWords": true
 }

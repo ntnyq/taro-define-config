@@ -4,4 +4,4 @@
  * @see https://github.com/jantimon/html-webpack-plugin#options
  */
 
-export interface HtmlWebpackPluginOptions {}
+export type HtmlWebpackPluginOptions = Record<string, any>

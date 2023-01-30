@@ -4,6 +4,39 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
+import type {
+  LessOptions,
+  SassOptions,
+  StylusOptions,
+} from '../npm'
+
+export interface PlatformRNLessOptions {
+  options?: LessOptions
+
+  additionalData?: string | ((...args: any[]) => string)
+}
+
+export interface PlatformRNSassOptions {
+  options?: SassOptions
+
+  additionalData?: string | ((...args: any[]) => string)
+}
+
+export interface PlatformRNStylusOptions {
+  options?: StylusOptions
+
+  additionalData?: string | ((...args: any[]) => string)
+}
+
+export interface PlatformRNResolve {
+  /**
+   * 配置多个 npm 包名的数组，将 npm 包当作项目文件处理
+   */
+  include: string[]
+
+  [key: string]: any
+}
+
 export interface PlatformRN {
   /**
    * 设置 `RN bundle` 中注册应用的名称
@@ -38,28 +71,28 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: Record<string, any>
+  sass?: PlatformRNSassOptions
 
   /**
    * `less` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnless
    */
-  less?: Record<string, any>
+  less?: PlatformRNLessOptions
 
   /**
    * `stylus` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnstylus
    */
-  stylus?: Record<string, any>
+  stylus?: PlatformRNStylusOptions
 
   /**
    * `resolve` 处理依赖文件配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnresolve
    */
-  resolve?: Record<string, any>
+  resolve?: PlatformRNResolve
 
   /**
    * 支持多 `className` 转换，以 `classname` 或 `style` 结尾的，提取前缀，然后根据前缀，再生成对应的 `xxxStyle`
