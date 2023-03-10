@@ -2,7 +2,7 @@ import { describe, expectTypeOf, it } from 'vitest'
 import type { TaroConfig } from '../lib'
 import { defineConfig } from '../lib'
 
-describe('define', () => {
+describe('typecheck', () => {
   it('define empty config', () => {
     expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
   })

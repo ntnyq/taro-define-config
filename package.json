@@ -31,10 +31,9 @@
     "lint": "eslint .",
     "prepare": "husky install",
     "release": "pnpm run release:check && pnpm run release:publish",
-    "release:check": "pnpm run lint && pnpm run typecheck",
+    "release:check": "pnpm run lint",
     "release:publish": "bumpp && pnpm publish",
-    "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "test": "vitest typecheck"
   },
   "dependencies": {
     "webpack-chain": "^6.5.1"
