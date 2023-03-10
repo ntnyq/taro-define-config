@@ -24,7 +24,7 @@ export interface URLLoaderOptions {
    * Specify the encoding which the file will be inlined with
    *
    * @see https://github.com/webpack-contrib/url-loader#encoding
-   * @default base64
+   * @default `base64`
    */
   encoding?: string | boolean
 
@@ -39,7 +39,7 @@ export interface URLLoaderOptions {
    * Specifies an alternative loader to use when a target file's size exceeds the limit
    *
    * @see https://github.com/webpack-contrib/url-loader#fallback
-   * @default file-loader
+   * @default `file-loader`
    */
   fallback?: string
 

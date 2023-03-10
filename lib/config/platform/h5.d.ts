@@ -64,6 +64,22 @@ export interface PlatformH5Router {
   customRoutes?: Record<string, string | string[]>
 }
 
+export interface PlatformH5Compile {
+  /**
+   * 配置额外需要经过 Taro 编译的文件
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compileinclude
+   */
+  include?: string[]
+
+  /**
+   * 配置 Web 应用编译过程中排除不需要经过 Taro 编译的文件
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compileexclude
+   */
+  exclude?: string[]
+}
+
 export interface PlatformH5Postcss {
   autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
   pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
@@ -162,6 +178,14 @@ export interface PlatformH5 {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5postcss
    */
   postcss?: PlatformH5Postcss
+
+  /**
+   * Web 编译过程的相关配置
+   *
+   * @since `Taro v3.6`
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compile
+   */
+  compile?: PlatformH5Compile
 
   /**
    * `html-webpack-plugin` 的具体配置

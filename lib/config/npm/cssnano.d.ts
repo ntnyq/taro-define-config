@@ -6,7 +6,7 @@
 
 export interface CSSNanoOptions {
   /**
-   * https://cssnano.co/docs/config-file/#choose-a-preset
+   * @see https://cssnano.co/docs/config-file/#choose-a-preset
    */
   preset?: any
 

@@ -41,6 +41,7 @@ Improve your TaroJS project configuration experience with:
 ## Related link
 
 - [Taro - Config detail](https://nervjs.github.io/taro-docs/docs/config-detail)
+- [Taro docs - config-detail.md](https://github.com/NervJS/taro-docs/commits/master/docs/config-detail.md)
 
 ## License
 

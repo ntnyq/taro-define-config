@@ -11,7 +11,7 @@ class CustomLoader {
 
   fetch(file: string, relativeTo: string, depTrace: string): Promise<Record<string, string>>
 
-  finalSource?: string | undefined
+  finalSource?: string
 }
 
 export type PostcssModulesGetJSONFn = (
