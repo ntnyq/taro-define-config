@@ -1,10 +1,9 @@
 /**
- * `less` 配置
+ * Source map options
  *
- * @see https://lesscss.org/usage/#less-options
+ * @see https://lesscss.org/usage/#less-options-source-map-options
  */
-
-export interface LessSourceMapOptions {
+export interface LessSourceMap {
   outputFilename?: string
   sourceMapRootpath?: string
   sourceMapBasepath?: string
@@ -13,11 +12,18 @@ export interface LessSourceMapOptions {
   sourceMapURL?: string
 }
 
+export type LessPlugin = (...args: any[]) => any
+
+/**
+ * `less` 配置
+ *
+ * @see https://lesscss.org/usage/#less-options
+ */
 export interface LessOptions {
   /**
-   * source map options
+   * Source map options
    */
-  sourceMap?: SourceMapOption
+  sourceMap?: LessSourceMap
 
   /**
    * Filename of the main file to be passed to less.render()
@@ -37,7 +43,7 @@ export interface LessOptions {
   /**
    * Pre-load global Less.js plugins
    */
-  plugins?: Plugin[]
+  plugins?: LessPlugin[]
 
   /**
    * If true, compress using less built-in compression

@@ -16,7 +16,7 @@
 const { defineConfig } = require('taro-define-config')
 
 module.exports = defineConfig({
-  projectName: `hello-world`,
+  projectName: 'hello-world',
   designWidth: 750,
 })
 ```

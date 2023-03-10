@@ -2,12 +2,12 @@ import { describe, expectTypeOf, it } from 'vitest'
 import type { TaroConfig } from '../lib'
 import { defineConfig } from '../lib'
 
-describe(`define`, () => {
-  it(`define empty config`, () => {
+describe('define', () => {
+  it('define empty config', () => {
     expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
   })
 
-  it(`define taro config`, () => {
+  it('define taro config', () => {
     expectTypeOf(defineConfig({
       deviceRatio: {},
       compiler: {},
@@ -32,7 +32,7 @@ describe(`define`, () => {
         },
       },
       rn: {
-        appName: ``,
+        appName: '',
         output: {},
         postcss: {},
         sass: {},
