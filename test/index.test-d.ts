@@ -42,7 +42,11 @@ describe('typecheck', () => {
         },
         sassLoaderOption: {},
         lessLoaderOption: {},
-        stylusLoaderOption: {},
+        stylusLoaderOption: {
+          stylusOptions: {
+            define: [],
+          },
+        },
         miniCssExtractPluginOption: {},
         mediaUrlLoaderOption: {},
         imageUrlLoaderOption: {},
