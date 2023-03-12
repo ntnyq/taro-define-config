@@ -37,7 +37,9 @@ describe('typecheck', () => {
         },
         htmlPluginOption: {},
         styleLoaderOption: {},
-        cssLoaderOption: {},
+        cssLoaderOption: {
+          modules: {},
+        },
         sassLoaderOption: {},
         lessLoaderOption: {},
         stylusLoaderOption: {},
@@ -50,9 +52,15 @@ describe('typecheck', () => {
         appName: '',
         output: {},
         postcss: {},
-        sass: {},
-        less: {},
-        stylus: {},
+        sass: {
+          options: {},
+        },
+        less: {
+          options: {},
+        },
+        stylus: {
+          options: {},
+        },
         resolve: {
           include: [],
         },
@@ -66,7 +74,10 @@ describe('typecheck', () => {
         compile: {},
         minifyXML: {},
         commonChunks: [],
-        optimizeMainPackage: {},
+        optimizeMainPackage: {
+          enable: false,
+          exclude: [],
+        },
         postcss: {
           autoprefixer: {},
           cssModules: {},
