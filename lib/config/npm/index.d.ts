@@ -17,5 +17,7 @@ export * from './postcss-modules'
 export * from './postcss-pxtransform'
 export * from './postcss-html-transform'
 
+export * from './webpack-chain'
+
 export * from './html-webpack-plugin'
 export * from './mini-css-extract-plugin'

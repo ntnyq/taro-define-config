@@ -36,7 +36,8 @@
     "test": "vitest typecheck"
   },
   "dependencies": {
-    "webpack-chain": "^6.5.1"
+    "@types/tapable": "^1.0.8",
+    "@types/webpack": "^4.41.33"
   },
   "devDependencies": {
     "@ntnyq/eslint-config": "^1.4.1",

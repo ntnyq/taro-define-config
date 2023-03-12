@@ -1,4 +1,3 @@
-import ChainableWebpackConfig = require('webpack-chain')
 import type {
   ConfigurablePlugin,
   SourceMapType,
@@ -6,6 +5,7 @@ import type {
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,
+  ChainableWebpackConfig,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
   PostcssModulesOptions,

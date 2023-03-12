@@ -208,7 +208,6 @@ export * from './common'
 
 export * from './npm'
 export * from './copy'
-export * from './sass'
 export * from './cache'
 export * from './logger'
 export * from './plugin'

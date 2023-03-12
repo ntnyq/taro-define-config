@@ -1,4 +1,3 @@
-import ChainableWebpackConfig = require('webpack-chain')
 import type { LiteralUnion } from '../../utility-types'
 import type {
   ConfigurablePlugin,
@@ -7,6 +6,7 @@ import type {
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,
+  ChainableWebpackConfig,
   HtmlWebpackPluginOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,

@@ -6,7 +6,7 @@
 
 import type { LiteralUnion } from '../../utility-types'
 
-class CustomLoader {
+export class CustomLoader {
   constructor(root: string, plugins: any[])
 
   fetch(file: string, relativeTo: string, depTrace: string): Promise<Record<string, string>>
