@@ -1,103 +1,119 @@
-import { describe, expectTypeOf, it } from 'vitest'
+import { expectTypeOf, it } from 'vitest'
 import type { TaroConfig } from '../lib'
 import { defineConfig } from '../lib'
 
-describe('typecheck', () => {
-  it('define empty config', () => {
-    expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
-  })
+it('define empty config', () => {
+  expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
+})
 
-  it('define taro config', () => {
-    expectTypeOf(defineConfig({
-      deviceRatio: {},
-      compiler: {},
-      alias: {},
-      env: {},
-      defineConstants: {},
-      cache: {},
-      logger: {},
-      copy: {},
-      sass: {},
-      plugins: [],
-      presets: [],
-      terser: {},
-      esbuild: {},
-      csso: {},
-      h5: {
-        entry: {},
-        output: {},
-        devServer: {},
-        router: {},
-        compile: {},
-        postcss: {
-          autoprefixer: {},
-          pxtransform: {},
-          htmltransform: {},
-          cssModules: {},
-        },
-        htmlPluginOption: {},
-        styleLoaderOption: {},
-        cssLoaderOption: {
-          modules: {},
-        },
-        sassLoaderOption: {},
-        lessLoaderOption: {},
-        stylusLoaderOption: {
-          stylusOptions: {
-            define: [],
-          },
-        },
-        miniCssExtractPluginOption: {},
-        mediaUrlLoaderOption: {},
-        imageUrlLoaderOption: {},
-        fontUrlLoaderOption: {},
+it('define base config', () => {
+  expectTypeOf(defineConfig({
+    deviceRatio: {},
+    compiler: {},
+    alias: {},
+    env: {},
+    defineConstants: {},
+    cache: {},
+    logger: {},
+    copy: {},
+    sass: {},
+    plugins: [],
+    presets: [],
+    terser: {},
+    esbuild: {},
+    csso: {},
+    h5: {},
+    rn: {},
+    mini: {},
+  })).toMatchTypeOf<TaroConfig>()
+})
+
+it('define platform h5 config', () => {
+  expectTypeOf(defineConfig({
+    h5: {
+      entry: {},
+      output: {},
+      devServer: {},
+      router: {},
+      compile: {},
+      postcss: {
+        autoprefixer: {},
+        pxtransform: {},
+        htmltransform: {},
+        cssModules: {},
       },
-      rn: {
-        appName: '',
-        output: {},
-        postcss: {},
-        sass: {
-          options: {},
-        },
-        less: {
-          options: {},
-        },
-        stylus: {
-          options: {},
-        },
-        resolve: {
-          include: [],
-        },
-        enableMultipleClassName: false,
-        enableMergeStyle: true,
-        enableSvgTransform: true,
+      htmlPluginOption: {},
+      styleLoaderOption: {},
+      cssLoaderOption: {
+        modules: {},
       },
-      mini: {
-        hot: true,
-        debugReact: false,
-        compile: {},
-        minifyXML: {},
-        commonChunks: [],
-        optimizeMainPackage: {
-          enable: false,
-          exclude: [],
+      sassLoaderOption: {},
+      lessLoaderOption: {},
+      stylusLoaderOption: {
+        stylusOptions: {
+          define: [],
         },
-        postcss: {
-          autoprefixer: {},
-          cssModules: {},
-          url: {},
-          pxtransform: {},
-        },
-        styleLoaderOption: {},
-        cssLoaderOption: {},
-        lessLoaderOption: {},
-        sassLoaderOption: {},
-        stylusLoaderOption: {},
-        miniCssExtractPluginOption: {},
-        imageUrlLoaderOption: {},
-        mediaUrlLoaderOption: {},
-        fontUrlLoaderOption: {},
       },
-    })).toMatchTypeOf<TaroConfig>()
-  })
+      miniCssExtractPluginOption: {},
+      mediaUrlLoaderOption: {},
+      imageUrlLoaderOption: {},
+      fontUrlLoaderOption: {},
+    },
+  })).toMatchTypeOf<TaroConfig>()
+})
+
+it('define platform rn config', () => {
+  expectTypeOf(defineConfig({
+    rn: {
+      appName: '',
+      output: {},
+      postcss: {},
+      sass: {
+        options: {},
+      },
+      less: {
+        options: {},
+      },
+      stylus: {
+        options: {},
+      },
+      resolve: {
+        include: [],
+      },
+      enableMultipleClassName: false,
+      enableMergeStyle: true,
+      enableSvgTransform: true,
+    },
+  })).toMatchTypeOf<TaroConfig>()
+})
+
+it('define platform mini config', () => {
+  expectTypeOf(defineConfig({
+    mini: {
+      hot: true,
+      debugReact: false,
+      compile: {},
+      minifyXML: {},
+      commonChunks: [],
+      optimizeMainPackage: {
+        enable: false,
+        exclude: [],
+      },
+      postcss: {
+        autoprefixer: {},
+        cssModules: {},
+        url: {},
+        pxtransform: {},
+      },
+      styleLoaderOption: {},
+      cssLoaderOption: {},
+      lessLoaderOption: {},
+      sassLoaderOption: {},
+      stylusLoaderOption: {},
+      miniCssExtractPluginOption: {},
+      imageUrlLoaderOption: {},
+      mediaUrlLoaderOption: {},
+      fontUrlLoaderOption: {},
+    },
+  })).toMatchTypeOf<TaroConfig>()
 })
