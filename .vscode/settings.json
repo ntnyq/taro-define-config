@@ -9,6 +9,7 @@
     "esbuild",
     "icss",
     "nerv",
+    "nocheck",
     "nosources",
     "pnpm",
     "pxtransform",
