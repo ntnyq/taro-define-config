@@ -4,14 +4,18 @@
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
 
-// TODO: replace any with webpack LoaderContext
-export type SassLoaderAdditionalData = (content: string | Buffer, loaderContext?: any) => string
+import type { LoaderContext } from '../common'
+
+export type SassLoaderAdditionalData = (
+  content: string | Buffer,
+  loaderContext?: LoaderContext,
+) => string
 
 export type SassLoaderSassOptions = Record<string, any>
 
 export type SassLoaderSassOptionsFn = (
   content: string | Buffer,
-  loaderContext?: any,
+  loaderContext?: LoaderContext,
   meta?: any,
 ) => SassLoaderSassOptions
 

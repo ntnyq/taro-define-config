@@ -1,3 +1,4 @@
+import type { loader } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
 /**
@@ -37,3 +38,5 @@ export interface ConfigurablePlugin<T extends Record<string, any>> {
   enable?: boolean
   config?: T
 }
+
+export type LoaderContext = loader.LoaderContext

@@ -4,6 +4,8 @@
  * @see https://github.com/webpack-contrib/stylus-loader#options
  */
 
+import type { LoaderContext } from '../common'
+
 export type StylusOptionsDefineItemValue = string | number | boolean
 
 export type StylusOptionsDefineItem = [string, StylusOptionsDefineItemValue, boolean?]
@@ -39,16 +41,15 @@ export interface StylusLoaderStylusOptions {
   paths?: string[]
 }
 
-export type StylusLoaderStylusOptionsFn = (loaderContext: any) =>
+export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext) =>
   | string[]
   | {
       paths: string[]
     }
 
-// TODO: replace any with webpack LoaderContext
 export type StylusLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContext?: any,
+  loaderContext?: LoaderContext,
   meta?: any,
 ) => string
 
