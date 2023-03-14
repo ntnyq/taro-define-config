@@ -1,7 +1,4 @@
-import type {
-  ConfigurablePlugin,
-  SourceMapType,
-} from '../common'
+import type { ConfigurablePlugin, SourceMapType } from '../common'
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,

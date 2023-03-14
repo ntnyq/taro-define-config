@@ -4,11 +4,7 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
-import type {
-  LessOptions,
-  SassOptions,
-  StylusOptions,
-} from '../npm'
+import type { LessOptions, SassOptions, StylusOptions } from '../npm'
 
 export interface PlatformRNLessOptions {
   options?: LessOptions

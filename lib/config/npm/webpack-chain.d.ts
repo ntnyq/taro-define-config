@@ -89,25 +89,20 @@ declare class Config extends __Config.ChainedMap<void> {
 
 declare namespace Config {
   class Chained<Parent> extends __Config.Chained<Parent> {}
-  class TypedChainedMap<Parent, Value> extends __Config.TypedChainedMap<
-    Parent,
-    Value
-  > {}
+  class TypedChainedMap<Parent, Value> extends __Config.TypedChainedMap<Parent, Value> {}
   class ChainedMap<Parent> extends __Config.TypedChainedMap<Parent, any> {}
-  class TypedChainedSet<Parent, Value> extends __Config.TypedChainedSet<
-    Parent,
-    Value
-  > {}
+  class TypedChainedSet<Parent, Value> extends __Config.TypedChainedSet<Parent, Value> {}
   class ChainedSet<Parent> extends __Config.TypedChainedSet<Parent, any> {}
 
-  class Plugins<
+  class Plugins<Parent, PluginType extends Tapable.Plugin = webpack.Plugin> extends TypedChainedMap<
     Parent,
-    PluginType extends Tapable.Plugin = webpack.Plugin,
-  > extends TypedChainedMap<Parent, Plugin<Parent, PluginType>> {}
+    Plugin<Parent, PluginType>
+  > {}
 
   class Plugin<Parent, PluginType extends Tapable.Plugin = webpack.Plugin>
     extends ChainedMap<Parent>
-    implements Orderable {
+    implements Orderable
+  {
     init<P extends PluginType | PluginClass<PluginType>>(
       value: (
         plugin: P,
@@ -130,9 +125,7 @@ declare namespace Config {
   class Module extends ChainedMap<Config> {
     rules: TypedChainedMap<this, Rule>
     rule(name: string): Rule
-    noParse(
-      noParse: RegExp | RegExp[] | ((contentPath: string) => boolean),
-    ): this
+    noParse(noParse: RegExp | RegExp[] | ((contentPath: string) => boolean)): this
     strictExportPresence(value: boolean): this
   }
 
@@ -171,12 +164,8 @@ declare namespace Config {
   class DevServer extends ChainedMap<Config> {
     allowedHosts: TypedChainedSet<this, string>
 
-    after(
-      value: (app: any, server: any, compiler: webpack.Compiler) => void,
-    ): this
-    before(
-      value: (app: any, server: any, compiler: webpack.Compiler) => void,
-    ): this
+    after(value: (app: any, server: any, compiler: webpack.Compiler) => void): this
+    before(value: (app: any, server: any, compiler: webpack.Compiler) => void): this
     bonjour(value: boolean): this
     clientLogLevel(value: 'none' | 'error' | 'warning' | 'info'): this
     color(value: boolean): this
@@ -245,9 +234,7 @@ declare namespace Config {
     enforceModuleExtension(value: boolean): this
     unsafeCache(value: boolean | RegExp | RegExp[]): this
     symlinks(value: boolean): this
-    cachePredicate(
-      value: (data: { path: string; request: string }) => boolean,
-    ): this
+    cachePredicate(value: (data: { path: string; request: string }) => boolean): this
     cacheWithContext(value: boolean): this
 
     plugin(name: string): Plugin<this, webpack.ResolvePlugin>
@@ -270,11 +257,11 @@ declare namespace Config {
     test(value: webpack.Condition | webpack.Condition[]): this
     type(
       value:
-      | 'javascript/auto'
-      | 'javascript/dynamic'
-      | 'javascript/esm'
-      | 'json'
-      | 'webassembly/experimental',
+        | 'javascript/auto'
+        | 'javascript/dynamic'
+        | 'javascript/esm'
+        | 'json'
+        | 'webassembly/experimental',
     ): this
     enforce(value: 'pre' | 'post'): this
 

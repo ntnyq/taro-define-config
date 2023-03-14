@@ -7,113 +7,121 @@ it('define empty config', () => {
 })
 
 it('define base config', () => {
-  expectTypeOf(defineConfig({
-    deviceRatio: {},
-    compiler: {},
-    alias: {},
-    env: {},
-    defineConstants: {},
-    cache: {},
-    logger: {},
-    copy: {},
-    sass: {},
-    plugins: [],
-    presets: [],
-    terser: {},
-    esbuild: {},
-    csso: {},
-    h5: {},
-    rn: {},
-    mini: {},
-  })).toMatchTypeOf<TaroConfig>()
+  expectTypeOf(
+    defineConfig({
+      deviceRatio: {},
+      compiler: {},
+      alias: {},
+      env: {},
+      defineConstants: {},
+      cache: {},
+      logger: {},
+      copy: {},
+      sass: {},
+      plugins: [],
+      presets: [],
+      terser: {},
+      esbuild: {},
+      csso: {},
+      h5: {},
+      rn: {},
+      mini: {},
+    }),
+  ).toMatchTypeOf<TaroConfig>()
 })
 
 it('define platform h5 config', () => {
-  expectTypeOf(defineConfig({
-    h5: {
-      entry: {},
-      output: {},
-      devServer: {},
-      router: {},
-      compile: {},
-      postcss: {
-        autoprefixer: {},
-        pxtransform: {},
-        htmltransform: {},
-        cssModules: {},
-      },
-      htmlPluginOption: {},
-      styleLoaderOption: {},
-      cssLoaderOption: {
-        modules: {},
-      },
-      sassLoaderOption: {},
-      lessLoaderOption: {},
-      stylusLoaderOption: {
-        stylusOptions: {
-          define: [],
+  expectTypeOf(
+    defineConfig({
+      h5: {
+        entry: {},
+        output: {},
+        devServer: {},
+        router: {},
+        compile: {},
+        postcss: {
+          autoprefixer: {},
+          pxtransform: {},
+          htmltransform: {},
+          cssModules: {},
         },
+        htmlPluginOption: {},
+        styleLoaderOption: {},
+        cssLoaderOption: {
+          modules: {},
+        },
+        sassLoaderOption: {},
+        lessLoaderOption: {},
+        stylusLoaderOption: {
+          stylusOptions: {
+            define: [],
+          },
+        },
+        miniCssExtractPluginOption: {},
+        mediaUrlLoaderOption: {},
+        imageUrlLoaderOption: {},
+        fontUrlLoaderOption: {},
       },
-      miniCssExtractPluginOption: {},
-      mediaUrlLoaderOption: {},
-      imageUrlLoaderOption: {},
-      fontUrlLoaderOption: {},
-    },
-  })).toMatchTypeOf<TaroConfig>()
+    }),
+  ).toMatchTypeOf<TaroConfig>()
 })
 
 it('define platform rn config', () => {
-  expectTypeOf(defineConfig({
-    rn: {
-      appName: '',
-      output: {},
-      postcss: {},
-      sass: {
-        options: {},
+  expectTypeOf(
+    defineConfig({
+      rn: {
+        appName: '',
+        output: {},
+        postcss: {},
+        sass: {
+          options: {},
+        },
+        less: {
+          options: {},
+        },
+        stylus: {
+          options: {},
+        },
+        resolve: {
+          include: [],
+        },
+        enableMultipleClassName: false,
+        enableMergeStyle: true,
+        enableSvgTransform: true,
       },
-      less: {
-        options: {},
-      },
-      stylus: {
-        options: {},
-      },
-      resolve: {
-        include: [],
-      },
-      enableMultipleClassName: false,
-      enableMergeStyle: true,
-      enableSvgTransform: true,
-    },
-  })).toMatchTypeOf<TaroConfig>()
+    }),
+  ).toMatchTypeOf<TaroConfig>()
 })
 
 it('define platform mini config', () => {
-  expectTypeOf(defineConfig({
-    mini: {
-      hot: true,
-      debugReact: false,
-      compile: {},
-      minifyXML: {},
-      commonChunks: [],
-      optimizeMainPackage: {
-        enable: false,
-        exclude: [],
+  expectTypeOf(
+    defineConfig({
+      mini: {
+        hot: true,
+        debugReact: false,
+        compile: {},
+        minifyXML: {},
+        commonChunks: [],
+        optimizeMainPackage: {
+          enable: false,
+          exclude: [],
+        },
+        postcss: {
+          autoprefixer: {},
+          cssModules: {},
+          url: {},
+          pxtransform: {},
+        },
+        styleLoaderOption: {},
+        cssLoaderOption: {},
+        lessLoaderOption: {},
+        sassLoaderOption: {},
+        stylusLoaderOption: {},
+        miniCssExtractPluginOption: {},
+        imageUrlLoaderOption: {},
+        mediaUrlLoaderOption: {},
+        fontUrlLoaderOption: {},
       },
-      postcss: {
-        autoprefixer: {},
-        cssModules: {},
-        url: {},
-        pxtransform: {},
-      },
-      styleLoaderOption: {},
-      cssLoaderOption: {},
-      lessLoaderOption: {},
-      sassLoaderOption: {},
-      stylusLoaderOption: {},
-      miniCssExtractPluginOption: {},
-      imageUrlLoaderOption: {},
-      mediaUrlLoaderOption: {},
-      fontUrlLoaderOption: {},
-    },
-  })).toMatchTypeOf<TaroConfig>()
+    }),
+  ).toMatchTypeOf<TaroConfig>()
 })

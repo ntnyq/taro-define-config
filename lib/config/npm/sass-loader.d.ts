@@ -5,17 +5,14 @@
  */
 
 // TODO: replace any with webpack LoaderContext
-export type SassLoaderAdditionalData = (
-  content: string | Buffer,
-  loaderContext?: any,
-) => string
+export type SassLoaderAdditionalData = (content: string | Buffer, loaderContext?: any) => string
 
 export type SassLoaderSassOptions = Record<string, any>
 
 export type SassLoaderSassOptionsFn = (
   content: string | Buffer,
   loaderContext?: any,
-  meta?: any
+  meta?: any,
 ) => SassLoaderSassOptions
 
 export interface SassLoaderOptions {

@@ -1,7 +1,6 @@
 {
-  "[typescript][markdown][javascript]": {
-    "editor.formatOnSave": false
-  },
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
   "cSpell.words": [
     "bumpp",
     "changelogithub",

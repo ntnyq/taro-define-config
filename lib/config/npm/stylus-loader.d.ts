@@ -39,9 +39,11 @@ export interface StylusLoaderStylusOptions {
   paths?: string[]
 }
 
-export type StylusLoaderStylusOptionsFn = (loaderContext: any) => string[] | {
-  paths: string[]
-}
+export type StylusLoaderStylusOptionsFn = (loaderContext: any) =>
+  | string[]
+  | {
+      paths: string[]
+    }
 
 // TODO: replace any with webpack LoaderContext
 export type StylusLoaderAdditionalData = (

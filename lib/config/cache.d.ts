@@ -1,4 +1,3 @@
-
 export interface CacheBuildDependencies {
   config?: string[]
 }

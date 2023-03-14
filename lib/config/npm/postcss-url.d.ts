@@ -23,10 +23,7 @@ export interface PostCSSUrlUrlDir {
   file?: string
 }
 
-export type PostCSSUrlTransformFn = (
-  asset?: PostCSSUrlUrlAsset,
-  dir?: PostCSSUrlUrlDir,
-) => string
+export type PostCSSUrlTransformFn = (asset?: PostCSSUrlUrlAsset, dir?: PostCSSUrlUrlDir) => string
 
 export type PostcssUrlFilterFn = (file?: string) => boolean
 

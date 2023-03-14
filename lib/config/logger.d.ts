@@ -1,4 +1,3 @@
-
 export interface Logger {
   /**
    * 是否简化输出日志

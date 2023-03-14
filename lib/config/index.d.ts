@@ -6,26 +6,10 @@ import type { Logger } from './logger'
 import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 import type { Compiler } from './compiler'
-import type {
-  PlatformH5,
-  PlatformMini,
-  PlatformRN,
-} from './platform'
-import type {
-  CSSMinimizer,
-  CSSO,
-  Esbuild,
-  JSMinimizer,
-  Terser,
-} from './minimizer'
+import type { PlatformH5, PlatformMini, PlatformRN } from './platform'
+import type { CSSMinimizer, CSSO, Esbuild, JSMinimizer, Terser } from './minimizer'
 
-export type Framework = LiteralUnion<
-  | 'react'
-  | 'preact'
-  | 'nerv'
-  | 'vue'
-  | 'vue3'
->
+export type Framework = LiteralUnion<'react' | 'preact' | 'nerv' | 'vue' | 'vue3'>
 
 /**
  * Taro Configuration.

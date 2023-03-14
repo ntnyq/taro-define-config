@@ -1,4 +1,3 @@
-
 export type CopyIgnore = string
 
 export interface CopyPattern {

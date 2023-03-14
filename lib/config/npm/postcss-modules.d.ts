@@ -17,31 +17,28 @@ export class CustomLoader {
 export type PostcssModulesGetJSONFn = (
   cssFilename: string,
   json: Record<string, string>,
-  outputFilename?: string
+  outputFilename?: string,
 ) => void
 
 export type PostcssModulesLocalsConventionFn = (
   originalClassName: string,
   generatedClassName: string,
-  inputFile: string
+  inputFile: string,
 ) => string
 
-export type PostcssModulesLocalsConvention = LiteralUnion<
-  | 'camelCase'
-  | 'camelCaseOnly'
-  | 'dashes'
-  | 'dashesOnly'
-> | PostcssModulesLocalsConventionFn
+export type PostcssModulesLocalsConvention =
+  | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
+  | PostcssModulesLocalsConventionFn
 
 export type PostcssModulesResolveFn = (
   file: string,
-  importer: string
+  importer: string,
 ) => string | null | Promise<string | null>
 
 export type PostcssModulesGenerateScopedNameFn = (
   name: string,
   filename: string,
-  css: string
+  css: string,
 ) => string
 
 export type PostcssModulesLoader = typeof CustomLoader

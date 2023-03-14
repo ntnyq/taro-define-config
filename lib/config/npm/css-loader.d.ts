@@ -6,10 +6,7 @@
 
 import type { LiteralUnion } from '../../utility-types'
 
-export type CSSLoaderUrlFilterFn = (
-  url: string,
-  resourcePath?: string,
-) => boolean
+export type CSSLoaderUrlFilterFn = (url: string, resourcePath?: string) => boolean
 
 export interface CSSLoaderUrl {
   filter: CSSLoaderUrlFilterFn
@@ -36,15 +33,11 @@ export type CSSLoaderModulesGetLocalIdentFn = (
   context: any,
   localIdentName?: string,
   localName?: string,
-  options?: any
+  options?: any,
 ) => string
 
 export type CSSLoaderModulesExportLocalsConvention = LiteralUnion<
-  | 'asIs'
-  | 'camelCase'
-  | 'camelCaseOnly'
-  | 'dashes'
-  | 'dashesOnly'
+  'asIs' | 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
 >
 
 export type CSSLoaderModulesExportLocalsConventionFn = (name: string) => string
@@ -67,7 +60,9 @@ export interface CSSLoaderModulesObject {
 
   exportGlobals?: boolean
 
-  exportLocalsConvention?: CSSLoaderModulesExportLocalsConvention | CSSLoaderModulesExportLocalsConventionFn
+  exportLocalsConvention?:
+    | CSSLoaderModulesExportLocalsConvention
+    | CSSLoaderModulesExportLocalsConventionFn
 
   exportOnlyLocals?: boolean
 }
