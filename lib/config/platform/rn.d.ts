@@ -4,7 +4,8 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
-import type { LessOptions, SassOptions, StylusOptions } from '../npm'
+import type { LessOptions, PostcssPxtransformOptions, SassOptions, StylusOptions } from '../npm'
+import type { ConfigurablePlugin } from '../common'
 
 export interface PlatformRNLessOptions {
   options?: LessOptions
@@ -22,6 +23,23 @@ export interface PlatformRNStylusOptions {
   options?: StylusOptions
 
   additionalData?: string | ((...args: any[]) => string)
+}
+
+export interface PlatformRNPostCSSOptions {
+  /**
+   * PostCSS 配置
+   */
+  options?: Record<string, any>
+
+  /**
+   * 控制是否对 css value 进行 scalePx2dp 转换，pxtransform配置 enable 才生效
+   * @default true
+   */
+  scalable?: boolean
+
+  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
+
+  [key: string]: any
 }
 
 export interface PlatformRNResolve {
@@ -60,7 +78,7 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnpostcss
    */
-  postcss?: Record<string, any>
+  postcss?: PlatformRNPostCSSOptions
 
   /**
    * `sass` 相关配置

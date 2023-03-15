@@ -7,7 +7,13 @@ import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 import type { Compiler } from './compiler'
 import type { PlatformH5, PlatformMini, PlatformRN } from './platform'
-import type { CSSMinimizer, CSSO, Esbuild, JSMinimizer, Terser } from './minimizer'
+import type {
+  CSSMinimizer,
+  CSSOMinimizer,
+  EsbuildMinimizer,
+  JSMinimizer,
+  TerserMinimizer,
+} from './minimizer'
 
 export type Framework = LiteralUnion<'react' | 'preact' | 'nerv' | 'vue' | 'vue3'>
 
@@ -134,6 +140,7 @@ export interface TaroConfig {
    * JS 压缩工具
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#jsminimizer
+   * @default `terser`
    */
   jsMinimizer?: JSMinimizer
 
@@ -142,7 +149,7 @@ export interface TaroConfig {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#terser
    */
-  terser?: Terser
+  terser?: TerserMinimizer
 
   /**
    * 配置 `esbuild`
@@ -150,7 +157,7 @@ export interface TaroConfig {
    * @since `Taro v3.5`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#esbuild
    */
-  esbuild?: Esbuild
+  esbuild?: EsbuildMinimizer
 
   /**
    * CSS 压缩工具
@@ -164,7 +171,7 @@ export interface TaroConfig {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#csso
    */
-  csso?: CSSO
+  csso?: CSSOMinimizer
 
   /**
    * H5端专用配置
