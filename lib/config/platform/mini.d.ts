@@ -1,4 +1,4 @@
-import type { ConfigurablePlugin, SourceMapType } from '../common'
+import type { Compile, ConfigurablePlugin, SourceMapType } from '../common'
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,
@@ -13,11 +13,6 @@ import type {
   StylusLoaderOptions,
   URLLoaderOptions,
 } from '../npm'
-
-export interface PlatformMiniCompile {
-  include?: string[]
-  exclude?: string[]
-}
 
 export interface PlatformMiniMinifyXML {
   /**
@@ -63,7 +58,7 @@ export interface PlatformMini {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minicompile
    */
-  compile?: PlatformMiniCompile
+  compile?: Compile
 
   /**
    * `SourceMap` 类型

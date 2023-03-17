@@ -1,6 +1,6 @@
 import { expectTypeOf, it } from 'vitest'
-import type { TaroConfig } from '../lib'
 import { defineConfig } from '../lib'
+import type { TaroConfig } from '../lib'
 
 it('define empty config', () => {
   expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
@@ -10,7 +10,9 @@ it('define base config', () => {
   expectTypeOf(
     defineConfig({
       deviceRatio: {},
-      compiler: {},
+      compiler: {
+        type: 'webpack4',
+      },
       alias: {},
       env: {},
       defineConstants: {},

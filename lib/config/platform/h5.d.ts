@@ -1,5 +1,5 @@
 import type { LiteralUnion } from '../../utility-types'
-import type { ConfigurablePlugin, SourceMapType } from '../common'
+import type { Compile, ConfigurablePlugin, SourceMapType } from '../common'
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,
@@ -59,22 +59,12 @@ export interface PlatformH5Router {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5routercustomroutes
    */
   customRoutes?: Record<string, string | string[]>
-}
 
-export interface PlatformH5Compile {
-  /**
-   * 配置额外需要经过 Taro 编译的文件
-   *
-   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compileinclude
-   */
-  include?: string[]
+  lazyload?: boolean | ((pagename: string) => boolean)
 
-  /**
-   * 配置 Web 应用编译过程中排除不需要经过 Taro 编译的文件
-   *
-   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compileexclude
-   */
-  exclude?: string[]
+  renamePagename?: (pagename: string) => string
+
+  forcePath?: string
 }
 
 export interface PlatformH5Postcss {
@@ -182,7 +172,7 @@ export interface PlatformH5 {
    * @since `Taro v3.6`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compile
    */
-  compile?: PlatformH5Compile
+  compile?: Compile
 
   /**
    * `html-webpack-plugin` 的具体配置

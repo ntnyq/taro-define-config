@@ -6,9 +6,11 @@
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin#plugin-options
  */
 
+import type { AssetInfo } from 'webpack'
+
 // TODO: enhance with PathData from webpack
 // https://webpack.js.org/configuration/output/#template-strings
-export type MiniCSSExtractPluginFileNameFn = (pathData: any, assetInfo?: any) => string
+export type MiniCSSExtractPluginFileNameFn = (pathData: any, assetInfo?: AssetInfo) => string
 
 export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
 

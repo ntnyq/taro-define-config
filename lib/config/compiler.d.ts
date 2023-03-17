@@ -1,8 +1,11 @@
+import type { Compile } from './common'
+import type { Config } from '@swc/core'
+import type { Configuration } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
 export type CompilerType = LiteralUnion<'webpack4' | 'webpack5'>
 
-export interface CompilerPrebundle {
+export interface CompilerPrebundle extends Compile {
   /**
    * 是否开启依赖预编译
    */
@@ -26,27 +29,19 @@ export interface CompilerPrebundle {
   /**
    * 自定义 `esbuild` 配置
    */
-  esbuild?: any
+  esbuild?: Record<string, any>
 
   /**
    * 自定义 `swc` 配置
    */
-  swc?: any
+  swc?: Config
 
   /**
    * 自定义 `webpack` 配置
    */
-  webpack?: any
-
-  /**
-   * 需要额外执行预编译的依赖
-   */
-  include?: string[]
-
-  /**
-   * 不需要执行预编译的依赖
-   */
-  exclude?: string[]
+  webpack?: Configuration & {
+    provider?: any[]
+  }
 }
 
 export interface CompilerConfig {
@@ -55,7 +50,7 @@ export interface CompilerConfig {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilertype
    */
-  type?: CompilerType
+  type: CompilerType
 
   /**
    * 依赖预编译，仅 `webpack5` 支持

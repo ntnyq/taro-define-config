@@ -40,3 +40,15 @@ export interface ConfigurablePlugin<T extends Record<string, any>> {
 }
 
 export type LoaderContext = loader.LoaderContext
+
+export interface Compile {
+  /**
+   * 需要额外执行预编译的依赖
+   */
+  include?: string[]
+
+  /**
+   * 不需要执行预编译的依赖
+   */
+  exclude?: string[]
+}

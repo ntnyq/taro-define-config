@@ -12,7 +12,6 @@ export type StylusOptionsDefineItem = [string, StylusOptionsDefineItemValue, boo
 
 export interface StylusOptionsResolveURL {
   paths?: string[]
-
   nocheck?: boolean
 }
 
