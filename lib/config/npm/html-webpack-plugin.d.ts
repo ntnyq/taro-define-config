@@ -4,4 +4,6 @@
  * @see https://github.com/jantimon/html-webpack-plugin#options
  */
 
-export type HtmlWebpackPluginOptions = Record<string, any>
+import type { Options } from 'html-webpack-plugin'
+
+export type HtmlWebpackPluginOptions = Options
