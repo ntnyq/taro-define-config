@@ -56,7 +56,7 @@
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vitest": "^0.29.7",
-    "webpack": "^5.76.3"
+    "webpack": "^4.46.0"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {

@@ -5,15 +5,11 @@ import type { ConfigurablePlugin } from '../common'
 
 export type JSMinimizer = LiteralUnion<'terser' | 'esbuild'>
 
-export type TerserMinifyOptions = MinifyOptions
-
-export type TerserMinimizer = ConfigurablePlugin<TerserMinifyOptions>
-
-export type EsbuildMinifyOptions = EsbuildPluginOptions
+export type TerserMinimizer = ConfigurablePlugin<MinifyOptions>
 
 export interface EsbuildMinimizer {
   /**
    * 配置 `ESBuildMinifyPlugin`
    */
-  minify?: ConfigurablePlugin<EsbuildMinifyOptions>
+  minify?: ConfigurablePlugin<EsbuildPluginOptions>
 }

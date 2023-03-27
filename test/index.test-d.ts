@@ -15,6 +15,8 @@ it('define base config', () => {
       },
       alias: {},
       env: {},
+      jsMinimizer: 'esbuild',
+      cssMinimizer: 'csso',
       defineConstants: {},
       cache: {},
       logger: {},
@@ -22,9 +24,22 @@ it('define base config', () => {
       sass: {},
       plugins: [],
       presets: [],
-      terser: {},
-      esbuild: {},
-      csso: {},
+      terser: {
+        enable: true,
+        config: {
+          ecma: 2015,
+        },
+      },
+      esbuild: {
+        minify: {
+          enable: false,
+          config: {},
+        },
+      },
+      csso: {
+        enable: false,
+        config: {},
+      },
       h5: {},
       rn: {},
       mini: {},
