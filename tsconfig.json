@@ -11,5 +11,6 @@
     "skipLibCheck": false,
     "skipDefaultLibCheck": true,
     "noImplicitAny": true
-  }
+  },
+  "exclude": ["./taze.config.ts"]
 }
