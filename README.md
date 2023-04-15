@@ -25,18 +25,14 @@ module.exports = defineConfig({
 
 Improve your TaroJS project configuration experience with:
 
--   auto-suggestions
--   type checking (Use // @ts-check at the first line in your config file)
--   documentation
--   deprecation warnings
+- auto-suggestions
+- type checking (Use // @ts-check at the first line in your config file)
+- documentation
+- deprecation warnings
 
 ## Prior Art
 
 - [eslint-define-config](https://github.com/Shinigami92/eslint-define-config)
-
-## Todo
-
-- [ ] Migrate npm packages types related to `lib/config/npm`
 
 ## Related link
 
