@@ -62,6 +62,10 @@ it('define platform h5 config', () => {
           htmltransform: {},
           cssModules: {},
         },
+        enableExtract: false,
+        enableSourceMap: false,
+        sourceMapType: 'cheap-source-map',
+        useDeprecatedAdapterComponent: true,
         htmlPluginOption: {},
         styleLoaderOption: {},
         cssLoaderOption: {

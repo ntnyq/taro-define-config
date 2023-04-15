@@ -128,6 +128,7 @@ export interface PlatformH5 {
    * 用于控制是否生成 `js、css` 对应的 `sourceMap`
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5enablesourcemap
+   * @default watch 模式下为 true，否则为 false
    */
   enableSourceMap?: boolean
 
@@ -149,6 +150,7 @@ export interface PlatformH5 {
    * `extract` 功能开关，开启后将使用 `mini-css-extract-plugin` 分离 `css` 文件
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5enableextract
+   * @default watch 模式下为 false，否则为 true
    */
   enableExtract?: boolean
 
@@ -173,6 +175,15 @@ export interface PlatformH5 {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compile
    */
   compile?: Compile
+
+  /**
+   * 控制在 H5 端是否使用旧版本适配器
+   *
+   * @since `Taro v3.6.3`
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5usedeprecatedadaptercomponent
+   * @default false
+   */
+  useDeprecatedAdapterComponent?: boolean
 
   /**
    * `html-webpack-plugin` 的具体配置
