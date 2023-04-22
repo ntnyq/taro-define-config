@@ -5,7 +5,7 @@ import type {
   ChainableWebpackConfig,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostcssModulesOptions,
+  PostcssCssModulesOptions,
   PostcssPxtransformOptions,
   PostcssUrlOptions,
   SassLoaderOptions,
@@ -37,7 +37,7 @@ export interface PlatformMiniPostcss {
   autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
   pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
   url?: ConfigurablePlugin<PostcssUrlOptions>
-  cssModules?: ConfigurablePlugin<PostcssModulesOptions>
+  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 }
 
 /**

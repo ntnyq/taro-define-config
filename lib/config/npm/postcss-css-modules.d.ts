@@ -14,42 +14,42 @@ export class CustomLoader {
   finalSource?: string
 }
 
-export type PostcssModulesGetJSONFn = (
+export type PostcssCssModulesGetJSONFn = (
   cssFilename: string,
   json: Record<string, string>,
   outputFilename?: string,
 ) => void
 
-export type PostcssModulesLocalsConventionFn = (
+export type PostcssCssModulesLocalsConventionFn = (
   originalClassName: string,
   generatedClassName: string,
   inputFile: string,
 ) => string
 
-export type PostcssModulesLocalsConvention =
+export type PostcssCssModulesLocalsConvention =
   | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
-  | PostcssModulesLocalsConventionFn
+  | PostcssCssModulesLocalsConventionFn
 
-export type PostcssModulesResolveFn = (
+export type PostcssCssModulesResolveFn = (
   file: string,
   importer: string,
 ) => string | null | Promise<string | null>
 
-export type PostcssModulesGenerateScopedNameFn = (
+export type PostcssCssModulesGenerateScopedNameFn = (
   name: string,
   filename: string,
   css: string,
 ) => string
 
-export type PostcssModulesLoader = typeof CustomLoader
+export type PostcssCssModulesLoader = typeof CustomLoader
 
-export interface PostcssModulesOptions {
-  getJSON?: PostcssModulesGetJSONFn
+export interface PostcssCssModulesOptions {
+  getJSON?: PostcssCssModulesGetJSONFn
 
   /**
    * style of exported classnames, the keys in your json
    */
-  localsConvention?: PostcssModulesLocalsConvention
+  localsConvention?: PostcssCssModulesLocalsConvention
 
   /**
    * change all the classes are local or global
@@ -86,12 +86,12 @@ export interface PostcssModulesOptions {
   /**
    * use custom loader if needed
    */
-  Loader?: PostcssModulesLoader
+  Loader?: PostcssCssModulesLoader
 
   /**
    * resolve custom path alias
    */
-  resolve?: PostcssModulesResolveFn
+  resolve?: PostcssCssModulesResolveFn
 
   [key: string]: any
 }

@@ -12,7 +12,7 @@ export * from './style-loader'
 export * from './stylus-loader'
 
 export * from './postcss-url'
-export * from './postcss-modules'
+export * from './postcss-css-modules'
 export * from './postcss-pxtransform'
 export * from './postcss-html-transform'
 

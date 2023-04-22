@@ -2,6 +2,11 @@ import { expectTypeOf, it } from 'vitest'
 import { defineConfig } from '../lib'
 import type { TaroConfig } from '../lib'
 
+const getConfigurablePluginConfig = () => ({
+  enable: Math.random() > 0.5,
+  config: {},
+})
+
 it('define empty config', () => {
   expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
 })
@@ -31,15 +36,9 @@ it('define base config', () => {
         },
       },
       esbuild: {
-        minify: {
-          enable: false,
-          config: {},
-        },
+        minify: getConfigurablePluginConfig(),
       },
-      csso: {
-        enable: false,
-        config: {},
-      },
+      csso: getConfigurablePluginConfig(),
       h5: {},
       rn: {},
       mini: {},
@@ -57,10 +56,11 @@ it('define platform h5 config', () => {
         router: {},
         compile: {},
         postcss: {
-          autoprefixer: {},
-          pxtransform: {},
-          htmltransform: {},
-          cssModules: {},
+          autoprefixer: getConfigurablePluginConfig(),
+          pxtransform: getConfigurablePluginConfig(),
+          htmltransform: getConfigurablePluginConfig(),
+          cssModules: getConfigurablePluginConfig(),
+          url: getConfigurablePluginConfig(),
         },
         enableExtract: false,
         enableSourceMap: false,
@@ -128,10 +128,10 @@ it('define platform mini config', () => {
           exclude: [],
         },
         postcss: {
-          autoprefixer: {},
-          cssModules: {},
-          url: {},
-          pxtransform: {},
+          autoprefixer: getConfigurablePluginConfig(),
+          cssModules: getConfigurablePluginConfig(),
+          url: getConfigurablePluginConfig(),
+          pxtransform: getConfigurablePluginConfig(),
         },
         styleLoaderOption: {},
         cssLoaderOption: {},

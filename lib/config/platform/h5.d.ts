@@ -7,9 +7,10 @@ import type {
   HtmlWebpackPluginOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
+  PostcssCssModulesOptions,
   PostcssHtmlTransformOptions,
-  PostcssModulesOptions,
   PostcssPxtransformOptions,
+  PostcssUrlOptions,
   SassLoaderOptions,
   StyleLoaderOptions,
   StylusLoaderOptions,
@@ -71,7 +72,8 @@ export interface PlatformH5Postcss {
   autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
   pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
   htmltransform?: ConfigurablePlugin<PostcssHtmlTransformOptions>
-  cssModules?: ConfigurablePlugin<PostcssModulesOptions>
+  url?: ConfigurablePlugin<PostcssUrlOptions>
+  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 }
 
 export interface PlatformH5 {

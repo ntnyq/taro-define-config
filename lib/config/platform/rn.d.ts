@@ -32,7 +32,7 @@ export interface PlatformRNPostCSSOptions {
   options?: Record<string, any>
 
   /**
-   * 控制是否对 css value 进行 scalePx2dp 转换，pxtransform配置 enable 才生效
+   * 控制是否对 css value 进行 scalePx2dp 转换，pxtransform 配置 enable 才生效
    * @default true
    */
   scalable?: boolean
