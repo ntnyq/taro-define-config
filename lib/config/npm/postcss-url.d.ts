@@ -4,6 +4,7 @@
  * @see https://github.com/postcss/postcss-url
  */
 
+import type { Buffer } from 'node:buffer'
 import type { LiteralUnion } from '../../utility-types'
 
 export type PostCSSUrlUrl = LiteralUnion<'copy' | 'inline' | 'rebase'>

@@ -4,6 +4,7 @@
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
 
+import type { Buffer } from 'node:buffer'
 import type { LoaderContext } from '../common'
 
 export type SassLoaderAdditionalData = (
