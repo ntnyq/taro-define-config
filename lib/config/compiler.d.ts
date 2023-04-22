@@ -1,6 +1,6 @@
 import type { Compile } from './common'
-import type { Config } from '@swc/core'
-import type { Configuration } from 'webpack'
+import type { Config as SWCConfig } from '@swc/core'
+import type { Configuration as WebpackConfig } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
 export type CompilerType = LiteralUnion<'webpack4' | 'webpack5'>
@@ -34,13 +34,15 @@ export interface CompilerPrebundle extends Compile {
   /**
    * 自定义 `swc` 配置
    */
-  swc?: Config
+  swc?: SWCConfig
 
   /**
    * 自定义 `webpack` 配置
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail/#compilerprebundlewebpackprovide
    */
-  webpack?: Configuration & {
-    provider?: any[]
+  webpack?: WebpackConfig & {
+    provide?: any[]
   }
 }
 
