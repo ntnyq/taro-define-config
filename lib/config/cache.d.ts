@@ -14,6 +14,7 @@ export interface Cache {
    * 缓存子目录的名称
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#cachename
+   * @default `process.env.NODE_ENV-process.env.TARO_ENV`
    */
   name?: string
 

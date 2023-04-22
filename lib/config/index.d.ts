@@ -6,6 +6,7 @@ import type { Logger } from './logger'
 import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 import type { Compiler } from './compiler'
+import type { DesignWidth } from './design-width'
 import type { PlatformH5, PlatformMini, PlatformRN } from './platform'
 import type {
   CSSMinimizer,
@@ -34,11 +35,12 @@ export interface TaroConfig {
   date?: string
 
   /**
-   * 设计稿尺寸
+   * 设计稿尺寸, `v3.4.13` 后支持函数
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#designwidth
+   * @default 750
    */
-  designWidth?: number
+  designWidth?: DesignWidth
 
   /**
    * 设计稿尺寸换算规则

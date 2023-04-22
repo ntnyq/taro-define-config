@@ -1,13 +1,13 @@
-export type CopyIgnore = string
+export type CopyIgnore = string | string[]
 
 export interface CopyPattern {
   from: string
   to: string
-  ignore?: CopyIgnore | CopyIgnore[]
+  ignore?: CopyIgnore
 }
 
 export interface CopyOptions {
-  ignore?: CopyIgnore | CopyIgnore[]
+  ignore?: CopyIgnore
 }
 
 export interface Copy {
