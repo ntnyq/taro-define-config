@@ -52,3 +52,5 @@ export interface Compile {
    */
   exclude?: string[]
 }
+
+export type AnyFn = (...args: unknown[]) => unknown

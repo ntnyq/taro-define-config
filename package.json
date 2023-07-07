@@ -45,8 +45,8 @@
     "terser": "^5.18.2"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^1.9.0",
-    "@ntnyq/prettier-config": "^1.9.0",
+    "@ntnyq/eslint-config": "^1.10.0",
+    "@ntnyq/prettier-config": "^1.10.0",
     "bumpp": "^9.1.1",
     "eslint": "^8.44.0",
     "husky": "^8.0.3",
@@ -56,8 +56,8 @@
     "prettier": "^2.8.8",
     "taze": "^0.11.2",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vitest": "^0.32.4",
+    "vite": "^4.4.1",
+    "vitest": "^0.33.0",
     "webpack": "^4.46.0"
   },
   "prettier": "@ntnyq/prettier-config",
