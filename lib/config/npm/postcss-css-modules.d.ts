@@ -17,7 +17,7 @@ export class CustomLoader {
 export type PostcssCssModulesGetJSONFn = (
   cssFilename: string,
   json: Record<string, string>,
-  outputFilename?: string,
+  outputFilename: string,
 ) => void
 
 export type PostcssCssModulesLocalsConventionFn = (

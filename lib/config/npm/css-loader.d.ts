@@ -7,7 +7,7 @@
 import type { LiteralUnion } from '../../utility-types'
 import type { LoaderContext } from '../common'
 
-export type CSSLoaderUrlFilterFn = (url: string, resourcePath?: string) => boolean
+export type CSSLoaderUrlFilterFn = (url: string, resourcePath: string) => boolean
 
 export interface CSSLoaderUrl {
   filter: CSSLoaderUrlFilterFn
@@ -31,9 +31,8 @@ export type CSSLoaderModulesModeFn = (resourcePath: string) => CSSLoaderModulesS
 
 export type CSSLoaderModulesGetLocalIdentFn = (
   loaderContext: LoaderContext,
-  localIdentName?: string,
-  localName?: string,
-  options?: any,
+  localIdentName: string,
+  localName: string,
 ) => string
 
 export type CSSLoaderModulesExportLocalsConvention = LiteralUnion<

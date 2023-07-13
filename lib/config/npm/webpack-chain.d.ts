@@ -368,9 +368,9 @@ declare namespace Config {
     | '#@nosources-source-map'
     | boolean
 
-  interface PluginClass<PluginType extends Tapable.Plugin = webpack.Plugin> {
-    new (...opts: any[]): PluginType
-  }
+  type PluginClass<PluginType extends Tapable.Plugin = webpack.Plugin> = new (
+    ...opts: any[]
+  ) => PluginType
 
   interface Orderable {
     before(name: string): this

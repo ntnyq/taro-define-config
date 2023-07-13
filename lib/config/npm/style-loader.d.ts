@@ -17,7 +17,7 @@ export type StyleLoaderInjectType = LiteralUnion<
   | 'linkTag'
 >
 
-export type StyleLoaderInsertFn = (htmlElement: HTMLElement, options?: Record<string, any>) => void
+export type StyleLoaderInsertFn = (htmlElement: HTMLElement, options: Record<string, any>) => void
 
 export type StyleLoaderStyleTagTransformFn = (
   css: string,

@@ -10,7 +10,7 @@ import type { AssetInfo } from 'webpack'
 
 // TODO: enhance with PathData from webpack
 // https://webpack.js.org/configuration/output/#template-strings
-export type MiniCSSExtractPluginFileNameFn = (pathData: any, assetInfo?: AssetInfo) => string
+export type MiniCSSExtractPluginFileNameFn = (pathData: any, assetInfo: AssetInfo) => string
 
 export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
 

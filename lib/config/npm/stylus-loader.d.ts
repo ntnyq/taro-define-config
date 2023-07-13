@@ -49,8 +49,8 @@ export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext) =>
 
 export type StylusLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContext?: LoaderContext,
-  meta?: any,
+  loaderContex: LoaderContext,
+  meta: any,
 ) => string
 
 export interface StylusLoaderOptions {

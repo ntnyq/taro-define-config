@@ -24,13 +24,13 @@ export interface PostCSSUrlUrlDir {
   file?: string
 }
 
-export type PostCSSUrlTransformFn = (asset?: PostCSSUrlUrlAsset, dir?: PostCSSUrlUrlDir) => string
+export type PostCSSUrlTransformFn = (asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string
 
-export type PostcssUrlFilterFn = (file?: string) => boolean
+export type PostcssUrlFilterFn = (file: string) => boolean
 
 export type PostcssUrlHashOptionsMethod = LiteralUnion<'xxhash32' | 'xxhash64'>
 
-export type PostcssUrlHashOptionsMethodFn = (file?: Buffer) => string
+export type PostcssUrlHashOptionsMethodFn = (file: Buffer) => string
 
 export interface PostcssUrlHashOptions {
   method?: PostcssUrlHashOptionsMethod | PostcssUrlHashOptionsMethodFn

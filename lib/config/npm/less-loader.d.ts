@@ -13,7 +13,7 @@ export type LessLoaderLessOptions = LessOptions | LessLoaderLessOptionsFn
 
 export type LessLoaderAdditionalDataFn = (
   content: string,
-  loaderContext?: LoaderContext,
+  loaderContext: LoaderContext,
 ) => string | Promise<string>
 
 export type LessLoaderAdditionalData = string | LessLoaderAdditionalDataFn
