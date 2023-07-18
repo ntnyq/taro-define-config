@@ -4,30 +4,49 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
-import type { LessOptions, PostcssPxtransformOptions, SassOptions, StylusOptions } from '../npm'
+import type {
+  LessOptions,
+  PostcssCssModulesOptions,
+  PostcssPxtransformOptions,
+  SassOptions,
+  StylusOptions,
+} from '../npm'
 import type { ConfigurablePlugin } from '../common'
 
+/**
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnless
+ */
 export interface PlatformRNLessOptions {
   options?: LessOptions
 
   additionalData?: string | ((...args: any[]) => string)
 }
 
+/**
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnsass
+ */
 export interface PlatformRNSassOptions {
   options?: SassOptions
 
   additionalData?: string | ((...args: any[]) => string)
 }
 
+/**
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnstylus
+ */
 export interface PlatformRNStylusOptions {
   options?: StylusOptions
 
   additionalData?: string | ((...args: any[]) => string)
 }
 
+/**
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnpostcss
+ */
 export interface PlatformRNPostCSSOptions {
   /**
    * PostCSS 配置
+   * @see https://github.com/postcss/postcss#options
    */
   options?: Record<string, any>
 
@@ -37,7 +56,17 @@ export interface PlatformRNPostCSSOptions {
    */
   scalable?: boolean
 
+  /**
+   * `pxtransform.enable`
+   * @default true
+   */
   pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
+
+  /**
+   * `cssModules.enable`
+   * @default false
+   */
+  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 
   [key: string]: any
 }

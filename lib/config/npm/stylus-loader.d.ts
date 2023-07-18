@@ -5,11 +5,8 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LoaderContext } from '../common'
-
-export type StylusOptionsDefineItemValue = string | number | boolean
-
-export type StylusOptionsDefineItem = [string, StylusOptionsDefineItemValue, boolean?]
+import type { AnyFn, LoaderContext } from '../common'
+import type { StylusOptions } from './stylus'
 
 export interface StylusOptionsResolveURL {
   paths?: string[]
@@ -19,22 +16,8 @@ export interface StylusOptionsResolveURL {
 /**
  * @see https://github.com/webpack-contrib/stylus-loader#object
  */
-export interface StylusLoaderStylusOptions {
-  use?: string[] | Function[]
-
-  include?: string[]
-
-  import?: string[]
-
-  define?: StylusOptionsDefineItem[]
-
-  includeCSS?: boolean
-
+export interface StylusLoaderStylusOptions extends StylusOptions {
   resolveURL?: boolean | StylusOptionsResolveURL
-
-  lineNumbers?: boolean
-
-  hoistAtrules?: boolean
 
   compress?: boolean
 
@@ -78,7 +61,7 @@ export interface StylusLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#implementation
    */
-  implementation?: string | Function
+  implementation?: string | AnyFn
 
   [key: string]: any
 }
