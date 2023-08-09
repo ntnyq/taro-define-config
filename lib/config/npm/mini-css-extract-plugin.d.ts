@@ -4,13 +4,12 @@
  * `mini-css-extract-plugin` 配置
  *
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin#plugin-options
+ * @see https://github.com/webpack-contrib/mini-css-extract-plugin/blob/8b52feeac2e9d0b539feb1ccd08eaffdf01d50f5/types/index.d.ts#L106
  */
 
-import type { AssetInfo } from 'webpack'
+import type { AssetInfo, ChunkData } from 'webpack'
 
-// TODO: enhance with PathData from webpack
-// https://webpack.js.org/configuration/output/#template-strings
-export type MiniCSSExtractPluginFileNameFn = (pathData: any, assetInfo: AssetInfo) => string
+export type MiniCSSExtractPluginFileNameFn = (pathData: ChunkData, assetInfo: AssetInfo) => string
 
 export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
 
