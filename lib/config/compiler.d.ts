@@ -1,9 +1,18 @@
 import type { Compile } from './common'
+import type { BuildOptions as ESBuildBuildOptions } from 'esbuild'
 import type { Config as SWCConfig } from '@swc/core'
 import type { Configuration as WebpackConfig } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
 export type CompilerType = LiteralUnion<'webpack4' | 'webpack5'>
+
+/**
+ * @see https://github.com/NervJS/taro/blob/6a7779d98102c9b7b0082ababbac342cbff2d213/packages/taro-plugin-vue-devtools/src/index.ts#L79C44-L79C47
+ */
+export type CompilerPrebundleWebpackProvideFn = (
+  obj: Record<string, any>,
+  taroRuntimeBundlePath: string,
+) => void
 
 export interface CompilerPrebundle extends Compile {
   /**
@@ -29,7 +38,7 @@ export interface CompilerPrebundle extends Compile {
   /**
    * 自定义 `esbuild` 配置
    */
-  esbuild?: Record<string, any>
+  esbuild?: ESBuildBuildOptions
 
   /**
    * 自定义 `swc` 配置
@@ -42,17 +51,26 @@ export interface CompilerPrebundle extends Compile {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#compilerprebundlewebpackprovide
    */
   webpack?: WebpackConfig & {
-    provide?: any[]
+    provide?: CompilerPrebundleWebpackProvideFn[]
   }
 }
 
-export interface CompilerConfig {
+export interface CompilerConfigWebpack4 {
   /**
    * 编译工具
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilertype
    */
-  type: CompilerType
+  type: 'webpack4'
+}
+
+export interface CompilerConfigWebpack5 {
+  /**
+   * 编译工具
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilertype
+   */
+  type: 'webpack5'
 
   /**
    * 依赖预编译，仅 `webpack5` 支持
@@ -61,5 +79,7 @@ export interface CompilerConfig {
    */
   prebundle?: CompilerPrebundle
 }
+
+export type CompilerConfig = CompilerConfigWebpack4 | CompilerConfigWebpack5
 
 export type Compiler = CompilerType | CompilerConfig
