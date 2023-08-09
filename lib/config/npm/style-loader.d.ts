@@ -22,7 +22,7 @@ export type StyleLoaderInsertFn = (htmlElement: HTMLElement, options: Record<str
 export type StyleLoaderStyleTagTransformFn = (
   css: string,
   styleElement: HTMLStyleElement,
-  options?: Record<string, any>,
+  options: Record<string, any>,
 ) => void
 
 export interface StyleLoaderOptions {
