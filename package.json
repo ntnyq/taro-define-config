@@ -41,7 +41,7 @@
     "@types/tapable": "^1.0.8",
     "@types/webpack": "^4.41.33",
     "esbuild": "^0.19.0",
-    "esbuild-loader": "^3.1.0",
+    "esbuild-loader": "^4.0.0",
     "html-webpack-plugin": "^4.5.2",
     "terser": "^5.19.2"
   },
