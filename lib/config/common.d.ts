@@ -54,3 +54,8 @@ export interface Compile {
 }
 
 export type AnyFn = (...args: unknown[]) => unknown
+
+/**
+ * 小程序编译时的文件类型集合
+ */
+export type ParseAstType = LiteralUnion<'ENTRY' | 'PAGE' | 'COMPONENT' | 'NORMAL' | 'STATIC'>

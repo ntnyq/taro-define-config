@@ -1,5 +1,5 @@
 import type { LiteralUnion } from '../../utility-types'
-import type { Compile, ConfigurablePlugin, SourceMapType } from '../common'
+import type { Compile, ConfigurablePlugin, ParseAstType, SourceMapType } from '../common'
 import type {
   AutoprefixerOptions,
   CSSLoaderOptions,
@@ -263,7 +263,7 @@ export interface PlatformH5 {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#miniwebpackchain
    */
-  webpackChain?: (chain: ChainableWebpackConfig, webpack: any) => void
+  webpackChain?: (chain: ChainableWebpackConfig, webpack: any, parseAstType: ParseAstType) => void
 
   [key: string]: any
 }
