@@ -27,7 +27,7 @@ it('define base config', () => {
       logger: {},
       copy: {},
       sass: {},
-      plugins: [],
+      plugins: [['@tarojs/plugin-html']],
       presets: [],
       terser: {
         enable: true,
