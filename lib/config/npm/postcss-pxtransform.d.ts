@@ -4,13 +4,10 @@
  * @see https://github.com/NervJS/taro/tree/next/packages/postcss-pxtransform#配置-options
  */
 
+import type { DesignWidth } from '../design-width'
 import type { LiteralUnion } from '../../utility-types'
 
 export type PostcssPxtransformPlatform = LiteralUnion<'weapp' | 'quickapp' | 'h5' | 'rn'>
-
-export type PostcssPxtransformDesignWidthFn = (input: number) => number
-
-export type PostcssPxtransformDesignWidth = number | PostcssPxtransformDesignWidthFn
 
 export type PostcssPxtransformDeviceRatio = Record<number, number>
 
@@ -27,7 +24,7 @@ export interface PostcssPxtransformOptions {
    *
    * @default 750
    */
-  designWidth?: PostcssPxtransformDesignWidth
+  designWidth?: DesignWidth
 
   deviceRatio?: PostcssPxtransformDeviceRatio
 
