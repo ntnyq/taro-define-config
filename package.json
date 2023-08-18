@@ -37,13 +37,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@swc/core": "^1.3.78",
+    "@jridgewell/source-map": "^0.3.5",
+    "@types/html-minifier-terser": "5.1.2",
     "@types/tapable": "^1.0.8",
-    "@types/webpack": "^4.41.33",
-    "esbuild": "^0.19.2",
-    "esbuild-loader": "^4.0.0",
-    "html-webpack-plugin": "^4.5.2",
-    "terser": "^5.19.2"
+    "@types/webpack": "^4.41.33"
   },
   "devDependencies": {
     "@ntnyq/eslint-config": "^1.12.4",

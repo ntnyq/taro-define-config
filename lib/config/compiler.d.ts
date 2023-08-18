@@ -1,6 +1,5 @@
 import type { Compile } from './common'
-import type { BuildOptions as ESBuildBuildOptions } from 'esbuild'
-import type { Options as SWCOptions } from '@swc/core'
+import type { ESBuildBuildOptions, SWCOptions } from './npm'
 import type { Configuration as WebpackConfig } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
