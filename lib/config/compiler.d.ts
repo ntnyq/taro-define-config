@@ -1,6 +1,6 @@
 import type { Compile } from './common'
 import type { BuildOptions as ESBuildBuildOptions } from 'esbuild'
-import type { Config as SWCConfig } from '@swc/core'
+import type { Options as SWCOptions } from '@swc/core'
 import type { Configuration as WebpackConfig } from 'webpack'
 import type { LiteralUnion } from '../utility-types'
 
@@ -37,13 +37,17 @@ export interface CompilerPrebundle extends Compile {
 
   /**
    * 自定义 `esbuild` 配置
+   *
+   * @see https://esbuild.github.io/api/#build
    */
   esbuild?: ESBuildBuildOptions
 
   /**
    * 自定义 `swc` 配置
+   *
+   * @see https://swc.rs/docs/usage/core#options
    */
-  swc?: SWCConfig
+  swc?: SWCOptions
 
   /**
    * 自定义 `webpack` 配置
