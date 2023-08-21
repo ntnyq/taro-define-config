@@ -78,6 +78,8 @@ export interface PlatformMini {
   /**
    * 是否注入兼容微信小程序热重载的代码
    *
+   * @default false
+   * @since `Taro v3.4.0`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#minihot
    */
   hot?: boolean
@@ -85,9 +87,19 @@ export interface PlatformMini {
   /**
    * 指定 React 框架相关的代码是否使用开发环境（未压缩）代码，默认使用生产环境（压缩后）代码
    *
+   * @default false
+   * @since `Taro v3.0.8`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#minidebugreact
    */
   debugReact?: boolean
+
+  /**
+   * 是否跳过第三方依赖 usingComponent 的处理，默认为自动处理第三方依赖的自定义组件
+   *
+   * @default false
+   * @since `Taro v3.6.13`
+   */
+  skipProcessUsingComponents?: boolean
 
   /**
    * 用于告诉 Taro 编译器需要抽取的公共文件
