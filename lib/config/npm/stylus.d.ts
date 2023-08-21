@@ -4,7 +4,7 @@
  * @see https://stylus-lang.com/
  */
 
-import type { AnyFn } from '../common'
+import type { AnyFn } from '../../utility-types'
 
 export type StylusOptionsDefineItemValue = string | number | boolean
 

@@ -4,7 +4,7 @@
  * @see https://github.com/cssnano/cssnano/blob/master/packages/cssnano/types/index.d.ts
  */
 
-import type { AnyFn } from '../common'
+import type { AnyFn } from '../../utility-types'
 
 export type CSSNanoConfig<T> = T | [T] | [T, Record<string, any>]
 

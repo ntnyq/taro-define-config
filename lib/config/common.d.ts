@@ -53,8 +53,6 @@ export interface Compile {
   exclude?: string[]
 }
 
-export type AnyFn = (...args: unknown[]) => unknown
-
 /**
  * 小程序编译时的文件类型集合
  */

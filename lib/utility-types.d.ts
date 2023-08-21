@@ -1,4 +1,19 @@
 /**
+ * Promise or not
+ */
+export type Awaitable<T> = T | PromiseLike<T>
+
+/**
+ * Array or not
+ */
+export type Arrayable<T> = T | T[]
+
+/**
+ * Any function
+ */
+export type AnyFn<T = unknown> = (...args: T[]) => T
+
+/**
  * A literal type that supports custom further strings but preserves autocompletion in IDEs.
  *
  * @see https://github.com/microsoft/TypeScript/issues/29729#issuecomment-471566609
