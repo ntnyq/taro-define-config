@@ -45,7 +45,7 @@
   "devDependencies": {
     "@ntnyq/eslint-config": "^1.12.4",
     "@ntnyq/prettier-config": "^1.12.4",
-    "bumpp": "^9.1.1",
+    "bumpp": "^9.2.0",
     "eslint": "^8.47.0",
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
