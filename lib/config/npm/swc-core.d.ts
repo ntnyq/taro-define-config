@@ -8,7 +8,6 @@
 /* cSpell: disable */
 
 export interface Plugin {
-  // eslint-disable-next-line @typescript-eslint/prefer-function-type
   (module: Program): Program
 }
 export type ParseOptions = ParserConfig & {

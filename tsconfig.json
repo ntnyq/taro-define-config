@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2021",
     "module": "ESNext",
     "lib": ["ESNext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
     "skipLibCheck": false,
-    "skipDefaultLibCheck": true,
     "noImplicitAny": true
   },
   "exclude": ["./taze.config.ts"]

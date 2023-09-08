@@ -6,7 +6,7 @@
 
 export interface PluginHttpOptions {
   /**
-   * 注入相关代码，支持 document.cookie 、 通过后端返回 Set-Cookie 响应头来设置 cookie
+   * 注入相关代码，支持 document.cookie 通过后端返回 Set-Cookie 响应头来设置 cookie
    *
    * @default false
    */
