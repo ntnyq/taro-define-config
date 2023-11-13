@@ -1,5 +1,9 @@
 /// <reference lib="es2015" />
 
+/**
+ * @see {@link https://github.com/terser/terser/blob/master/tools/terser.d.ts}
+ */
+
 /* cSpell: disable */
 
 import type {
@@ -12,9 +16,14 @@ export type ECMA = 5 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020
 
 export interface ParseOptions {
   bare_returns?: boolean
-  /** @deprecated legacy option. Currently, all supported EcmaScript is valid to parse. */
+
+  /**
+   * @deprecated legacy option. Currently, all supported EcmaScript is valid to parse.
+   */
   ecma?: ECMA
+
   html5_comments?: boolean
+
   shebang?: boolean
 }
 
@@ -139,9 +148,12 @@ export interface ManglePropertiesOptions {
 
 export interface FormatOptions {
   ascii_only?: boolean
+
   /** @deprecated Not implemented anymore */
   beautify?: boolean
+
   braces?: boolean
+
   comments?:
     | boolean
     | 'all'

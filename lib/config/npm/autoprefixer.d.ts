@@ -50,7 +50,7 @@ export interface AutoprefixerOptions {
    *
    * @default false
    */
-  grid?: boolean | 'autoplace' | 'no-autoplace'
+  grid?: false | 'autoplace' | 'no-autoplace'
 
   /**
    * custom usage statistics for > 10% in my stats browsers query
