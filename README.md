@@ -30,6 +30,18 @@ Improve your TaroJS project configuration experience with:
 - 📖 documentation
 - ⚠️ deprecation warnings
 
+## Extend plugin types
+
+```ts
+declare module 'taro-define-config' {
+  export interface CustomPluginOptionsMap {
+    'taro-plugin-custom': {
+      enable?: boolean
+    }
+  }
+}
+```
+
 ## Prior Art
 
 - [eslint-define-config](https://github.com/Shinigami92/eslint-define-config)

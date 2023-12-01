@@ -2,6 +2,14 @@ import { expectTypeOf, it } from 'vitest'
 import { defineConfig } from 'taro-define-config'
 import type { TaroConfig } from 'taro-define-config'
 
+declare module 'taro-define-config' {
+  export interface CustomPluginOptionsMap {
+    'taro-plugin-custom': {
+      enable?: boolean
+    }
+  }
+}
+
 const getConfigurablePluginConfig = () => ({
   enable: Math.random() > 0.5,
   config: {},
@@ -27,7 +35,15 @@ it('define base config', () => {
       logger: {},
       copy: {},
       sass: {},
-      plugins: [['@tarojs/plugin-html']],
+      plugins: [
+        ['@tarojs/plugin-html'],
+        [
+          'taro-plugin-custom',
+          {
+            enable: true,
+          },
+        ],
+      ],
       presets: [],
       terser: {
         enable: true,
