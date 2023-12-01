@@ -1,4 +1,6 @@
 {
+  "prettier.enable": true,
+  "eslint.enable": true,
   "eslint.validate": [
     "vue",
     "yaml",
@@ -12,7 +14,6 @@
     "javascriptreact",
     "typescriptreact"
   ],
-  "prettier.enable": true,
   "editor.formatOnSave": true,
   "cSpell.words": [
     "bumpp",
@@ -30,6 +31,7 @@
     "pxtransform",
     "tarojs",
     "taze",
+    "tsup",
     "weapp"
   ],
   "cSpell.allowCompoundWords": true

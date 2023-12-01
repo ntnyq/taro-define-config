@@ -1,6 +1,6 @@
 import { expectTypeOf, it } from 'vitest'
-import { defineConfig } from '../lib'
-import type { TaroConfig } from '../lib'
+import { defineConfig } from 'taro-define-config'
+import type { TaroConfig } from 'taro-define-config'
 
 const getConfigurablePluginConfig = () => ({
   enable: Math.random() > 0.5,
