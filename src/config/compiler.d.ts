@@ -81,7 +81,7 @@ export interface CompilerConfigWebpack5 {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilererrorlevel
    */
-  errorLevel: number
+  errorLevel?: number
 
   /**
    * 依赖预编译，仅 `webpack5` 支持
