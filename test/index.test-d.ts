@@ -1,6 +1,6 @@
 import { expectTypeOf, it } from 'vitest'
 import { defineConfig } from 'taro-define-config'
-import type { TaroConfig } from 'taro-define-config'
+import type { TaroConfigExport } from 'taro-define-config'
 
 declare module 'taro-define-config' {
   export interface CustomPluginOptionsMap {
@@ -15,8 +15,16 @@ const getConfigurablePluginConfig = () => ({
   config: {},
 })
 
-it('define empty config', () => {
-  expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
+it('define object config', () => {
+  expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfigExport>()
+})
+
+it('define function config', () => {
+  expectTypeOf(defineConfig(() => ({}))).toEqualTypeOf<TaroConfigExport>()
+})
+
+it('define async function config', () => {
+  expectTypeOf(defineConfig(async () => ({}))).toEqualTypeOf<TaroConfigExport>()
 })
 
 it('define base config', () => {
@@ -59,7 +67,7 @@ it('define base config', () => {
       rn: {},
       mini: {},
     }),
-  ).toMatchTypeOf<TaroConfig>()
+  ).toMatchTypeOf<TaroConfigExport>()
 })
 
 it('define platform h5 config', () => {
@@ -100,7 +108,7 @@ it('define platform h5 config', () => {
         fontUrlLoaderOption: {},
       },
     }),
-  ).toMatchTypeOf<TaroConfig>()
+  ).toMatchTypeOf<TaroConfigExport>()
 })
 
 it('define platform rn config', () => {
@@ -127,7 +135,7 @@ it('define platform rn config', () => {
         enableSvgTransform: true,
       },
     }),
-  ).toMatchTypeOf<TaroConfig>()
+  ).toMatchTypeOf<TaroConfigExport>()
 })
 
 it('define platform mini config', () => {
@@ -160,5 +168,5 @@ it('define platform mini config', () => {
         fontUrlLoaderOption: {},
       },
     }),
-  ).toMatchTypeOf<TaroConfig>()
+  ).toMatchTypeOf<TaroConfigExport>()
 })

@@ -1,4 +1,23 @@
+import type { Awaitable } from './utility-types'
 import type { TaroConfig } from './config'
+
+export interface TaroConfigEnv {
+  /**
+   * 构建模式
+   */
+  mode: string
+
+  /**
+   * 构建命令
+   */
+  command: string
+}
+
+export type WebpackMerge = (...configs: Array<object | null | undefined>) => object
+
+export type TaroConfigFn = (merge: WebpackMerge, env: TaroConfigEnv) => Awaitable<TaroConfig>
+
+export type TaroConfigExport = Awaitable<TaroConfig> | TaroConfigFn
 
 /**
  * Define a Taro config
@@ -6,7 +25,7 @@ import type { TaroConfig } from './config'
  * @param config Taro config
  * @returns Taro config
  */
-export function defineConfig(config: TaroConfig): TaroConfig {
+export function defineConfig(config: TaroConfigExport): TaroConfigExport {
   return config
 }
 
