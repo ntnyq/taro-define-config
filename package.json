@@ -1,7 +1,7 @@
 {
   "name": "taro-define-config",
   "version": "0.5.2",
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@8.15.4",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "tarojs",
@@ -43,7 +43,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "run-s build release:check release:publish",
     "release:check": "run-s lint typecheck",
     "release:publish": "bumpp && pnpm publish",
@@ -51,26 +51,26 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@jridgewell/source-map": "^0.3.5",
+    "@jridgewell/source-map": "^0.3.6",
     "@types/html-minifier-terser": "5.1.2",
     "@types/tapable": "^1.0.12",
     "@types/webpack": "^4.41.38"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^1.20.0",
-    "@ntnyq/prettier-config": "^1.20.0",
-    "bumpp": "^9.2.1",
-    "eslint": "^8.56.0",
-    "husky": "^8.0.3",
+    "@ntnyq/eslint-config": "^1.21.0",
+    "@ntnyq/prettier-config": "^1.21.0",
+    "bumpp": "^9.4.0",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
     "nano-staged": "^0.8.0",
-    "npm-run-all": "^4.1.5",
-    "pnpm": "^8.13.1",
-    "prettier": "^3.1.1",
+    "npm-run-all2": "^6.1.2",
+    "pnpm": "^8.15.4",
+    "prettier": "^3.2.5",
     "taro-define-config": "workspace:*",
-    "taze": "^0.13.1",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "vitest": "^1.1.1"
+    "taze": "^0.13.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
+    "vitest": "^1.3.1"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {
