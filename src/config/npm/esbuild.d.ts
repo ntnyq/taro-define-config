@@ -248,7 +248,7 @@ export interface BuildResult<ProvidedOptions extends BuildOptions = BuildOptions
   /** Only when "mangleCache" is present */
   mangleCache:
     | Record<string, string | false>
-    | (ProvidedOptions['mangleCache'] extends Object ? never : undefined)
+    | (ProvidedOptions['mangleCache'] extends object ? never : undefined)
 }
 
 export interface BuildFailure extends Error {
@@ -300,7 +300,7 @@ export interface TransformResult<ProvidedOptions extends TransformOptions = Tran
   /** Only when "mangleCache" is present */
   mangleCache:
     | Record<string, string | false>
-    | (ProvidedOptions['mangleCache'] extends Object ? never : undefined)
+    | (ProvidedOptions['mangleCache'] extends object ? never : undefined)
   /** Only when "legalComments" is "external" */
   legalComments: string | (ProvidedOptions['legalComments'] extends 'external' ? never : undefined)
 }

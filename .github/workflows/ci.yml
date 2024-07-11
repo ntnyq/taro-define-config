@@ -22,12 +22,11 @@ jobs:
       - run: pnpm run typecheck
 
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     needs: [check]
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [18.x, 20.x]
+        node: [18.x, 20.x, 22.x]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4

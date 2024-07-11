@@ -1,7 +1,7 @@
 {
   "name": "taro-define-config",
   "version": "0.6.0",
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.5.0",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "tarojs",
@@ -57,20 +57,20 @@
     "@types/webpack": "^4.41.38"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^1.21.0",
-    "@ntnyq/prettier-config": "^1.21.0",
-    "bumpp": "^9.4.0",
-    "eslint": "^8.57.0",
+    "@ntnyq/eslint-config": "^2.5.1",
+    "@ntnyq/prettier-config": "^1.21.2",
+    "bumpp": "^9.4.1",
+    "eslint": "^9.6.0",
     "husky": "^9.0.11",
     "nano-staged": "^0.8.0",
-    "npm-run-all2": "^6.1.2",
-    "pnpm": "^8.15.4",
-    "prettier": "^3.2.5",
+    "npm-run-all2": "^6.2.2",
+    "pnpm": "^9.5.0",
+    "prettier": "^3.3.2",
     "taro-define-config": "workspace:*",
-    "taze": "^0.13.3",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.2",
-    "vitest": "^1.3.1"
+    "taze": "^0.14.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.2"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {

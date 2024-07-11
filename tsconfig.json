@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
     "lib": ["ESNext"],
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": false,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "skipLibCheck": false
   },
   "exclude": ["./taze.config.ts"]
 }

@@ -109,10 +109,12 @@ declare namespace Config {
         args: P extends PluginClass ? ConstructorParameters<P> : any[],
       ) => PluginType,
     ): this
+
     use<P extends string | PluginType | PluginClass<PluginType>>(
       plugin: P,
       args?: P extends PluginClass ? ConstructorParameters<P> : any[],
     ): this
+
     tap<P extends PluginClass<PluginType>>(
       f: (args: ConstructorParameters<P>) => ConstructorParameters<P>,
     ): this
@@ -184,7 +186,7 @@ declare namespace Config {
     info(value: boolean): this
     inline(value: boolean): this
     lazy(value: boolean): this
-    mimeTypes(value: Object): this
+    mimeTypes(value: object): this
     noInfo(value: boolean): this
     open(value: boolean): this
     openPage(value: string | string[]): this
@@ -263,6 +265,7 @@ declare namespace Config {
         | 'json'
         | 'webassembly/experimental',
     ): this
+
     enforce(value: 'pre' | 'post'): this
 
     use(name: string): Use<this>

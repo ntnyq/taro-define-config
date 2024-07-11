@@ -240,7 +240,8 @@ export interface Options extends Config {
    */
   cwd?: string
   caller?: CallerOptions
-  /** The filename associated with the code currently being compiled,
+  /**
+   * The filename associated with the code currently being compiled,
    * if there is one. The filename is optional, but not all of Swc's
    * functionality is available when the filename is unknown, because a
    * subset of options rely on the filename for their functionality.
