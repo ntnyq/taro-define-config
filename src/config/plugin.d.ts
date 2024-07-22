@@ -15,20 +15,16 @@ export interface OfficialPluginOptionsMap {
 
 export type OfficialPluginName = keyof OfficialPluginOptionsMap
 
-export type OfficialPluginTuple = {
-  [K in OfficialPluginName]:
-    | [K, OfficialPluginOptionsMap[K]?]
-    | [K, () => Awaitable<OfficialPluginOptionsMap[K]>]
-}[OfficialPluginName]
+export type OfficialPluginTuple<K extends OfficialPluginName = OfficialPluginName> =
+  | [K, OfficialPluginOptionsMap[K]?]
+  | [K, () => Awaitable<OfficialPluginOptionsMap[K]>]
 
 export interface CustomPluginOptionsMap {}
 
 export type CustomPluginName = keyof CustomPluginOptionsMap
 
-export type CustomPluginTuple = {
-  [K in CustomPluginName]:
-    | [K, CustomPluginOptionsMap[K]?]
-    | [K, () => Awaitable<CustomPluginOptionsMap[K]>]
-}[CustomPluginName]
+export type CustomPluginTuple<K extends CustomPluginName = CustomPluginName> =
+  | [K, CustomPluginOptionsMap[K]?]
+  | [K, () => Awaitable<CustomPluginOptionsMap[K]>]
 
 export type Plugin = OfficialPluginName | OfficialPluginTuple | CustomPluginName | CustomPluginTuple

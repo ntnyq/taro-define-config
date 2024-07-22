@@ -44,7 +44,14 @@ it('define base config', () => {
       copy: {},
       sass: {},
       plugins: [
+        '@tarojs/plugin-http',
         ['@tarojs/plugin-html'],
+        [
+          '@tarojs/plugin-inject',
+          {
+            asyncApis: [],
+          },
+        ],
         [
           'taro-plugin-custom',
           {
