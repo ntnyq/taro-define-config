@@ -9,14 +9,14 @@ import type { LoaderContext } from '../common'
 
 export type SassLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContext: LoaderContext,
+  loaderContext: LoaderContext<any>,
 ) => string
 
 export type SassLoaderSassOptions = Record<string, any>
 
 export type SassLoaderSassOptionsFn = (
   content: string | Buffer,
-  loaderContext: LoaderContext,
+  loaderContext: LoaderContext<any>,
   meta: any,
 ) => SassLoaderSassOptions
 

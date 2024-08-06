@@ -30,7 +30,7 @@ export type CSSLoaderModulesAutoFn = (resourcePath: string) => boolean
 export type CSSLoaderModulesModeFn = (resourcePath: string) => CSSLoaderModulesString
 
 export type CSSLoaderModulesGetLocalIdentFn = (
-  loaderContext: LoaderContext,
+  loaderContext: LoaderContext<any>,
   localIdentName: string,
   localName: string,
 ) => string
