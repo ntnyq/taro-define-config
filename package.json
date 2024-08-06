@@ -52,9 +52,9 @@
   },
   "dependencies": {
     "@jridgewell/source-map": "^0.3.6",
-    "@types/html-minifier-terser": "5.1.2",
-    "@types/tapable": "^1.0.12",
-    "@types/webpack": "^4.41.38"
+    "@types/html-minifier-terser": "^7.0.2",
+    "tapable": "^2.2.1",
+    "webpack": "^5.93.0"
   },
   "devDependencies": {
     "@ntnyq/eslint-config": "^2.8.0",
@@ -67,7 +67,6 @@
     "pnpm": "^9.6.0",
     "prettier": "^3.3.3",
     "taro-define-config": "workspace:*",
-    "taze": "^0.16.3",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
