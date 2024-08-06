@@ -14,16 +14,16 @@ import type {
 
 export type ECMA = 5 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020
 
+export type ConsoleProperty = keyof typeof console
+type DropConsoleOption = boolean | ConsoleProperty[]
+
 export interface ParseOptions {
   bare_returns?: boolean
-
   /**
    * @deprecated legacy option. Currently, all supported EcmaScript is valid to parse.
    */
   ecma?: ECMA
-
   html5_comments?: boolean
-
   shebang?: boolean
 }
 
@@ -39,7 +39,7 @@ export interface CompressOptions {
   dead_code?: boolean
   defaults?: boolean
   directives?: boolean
-  drop_console?: boolean
+  drop_console?: DropConsoleOption
   drop_debugger?: boolean
   ecma?: ECMA
   evaluate?: boolean
@@ -62,6 +62,7 @@ export interface CompressOptions {
   passes?: number
   properties?: boolean
   pure_funcs?: string[]
+  pure_new?: boolean
   pure_getters?: boolean | 'strict'
   reduce_funcs?: boolean
   reduce_vars?: boolean
@@ -148,12 +149,9 @@ export interface ManglePropertiesOptions {
 
 export interface FormatOptions {
   ascii_only?: boolean
-
   /** @deprecated Not implemented anymore */
   beautify?: boolean
-
   braces?: boolean
-
   comments?:
     | boolean
     | 'all'
@@ -238,3 +236,7 @@ export function minify(
   files: string | string[] | { [file: string]: string },
   options?: MinifyOptions,
 ): Promise<MinifyOutput>
+export function minify_sync(
+  files: string | string[] | { [file: string]: string },
+  options?: MinifyOptions,
+): MinifyOutput
