@@ -40,6 +40,17 @@ export interface PlatformMiniPostcss {
   cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 }
 
+export interface PlatformMiniExperimental {
+  /**
+   * 半编译模式，暂只支持 `React` 框架
+   *
+   * @default false
+   * @since `Taro v3.6.23`
+   * @see https://nervjs.github.io/taro-docs/docs/complier-mode
+   */
+  compileMode?: boolean
+}
+
 /**
  * 小程序端专用配置
  *
@@ -198,6 +209,11 @@ export interface PlatformMini {
    * @see https://github.com/webpack-contrib/url-loader
    */
   fontUrlLoaderOption?: URLLoaderOptions
+
+  /**
+   * 实验特性
+   */
+  experimental?: PlatformMiniExperimental
 
   [key: string]: any
 }
