@@ -1,15 +1,11 @@
-/// <reference lib="dom" />
-
 /**
  * `mini-css-extract-plugin` 配置
  *
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin#plugin-options
- * @see https://github.com/webpack-contrib/mini-css-extract-plugin/blob/8b52feeac2e9d0b539feb1ccd08eaffdf01d50f5/types/index.d.ts#L106
+ * @see https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/types/index.d.ts
  */
 
-import type { AssetInfo, ChunkData } from 'webpack'
-
-export type MiniCSSExtractPluginFileNameFn = (pathData: ChunkData, assetInfo: AssetInfo) => string
+import type { Configuration } from 'webpack'
 
 export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
 
@@ -17,12 +13,12 @@ export interface MiniCSSExtractPluginOptions {
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#filename
    */
-  filename?: string | MiniCSSExtractPluginFileNameFn
+  filename?: Required<Configuration>['output']['filename']
 
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#chunkfilename
    */
-  chunkFilename?: string | MiniCSSExtractPluginFileNameFn
+  chunkFilename?: Required<Configuration>['output']['chunkFilename']
 
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#ignoreorder

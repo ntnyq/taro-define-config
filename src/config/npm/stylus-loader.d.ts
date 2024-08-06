@@ -25,7 +25,7 @@ export interface StylusLoaderStylusOptions extends StylusOptions {
   paths?: string[]
 }
 
-export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext) =>
+export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext<any>) =>
   | string[]
   | {
       paths: string[]
@@ -33,7 +33,7 @@ export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext) =>
 
 export type StylusLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContex: LoaderContext,
+  loaderContex: LoaderContext<any>,
   meta: any,
 ) => string
 

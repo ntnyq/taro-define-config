@@ -4,7 +4,7 @@
  * @see https://github.com/jantimon/html-webpack-plugin#options
  */
 import type { AsyncSeriesWaterfallHook } from 'tapable'
-import type { Compiler, compilation } from 'webpack'
+import type { Compilation, Compiler } from 'webpack'
 import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 
 declare class HtmlWebpackPlugin {
@@ -12,7 +12,7 @@ declare class HtmlWebpackPlugin {
 
   apply(compiler: Compiler): void
 
-  static getHooks(compilation: compilation.Compilation): HtmlWebpackPlugin.Hooks
+  static getHooks(compilation: Compilation): HtmlWebpackPlugin.Hooks
 
   /**
    * Static helper to create a tag object to be get injected into the dom

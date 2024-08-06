@@ -7,13 +7,13 @@
 import type { LoaderContext } from '../common'
 import type { LessOptions } from './less'
 
-export type LessLoaderLessOptionsFn = (loaderConext: LoaderContext) => LessOptions
+export type LessLoaderLessOptionsFn = (loaderConext: LoaderContext<any>) => LessOptions
 
 export type LessLoaderLessOptions = LessOptions | LessLoaderLessOptionsFn
 
 export type LessLoaderAdditionalDataFn = (
   content: string,
-  loaderContext: LoaderContext,
+  loaderContext: LoaderContext<any>,
 ) => string | Promise<string>
 
 export type LessLoaderAdditionalData = string | LessLoaderAdditionalDataFn
