@@ -1,6 +1,6 @@
 import { ntnyq } from '@ntnyq/eslint-config'
 
-export default ntnyq([
+export default ntnyq({}, [
   {
     files: ['**/*.d.ts'],
     rules: {
