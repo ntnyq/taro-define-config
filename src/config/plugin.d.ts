@@ -4,27 +4,50 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#plugins
  */
 
-import type { Awaitable } from '../utility-types'
-import type { PluginHtmlOptions, PluginHttpOptions, PluginInjectOptions } from './plugins'
+import type { Awaitable, ExcludeEmptyObjects } from '../utility-types'
+import type {
+  PluginHtmlOptions,
+  PluginHttpOptions,
+  PluginIndieOptions,
+  PluginInjectOptions,
+  PluginMiniCIOptions,
+  PluginMockOptions,
+  PluginPlatformAlipayDdOptions,
+  PluginPlatformKwaiOptions,
+  PluginPlatformLarkOptions,
+  PluginPlatformNextJsOptions,
+  PluginPlatformXhsOptions,
+} from './plugins'
 
 export interface OfficialPluginOptionsMap {
   '@tarojs/plugin-html': PluginHtmlOptions
   '@tarojs/plugin-inject': PluginInjectOptions
   '@tarojs/plugin-http': PluginHttpOptions
+  '@tarojs/plugin-mock': PluginMockOptions
+  '@tarojs/plugin-indie': PluginIndieOptions
+  '@tarojs/plugin-mini-ci': PluginMiniCIOptions
+
+  /**
+   * Platform plugins
+   */
+  '@tarojs/plugin-platform-xhs': PluginPlatformXhsOptions
+  '@tarojs/plugin-platform-lark': PluginPlatformLarkOptions
+  '@tarojs/plugin-platform-kwai': PluginPlatformKwaiOptions
+  '@tarojs/plugin-platform-alipay-dd': PluginPlatformAlipayDdOptions
+
+  // // Official
+  'tarojs-plugin-platform-nextjs': PluginPlatformNextJsOptions
 }
+export interface CustomPluginOptionsMap {}
+export type PluginsOptionsMap = OfficialPluginOptionsMap & CustomPluginOptionsMap
 
 export type OfficialPluginName = keyof OfficialPluginOptionsMap
-
-export type OfficialPluginTuple<K extends OfficialPluginName = OfficialPluginName> =
-  | [K, OfficialPluginOptionsMap[K]?]
-  | [K, () => Awaitable<OfficialPluginOptionsMap[K]>]
-
-export interface CustomPluginOptionsMap {}
-
 export type CustomPluginName = keyof CustomPluginOptionsMap
+export type PluginName = keyof PluginsOptionsMap
 
-export type CustomPluginTuple<K extends CustomPluginName = CustomPluginName> =
-  | [K, CustomPluginOptionsMap[K]?]
-  | [K, () => Awaitable<CustomPluginOptionsMap[K]>]
+export type PluginTuple<T extends PluginName = PluginName> =
+  | [T]
+  | [T, ExcludeEmptyObjects<PluginsOptionsMap>[T]]
+  | [T, () => Awaitable<ExcludeEmptyObjects<PluginsOptionsMap>[T]>]
 
-export type Plugin = OfficialPluginName | OfficialPluginTuple | CustomPluginName | CustomPluginTuple
+export type Plugin = PluginName | PluginTuple

@@ -58,6 +58,12 @@ it('define base config', () => {
             enable: true,
           },
         ],
+        [
+          '@tarojs/plugin-indie',
+          () => ({
+            pathStyleImportWithCustomRule: () => true,
+          }),
+        ],
       ],
       presets: [],
       terser: {

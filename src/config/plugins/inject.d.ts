@@ -1,7 +1,7 @@
 /**
  * Options for `@tarojs/plugin-inject`
  *
- * @see https://github.com/NervJS/taro/tree/next/packages/taro-plugin-inject
+ * @see https://github.com/NervJS/taro/tree/main/packages/taro-plugin-inject
  */
 
 type VoidComponents = Set<string>

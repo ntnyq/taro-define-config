@@ -1,7 +1,7 @@
 /**
  * Options for `@tarojs/plugin-html`
  *
- * @see https://github.com/NervJS/taro/tree/next/packages/taro-plugin-html
+ * @see https://github.com/NervJS/taro/tree/main/packages/taro-plugin-html
  */
 
 export interface PluginHtmlOptions {
