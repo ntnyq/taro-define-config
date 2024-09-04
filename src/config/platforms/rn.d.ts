@@ -10,7 +10,7 @@ import type {
   PostcssPxtransformOptions,
   SassOptions,
   StylusOptions,
-} from '../npm'
+} from '../packages'
 import type { ConfigurablePlugin } from '../common'
 
 /**

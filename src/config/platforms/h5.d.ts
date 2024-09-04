@@ -15,7 +15,7 @@ import type {
   StyleLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,
-} from '../npm'
+} from '../packages'
 
 /**
  * H5端专用配置

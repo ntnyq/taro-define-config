@@ -1,4 +1,4 @@
-import type { EsbuildPluginOptions, TerserMinifyOptions } from '../npm'
+import type { EsbuildPluginOptions, TerserMinifyOptions } from '../packages'
 import type { ConfigurablePlugin } from '../common'
 import type { LiteralUnion } from '../../utility-types'
 

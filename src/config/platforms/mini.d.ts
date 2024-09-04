@@ -12,7 +12,7 @@ import type {
   StyleLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,
-} from '../npm'
+} from '../packages'
 
 export interface PlatformMiniMinifyXML {
   /**
