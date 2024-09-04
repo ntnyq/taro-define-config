@@ -1,5 +1,5 @@
 import type { LiteralUnion } from '../utility-types'
-import type { SassOptions } from './npm'
+import type { SassOptions } from './packages'
 import type { Copy } from './copy'
 import type { Cache } from './cache'
 import type { Logger } from './logger'
@@ -7,14 +7,14 @@ import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 import type { Compiler } from './compiler'
 import type { DesignWidth } from './design-width'
-import type { PlatformH5, PlatformMini, PlatformRN } from './platform'
+import type { PlatformH5, PlatformMini, PlatformRN } from './platforms'
 import type {
   CSSMinimizer,
   CSSOMinimizer,
   EsbuildMinimizer,
   JSMinimizer,
   TerserMinimizer,
-} from './minimizer'
+} from './minimizers'
 
 export type Framework = LiteralUnion<'react' | 'preact' | 'nerv' | 'vue' | 'vue3'>
 
@@ -199,11 +199,12 @@ export interface TaroConfig {
 
 export * from './common'
 
-export * from './npm'
 export * from './copy'
 export * from './cache'
 export * from './logger'
 export * from './plugin'
 export * from './preset'
-export * from './platform'
-export * from './minimizer'
+
+export * from './packages'
+export * from './platforms'
+export * from './minimizers'
