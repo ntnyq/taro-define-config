@@ -4,7 +4,6 @@
  * @see https://www.npmjs.com/package/@swc/core?activeTab=code
  */
 
-/* eslint-disable max-lines */
 /* cSpell: disable */
 
 export interface Plugin {
