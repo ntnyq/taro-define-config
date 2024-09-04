@@ -1,7 +1,7 @@
 /**
  * `postcss-pxtransform` 配置
  *
- * @see https://github.com/NervJS/taro/tree/next/packages/postcss-pxtransform#配置-options
+ * @see https://github.com/NervJS/taro/tree/main/packages/postcss-pxtransform#配置-options
  */
 
 import type { DesignWidth } from '../design-width'

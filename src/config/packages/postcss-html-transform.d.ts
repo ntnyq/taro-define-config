@@ -1,7 +1,7 @@
 /**
  * `postcss-html-transform` 配置
  *
- * @see https://github.com/NervJS/taro/tree/next/packages/postcss-html-transform
+ * @see https://github.com/NervJS/taro/tree/main/packages/postcss-html-transform
  */
 
 import type { LiteralUnion } from '../../utility-types'
