@@ -2,23 +2,23 @@ export * from './sass'
 export * from './less'
 export * from './stylus'
 export * from './cssnano'
-export * from './autoprefixer'
-
 export * from './css-loader'
+
 export * from './url-loader'
 export * from './sass-loader'
 export * from './less-loader'
-export * from './style-loader'
-export * from './stylus-loader'
-
 export * from './postcss-url'
+export * from './autoprefixer'
+export * from './style-loader'
+
+export * from './stylus-loader'
 export * from './postcss-css-modules'
 export * from './postcss-pxtransform'
 export * from './postcss-html-transform'
 
-export { ChainableWebpackConfig } from './webpack-chain'
 export { Options as SWCOptions } from './swc-core'
 export { EsbuildPluginOptions } from './esbuild-loader'
+export { ChainableWebpackConfig } from './webpack-chain'
 export { MinifyOptions as TerserMinifyOptions } from './terser'
 export { BuildOptions as ESBuildBuildOptions } from './esbuild'
 

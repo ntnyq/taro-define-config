@@ -4,8 +4,8 @@
  * @see https://github.com/NervJS/taro/tree/main/packages/postcss-pxtransform#配置-options
  */
 
-import type { DesignWidth } from '../design-width'
 import type { LiteralUnion } from '../../utility-types'
+import type { DesignWidth } from '../design-width'
 
 export type PostcssPxtransformPlatform = LiteralUnion<
   'weapp' | 'h5' | 'rn' | 'quickapp' | 'harmony'

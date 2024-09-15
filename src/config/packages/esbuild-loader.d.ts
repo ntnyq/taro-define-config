@@ -4,7 +4,7 @@
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
  */
 
-import type { TransformOptions, transform } from './esbuild'
+import type { transform, TransformOptions } from './esbuild'
 
 type Filter = string | RegExp
 

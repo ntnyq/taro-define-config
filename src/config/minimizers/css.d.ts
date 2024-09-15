@@ -1,6 +1,6 @@
 import type { LiteralUnion } from '../../utility-types'
-import type { CSSNanoOptions } from '../packages'
 import type { ConfigurablePlugin } from '../common'
+import type { CSSNanoOptions } from '../packages'
 
 export type CSSMinimizer = LiteralUnion<'csso' | 'esbuild' | 'parcelCss'>
 

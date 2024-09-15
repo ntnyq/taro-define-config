@@ -1,5 +1,5 @@
-import { expectTypeOf, it } from 'vitest'
 import { defineConfig } from 'taro-define-config'
+import { expectTypeOf, it } from 'vitest'
 import type { TaroConfigExport } from 'taro-define-config'
 
 declare module 'taro-define-config' {

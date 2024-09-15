@@ -1,3 +1,4 @@
+import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 /**
  * `html-webpack-plugin` 配置
  *
@@ -5,7 +6,6 @@
  */
 import type { AsyncSeriesWaterfallHook } from 'tapable'
 import type { Compilation, Compiler } from 'webpack'
-import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 
 declare class HtmlWebpackPlugin {
   constructor(options?: HtmlWebpackPlugin.Options)

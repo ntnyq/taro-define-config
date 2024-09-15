@@ -5,8 +5,8 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LoaderContext } from '../common'
 import type { AnyFn } from '../../utility-types'
+import type { LoaderContext } from '../common'
 import type { StylusOptions } from './stylus'
 
 export interface StylusOptionsResolveURL {
