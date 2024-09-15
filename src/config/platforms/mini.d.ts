@@ -1,8 +1,8 @@
 import type { Compile, ConfigurablePlugin, ParseAstType, SourceMapType } from '../common'
 import type {
   AutoprefixerOptions,
-  CSSLoaderOptions,
   ChainableWebpackConfig,
+  CSSLoaderOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
   PostcssCssModulesOptions,

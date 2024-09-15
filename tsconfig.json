@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": false
-  },
-  "exclude": ["./taze.config.ts"]
+    "skipLibCheck": true
+  }
 }

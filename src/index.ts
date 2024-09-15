@@ -1,5 +1,5 @@
-import type { Awaitable } from './utility-types'
 import type { TaroConfig } from './config'
+import type { Awaitable } from './utility-types'
 
 export interface TaroConfigEnv {
   /**

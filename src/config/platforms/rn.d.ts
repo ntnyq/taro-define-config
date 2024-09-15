@@ -1,9 +1,10 @@
 /**
- * ReactNative端专用配置
+ * ReactNative 端专用配置
  *
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
+import type { ConfigurablePlugin } from '../common'
 import type {
   LessOptions,
   PostcssCssModulesOptions,
@@ -11,7 +12,6 @@ import type {
   SassOptions,
   StylusOptions,
 } from '../packages'
-import type { ConfigurablePlugin } from '../common'
 
 /**
  * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnless
