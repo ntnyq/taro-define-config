@@ -1,16 +1,13 @@
+import type Webpack from 'webpack'
 import type { LiteralUnion } from '../../utility-types'
-import type { Compile, ConfigurablePlugin, ParseAstType, SourceMapType } from '../common'
+import type { FilterOptions, ParseAstType, SourceMapType } from '../common'
 import type {
-  AutoprefixerOptions,
   ChainableWebpackConfig,
   CSSLoaderOptions,
   HtmlWebpackPluginOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostcssCssModulesOptions,
-  PostcssHtmlTransformOptions,
-  PostcssPxtransformOptions,
-  PostcssUrlOptions,
+  PostCSSOptions,
   SassLoaderOptions,
   StyleLoaderOptions,
   StylusLoaderOptions,
@@ -66,14 +63,6 @@ export interface PlatformH5Router {
   renamePagename?: (pagename: string) => string
 
   forcePath?: string
-}
-
-export interface PlatformH5Postcss {
-  autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
-  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
-  htmltransform?: ConfigurablePlugin<PostcssHtmlTransformOptions>
-  url?: ConfigurablePlugin<PostcssUrlOptions>
-  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 }
 
 export interface PlatformH5 {
@@ -168,7 +157,7 @@ export interface PlatformH5 {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5postcss
    */
-  postcss?: PlatformH5Postcss
+  postcss?: PostCSSOptions<'h5'>
 
   /**
    * Web 编译过程的相关配置
@@ -176,7 +165,7 @@ export interface PlatformH5 {
    * @since `Taro v3.6`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compile
    */
-  compile?: Compile
+  compile?: FilterOptions
 
   /**
    * 控制在 H5 端是否使用旧版本适配器
@@ -263,7 +252,11 @@ export interface PlatformH5 {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#miniwebpackchain
    */
-  webpackChain?: (chain: ChainableWebpackConfig, webpack: any, parseAstType: ParseAstType) => void
+  webpackChain?: (
+    chain: ChainableWebpackConfig,
+    webpack: typeof Webpack,
+    parseAstType: ParseAstType,
+  ) => void
 
   [key: string]: any
 }

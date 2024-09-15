@@ -1,6 +1,6 @@
 import type { LiteralUnion } from '../utility-types'
 import type { Cache } from './cache'
-import type { Compiler } from './compiler'
+import type { Compiler, CompilerTypes, CompilerWebpackTypes } from './compiler'
 import type { Copy } from './copy'
 import type { DesignWidth } from './design-width'
 import type { Logger } from './logger'
@@ -12,18 +12,20 @@ import type {
   TerserMinimizer,
 } from './minimizers'
 import type { SassOptions } from './packages'
-import type { PlatformH5, PlatformMini, PlatformRN } from './platforms'
+import type { PlatformH5, PlatformHarmony, PlatformMini, PlatformRN } from './platforms'
 import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 
-export type Framework = LiteralUnion<'react' | 'preact' | 'nerv' | 'vue' | 'vue3'>
+export type Framework = LiteralUnion<
+  'react' | 'preact' | 'solid' | 'nerv' | 'vue' | 'vue3' | 'none'
+>
 
 /**
  * Taro Configuration.
  *
  * @see https://nervjs.github.io/taro-docs/docs/config
  */
-export interface TaroConfig {
+export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
   /**
    * 项目名称
    */
@@ -71,7 +73,7 @@ export interface TaroConfig {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compiler
    */
-  compiler?: Compiler
+  compiler?: Compiler<T>
 
   /**
    * 全局变量设置
@@ -91,6 +93,7 @@ export interface TaroConfig {
    * 环境变量
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#env
+   * @deprecated 建议使用 `.env` 文件
    */
   env?: Record<string, string>
 
@@ -176,14 +179,14 @@ export interface TaroConfig {
   csso?: CSSOMinimizer
 
   /**
-   * H5端专用配置
+   * H5 端专用配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5
    */
   h5?: PlatformH5
 
   /**
-   * ReactNative端专用配置
+   * ReactNative 端专用配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
    */
@@ -195,6 +198,13 @@ export interface TaroConfig {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#mini
    */
   mini?: PlatformMini
+
+  /**
+   * 鸿蒙端专用配置
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail#harmony
+   */
+  harmony?: PlatformHarmony<T>
 }
 
 export * from './copy'

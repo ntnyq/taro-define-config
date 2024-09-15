@@ -32,7 +32,7 @@ it('define base config', () => {
     defineConfig({
       deviceRatio: {},
       compiler: {
-        type: 'webpack4',
+        type: 'webpack5',
       },
       alias: {},
       env: {},
@@ -179,6 +179,16 @@ it('define platform mini config', () => {
         imageUrlLoaderOption: {},
         mediaUrlLoaderOption: {},
         fontUrlLoaderOption: {},
+      },
+    }),
+  ).toMatchTypeOf<TaroConfigExport>()
+})
+
+it('define platform harmony config', () => {
+  expectTypeOf(
+    defineConfig({
+      harmony: {
+        projectPath: '/app',
       },
     }),
   ).toMatchTypeOf<TaroConfigExport>()

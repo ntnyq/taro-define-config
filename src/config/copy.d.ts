@@ -4,6 +4,8 @@ export interface CopyPattern {
   from: string
   to: string
   ignore?: CopyIgnore
+  transform?: (...args: any[]) => any
+  watch?: boolean
 }
 
 export interface CopyOptions {

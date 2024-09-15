@@ -1,9 +1,9 @@
-import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 /**
  * `html-webpack-plugin` 配置
  *
  * @see https://github.com/jantimon/html-webpack-plugin#options
  */
+import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 import type { AsyncSeriesWaterfallHook } from 'tapable'
 import type { Compilation, Compiler } from 'webpack'
 

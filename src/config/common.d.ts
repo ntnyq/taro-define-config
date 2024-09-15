@@ -40,7 +40,7 @@ export interface ConfigurablePlugin<T extends Record<string, any>> {
   config?: T
 }
 
-export interface Compile {
+export interface FilterOptions {
   /**
    * 需要额外执行预编译的依赖
    */

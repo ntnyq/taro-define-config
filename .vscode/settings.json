@@ -29,6 +29,7 @@
     "nextjs",
     "nocheck",
     "nosources",
+    "ohpm",
     "pnpm",
     "pxtransform",
     "tarojs",

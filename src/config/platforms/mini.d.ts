@@ -1,13 +1,11 @@
-import type { Compile, ConfigurablePlugin, ParseAstType, SourceMapType } from '../common'
+import type Webpack from 'webpack'
+import type { FilterOptions, ParseAstType, SourceMapType } from '../common'
 import type {
-  AutoprefixerOptions,
   ChainableWebpackConfig,
   CSSLoaderOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostcssCssModulesOptions,
-  PostcssPxtransformOptions,
-  PostcssUrlOptions,
+  PostCSSOptions,
   SassLoaderOptions,
   StyleLoaderOptions,
   StylusLoaderOptions,
@@ -31,13 +29,6 @@ export type PlatformMiniAddChunkPages = (pages: Map<string, string[]>, pagesName
 export interface PlatformMiniOptimizeMainPackage {
   enable?: boolean
   exclude?: string[]
-}
-
-export interface PlatformMiniPostcss {
-  autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
-  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
-  url?: ConfigurablePlugin<PostcssUrlOptions>
-  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
 }
 
 export interface PlatformMiniExperimental {
@@ -69,7 +60,7 @@ export interface PlatformMini {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minicompile
    */
-  compile?: Compile
+  compile?: FilterOptions
 
   /**
    * `SourceMap` 类型
@@ -138,14 +129,18 @@ export interface PlatformMini {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minipostcss
    */
-  postcss?: PlatformMiniPostcss
+  postcss?: PostCSSOptions<'mini'>
 
   /**
    * 自定义 `Webpack` 配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#miniwebpackchain
    */
-  webpackChain?: (chain: ChainableWebpackConfig, webpack: any, parseAstType: ParseAstType) => void
+  webpackChain?: (
+    chain: ChainableWebpackConfig,
+    webpack: typeof Webpack,
+    parseAstType: ParseAstType,
+  ) => void
 
   /**
    * `style-loader` 的附加配置

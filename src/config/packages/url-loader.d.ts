@@ -6,6 +6,11 @@
 
 export interface URLLoaderOptions {
   /**
+   * Specify the name of the chunk
+   */
+  name?: string | ((moduleId: string) => string)
+
+  /**
    * Specifying the maximum size of a file in bytes
    *
    * @see https://github.com/webpack-contrib/url-loader#limit

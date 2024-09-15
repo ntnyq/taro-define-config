@@ -1,9 +1,10 @@
 import type { Configuration as WebpackConfig } from 'webpack'
-import type { LiteralUnion } from '../utility-types'
-import type { Compile } from './common'
-import type { ESBuildBuildOptions, SWCOptions } from './packages'
+import type { FilterOptions } from './common'
+import type { ESBuildBuildOptions, SWCConfigs } from './packages'
 
-export type CompilerType = LiteralUnion<'webpack4' | 'webpack5'>
+export type CompilerViteTypes = 'vite'
+export type CompilerWebpackTypes = 'webpack5'
+export type CompilerTypes = CompilerViteTypes | CompilerWebpackTypes
 
 /**
  * @see https://github.com/NervJS/taro/blob/6a7779d98102c9b7b0082ababbac342cbff2d213/packages/taro-plugin-vue-devtools/src/index.ts#L79C44-L79C47
@@ -13,7 +14,7 @@ export type CompilerPrebundleWebpackProvideFn = (
   taroRuntimeBundlePath: string,
 ) => void
 
-export interface CompilerPrebundle extends Compile {
+export interface CompilerPrebundle extends FilterOptions {
   /**
    * 是否开启依赖预编译
    */
@@ -46,7 +47,7 @@ export interface CompilerPrebundle extends Compile {
    *
    * @see https://swc.rs/docs/usage/core#options
    */
-  swc?: SWCOptions
+  swc?: SWCConfigs
 
   /**
    * 自定义 `webpack` 配置
@@ -58,22 +59,13 @@ export interface CompilerPrebundle extends Compile {
   }
 }
 
-export interface CompilerConfigWebpack4 {
+export interface CompilerConfig<T> {
   /**
    * 编译工具
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilertype
    */
-  type: 'webpack4'
-}
-
-export interface CompilerConfigWebpack5 {
-  /**
-   * 编译工具
-   *
-   * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilertype
-   */
-  type: 'webpack5'
+  type: T
 
   /**
    * 错误处理级别
@@ -89,8 +81,12 @@ export interface CompilerConfigWebpack5 {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilerprebundle
    */
   prebundle?: CompilerPrebundle
+
+  /**
+   * Vite 插件
+   */
+  // TODO: replace any
+  vitePlugins?: any
 }
 
-export type CompilerConfig = CompilerConfigWebpack4 | CompilerConfigWebpack5
-
-export type Compiler = CompilerType | CompilerConfig
+export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> = T | CompilerConfig<T>

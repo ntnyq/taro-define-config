@@ -64,6 +64,11 @@ export interface PostcssCssModulesOptions {
   globalModulePaths?: RegExp[]
 
   /**
+   * 转换模式，取值为 global/module
+   */
+  namingPattern?: 'global' | string
+
+  /**
    * generate custom classes
    */
   generateScopedName?: string
