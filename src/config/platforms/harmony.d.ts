@@ -4,20 +4,14 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#harmony
  */
 
-import type { FilterOptions, PostCSSOptions, SourceMapType } from '../common'
-import type { CompilerTypes, CompilerViteTypes } from '../compiler'
 import type {
-  ChainableWebpackConfig,
-  CSSLoaderOptions,
-  LessLoaderOptions,
-  MiniCSSExtractPluginOptions,
-  RollupOutputOptions,
-  SassLoaderOptions,
-  StylusLoaderOptions,
-  URLLoaderOptions,
-  Webpack,
-  WebpackConfiguration,
-} from '../packages'
+  CommonWebpackConfigOptions,
+  FilterOptions,
+  PostCSSOptions,
+  SourceMapType,
+} from '../common'
+import type { CompilerTypes, CompilerViteTypes } from '../compiler'
+import type { RollupOutputOptions, WebpackConfiguration } from '../packages'
 
 export interface PlatformHarmonyOhPackage {
   main?: string
@@ -59,7 +53,8 @@ export interface PlatformHarmonyClean {
       }
 }
 
-export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes> {
+export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes>
+  extends CommonWebpackConfigOptions<'harmony'> {
   /**
    * 项目地址
    */
@@ -143,67 +138,6 @@ export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes> {
    * 自定义 PostCSS 配置
    */
   postcss?: PostCSSOptions<'harmony'>
-
-  /**
-   * 自定义 Webpack 配置
-   */
-  webpackChain?: (chain: ChainableWebpackConfig, webpack: Webpack) => void
-
-  /**
-   * `css-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/css-loader
-   */
-  cssLoaderOption?: CSSLoaderOptions
-
-  /**
-   * `sass-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/sass-loader
-   */
-  sassLoaderOption?: SassLoaderOptions
-
-  /**
-   * `less-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/less-loader
-   */
-  lessLoaderOption?: LessLoaderOptions
-
-  /**
-   * `stylus-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/stylus-loader
-   */
-  stylusLoaderOption?: StylusLoaderOptions
-
-  /**
-   * `mini-css-extract-plugin` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/mini-css-extract-plugin
-   */
-  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
-
-  /**
-   * 针对 `png | jpg | jpeg | gif | bpm | svg` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  imageUrlLoaderOption?: URLLoaderOptions
-
-  /**
-   * 针对 `mp4 | webm | ogg | mp3 | wav | flac | aac` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  mediaUrlLoaderOption?: URLLoaderOptions
-
-  /**
-   * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  fontUrlLoaderOption?: URLLoaderOptions
 
   [key: string]: any
 }

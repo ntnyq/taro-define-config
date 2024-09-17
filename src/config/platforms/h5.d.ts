@@ -1,17 +1,11 @@
 import type { LiteralUnion } from '../../utility-types'
-import type { FilterOptions, ParseAstType, PostCSSOptions, SourceMapType } from '../common'
 import type {
-  ChainableWebpackConfig,
-  CSSLoaderOptions,
-  HtmlWebpackPluginOptions,
-  LessLoaderOptions,
-  MiniCSSExtractPluginOptions,
-  SassLoaderOptions,
-  StyleLoaderOptions,
-  StylusLoaderOptions,
-  URLLoaderOptions,
-  Webpack,
-} from '../packages'
+  CommonWebpackConfigOptions,
+  FilterOptions,
+  PostCSSOptions,
+  SourceMapType,
+} from '../common'
+import type { HtmlWebpackPluginOptions } from '../packages'
 
 /**
  * H5端专用配置
@@ -35,7 +29,7 @@ export interface PlatformH5DevServer {
   [key: string]: any
 }
 
-export interface PlatformH5Router {
+export interface PlatformH5Router extends CommonWebpackConfigOptions<'h5'> {
   /**
    * 配置路由模式
    *
@@ -182,80 +176,6 @@ export interface PlatformH5 {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5htmlpluginoption
    */
   htmlPluginOption?: HtmlWebpackPluginOptions
-
-  /**
-   * `style-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/style-loader
-   */
-  styleLoaderOption?: StyleLoaderOptions
-
-  /**
-   * `css-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/css-loader
-   */
-  cssLoaderOption?: CSSLoaderOptions
-
-  /**
-   * `sass-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/sass-loader
-   */
-  sassLoaderOption?: SassLoaderOptions
-
-  /**
-   * `less-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/less-loader
-   */
-  lessLoaderOption?: LessLoaderOptions
-
-  /**
-   * `stylus-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/stylus-loader
-   */
-  stylusLoaderOption?: StylusLoaderOptions
-
-  /**
-   * `mini-css-extract-plugin` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/mini-css-extract-plugin
-   */
-  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
-
-  /**
-   * 针对 `png | jpg | jpeg | gif | bpm | svg` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  imageUrlLoaderOption?: URLLoaderOptions
-
-  /**
-   * 针对 `mp4 | webm | ogg | mp3 | wav | flac | aac` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  mediaUrlLoaderOption?: URLLoaderOptions
-
-  /**
-   * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
-   *
-   * @see https://github.com/webpack-contrib/url-loader
-   */
-  fontUrlLoaderOption?: URLLoaderOptions
-
-  /**
-   * 自定义 `Webpack` 配置
-   *
-   * @see https://nervjs.github.io/taro-docs/docs/config-detail#miniwebpackchain
-   */
-  webpackChain?: (
-    chain: ChainableWebpackConfig,
-    webpack: Webpack,
-    parseAstType: ParseAstType,
-  ) => void
 
   [key: string]: any
 }

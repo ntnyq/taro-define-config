@@ -14,29 +14,10 @@ import type {
 } from '../packages'
 
 /**
- * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnless
+ * @internal
  */
-export interface PlatformRNLessOptions {
-  options?: LessOptions
-
-  additionalData?: string | ((...args: any[]) => string)
-}
-
-/**
- * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnsass
- */
-export interface PlatformRNSassOptions {
-  options?: SassOptions
-
-  additionalData?: string | ((...args: any[]) => string)
-}
-
-/**
- * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnstylus
- */
-export interface PlatformRNStylusOptions {
-  options?: StylusOptions
-
+type ProcessorOptionsWithAdditionalData<T> = {
+  options?: T
   additionalData?: string | ((...args: any[]) => string)
 }
 
@@ -114,21 +95,21 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: PlatformRNSassOptions
+  sass?: ProcessorOptionsWithAdditionalData<SassOptions>
 
   /**
    * `less` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnless
    */
-  less?: PlatformRNLessOptions
+  less?: ProcessorOptionsWithAdditionalData<LessOptions>
 
   /**
    * `stylus` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnstylus
    */
-  stylus?: PlatformRNStylusOptions
+  stylus?: ProcessorOptionsWithAdditionalData<StylusOptions>
 
   /**
    * `resolve` 处理依赖文件配置

@@ -1,9 +1,18 @@
 import type {
   AutoprefixerOptions,
+  ChainableWebpackConfig,
+  CSSLoaderOptions,
+  LessLoaderOptions,
+  MiniCSSExtractPluginOptions,
   PostcssCssModulesOptions,
   PostcssHtmlTransformOptions,
   PostcssPxtransformOptions,
   PostcssUrlOptions,
+  SassLoaderOptions,
+  StyleLoaderOptions,
+  StylusLoaderOptions,
+  URLLoaderOptions,
+  Webpack,
 } from '../config/packages'
 import type { LiteralUnion } from '../utility-types'
 
@@ -74,3 +83,84 @@ export interface BasePostCSSOptions {
 export type PostCSSOptions<T extends PlatformUnion> = T extends 'h5'
   ? BasePostCSSOptions & { url?: ConfigurablePlugin<PostcssUrlOptions> }
   : BasePostCSSOptions
+
+/**
+ * 通用 webpack 配置选项
+ */
+export type BaseWebpackConfigOptions = {
+  /**
+   * `css-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/css-loader
+   */
+  cssLoaderOption?: CSSLoaderOptions
+
+  /**
+   * `sass-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/sass-loader
+   */
+  sassLoaderOption?: SassLoaderOptions
+
+  /**
+   * `less-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/less-loader
+   */
+  lessLoaderOption?: LessLoaderOptions
+
+  /**
+   * `stylus-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/stylus-loader
+   */
+  stylusLoaderOption?: StylusLoaderOptions
+
+  /**
+   * `mini-css-extract-plugin` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/mini-css-extract-plugin
+   */
+  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
+
+  /**
+   * 针对 `png | jpg | jpeg | gif | bpm | svg` 文件 `url-loader` 的配置
+   *
+   * @see https://github.com/webpack-contrib/url-loader
+   */
+  imageUrlLoaderOption?: URLLoaderOptions
+
+  /**
+   * 针对 `mp4 | webm | ogg | mp3 | wav | flac | aac` 文件 `url-loader` 的配置
+   *
+   * @see https://github.com/webpack-contrib/url-loader
+   */
+  mediaUrlLoaderOption?: URLLoaderOptions
+
+  /**
+   * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
+   *
+   * @see https://github.com/webpack-contrib/url-loader
+   */
+  fontUrlLoaderOption?: URLLoaderOptions
+
+  /**
+   * 自定义 `Webpack` 配置
+   *
+   * @see https://nervjs.github.io/taro-docs/docs/config-detail#miniwebpackchain
+   */
+  webpackChain?: (
+    chain: ChainableWebpackConfig,
+    webpack: Webpack,
+    parseAstType: ParseAstType,
+  ) => void
+}
+export type CommonWebpackConfigOptions<T extends PlatformUnion> = T extends 'harmony'
+  ? BaseWebpackConfigOptions
+  : {
+      /**
+       * `style-loader` 的附加配置
+       * @see https://github.com/webpack-contrib/style-loader
+       */
+      styleLoaderOption?: StyleLoaderOptions
+    }
