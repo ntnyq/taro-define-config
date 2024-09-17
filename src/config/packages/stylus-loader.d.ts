@@ -6,8 +6,8 @@
 
 import type { Buffer } from 'node:buffer'
 import type { AnyFn } from '../../utility-types'
-import type { LoaderContext } from '../common'
 import type { StylusOptions } from './stylus'
+import type { WebpackLoaderContext } from './webpack'
 
 export interface StylusOptionsResolveURL {
   paths?: string[]
@@ -25,7 +25,7 @@ export interface StylusLoaderStylusOptions extends StylusOptions {
   paths?: string[]
 }
 
-export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext<any>) =>
+export type StylusLoaderStylusOptionsFn = (loaderContext: WebpackLoaderContext) =>
   | string[]
   | {
       paths: string[]
@@ -33,7 +33,7 @@ export type StylusLoaderStylusOptionsFn = (loaderContext: LoaderContext<any>) =>
 
 export type StylusLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContex: LoaderContext<any>,
+  loaderContex: WebpackLoaderContext,
   meta: any,
 ) => string
 

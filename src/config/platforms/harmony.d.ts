@@ -4,9 +4,6 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#harmony
  */
 
-import type { OutputOptions as RollupOutputOptions } from 'rollup'
-import type Webpack from 'webpack'
-import type { Configuration as WebpackConfiguration } from 'webpack'
 import type { FilterOptions, PostCSSOptions, SourceMapType } from '../common'
 import type { CompilerTypes, CompilerViteTypes } from '../compiler'
 import type {
@@ -14,9 +11,12 @@ import type {
   CSSLoaderOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
+  RollupOutputOptions,
   SassLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,
+  Webpack,
+  WebpackConfiguration,
 } from '../packages'
 
 export interface PlatformHarmonyOhPackage {
@@ -147,7 +147,7 @@ export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes> {
   /**
    * 自定义 Webpack 配置
    */
-  webpackChain?: (chain: ChainableWebpackConfig, webpack: typeof Webpack) => void
+  webpackChain?: (chain: ChainableWebpackConfig, webpack: Webpack) => void
 
   /**
    * `css-loader` 的附加配置

@@ -5,7 +5,7 @@
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/types/index.d.ts
  */
 
-import type { Configuration } from 'webpack'
+import type { WebpackConfiguration } from './webpack'
 
 export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
 
@@ -13,12 +13,12 @@ export interface MiniCSSExtractPluginOptions {
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#filename
    */
-  filename?: Required<Configuration>['output']['filename']
+  filename?: Required<WebpackConfiguration>['output']['filename']
 
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#chunkfilename
    */
-  chunkFilename?: Required<Configuration>['output']['chunkFilename']
+  chunkFilename?: Required<WebpackConfiguration>['output']['chunkFilename']
 
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#ignoreorder

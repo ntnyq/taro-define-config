@@ -7,8 +7,6 @@ import type {
 } from '../config/packages'
 import type { LiteralUnion } from '../utility-types'
 
-export type { LoaderContext } from 'webpack'
-
 /**
  * `Webpack devtool` 类型
  *

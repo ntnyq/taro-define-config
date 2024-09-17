@@ -5,18 +5,18 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LoaderContext } from '../common'
+import type { WebpackLoaderContext } from './webpack'
 
 export type SassLoaderAdditionalData = (
   content: string | Buffer,
-  loaderContext: LoaderContext<any>,
+  loaderContext: WebpackLoaderContext,
 ) => string
 
 export type SassLoaderSassOptions = Record<string, any>
 
 export type SassLoaderSassOptionsFn = (
   content: string | Buffer,
-  loaderContext: LoaderContext<any>,
+  loaderContext: WebpackLoaderContext,
   meta: any,
 ) => SassLoaderSassOptions
 

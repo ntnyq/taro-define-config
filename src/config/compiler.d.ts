@@ -1,6 +1,5 @@
-import type { Configuration as WebpackConfig } from 'webpack'
 import type { FilterOptions } from './common'
-import type { ESBuildBuildOptions, SWCConfigs } from './packages'
+import type { ESBuildBuildOptions, SWCConfigs, WebpackConfiguration } from './packages'
 
 export type CompilerViteTypes = 'vite'
 export type CompilerWebpackTypes = 'webpack5'
@@ -54,7 +53,7 @@ export interface CompilerPrebundle extends FilterOptions {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#compilerprebundlewebpackprovide
    */
-  webpack?: WebpackConfig & {
+  webpack?: WebpackConfiguration & {
     provide?: CompilerPrebundleWebpackProvideFn[]
   }
 }

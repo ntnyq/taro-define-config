@@ -1,4 +1,3 @@
-import type Webpack from 'webpack'
 import type { LiteralUnion } from '../../utility-types'
 import type { FilterOptions, ParseAstType, PostCSSOptions, SourceMapType } from '../common'
 import type {
@@ -11,6 +10,7 @@ import type {
   StyleLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,
+  Webpack,
 } from '../packages'
 
 /**
@@ -253,7 +253,7 @@ export interface PlatformH5 {
    */
   webpackChain?: (
     chain: ChainableWebpackConfig,
-    webpack: typeof Webpack,
+    webpack: Webpack,
     parseAstType: ParseAstType,
   ) => void
 

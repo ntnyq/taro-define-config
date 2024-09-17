@@ -4,16 +4,16 @@
  * @see https://github.com/webpack-contrib/less-loader#options
  */
 
-import type { LoaderContext } from '../common'
 import type { LessOptions } from './less'
+import type { WebpackLoaderContext } from './webpack'
 
-export type LessLoaderLessOptionsFn = (loaderConext: LoaderContext<any>) => LessOptions
+export type LessLoaderLessOptionsFn = (loaderConext: WebpackLoaderContext) => LessOptions
 
 export type LessLoaderLessOptions = LessOptions | LessLoaderLessOptionsFn
 
 export type LessLoaderAdditionalDataFn = (
   content: string,
-  loaderContext: LoaderContext<any>,
+  loaderContext: WebpackLoaderContext,
 ) => string | Promise<string>
 
 export type LessLoaderAdditionalData = string | LessLoaderAdditionalDataFn

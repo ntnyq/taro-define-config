@@ -5,14 +5,14 @@
  */
 import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'
 import type { AsyncSeriesWaterfallHook } from 'tapable'
-import type { Compilation, Compiler } from 'webpack'
+import type { WebpackCompilation, WebpackCompiler } from './webpack'
 
 declare class HtmlWebpackPlugin {
   constructor(options?: HtmlWebpackPlugin.Options)
 
-  apply(compiler: Compiler): void
+  apply(compiler: WebpackCompiler): void
 
-  static getHooks(compilation: Compilation): HtmlWebpackPlugin.Hooks
+  static getHooks(compilation: WebpackCompilation): HtmlWebpackPlugin.Hooks
 
   /**
    * Static helper to create a tag object to be get injected into the dom

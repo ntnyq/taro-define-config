@@ -1,4 +1,3 @@
-import type Webpack from 'webpack'
 import type { FilterOptions, ParseAstType, PostCSSOptions, SourceMapType } from '../common'
 import type {
   ChainableWebpackConfig,
@@ -9,6 +8,7 @@ import type {
   StyleLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,
+  Webpack,
 } from '../packages'
 
 export interface PlatformMiniMinifyXML {
@@ -137,7 +137,7 @@ export interface PlatformMini {
    */
   webpackChain?: (
     chain: ChainableWebpackConfig,
-    webpack: typeof Webpack,
+    webpack: Webpack,
     parseAstType: ParseAstType,
   ) => void
 

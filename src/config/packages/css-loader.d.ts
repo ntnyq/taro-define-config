@@ -5,7 +5,7 @@
  */
 
 import type { LiteralUnion } from '../../utility-types'
-import type { LoaderContext } from '../common'
+import type { WebpackLoaderContext } from './webpack'
 
 export type CSSLoaderUrlFilterFn = (url: string, resourcePath: string) => boolean
 
@@ -30,7 +30,7 @@ export type CSSLoaderModulesAutoFn = (resourcePath: string) => boolean
 export type CSSLoaderModulesModeFn = (resourcePath: string) => CSSLoaderModulesString
 
 export type CSSLoaderModulesGetLocalIdentFn = (
-  loaderContext: LoaderContext<any>,
+  loaderContext: WebpackLoaderContext<any>,
   localIdentName: string,
   localName: string,
 ) => string
