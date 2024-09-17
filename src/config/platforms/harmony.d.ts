@@ -7,14 +7,13 @@
 import type { OutputOptions as RollupOutputOptions } from 'rollup'
 import type Webpack from 'webpack'
 import type { Configuration as WebpackConfiguration } from 'webpack'
-import type { FilterOptions, SourceMapType } from '../common'
+import type { FilterOptions, PostCSSOptions, SourceMapType } from '../common'
 import type { CompilerTypes, CompilerViteTypes } from '../compiler'
 import type {
   ChainableWebpackConfig,
   CSSLoaderOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostCSSOptions,
   SassLoaderOptions,
   StylusLoaderOptions,
   URLLoaderOptions,

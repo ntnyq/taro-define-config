@@ -1,11 +1,10 @@
 import type Webpack from 'webpack'
-import type { FilterOptions, ParseAstType, SourceMapType } from '../common'
+import type { FilterOptions, ParseAstType, PostCSSOptions, SourceMapType } from '../common'
 import type {
   ChainableWebpackConfig,
   CSSLoaderOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostCSSOptions,
   SassLoaderOptions,
   StyleLoaderOptions,
   StylusLoaderOptions,

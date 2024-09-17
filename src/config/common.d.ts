@@ -1,3 +1,10 @@
+import type {
+  AutoprefixerOptions,
+  PostcssCssModulesOptions,
+  PostcssHtmlTransformOptions,
+  PostcssPxtransformOptions,
+  PostcssUrlOptions,
+} from '../config/packages'
 import type { LiteralUnion } from '../utility-types'
 
 export type { LoaderContext } from 'webpack'
@@ -35,6 +42,8 @@ export type SourceMapType = LiteralUnion<
   | 'hidden-source-map'
 >
 
+export type PlatformUnion = LiteralUnion<'h5' | 'mini' | 'rn' | 'harmony'>
+
 export interface ConfigurablePlugin<T extends Record<string, any>> {
   enable?: boolean
   config?: T
@@ -56,3 +65,14 @@ export interface FilterOptions {
  * 小程序编译时的文件类型集合
  */
 export type ParseAstType = LiteralUnion<'ENTRY' | 'PAGE' | 'COMPONENT' | 'NORMAL' | 'STATIC'>
+
+export interface BasePostCSSOptions {
+  autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
+  pxtransform?: ConfigurablePlugin<PostcssPxtransformOptions>
+  cssModules?: ConfigurablePlugin<PostcssCssModulesOptions>
+  htmltransform?: ConfigurablePlugin<PostcssHtmlTransformOptions>
+  [key: string]: any
+}
+export type PostCSSOptions<T extends PlatformUnion> = T extends 'h5'
+  ? BasePostCSSOptions & { url?: ConfigurablePlugin<PostcssUrlOptions> }
+  : BasePostCSSOptions

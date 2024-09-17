@@ -1,13 +1,12 @@
 import type Webpack from 'webpack'
 import type { LiteralUnion } from '../../utility-types'
-import type { FilterOptions, ParseAstType, SourceMapType } from '../common'
+import type { FilterOptions, ParseAstType, PostCSSOptions, SourceMapType } from '../common'
 import type {
   ChainableWebpackConfig,
   CSSLoaderOptions,
   HtmlWebpackPluginOptions,
   LessLoaderOptions,
   MiniCSSExtractPluginOptions,
-  PostCSSOptions,
   SassLoaderOptions,
   StyleLoaderOptions,
   StylusLoaderOptions,
