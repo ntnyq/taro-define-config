@@ -25,24 +25,18 @@ export interface StylusLoaderStylusOptions extends StylusOptions {
   paths?: string[]
 }
 
-export type StylusLoaderStylusOptionsFn = (loaderContext: WebpackLoaderContext) =>
-  | string[]
-  | {
-      paths: string[]
-    }
-
-export type StylusLoaderAdditionalData = (
-  content: string | Buffer,
-  loaderContex: WebpackLoaderContext,
-  meta: any,
-) => string
-
 export interface StylusLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#stylusOptions
    * @default {}
    */
-  stylusOptions?: StylusLoaderStylusOptions | StylusLoaderStylusOptionsFn
+  stylusOptions?:
+    | StylusLoaderStylusOptions
+    | ((loaderContext: WebpackLoaderContext) =>
+        | string[]
+        | {
+            paths: string[]
+          })
 
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#sourcemap
@@ -57,7 +51,9 @@ export interface StylusLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#additionalData
    */
-  additionalData?: string | StylusLoaderAdditionalData
+  additionalData?:
+    | string
+    | ((content: string | Buffer, loaderContex: WebpackLoaderContext, meta: any) => string)
 
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#implementation

@@ -7,18 +7,7 @@
 import type { Buffer } from 'node:buffer'
 import type { WebpackLoaderContext } from './webpack'
 
-export type SassLoaderAdditionalData = (
-  content: string | Buffer,
-  loaderContext: WebpackLoaderContext,
-) => string
-
 export type SassLoaderSassOptions = Record<string, any>
-
-export type SassLoaderSassOptionsFn = (
-  content: string | Buffer,
-  loaderContext: WebpackLoaderContext,
-  meta: any,
-) => SassLoaderSassOptions
 
 export interface SassLoaderOptions {
   /**
@@ -30,7 +19,13 @@ export interface SassLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/sass-loader#sassoptions
    */
-  sassOptions?: SassLoaderSassOptions | SassLoaderSassOptionsFn
+  sassOptions?:
+    | SassLoaderSassOptions
+    | ((
+        content: string | Buffer,
+        loaderContext: WebpackLoaderContext,
+        meta: any,
+      ) => SassLoaderSassOptions)
 
   /**
    * @see https://github.com/webpack-contrib/sass-loader#sourcemap
@@ -40,7 +35,9 @@ export interface SassLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/sass-loader#additionaldata
    */
-  additionalData?: string | SassLoaderAdditionalData
+  additionalData?:
+    | string
+    | ((content: string | Buffer, loaderContext: WebpackLoaderContext) => string)
 
   /**
    * @see https://github.com/webpack-contrib/sass-loader#webpackimporter
@@ -53,4 +50,6 @@ export interface SassLoaderOptions {
    * @default false
    */
   warnRuleAsWarning?: boolean
+
+  [key: string]: any
 }

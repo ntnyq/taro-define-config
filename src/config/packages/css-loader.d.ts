@@ -7,44 +7,24 @@
 import type { LiteralUnion } from '../../utility-types'
 import type { WebpackLoaderContext } from './webpack'
 
-export type CSSLoaderUrlFilterFn = (url: string, resourcePath: string) => boolean
-
 export interface CSSLoaderUrl {
-  filter: CSSLoaderUrlFilterFn
+  filter: (url: string, resourcePath: string) => boolean
 }
-
-export type CSSLoaderImportFilterFn = (
-  url: string,
-  media?: string,
-  resourcePath?: string,
-) => boolean
 
 export interface CSSLoaderImport {
-  filter: CSSLoaderImportFilterFn
+  filter: (url: string, media?: string, resourcePath?: string) => boolean
 }
 
-export type CSSLoaderModulesString = LiteralUnion<'local' | 'global' | 'pure' | 'icss'>
-
-export type CSSLoaderModulesAutoFn = (resourcePath: string) => boolean
-
-export type CSSLoaderModulesModeFn = (resourcePath: string) => CSSLoaderModulesString
-
-export type CSSLoaderModulesGetLocalIdentFn = (
-  loaderContext: WebpackLoaderContext<any>,
-  localIdentName: string,
-  localName: string,
-) => string
+export type CSSLoaderModulesUnion = LiteralUnion<'local' | 'global' | 'pure' | 'icss'>
 
 export type CSSLoaderModulesExportLocalsConvention = LiteralUnion<
   'asIs' | 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
 >
 
-export type CSSLoaderModulesExportLocalsConventionFn = (name: string) => string
-
 export interface CSSLoaderModulesObject {
-  auto?: boolean | RegExp | CSSLoaderModulesAutoFn
+  auto?: boolean | RegExp | ((resourcePath: string) => boolean)
 
-  mode?: CSSLoaderModulesString | CSSLoaderModulesModeFn
+  mode?: CSSLoaderModulesUnion | ((resourcePath: string) => CSSLoaderModulesUnion)
 
   localIdentName?: string
   localIdentContext?: string
@@ -53,15 +33,17 @@ export interface CSSLoaderModulesObject {
   localIdentHashDigest?: string
   localIdentRegExp?: string | RegExp
 
-  getLocalIdent?: CSSLoaderModulesGetLocalIdentFn
+  getLocalIdent?: (
+    loaderContext: WebpackLoaderContext<any>,
+    localIdentName: string,
+    localName: string,
+  ) => string
 
   namedExport?: boolean
 
   exportGlobals?: boolean
 
-  exportLocalsConvention?:
-    | CSSLoaderModulesExportLocalsConvention
-    | CSSLoaderModulesExportLocalsConventionFn
+  exportLocalsConvention?: CSSLoaderModulesExportLocalsConvention | ((name: string) => string)
 
   exportOnlyLocals?: boolean
 }
@@ -84,7 +66,7 @@ export interface CSSLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/css-loader#modules
    */
-  modules?: boolean | CSSLoaderModulesString | CSSLoaderModulesObject
+  modules?: boolean | CSSLoaderModulesUnion | CSSLoaderModulesObject
 
   /**
    * @see https://github.com/webpack-contrib/css-loader#sourcemap

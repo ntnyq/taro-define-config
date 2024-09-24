@@ -6,7 +6,8 @@
 
 import type {
   CommonWebpackConfigOptions,
-  FilterOptions,
+  ICompileOptions,
+  IOutputEnhance,
   PostCSSOptions,
   SourceMapType,
 } from '../common'
@@ -20,10 +21,6 @@ export interface PlatformHarmonyOhPackage {
   [k: string]: any
 }
 
-export interface PlatformHarmonyCompile extends FilterOptions {
-  filter?: (filename: string) => boolean
-}
-
 export interface PlatformHarmonyCompileModeSetting {
   componentReplace?: {
     [key: string]: {
@@ -35,22 +32,6 @@ export interface PlatformHarmonyCompileModeSetting {
 
 export interface PlatformHarmonyRouter {
   customRoutes?: Record<string, any>
-}
-
-export interface PlatformHarmonyClean {
-  /**
-   * 编译前清空输出目录
-   * @since Taro v3.6.9
-   * @description
-   * - 默认清空输出目录，可设置 clean: false 不清空
-   * - 可设置 clean: { keep: ['project.config.json'] } 保留指定文件
-   * - 注意 clean.keep 不支持函数
-   */
-  clean?:
-    | boolean
-    | {
-        keep?: Array<string | RegExp> | string | RegExp
-      }
 }
 
 export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes>
@@ -96,7 +77,7 @@ export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes>
   /**
    * 编译相关配置
    */
-  compile?: PlatformHarmonyCompile
+  compile?: ICompileOptions
 
   /**
    * 半编译模式下的选项
@@ -126,8 +107,8 @@ export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes>
    * vite 编译模式下，用于修改、扩展 rollup 的 output，目前仅适配 chunkFileNames 和 assetFileNames 两个配置，修改其他配置请使用 vite 插件进行修改。配置想参考[官方文档](https://rollupjs.org/configuration-options/)
    */
   output?: T extends CompilerViteTypes
-    ? Pick<RollupOutputOptions, 'chunkFileNames'> & PlatformHarmonyClean
-    : WebpackConfiguration['output'] & PlatformHarmonyClean
+    ? Pick<RollupOutputOptions, 'chunkFileNames'> & IOutputEnhance
+    : WebpackConfiguration['output'] & IOutputEnhance
 
   /**
    * 路由配置

@@ -1,35 +1,26 @@
-import type { LiteralUnion } from '../../utility-types'
-import type {
-  CommonWebpackConfigOptions,
-  FilterOptions,
-  PostCSSOptions,
-  SourceMapType,
-} from '../common'
-import type { HtmlWebpackPluginOptions } from '../packages'
-
 /**
  * H5端专用配置
  *
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5
  */
 
-export type PlatformH5Entry = Record<string, string | string[]>
+import type { LiteralUnion } from '../../utility-types'
+import type {
+  CommonWebpackConfigOptions,
+  ICompileOptions,
+  IOutputEnhance,
+  PostCSSOptions,
+  SourceMapType,
+} from '../common'
+import type { Compiler, CompilerTypes, CompilerWebpackTypes } from '../compiler'
+import type {
+  DevServerConfiguration,
+  HtmlWebpackPluginOptions,
+  RollupOutputOptions,
+  WebpackConfiguration,
+} from '../packages'
 
-export interface PlatformH5Output {
-  filename?: string
-
-  chunkFilename?: string
-
-  [key: string]: any
-}
-
-export interface PlatformH5DevServer {
-  proxy?: string | object
-
-  [key: string]: any
-}
-
-export interface PlatformH5Router extends CommonWebpackConfigOptions<'h5'> {
+export interface PlatformH5Router {
   /**
    * 配置路由模式
    *
@@ -50,33 +41,39 @@ export interface PlatformH5Router extends CommonWebpackConfigOptions<'h5'> {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5routercustomroutes
    */
   customRoutes?: Record<string, string | string[]>
-
   lazyload?: boolean | ((pagename: string) => boolean)
-
   renamePagename?: (pagename: string) => string
-
   forcePath?: string
+
+  /**
+   * 加上这个参数，可以解决返回页面的时候白屏的问题，但是某些不支持 :has() 选择器的浏览器会有问题
+   */
+  enhanceAnimation?: boolean
 }
 
-export interface PlatformH5 {
+export interface PlatformH5<T extends CompilerTypes = CompilerWebpackTypes>
+  extends CommonWebpackConfigOptions<'h5'> {
   /**
    * 可用于修改、拓展 `Webpack` 的 `input` 选项
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5entry
    */
-  entry?: PlatformH5Entry
+  entry?: Record<string, string | string[]>
 
   /**
-   * 可用于修改、拓展 `Webpack` 的 `output` 选项
+   * webpack 编译模式下，可用于修改、拓展 Webpack 的 output 选项，配置项参考[官方文档](https://webpack.js.org/configuration/output/)
    *
-   * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5output
+   * vite 编译模式下，用于修改、扩展 rollup 的 output，目前仅适配 chunkFileNames 和 assetFileNames 两个配置，修改其他配置请使用 vite 插件进行修改。配置想参考[官方文档](https://rollupjs.org/configuration-options/)
    */
-  output?: PlatformH5Output
+  output?: T extends 'vite'
+    ? Pick<RollupOutputOptions, 'chunkFileNames' | 'assetFileNames'> & IOutputEnhance
+    : WebpackConfiguration['output']
 
   /**
    * 设置输出解析文件的目录
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5publicpath
+   * @default `/`
    */
   publicPath?: string
 
@@ -84,6 +81,7 @@ export interface PlatformH5 {
    * `h5` 编译后的静态文件目录
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5staticdirectory
+   * @default `static`
    */
   staticDirectory?: string
 
@@ -91,15 +89,23 @@ export interface PlatformH5 {
    * 编译后非 `entry` 的 `js` 文件的存放目录，主要影响动态引入的 `pages` 的存放路径
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5chunkdirectory
+   * @default `chunk`
    */
   chunkDirectory?: string
+
+  /**
+   * Webpack 配置
+   */
+  webpack?:
+    | WebpackConfiguration
+    | ((config: WebpackConfiguration, webpack: Webpack) => WebpackConfiguration)
 
   /**
    * 预览服务的配置，可以更改端口等参数
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5devserver
    */
-  devServer?: PlatformH5DevServer
+  devServer?: DevServerConfiguration
 
   /**
    * 路由相关的配置
@@ -158,7 +164,7 @@ export interface PlatformH5 {
    * @since `Taro v3.6`
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#h5compile
    */
-  compile?: FilterOptions
+  compile?: ICompileOptions
 
   /**
    * 控制在 H5 端是否使用旧版本适配器
@@ -176,6 +182,17 @@ export interface PlatformH5 {
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5htmlpluginoption
    */
   htmlPluginOption?: HtmlWebpackPluginOptions
+
+  /**
+   * 生成的代码是否要兼容旧版浏览器，值为 true 时，会去读取 package.json 的 browserslist 字段。
+   * 只在 vite 编译模式下有效
+   */
+  legacy?: T extends 'vite' ? boolean : never
+
+  /**
+   * 使用的编译工具。可选值：webpack5、vite
+   */
+  compiler?: Compiler<T>
 
   [key: string]: any
 }

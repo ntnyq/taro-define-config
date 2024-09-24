@@ -7,8 +7,6 @@
 
 import type { WebpackConfiguration } from './webpack'
 
-export type MiniCSSExtractPluginInsertFn = (linkTag: HTMLLinkElement) => void
-
 export interface MiniCSSExtractPluginOptions {
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#filename
@@ -30,7 +28,7 @@ export interface MiniCSSExtractPluginOptions {
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#insert
    * @default `document.head.appendChild(linkTag)`
    */
-  insert?: string | MiniCSSExtractPluginInsertFn
+  insert?: string | ((linkTag: HTMLLinkElement) => void)
 
   /**
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#attributes

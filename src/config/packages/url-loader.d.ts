@@ -55,4 +55,6 @@ export interface URLLoaderOptions {
    * @default true
    */
   esModule?: boolean
+
+  [key: string]: any
 }

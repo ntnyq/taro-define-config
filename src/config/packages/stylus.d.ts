@@ -54,4 +54,6 @@ export interface StylusOptions {
    * @default false
    */
   hoistAtrules?: boolean
+
+  [key: string]: any
 }

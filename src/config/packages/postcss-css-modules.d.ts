@@ -14,26 +14,9 @@ export class CustomLoader {
   finalSource?: string
 }
 
-export type PostcssCssModulesGetJSONFn = (
-  cssFilename: string,
-  json: Record<string, string>,
-  outputFilename: string,
-) => void
-
-export type PostcssCssModulesLocalsConventionFn = (
-  originalClassName: string,
-  generatedClassName: string,
-  inputFile: string,
-) => string
-
 export type PostcssCssModulesLocalsConvention =
   | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
-  | PostcssCssModulesLocalsConventionFn
-
-export type PostcssCssModulesResolveFn = (
-  file: string,
-  importer: string,
-) => string | null | Promise<string | null>
+  | ((originalClassName: string, generatedClassName: string, inputFile: string) => string)
 
 export type PostcssCssModulesGenerateScopedNameFn = (
   name: string,
@@ -44,7 +27,7 @@ export type PostcssCssModulesGenerateScopedNameFn = (
 export type PostcssCssModulesLoader = typeof CustomLoader
 
 export interface PostcssCssModulesOptions {
-  getJSON?: PostcssCssModulesGetJSONFn
+  getJSON?: (cssFilename: string, json: Record<string, string>, outputFilename: string) => void
 
   /**
    * style of exported classnames, the keys in your json
@@ -96,7 +79,7 @@ export interface PostcssCssModulesOptions {
   /**
    * resolve custom path alias
    */
-  resolve?: PostcssCssModulesResolveFn
+  resolve?: (file: string, importer: string) => string | null | Promise<string | null>
 
   [key: string]: any
 }

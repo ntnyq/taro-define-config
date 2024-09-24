@@ -67,6 +67,31 @@ export interface FilterOptions {
    */
   exclude?: string[]
 }
+/**
+ * 编译过程配置
+ */
+export type ICompileOptions = FilterOptions & {
+  filter?: (filename: string) => boolean
+}
+
+/**
+ * 输出文件类型增强
+ */
+export interface IOutputEnhance {
+  /**
+   * 编译前清空输出目录
+   * @since Taro v3.6.9
+   * @description
+   * - 默认清空输出目录，可设置 clean: false 不清空
+   * - 可设置 clean: { keep: ['project.config.json'] } 保留指定文件
+   * - 注意 clean.keep 不支持函数
+   */
+  clean?:
+    | boolean
+    | {
+        keep?: Array<string | RegExp> | string | RegExp
+      }
+}
 
 /**
  * 小程序编译时的文件类型集合

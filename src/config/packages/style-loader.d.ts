@@ -17,14 +17,6 @@ export type StyleLoaderInjectType = LiteralUnion<
   | 'linkTag'
 >
 
-export type StyleLoaderInsertFn = (htmlElement: HTMLElement, options: Record<string, any>) => void
-
-export type StyleLoaderStyleTagTransformFn = (
-  css: string,
-  styleElement: HTMLStyleElement,
-  options: Record<string, any>,
-) => void
-
 export interface StyleLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/style-loader#injecttype
@@ -41,12 +33,14 @@ export interface StyleLoaderOptions {
    * @see https://github.com/webpack-contrib/style-loader#insert
    * @default `head`
    */
-  insert?: string | StyleLoaderInsertFn
+  insert?: string | ((htmlElement: HTMLElement, options: Record<string, any>) => void)
 
   /**
    * @see https://github.com/webpack-contrib/style-loader#styleTagTransform
    */
-  styleTagTransform?: string | StyleLoaderStyleTagTransformFn
+  styleTagTransform?:
+    | string
+    | ((css: string, styleElement: HTMLStyleElement, options: Record<string, any>) => void)
 
   /**
    * @see https://github.com/webpack-contrib/style-loader#base
