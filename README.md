@@ -7,6 +7,9 @@
 [![NPM DOWNLOADS](https://img.shields.io/npm/dy/taro-define-config.svg)](https://www.npmjs.com/package/taro-define-config)
 [![LICENSE](https://img.shields.io/github/license/ntnyq/taro-define-config.svg)](https://github.com/ntnyq/taro-define-config/blob/main/LICENSE)
 
+> [!IMPORTANT]
+> For TaroJS v3 support, please use `taro-define-config` < v0.7.0.
+
 > [!NOTE]  
 > Taro introduced a builtin [defineConfig](https://docs.taro.zone/docs/config/#defineconfig-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0) function since v3.6.9. Maybe you don't need this package.
 
