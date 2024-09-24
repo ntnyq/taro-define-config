@@ -24,16 +24,10 @@ export interface PostCSSUrlUrlDir {
   file?: string
 }
 
-export type PostCSSUrlTransformFn = (asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string
-
-export type PostcssUrlFilterFn = (file: string) => boolean
-
 export type PostcssUrlHashOptionsMethod = LiteralUnion<'xxhash32' | 'xxhash64'>
 
-export type PostcssUrlHashOptionsMethodFn = (file: Buffer) => string
-
 export interface PostcssUrlHashOptions {
-  method?: PostcssUrlHashOptionsMethod | PostcssUrlHashOptionsMethodFn
+  method?: PostcssUrlHashOptionsMethod | ((file: Buffer) => string)
   shrink?: number
   append?: boolean
 }
@@ -43,7 +37,7 @@ export interface PostcssUrlOptions {
    * @see https://github.com/postcss/postcss-url#url
    * @default `rebase`
    */
-  url?: PostCSSUrlUrl | PostCSSUrlTransformFn
+  url?: PostCSSUrlUrl | ((asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string)
 
   /**
    * @see https://github.com/postcss/postcss-url#maxsize
@@ -64,7 +58,7 @@ export interface PostcssUrlOptions {
   /**
    * @see https://github.com/postcss/postcss-url#filter
    */
-  filter?: string | RegExp | PostcssUrlFilterFn
+  filter?: string | RegExp | ((file: string) => boolean)
 
   /**
    * @see https://github.com/postcss/postcss-url#includeurifragment
@@ -75,7 +69,7 @@ export interface PostcssUrlOptions {
   /**
    * @see https://github.com/postcss/postcss-url#fallback
    */
-  fallback?: PostCSSUrlTransformFn
+  fallback?: (asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string
 
   /**
    * @see https://github.com/postcss/postcss-url#basepath

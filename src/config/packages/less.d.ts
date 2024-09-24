@@ -1,5 +1,7 @@
+import type { AnyFn } from '../../utility-types'
+
 /**
- * Source map options
+ * `less` options
  *
  * @see https://lesscss.org/usage/#less-options-source-map-options
  */
@@ -11,8 +13,6 @@ export interface LessSourceMap {
   sourceMapFileInline?: boolean
   sourceMapURL?: string
 }
-
-export type LessPlugin = (...args: any[]) => any
 
 /**
  * `less` 配置
@@ -43,7 +43,7 @@ export interface LessOptions {
   /**
    * Pre-load global Less.js plugins
    */
-  plugins?: LessPlugin[]
+  plugins?: AnyFn[]
 
   /**
    * If true, compress using less built-in compression

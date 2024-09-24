@@ -18,12 +18,6 @@ export type PostcssCssModulesLocalsConvention =
   | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
   | ((originalClassName: string, generatedClassName: string, inputFile: string) => string)
 
-export type PostcssCssModulesGenerateScopedNameFn = (
-  name: string,
-  filename: string,
-  css: string,
-) => string
-
 export type PostcssCssModulesLoader = typeof CustomLoader
 
 export interface PostcssCssModulesOptions {
@@ -54,7 +48,7 @@ export interface PostcssCssModulesOptions {
   /**
    * generate custom classes
    */
-  generateScopedName?: string
+  generateScopedName?: string | ((name: string, filename: string, css: string) => string)
 
   /**
    * add custom hash to generate more unique classes
