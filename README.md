@@ -10,8 +10,19 @@
 > [!IMPORTANT]
 > For TaroJS v3 support, please use `taro-define-config` < v0.7.0.
 
-> [!NOTE]  
-> Taro introduced a builtin [defineConfig](https://docs.taro.zone/docs/config/#defineconfig-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0) function since v3.6.9. Maybe you don't need this package.
+## Install
+
+```bash
+npm i taro-define-config -D
+```
+
+```bash
+yarn add taro-define-config -D
+```
+
+```bash
+pnpm add taro-define-config -D
+```
 
 ## Usage
 
@@ -40,8 +51,12 @@ export default defineConfig({
 
 ## Why this package
 
+> [!NOTE]  
+> Taro introduced a builtin [defineConfig](https://docs.taro.zone/docs/config/#defineconfig-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0) function since v3.6.9. Maybe you don't need this package.
+
 Improve your TaroJS project configuration experience with:
 
+- 🍭 more fine-grained type support than built-in `defineConfig`
 - 🤖 auto-suggestions
 - ✅ type checking (Use // @ts-check at the first line in your config file)
 - 📖 documentation
