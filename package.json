@@ -53,17 +53,17 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.6",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^22.6.1",
-    "rollup": "^4.22.4",
+    "@types/node": "^22.7.4",
+    "rollup": "^4.22.5",
     "tapable": "^2.2.1",
-    "webpack": "^5.94.0",
+    "webpack": "^5.95.0",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.1.0"
   },
   "devDependencies": {
     "@ntnyq/eslint-config": "^3.0.0-beta.17",
     "@ntnyq/prettier-config": "^1.21.3",
-    "bumpp": "^9.5.2",
+    "bumpp": "^9.6.1",
     "eslint": "^9.11.1",
     "husky": "^9.1.6",
     "nano-staged": "^0.8.0",
