@@ -1,6 +1,6 @@
 import { defineConfig } from 'taro-define-config'
 import { expectTypeOf, it } from 'vitest'
-import type { TaroConfigExport } from 'taro-define-config'
+import type { TaroConfig, TaroConfigExport, TaroConfigFnObject } from 'taro-define-config'
 
 declare module 'taro-define-config' {
   export interface CustomPluginOptionsMap {
@@ -16,11 +16,11 @@ const getConfigurablePluginConfig = () => ({
 })
 
 it('define object config', () => {
-  expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfigExport>()
+  expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
 })
 
 it('define function config', () => {
-  expectTypeOf(defineConfig(() => ({}))).toEqualTypeOf<TaroConfigExport>()
+  expectTypeOf(defineConfig(() => ({}))).toEqualTypeOf<TaroConfigFnObject>()
 })
 
 it('define async function config', () => {

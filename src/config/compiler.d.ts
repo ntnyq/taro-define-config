@@ -1,5 +1,5 @@
 import type { FilterOptions } from './common'
-import type { ESBuildBuildOptions, SWCConfigs, WebpackConfiguration } from './packages'
+import type { ESBuildBuildOptions, SWCConfigs, VitePlugin, WebpackConfiguration } from './packages'
 
 export type CompilerViteTypes = 'vite'
 export type CompilerWebpackTypes = 'webpack5'
@@ -68,9 +68,9 @@ export interface CompilerConfig<T> {
 
   /**
    * 错误处理级别
-   * @default 0
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#compilererrorlevel
+   * @default 0
    */
   errorLevel?: number
 
@@ -82,10 +82,9 @@ export interface CompilerConfig<T> {
   prebundle?: CompilerPrebundle
 
   /**
-   * Vite 插件
+   * Vite 插件，仅 `vite` 支持
    */
-  // TODO: replace any
-  vitePlugins?: any
+  vitePlugins?: VitePlugin[]
 }
 
 export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> = T | CompilerConfig<T>

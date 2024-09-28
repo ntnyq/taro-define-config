@@ -1,3 +1,7 @@
+/**
+ * @file Types for `webpack`
+ */
+
 import type webpack from 'webpack'
 import type { Compilation, Compiler, Configuration, LoaderContext } from 'webpack'
 

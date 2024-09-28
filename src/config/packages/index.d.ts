@@ -1,5 +1,6 @@
 export * from './sass'
 export * from './less'
+export * from './vite'
 export * from './stylus'
 export * from './rollup'
 export * from './webpack'

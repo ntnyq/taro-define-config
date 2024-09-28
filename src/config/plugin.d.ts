@@ -41,8 +41,6 @@ export interface OfficialPluginOptionsMap {
 export interface CustomPluginOptionsMap {}
 export type PluginsOptionsMap = OfficialPluginOptionsMap & CustomPluginOptionsMap
 
-export type OfficialPluginName = keyof OfficialPluginOptionsMap
-export type CustomPluginName = keyof CustomPluginOptionsMap
 export type PluginName = keyof PluginsOptionsMap
 
 export type PluginTuple<T extends PluginName = PluginName> =
