@@ -13,6 +13,7 @@ export interface PlatformMiniMinifyXML {
    * 是否合并 xml 文件中的空格
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#miniminifyxmlcollapsewhitespace
+   * @default false
    */
   collapseWhitespace?: boolean
 }
@@ -31,6 +32,11 @@ export interface PlatformMiniExperimental {
    * @default false
    */
   compileMode?: boolean | string
+
+  /**
+   * 模版渲染时是否使用 wxs 等小程序脚本语言
+   */
+  useXsForTemplate?: boolean
 }
 
 export interface PlatformMiniRuntime {
@@ -77,6 +83,7 @@ export interface PlatformMini<T extends CompilerTypes = CompilerWebpackTypes>
    * `SourceMap` 类型
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail/#minisourcemaptype
+   * @default `cheap-module-source-map`
    */
   sourceMapType?: SourceMapType
 
@@ -109,8 +116,8 @@ export interface PlatformMini<T extends CompilerTypes = CompilerWebpackTypes>
   /**
    * 是否跳过第三方依赖 usingComponent 的处理，默认为自动处理第三方依赖的自定义组件
    *
-   * @default false
    * @since `Taro v3.6.13`
+   * @default false
    */
   skipProcessUsingComponents?: boolean
 
