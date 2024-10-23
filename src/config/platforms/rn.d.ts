@@ -5,10 +5,12 @@
  */
 
 import type { ConfigurablePlugin } from '../common'
+import type { DesignRatio, DesignWidth } from '../design'
 import type {
   LessOptions,
   PostcssCssModulesOptions,
   PostcssPxtransformOptions,
+  RollupOptions,
   SassOptions,
   StylusOptions,
 } from '../packages'
@@ -59,6 +61,38 @@ export interface PlatformRNResolve {
   include: string[]
 
   [key: string]: any
+}
+
+export interface PlatformRNNativeComponents {
+  /**
+   * 外部依赖
+   */
+  external?: Array<string | RegExp> | ((array: Array<string | RegExp>) => Array<string | RegExp>)
+
+  /**
+   * 设置外部依赖，如果返回 `string`, 则将该值作为 `external`
+   *
+   * @description 默认将 `node_modules` 路径下的文件设置为外部依赖
+   */
+  externalResolve?: (importee: string, importer: string) => string
+
+  /**
+   * 组件输出路径
+   *
+   * @default `dist`
+   */
+  output?: string
+
+  /**
+   * 修改 `Rollup` 打包配置
+   */
+  modifyRollupConfig?: (
+    config: RollupOptions,
+    innerPlugins: {
+      taroResolver: any
+      styleTransformer: any
+    },
+  ) => RollupOptions
 }
 
 export interface PlatformRN {
@@ -122,6 +156,7 @@ export interface PlatformRN {
    * 支持多 `className` 转换，以 `classname` 或 `style` 结尾的，提取前缀，然后根据前缀，再生成对应的 `xxxStyle`
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnenablemultipleclassname
+   * @default false
    */
   enableMultipleClassName?: boolean
 
@@ -129,6 +164,7 @@ export interface PlatformRN {
    * 当标签 `style` 属性值是数组时转换成对象
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnenablemergestyle
+   * @default false
    */
   enableMergeStyle?: boolean
 
@@ -136,8 +172,29 @@ export interface PlatformRN {
    * 将 `svg` 文件转换为组件引入
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnenablesvgtransform
+   * @default false
    */
   enableSvgTransform?: boolean
+
+  /**
+   * 别名
+   */
+  alias?: Record<string, any>
+
+  /**
+   * 设计稿尺寸
+   */
+  designWidth?: DesignWidth
+
+  /**
+   * 设计稿尺寸换算规则
+   */
+  designRatio?: DesignRatio
+
+  /**
+   * 原生组件编译配置
+   */
+  nativeComponents?: PlatformRNNativeComponents
 
   [key: string]: any
 }
