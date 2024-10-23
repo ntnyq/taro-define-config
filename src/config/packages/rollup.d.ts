@@ -2,6 +2,4 @@
  * @file Rollup
  */
 
-import type { OutputOptions } from 'rollup'
-
-export type RollupOutputOptions = OutputOptions
+export type { OutputOptions as RollupOutputOptions, RollupOptions } from 'rollup'

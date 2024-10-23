@@ -5,15 +5,13 @@
  */
 
 import type { LiteralUnion } from '../../utility-types'
-import type { DesignWidth } from '../design-width'
+import type { DesignRatio, DesignWidth } from '../design'
 
 export type PostcssPxtransformPlatform = LiteralUnion<
   'weapp' | 'h5' | 'rn' | 'quickapp' | 'harmony'
 >
 
 export type PostcssPxtransformTargetUnit = LiteralUnion<'rpx' | 'px' | 'rem' | 'vw'>
-
-export type PostcssPxtransformDeviceRatio = Record<number, number>
 
 export interface PostcssPxtransformOptions {
   /**
@@ -30,7 +28,7 @@ export interface PostcssPxtransformOptions {
    */
   designWidth?: DesignWidth
 
-  deviceRatio?: PostcssPxtransformDeviceRatio
+  deviceRatio?: DesignRatio
 
   /**
    * @default 16

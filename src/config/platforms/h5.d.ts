@@ -126,6 +126,7 @@ export interface PlatformH5<T extends CompilerTypes = CompilerWebpackTypes>
    * `SourceMap` 类型
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5sourcemaptype
+   * @default `cheap-module-eval-source-map`
    */
   sourceMapType?: SourceMapType
 
@@ -133,6 +134,7 @@ export interface PlatformH5<T extends CompilerTypes = CompilerWebpackTypes>
    * 用于控制在 H5 端是否使用兼容性组件库
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5usehtmlcomponents
+   * @default false
    */
   useHtmlComponents?: boolean
 

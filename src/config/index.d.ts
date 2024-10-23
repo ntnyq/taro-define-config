@@ -2,7 +2,7 @@ import type { LiteralUnion } from '../utility-types'
 import type { Cache } from './cache'
 import type { Compiler, CompilerTypes, CompilerWebpackTypes } from './compiler'
 import type { Copy } from './copy'
-import type { DesignWidth } from './design-width'
+import type { DesignRatio, DesignWidth } from './design'
 import type { Logger } from './logger'
 import type {
   CSSMinimizer,
@@ -47,7 +47,7 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
   /**
    * 设计稿尺寸换算规则
    */
-  deviceRatio?: Record<number, number>
+  deviceRatio?: DesignRatio
 
   /**
    * 项目源码目录

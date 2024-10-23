@@ -4,6 +4,4 @@
  * @see https://github.com/webpack/webpack-dev-server
  */
 
-import type { Configuration } from 'webpack-dev-server'
-
-export type DevServerConfiguration = Configuration
+export type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
