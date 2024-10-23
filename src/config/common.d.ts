@@ -180,9 +180,9 @@ export type BaseWebpackConfigOptions = {
     parseAstType: ParseAstType,
   ) => void
 }
-export type CommonWebpackConfigOptions<T extends PlatformUnion> = T extends 'harmony'
+export type CommonWebpackConfigOptions<T extends PlatformUnion> = T extends 'h5'
   ? BaseWebpackConfigOptions
-  : {
+  : BaseWebpackConfigOptions & {
       /**
        * `style-loader` 的附加配置
        * @see https://github.com/webpack-contrib/style-loader
