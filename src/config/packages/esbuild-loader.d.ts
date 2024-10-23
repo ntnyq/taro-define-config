@@ -1,5 +1,5 @@
 /**
- * @file types from esbuild-loader 4.0.0
+ * @file types from esbuild-loader 4.2.2
  *
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
  */
@@ -8,7 +8,7 @@ import type { transform, TransformOptions } from './esbuild'
 
 type Filter = string | RegExp
 
-interface Implementation {
+type Implementation = {
   transform: typeof transform
 }
 
@@ -30,6 +30,7 @@ type EsbuildPluginOptions = Except<TransformOptions, 'sourcemap' | 'sourcefile'>
   include?: Filter | Filter[]
   exclude?: Filter | Filter[]
   css?: boolean
+
   /** Pass a custom esbuild implementation */
   implementation?: Implementation
 }
@@ -37,7 +38,7 @@ type EsbuildPluginOptions = Except<TransformOptions, 'sourcemap' | 'sourcefile'>
 declare class EsbuildPlugin {
   constructor(options?: EsbuildPluginOptions)
 
-  apply(compiler: any): void
+  apply(): void
 }
 
-export { EsbuildPlugin, EsbuildPluginOptions, LoaderOptions }
+export { EsbuildPlugin, type EsbuildPluginOptions, type LoaderOptions }

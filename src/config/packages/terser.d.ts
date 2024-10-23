@@ -1,6 +1,8 @@
 /// <reference lib="es2015" />
 
 /**
+ * @file Types for terser v5.36.0
+ *
  * @see {@link https://github.com/terser/terser/blob/master/tools/terser.d.ts}
  */
 
@@ -19,9 +21,7 @@ type DropConsoleOption = boolean | ConsoleProperty[]
 
 export interface ParseOptions {
   bare_returns?: boolean
-  /**
-   * @deprecated legacy option. Currently, all supported EcmaScript is valid to parse.
-   */
+  /** @deprecated legacy option. Currently, all supported EcmaScript is valid to parse. */
   ecma?: ECMA
   html5_comments?: boolean
   shebang?: boolean

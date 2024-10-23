@@ -1,7 +1,9 @@
 /**
- * @file types from @swc/core 1.3.78
+ * @file Types for @swc/core 1.3.78
+ * @description from @swc/types 0.1.12
  *
  * @see https://www.npmjs.com/package/@swc/core?activeTab=code
+ * @see https://www.npmjs.com/package/@swc/types?activeTab=code
  */
 
 /* cSpell: disable */
@@ -25,7 +27,7 @@ export interface JsMinifyOptions {
   ecma?: TerserEcmaVersion
   keep_classnames?: boolean
   keep_fnames?: boolean
-  module?: boolean
+  module?: boolean | 'unknown'
   safari10?: boolean
   toplevel?: boolean
   sourceMap?: boolean
@@ -214,9 +216,37 @@ export interface TerserCompressOptions {
 }
 export interface TerserMangleOptions {
   props?: TerserManglePropertiesOptions
+  /**
+   * Pass `true` to mangle names declared in the top level scope.
+   */
+  topLevel?: boolean
+  /**
+   * @deprecated An alias for compatibility with terser.
+   */
   toplevel?: boolean
+  /**
+   * Pass `true` to not mangle class names.
+   */
+  keepClassNames?: boolean
+  /**
+   * @deprecated An alias for compatibility with terser.
+   */
   keep_classnames?: boolean
+  /**
+   * Pass `true` to not mangle function names.
+   */
+  keepFnNames?: boolean
+  /**
+   * @deprecated An alias for compatibility with terser.
+   */
   keep_fnames?: boolean
+  /**
+   * Pass `true` to not mangle private props.
+   */
+  keepPrivateProps?: boolean
+  /**
+   * @deprecated An alias for compatibility with terser.
+   */
   keep_private_props?: boolean
   ie8?: boolean
   safari10?: boolean
@@ -424,6 +454,12 @@ export interface EnvConfig {
   debug?: boolean
   dynamicImport?: boolean
   loose?: boolean
+  /**
+   * Transpiles the broken syntax to the closest non-broken modern syntax
+   *
+   * Defaults to false.
+   */
+  bugfixes?: boolean
   skip?: string[]
   include?: string[]
   exclude?: string[]
@@ -459,9 +495,20 @@ export interface JscConfig {
    * Keep class names.
    */
   keepClassNames?: boolean
+  /**
+   * This is experimental, and can be removed without a major version bump.
+   */
   experimental?: {
     optimizeHygiene?: boolean
-    keepImportAssertions?: boolean
+    /**
+     * Preserve `with` in imports and exports.
+     */
+    keepImportAttributes?: boolean
+    /**
+     * Use `assert` instead of `with` for imports and exports.
+     * This option only works when `keepImportAttributes` is `true`.
+     */
+    emitAssertForImportAttributes?: boolean
     /**
      * Specify the location where SWC stores its intermediate cache files.
      * Currently only transform plugin uses this. If not specified, SWC will
@@ -475,7 +522,15 @@ export interface JscConfig {
      *
      * Second parameter of tuple is JSON based configuration for the plugin.
      */
-    plugins?: [string, Record<string, any>][]
+    plugins?: Array<[string, Record<string, any>]>
+    /**
+     * Disable builtin transforms. If enabled, only Wasm plugins are used.
+     */
+    disableBuiltinTransformsForInternalTesting?: boolean
+    /**
+     * Emit isolated dts files for each module.
+     */
+    emitIsolatedDts?: boolean
   }
   baseUrl?: string
   paths?: {
@@ -508,7 +563,7 @@ export interface TsParserConfig {
    */
   decorators?: boolean
   /**
-   * Defaults to `false`
+   * @deprecated Always true because it's in ecmascript spec.
    */
   dynamicImport?: boolean
 }
@@ -575,9 +630,29 @@ export interface EsParserConfig {
    */
   topLevelAwait?: boolean
   /**
-   * Defaults to `false`
+   * @deprecated An alias of `importAttributes`
    */
   importAssertions?: boolean
+  /**
+   * Defaults to `false`
+   */
+  importAttributes?: boolean
+  /**
+   * Defaults to `false`
+   */
+  allowSuperOutsideMethod?: boolean
+  /**
+   * Defaults to `false`
+   */
+  allowReturnOutsideFunction?: boolean
+  /**
+   * Defaults to `false`
+   */
+  autoAccessors?: boolean
+  /**
+   * Defaults to `false`
+   */
+  explicitResourceManagement?: boolean
 }
 /**
  * Options for transform.
@@ -600,6 +675,10 @@ export interface TransformConfig {
    * https://swc.rs/docs/configuring-swc.html#jsctransformdecoratormetadata
    */
   decoratorMetadata?: boolean
+  /**
+   * https://swc.rs/docs/configuration/compilation#jsctransformdecoratorversion
+   */
+  decoratorVersion?: '2021-12' | '2022-03'
   treatConstEnumAsEnum?: boolean
   useDefineForClassFields?: boolean
 }
@@ -686,7 +765,7 @@ export interface GlobalPassOption {
    *
    * Defaults to `["NODE_ENV", "SWC_ENV"]`
    */
-  envs?: string[]
+  envs?: string[] | Record<string, string>
   /**
    * Replaces typeof calls for passed variables with corresponding value
    *

@@ -1,5 +1,5 @@
 import type { FilterOptions } from './common'
-import type { ESBuildBuildOptions, SWCConfigs, VitePlugin, WebpackConfiguration } from './packages'
+import type { ESBuildBuildOptions, SWCConfig, VitePlugin, WebpackConfiguration } from './packages'
 
 export type CompilerViteTypes = 'vite'
 export type CompilerWebpackTypes = 'webpack5'
@@ -46,7 +46,7 @@ export interface CompilerPrebundle extends FilterOptions {
    *
    * @see https://swc.rs/docs/usage/core#options
    */
-  swc?: SWCConfigs
+  swc?: SWCConfig
 
   /**
    * 自定义 `webpack` 配置

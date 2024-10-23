@@ -6,13 +6,14 @@
 
 import type { LiteralUnion } from '../../utility-types'
 
-export type PostcssHtmlTransformPlatform = LiteralUnion<'h5' | 'rn' | 'quickapp'>
+export type PostcssHtmlTransformPlatform = LiteralUnion<'mini-program' | 'h5' | 'rn' | 'quickapp'>
 
 export interface PostcssHtmlTransformOptions {
   /**
-   * 目标构建平台，默认 `mini-program`
+   * 目标构建平台
    *
    * @see https://github.com/NervJS/taro/blob/884c799553df1682ef0996c59c7fbd77f60755c9/packages/postcss-html-transform/src/index.ts#L12
+   * @default `mini-program`
    */
   platform?: PostcssHtmlTransformPlatform
 

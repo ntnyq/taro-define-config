@@ -1,8 +1,9 @@
 /**
- * @file types from esbuild-loader 0.19.2
+ * @file Types for esbuild v0.24.0
  *
  * @see https://www.npmjs.com/package/esbuild?activeTab=code
  */
+
 export type Platform = 'browser' | 'node' | 'neutral'
 export type Format = 'iife' | 'cjs' | 'esm'
 export type Loader =
