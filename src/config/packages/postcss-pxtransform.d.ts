@@ -7,27 +7,24 @@
 import type { LiteralUnion } from '../../utility-types'
 import type { DesignRatio, DesignWidth } from '../design'
 
-export type PostcssPxtransformPlatform = LiteralUnion<
-  'weapp' | 'h5' | 'rn' | 'quickapp' | 'harmony'
->
-
-export type PostcssPxtransformTargetUnit = LiteralUnion<'rpx' | 'px' | 'rem' | 'vw'>
-
 export interface PostcssPxtransformOptions {
   /**
-   * target platform
+   * 目标平台
    *
    * @default `weapp`
    */
-  platform?: PostcssPxtransformPlatform
+  platform?: LiteralUnion<'weapp' | 'h5' | 'rn' | 'quickapp' | 'harmony'>
 
   /**
-   * design width
+   * 设计稿尺寸
    *
    * @default 750
    */
   designWidth?: DesignWidth
 
+  /**
+   * 设计稿尺寸换算规则
+   */
   deviceRatio?: DesignRatio
 
   /**
@@ -41,7 +38,7 @@ export interface PostcssPxtransformOptions {
   root_value?: number
 
   /**
-   * The decimal numbers to allow the REM units to grow to
+   * `rem` 单位允许的小数位
    *
    * @default 5
    */
@@ -53,7 +50,7 @@ export interface PostcssPxtransformOptions {
   unit_precision?: number
 
   /**
-   * The properties that can change from px to rem
+   * 允许转换的属性列表
    *
    * @default ['*']
    */
@@ -70,7 +67,7 @@ export interface PostcssPxtransformOptions {
   propWhiteList?: string[]
 
   /**
-   * The selectors to ignore and leave as px
+   * 黑名单里的选择器将会被忽略
    *
    * @default []
    */
@@ -82,14 +79,14 @@ export interface PostcssPxtransformOptions {
   selector_black_list?: (string | RegExp)[]
 
   /**
-   * replaces rules containing rems instead of adding fallbacks
+   * 直接替换而不是追加一条进行覆盖
    *
    * @default true
    */
   replace?: boolean
 
   /**
-   * Allow px to be converted in media queries
+   * 允许媒体查询里的 px 单位转换
    *
    * @default false
    */
@@ -101,37 +98,60 @@ export interface PostcssPxtransformOptions {
   media_query?: boolean
 
   /**
-   * Set the minimum pixel value to replace
+   * 设置一个可被转换的最小 px 值
    *
    * @default 0
    */
   minPixelValue?: number
 
   /**
-   * min root size
+   * H5 字体尺寸大小基准值，开发者可以自行调整单位换算的基准值
    *
+   * @description supported h5 only
+   * @default 20
+   */
+  baseFontSize?: number
+
+  /**
+   * H5 根节点 font-size 的最小值
+   *
+   * @description supported h5 only
    * @default 20
    */
   minRootSize?: number
 
   /**
-   * base font size
+   * H5 根节点 font-size 的最大值
+   *
+   * @description supported h5 only
+   * @default 40
    */
-  baseFontSize?: number
+  maxRootSize?: number
 
   /**
-   * if transform 1 px
+   * 设置 1px 是否需要被转换
    *
    * @default false
    */
   onePxTransform?: boolean
 
   /**
-   * target unit
-   *
-   * @default `rpx`
+   * 转换后的单位，当前仅支持小程序 (默认 `rpx`) 和 Web 端 (默认 `rem`)
+   * @description Web 端使用 rem 单位时会注入脚本用于设置 body 上的 font-size 属性，其他单位无该操作
    */
-  targetUnit?: PostcssPxtransformTargetUnit
+  targetUnit?: LiteralUnion<'rpx' | 'rem' | 'vw'>
+
+  /**
+   * 启用的能力 Scope
+   *
+   * @default ['platform', 'size']
+   */
+  methods?: string[]
+
+  /**
+   * filter 回调函数，可 exclude 不处理的文件
+   */
+  exclude?: (fileName: string) => boolean
 
   [key: string]: any
 }
