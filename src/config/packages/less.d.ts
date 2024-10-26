@@ -1,10 +1,12 @@
-import type { AnyFn } from '../../utility-types'
-
 /**
- * `less` options
+ * `less` 配置
  *
+ * @see https://lesscss.org/usage/#less-options
  * @see https://lesscss.org/usage/#less-options-source-map-options
  */
+
+import type { AnyFn } from '../../utility-types'
+
 export interface LessSourceMap {
   outputFilename?: string
   sourceMapRootpath?: string
@@ -14,11 +16,6 @@ export interface LessSourceMap {
   sourceMapURL?: string
 }
 
-/**
- * `less` 配置
- *
- * @see https://lesscss.org/usage/#less-options
- */
 export interface LessOptions {
   /**
    * Source map options

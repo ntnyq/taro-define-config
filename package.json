@@ -53,7 +53,7 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.6",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^22.7.9",
+    "@types/node": "^22.8.1",
     "rollup": "^4.24.0",
     "tapable": "^2.2.1",
     "vite": "^5.4.10",
@@ -68,10 +68,10 @@
     "eslint": "^9.13.0",
     "husky": "^9.1.6",
     "nano-staged": "^0.8.0",
-    "npm-run-all2": "^7.0.0",
+    "npm-run-all2": "^7.0.1",
     "prettier": "^3.3.3",
     "taro-define-config": "workspace:*",
-    "tsup": "^8.3.0",
+    "tsup": "^8.3.5",
     "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   },

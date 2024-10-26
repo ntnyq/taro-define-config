@@ -18,7 +18,7 @@ export interface PostcssHtmlTransformOptions {
   platform?: PostcssHtmlTransformPlatform
 
   /**
-   * 是否移除鼠标样式
+   * 是否移除鼠标样式, `h5` 平台默认为 `true`
    *
    * @see https://github.com/NervJS/taro/blob/884c799553df1682ef0996c59c7fbd77f60755c9/packages/postcss-html-transform/src/index.ts#L46
    */

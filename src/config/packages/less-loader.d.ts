@@ -7,24 +7,18 @@
 import type { LessOptions } from './less'
 import type { WebpackLoaderContext } from './webpack'
 
-export type LessLoaderLessOptions =
-  | LessOptions
-  | ((loaderConext: WebpackLoaderContext) => LessOptions)
-
-export type LessLoaderAdditionalData =
-  | string
-  | ((content: string, loaderContext: WebpackLoaderContext) => string | Promise<string>)
-
 export interface LessLoaderOptions {
   /**
    * less options in camelCase
    */
-  lessOptions?: LessLoaderLessOptions
+  lessOptions?: LessOptions | ((loaderConext: WebpackLoaderContext) => LessOptions)
 
   /**
    * prepends/appends Less code to the actual entry file
    */
-  additionalData?: LessLoaderAdditionalData
+  additionalData?:
+    | string
+    | ((content: string, loaderContext: WebpackLoaderContext) => string | Promise<string>)
 
   /**
    * if generation of source maps
