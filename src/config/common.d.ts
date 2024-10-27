@@ -1,3 +1,4 @@
+import type { Buffer } from 'node:buffer'
 import type {
   AutoprefixerOptions,
   ChainableWebpackConfig,
@@ -13,8 +14,9 @@ import type {
   StylusLoaderOptions,
   URLLoaderOptions,
   Webpack,
+  WebpackLoaderContext,
 } from '../config/packages'
-import type { LiteralUnion } from '../utility-types'
+import type { Awaitable, LiteralUnion } from '../utility-types'
 
 /**
  * `Webpack devtool` 类型
@@ -189,3 +191,20 @@ export type CommonWebpackConfigOptions<T extends PlatformUnion> = T extends 'h5'
        */
       styleLoaderOption?: StyleLoaderOptions
     }
+
+/**
+ * `additionalData` 类型
+ *  @description
+ *  - `less-loader` 附加数据
+ *  - `sass-loader` 附加数据
+ *  - `stylus-loader` 附加数据
+ */
+export type LoaderAdditionalData<T extends 'sass' | 'less' | 'stylus'> =
+  | string
+  | (T extends 'stylus'
+      ? (
+          content: string | Buffer,
+          loaderContext: WebpackLoaderContext,
+          meta: any,
+        ) => Awaitable<string>
+      : (content: string, loaderContext: WebpackLoaderContext) => Awaitable<string>)

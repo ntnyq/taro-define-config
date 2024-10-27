@@ -4,7 +4,7 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#rn
  */
 
-import type { ConfigurablePlugin } from '../common'
+import type { ConfigurablePlugin, LoaderAdditionalData } from '../common'
 import type { DesignRatio, DesignWidth } from '../design'
 import type {
   LessOptions,
@@ -18,13 +18,13 @@ import type {
 /**
  * @internal
  */
-type ProcessorOptionsWithAdditionalData<T> = {
+type ProcessorOptionsWithAdditionalData<T, P extends 'sass' | 'less' | 'stylus'> = {
   options?: T
-  additionalData?: string | ((...args: any[]) => string)
+  additionalData?: LoaderAdditionalData<P>
 }
 
 /**
- * @see https://github.com/NervJS/taro/blob/next/packages/taro-rn-style-transformer/README.md#rnpostcss
+ * @see https://github.com/NervJS/taro/blob/main/packages/taro-rn-style-transformer/README.md#rnpostcss
  */
 export interface PlatformRNPostCSSOptions {
   /**
@@ -129,21 +129,21 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: ProcessorOptionsWithAdditionalData<SassOptions>
+  sass?: ProcessorOptionsWithAdditionalData<SassOptions, 'sass'>
 
   /**
    * `less` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnless
    */
-  less?: ProcessorOptionsWithAdditionalData<LessOptions>
+  less?: ProcessorOptionsWithAdditionalData<LessOptions, 'less'>
 
   /**
    * `stylus` 相关配置
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnstylus
    */
-  stylus?: ProcessorOptionsWithAdditionalData<StylusOptions>
+  stylus?: ProcessorOptionsWithAdditionalData<StylusOptions, 'stylus'>
 
   /**
    * `resolve` 处理依赖文件配置

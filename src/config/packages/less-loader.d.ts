@@ -5,6 +5,7 @@
  * @compatibility 12.2.0
  */
 
+import type { LoaderAdditionalData } from '../common'
 import type { LessOptions } from './less'
 import type { WebpackLoaderContext } from './webpack'
 
@@ -21,9 +22,7 @@ export interface LessLoaderOptions {
    *
    * @see https://github.com/webpack-contrib/less-loader#additionaldata
    */
-  additionalData?:
-    | string
-    | ((content: string, loaderContext: WebpackLoaderContext) => string | Promise<string>)
+  additionalData?: LoaderAdditionalData<'less'>
 
   /**
    * if generation of source maps

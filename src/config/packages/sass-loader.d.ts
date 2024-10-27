@@ -6,7 +6,7 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LiteralUnion } from '../../utility-types'
+import type { LoaderAdditionalData } from '../common'
 import type { DartSassOptions, NodeSassOptions } from './sass'
 import type { WebpackLoaderContext } from './webpack'
 
@@ -47,9 +47,7 @@ export interface SassLoaderOptions {
    *
    * @see https://github.com/webpack-contrib/sass-loader#additionaldata
    */
-  additionalData?:
-    | string
-    | ((content: string | Buffer, loaderContext: WebpackLoaderContext) => string)
+  additionalData?: LoaderAdditionalData<'sass'>
 
   /**
    * Enables/Disables the default webpack importer

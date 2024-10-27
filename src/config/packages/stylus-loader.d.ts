@@ -5,8 +5,8 @@
  * @compatibility 8.1.1
  */
 
-import type { Buffer } from 'node:buffer'
 import type { AnyFn } from '../../utility-types'
+import type { LoaderAdditionalData } from '../common'
 import type { StylusOptions } from './stylus'
 import type { WebpackLoaderContext } from './webpack'
 
@@ -53,9 +53,7 @@ export interface StylusLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#additionalData
    */
-  additionalData?:
-    | string
-    | ((content: string | Buffer, loaderContex: WebpackLoaderContext, meta: any) => string)
+  additionalData?: LoaderAdditionalData<'stylus'>
 
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#implementation
