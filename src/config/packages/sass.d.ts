@@ -31,3 +31,15 @@ export interface SassOptions {
    */
   [key: string]: any
 }
+
+export type TaroSassOptions = {
+  [key: string]: any
+}
+
+export type NodeSassOptions = {
+  [key: string]: any
+}
+
+export type DartSassOptions = {
+  [key: string]: any
+}

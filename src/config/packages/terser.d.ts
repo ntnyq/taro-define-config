@@ -1,9 +1,10 @@
 /// <reference lib="es2015" />
 
 /**
- * @file Types for terser v5.36.0
+ * @file `terser` 类型
  *
  * @see {@link https://github.com/terser/terser/blob/master/tools/terser.d.ts}
+ * @compatibility 5.36.0
  */
 
 /* cSpell: disable */

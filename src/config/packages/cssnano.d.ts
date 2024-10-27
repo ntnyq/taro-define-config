@@ -2,6 +2,7 @@
  * `cssnano` 配置
  *
  * @see https://github.com/cssnano/cssnano/blob/master/packages/cssnano/types/index.d.ts
+ * @compatibility 7.0.6
  */
 
 import type { AnyFn } from '../../utility-types'
@@ -10,12 +11,12 @@ export type CSSNanoConfig<T> = T | [T] | [T, Record<string, any>]
 
 export interface CSSNanoOptions {
   /**
-   * @see https://cssnano.co/docs/config-file/#choose-a-preset
+   * @see https://cssnano.github.io/cssnano/docs/config-file/#choose-a-preset
    */
   preset?: CSSNanoConfig<string> | CSSNanoConfig<AnyFn>
 
   /**
-   * @see https://cssnano.co/docs/config-file/#use-individual-plugins
+   * @see https://cssnano.github.io/cssnano/docs/config-file/#use-individual-plugins
    */
   plugins?:
     | CSSNanoConfig<string>
@@ -23,7 +24,7 @@ export interface CSSNanoOptions {
     | (CSSNanoConfig<string> | CSSNanoConfig<AnyFn>)[]
 
   /**
-   * @see https://github.com/cssnano/cssnano/blob/4f269016ea7e6489a0f477cfe68057aea9717460/packages/cssnano/src/index.js#L94
+   * @see https://github.com/cssnano/cssnano/blob/master/packages/cssnano/types/index.d.ts
    */
   configFile?: string
 }

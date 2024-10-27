@@ -2,6 +2,7 @@
  * `stylus-loader` 配置
  *
  * @see https://github.com/webpack-contrib/stylus-loader#options
+ * @compatibility 8.1.1
  */
 
 import type { Buffer } from 'node:buffer'
@@ -45,6 +46,7 @@ export interface StylusLoaderOptions {
 
   /**
    * @see https://github.com/webpack-contrib/stylus-loader#webpackimporter
+   * @default true
    */
   webpackImporter?: boolean
 

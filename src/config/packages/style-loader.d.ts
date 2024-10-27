@@ -3,6 +3,7 @@
  * `style-loader` 配置
  *
  * @see https://github.com/webpack-contrib/style-loader#options
+ * @compatibility 4.0.0
  */
 
 import type { LiteralUnion } from '../../utility-types'
@@ -19,12 +20,16 @@ export type StyleLoaderInjectType = LiteralUnion<
 
 export interface StyleLoaderOptions {
   /**
+   * Allows to setup how styles will be injected into the DOM
+   *
    * @see https://github.com/webpack-contrib/style-loader#injecttype
    * @default `styleTag`
    */
   injectType?: StyleLoaderInjectType
 
   /**
+   * attach given attributes with their values on <style> / <link> element
+   *
    * @see https://github.com/webpack-contrib/style-loader#attributes
    */
   attributes?: Record<string, string>

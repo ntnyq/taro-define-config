@@ -2,6 +2,7 @@
  * `url-loader` 配置
  *
  * @see https://github.com/webpack-contrib/url-loader#options
+ * @compatibility 4.1.1
  */
 
 export interface URLLoaderOptions {

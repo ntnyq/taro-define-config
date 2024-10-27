@@ -2,6 +2,7 @@
  * `postcss-modules` 配置
  *
  * @see https://github.com/madyankin/postcss-modules
+ * @compatibility 6.0.0
  */
 
 import type { LiteralUnion } from '../../utility-types'
@@ -14,19 +15,15 @@ export class CustomLoader {
   finalSource?: string
 }
 
-export type PostcssCssModulesLocalsConvention =
-  | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
-  | ((originalClassName: string, generatedClassName: string, inputFile: string) => string)
-
-export type PostcssCssModulesLoader = typeof CustomLoader
-
 export interface PostcssCssModulesOptions {
   getJSON?: (cssFilename: string, json: Record<string, string>, outputFilename: string) => void
 
   /**
    * style of exported classnames, the keys in your json
    */
-  localsConvention?: PostcssCssModulesLocalsConvention
+  localsConvention?:
+    | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
+    | ((originalClassName: string, generatedClassName: string, inputFile: string) => string)
 
   /**
    * change all the classes are local or global
@@ -68,7 +65,7 @@ export interface PostcssCssModulesOptions {
   /**
    * use custom loader if needed
    */
-  Loader?: PostcssCssModulesLoader
+  Loader?: typeof CustomLoader
 
   /**
    * resolve custom path alias

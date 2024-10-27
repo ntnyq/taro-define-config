@@ -2,6 +2,7 @@
  * `postcss-url` 配置
  *
  * @see https://github.com/postcss/postcss-url
+ * @compatibility 10.1.3
  */
 
 import type { Buffer } from 'node:buffer'

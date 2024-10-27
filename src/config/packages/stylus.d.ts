@@ -2,18 +2,12 @@
  * `stylus` 配置
  *
  * @see https://stylus-lang.com/
+ * @compatibility 0.64.0
  */
 
 import type { AnyFn } from '../../utility-types'
 
-export type StylusOptionsDefineItemValue = string | number | boolean
-
-export type StylusOptionsDefineItem = [string, StylusOptionsDefineItemValue, boolean?]
-
-/**
- * @deprecated
- */
-export type StylusOptionsDefineObject = Record<string, StylusOptionsDefineItemValue>
+export type StylusOptionsDefineItem = [string, string | number | boolean, boolean?]
 
 export interface StylusOptions {
   /**
@@ -35,7 +29,7 @@ export interface StylusOptions {
    * Define Stylus variables or functions
    * @default {}
    */
-  define?: StylusOptionsDefineItem[] | StylusOptionsDefineObject
+  define?: StylusOptionsDefineItem[] | Record<string, string | number | boolean>
 
   /**
    * Include regular CSS on \@import

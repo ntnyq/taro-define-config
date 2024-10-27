@@ -1,7 +1,8 @@
 /**
- * @file types from esbuild-loader 4.2.2
+ * @file `esbuild-loader` 配置
  *
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
+ * @compatibility 4.2.2
  */
 
 import type { transform, TransformOptions } from './esbuild'

@@ -10,10 +10,9 @@ import type { WebpackLoaderContext } from './webpack'
 
 export interface LessLoaderOptions {
   /**
-   * less options in camelCase
+   * less options in camelCase, default value is `{ relativeUrls: true }`
    *
    * @see https://github.com/webpack-contrib/less-loader#lessoptions
-   * @default { relativeUrls: true }
    */
   lessOptions?: LessOptions | ((loaderConext: WebpackLoaderContext) => LessOptions)
 

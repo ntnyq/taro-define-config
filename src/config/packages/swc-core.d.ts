@@ -1,9 +1,9 @@
 /**
- * @file Types for @swc/core 1.3.78
- * @description from @swc/types 0.1.12
- *
+ * @file swc 类型
  * @see https://www.npmjs.com/package/@swc/core?activeTab=code
  * @see https://www.npmjs.com/package/@swc/types?activeTab=code
+ * @compatibility 1.3.78 for @swc/core
+ * @compatibility 0.1.12 for @swc/types
  */
 
 /* cSpell: disable */
