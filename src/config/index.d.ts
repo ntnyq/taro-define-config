@@ -11,7 +11,7 @@ import type {
   JSMinimizer,
   TerserMinimizer,
 } from './minimizers'
-import type { SassOptions } from './packages'
+import type { TaroSassOptions } from './packages'
 import type { PlatformH5, PlatformHarmony, PlatformMini, PlatformRN } from './platforms'
 import type { Plugin } from './plugin'
 import type { Preset } from './preset'
@@ -125,7 +125,7 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#sass
    */
-  sass?: SassOptions
+  sass?: TaroSassOptions
 
   /**
    * Taro 插件配置

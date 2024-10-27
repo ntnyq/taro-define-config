@@ -7,11 +7,12 @@
 import type { ConfigurablePlugin, LoaderAdditionalData } from '../common'
 import type { DesignRatio, DesignWidth } from '../design'
 import type {
+  DartSassOptions,
   LessOptions,
+  NodeSassOptions,
   PostcssCssModulesOptions,
   PostcssPxtransformOptions,
   RollupOptions,
-  SassOptions,
   StylusOptions,
 } from '../packages'
 
@@ -129,7 +130,7 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: ProcessorOptionsWithAdditionalData<SassOptions, 'sass'>
+  sass?: ProcessorOptionsWithAdditionalData<NodeSassOptions | DartSassOptions, 'sass'>
 
   /**
    * `less` 相关配置
