@@ -1,7 +1,7 @@
 {
   "name": "taro-define-config",
   "version": "0.10.0",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "tarojs",
@@ -54,7 +54,7 @@
     "@jridgewell/source-map": "^0.3.6",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^22.8.1",
-    "rollup": "^4.24.0",
+    "rollup": "^4.24.2",
     "tapable": "^2.2.1",
     "vite": "^5.4.10",
     "webpack": "^5.95.0",
