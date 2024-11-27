@@ -357,11 +357,6 @@ interface CommonSassOptions {
   file?: string
 
   /**
-   * An array of paths that LibSass can look in to attempt to resolve your \@import declarations
-   */
-  includePaths?: string[]
-
-  /**
    * Handles when LibSass encounters the \@import directive
    *
    * @experimental
@@ -376,45 +371,11 @@ interface CommonSassOptions {
   functions?: Record<string, AnyFn>
 
   /**
-   * determine whether to use space or tab character for indentation
-   *
-   * @default `space`
-   */
-  indentType?: LiteralUnion<'tab' | 'space'>
-
-  /**
-   * determine the number of spaces or tabs to be used for indentation, max is 10
-   *
-   * @default 2
-   */
-  indentWidth?: number
-
-  /**
-   * determine whether to use cr, crlf, lf or lfcr sequence for line break
-   * @default `lf`
-   */
-  linefeed?: LiteralUnion<'if' | 'cf' | 'crlf' | 'lfcr'>
-
-  /**
    * `true` values disable the inclusion of source map information in the output file
    *
    * @default false
    */
   omitSourceMapUrl?: boolean
-
-  /**
-   * determine how many digits after the decimal will be allowed
-   *
-   * @default 5
-   */
-  precision?: number
-
-  /**
-   * Enables the line number and file where a selector is defined to be emitted into the compiled CSS as a comment
-   *
-   * @default false
-   */
-  sourceComments?: boolean
 
   /**
    * Enables source map generation during render and renderSync
@@ -455,6 +416,11 @@ export interface NodeSassOptions extends CommonSassOptions {
   data?: string
 
   /**
+   * An array of paths that LibSass can look in to attempt to resolve your \@import declarations
+   */
+  includePaths?: string[]
+
+  /**
    * true values enable Sass Indented Syntax for parsing the data string or file
    *
    * @default false
@@ -473,6 +439,41 @@ export interface NodeSassOptions extends CommonSassOptions {
    */
   outputStyle?: LiteralUnion<'nested' | 'expanded' | 'compact' | 'compressed'>
 
+  /**
+   * determine whether to use space or tab character for indentation
+   *
+   * @default `space`
+   */
+  indentType?: LiteralUnion<'tab' | 'space'>
+
+  /**
+   * determine the number of spaces or tabs to be used for indentation, max is 10
+   *
+   * @default 2
+   */
+  indentWidth?: number
+
+  /**
+   * determine whether to use cr, crlf, lf or lfcr sequence for line break
+   *
+   * @default `lf`
+   */
+  linefeed?: LiteralUnion<'if' | 'cf' | 'crlf' | 'lfcr'>
+
+  /**
+   * determine how many digits after the decimal will be allowed
+   *
+   * @default 5
+   */
+  precision?: number
+
+  /**
+   * Enables the line number and file where a selector is defined to be emitted into the compiled CSS as a comment
+   *
+   * @default false
+   */
+  sourceComments?: boolean
+
   [key: string]: any
 }
 
@@ -480,14 +481,19 @@ export interface NodeSassOptions extends CommonSassOptions {
  * `dart-sass` 配置, `sass-loader` 仅支持部分配置
  *
  * @see https://github.com/sass/dart-sass
- * @compatibility 1.80.4
+ * @compatibility 1.81.0
  */
 export interface DartSassOptions extends CommonSassOptions {
   /**
    * A string to pass to compile
-   * @description `unavailable` and will be ignored
+   * `unavailable` and will be ignored
    */
   data?: never
+
+  /**
+   * Paths in which to look for stylesheets loaded by rules like \@use and \@import.
+   */
+  loadPaths?: string[]
 
   /**
    * Specify the intended location of the output file
@@ -498,8 +504,16 @@ export interface DartSassOptions extends CommonSassOptions {
    * Determines the output format of the final CSS style
    *
    * @default `expanded`
+   * @deprecated use `style` instead
    */
   outputStyle?: LiteralUnion<'expanded' | 'compressed'>
+
+  /**
+   * Determines the output format of the final CSS style
+   *
+   * @default `expanded`
+   */
+  style?: LiteralUnion<'expanded' | 'compressed'>
 
   /**
    * By default, if the CSS document contains non-ASCII characters, Sass adds a
@@ -555,6 +569,30 @@ export interface DartSassOptions extends CommonSassOptions {
    * `pkg:` URL scheme.
    */
   pkgImporter?: NodePackageImporter
+
+  /**
+   * If this is true, the compiler will exclusively use ASCII characters in its error and warning  * messages. Otherwise, it may use non-ASCII Unicode characters as well.
+   *
+   * @default false
+   */
+  alertAscii?: boolean
+
+  /**
+   * If this is true, the compiler will use ANSI color escape codes in its error and warning
+   * messages. If it's false, it won't use these. If it's undefined, the compiler will determine
+   * whether or not to use colors depending on whether the user is using an interactive terminal.
+   *
+   * @default false
+   */
+  alertColor?: boolean
+
+  /**
+   * Whether Sass should include the sources in the generated source map.
+   * This option has no effect if sourceMap is false.
+   *
+   * @default false
+   */
+  sourceMapIncludeSources?: boolean
 
   [key: string]: any
 }
