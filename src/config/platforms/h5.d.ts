@@ -17,6 +17,7 @@ import type {
   DevServerConfiguration,
   HtmlWebpackPluginOptions,
   RollupOutputOptions,
+  Webpack,
   WebpackConfiguration,
 } from '../packages'
 
