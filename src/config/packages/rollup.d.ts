@@ -2,4 +2,4 @@
  * @file Rollup
  */
 
-export type { OutputOptions as RollupOutputOptions, RollupOptions } from 'rollup'
+export type { RollupOptions, OutputOptions as RollupOutputOptions } from 'rollup'

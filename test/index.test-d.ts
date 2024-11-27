@@ -24,6 +24,7 @@ it('define function config', () => {
 })
 
 it('define async function config', () => {
+  // eslint-disable-next-line @typescript-eslint/require-await
   expectTypeOf(defineConfig(async () => ({}))).toEqualTypeOf<TaroConfigExport>()
 })
 

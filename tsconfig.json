@@ -9,5 +9,6 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["./src/**/*.ts", "./test/**/*.ts", "./*.config.ts", "./*.config.mjs"]
 }
