@@ -2,7 +2,7 @@ import type { LiteralUnion } from '../../utility-types'
 import type { ConfigurablePlugin } from '../common'
 import type { EsbuildPluginOptions, TerserMinifyOptions } from '../packages'
 
-export type JSMinimizer = LiteralUnion<'terser' | 'esbuild'>
+export type JSMinimizer = LiteralUnion<'esbuild' | 'terser'>
 
 export type TerserMinimizer = ConfigurablePlugin<TerserMinifyOptions>
 

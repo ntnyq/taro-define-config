@@ -87,4 +87,4 @@ export interface CompilerConfig<T> {
   vitePlugins?: VitePlugin[]
 }
 
-export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> = T | CompilerConfig<T>
+export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> = CompilerConfig<T> | T

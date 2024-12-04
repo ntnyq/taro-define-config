@@ -17,14 +17,14 @@ export interface URLLoaderOptions {
    * @see https://github.com/webpack-contrib/url-loader#limit
    * @default true
    */
-  limit?: number | string | boolean
+  limit?: boolean | number | string
 
   /**
    * Sets the MIME type for the file to be transformed
    *
    * @see https://github.com/webpack-contrib/url-loader#mimetype
    */
-  mimetype?: string | boolean
+  mimetype?: boolean | string
 
   /**
    * Specify the encoding which the file will be inlined with
@@ -32,7 +32,7 @@ export interface URLLoaderOptions {
    * @see https://github.com/webpack-contrib/url-loader#encoding
    * @default `base64`
    */
-  encoding?: string | boolean
+  encoding?: boolean | string
 
   /**
    * You can create you own custom implementation for encoding data.

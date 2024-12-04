@@ -13,7 +13,7 @@ export interface DesignWidthInput {
 }
 
 /**
- * @param input 样式文件绝对路径
+ * @param input - 样式文件绝对路径
  *
  * @returns 设计稿尺寸
  */
@@ -22,4 +22,4 @@ export type DesignWidth = number | ((input?: number | string | DesignWidthInput)
 /**
  * 设计稿尺寸换算规则
  */
-export type DesignRatio = Record<string | number, number>
+export type DesignRatio = Record<number | string, number>

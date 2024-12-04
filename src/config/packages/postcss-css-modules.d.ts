@@ -70,7 +70,7 @@ export interface PostcssCssModulesOptions {
   /**
    * resolve custom path alias
    */
-  resolve?: (file: string, importer: string) => string | null | Promise<string | null>
+  resolve?: (file: string, importer: string) => string | Promise<string | null> | null
 
   [key: string]: any
 }

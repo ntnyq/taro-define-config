@@ -22,7 +22,7 @@ export interface CSSLoaderImport {
   ) => boolean
 }
 
-export type CSSLoaderModulesUnion = LiteralUnion<'local' | 'global' | 'pure' | 'icss'>
+export type CSSLoaderModulesUnion = LiteralUnion<'global' | 'icss' | 'local' | 'pure'>
 
 export type CSSLoaderModulesExportLocalsConvention = LiteralUnion<
   | 'asIs'
@@ -32,8 +32,8 @@ export type CSSLoaderModulesExportLocalsConvention = LiteralUnion<
   | 'dashesOnly'
   // Lowercase
   | 'as-is'
-  | 'camel-case'
   | 'camel-case-only'
+  | 'camel-case'
   | 'dashes-only'
 >
 
@@ -137,26 +137,26 @@ export interface CSSLoaderModulesObject {
     replacements,
   }: {
     resourcePath: string
-    imports: Array<{
-      type: string
-      importName: string
-      url: string
-      icss: boolean
-      index: number
-    }>
     exports: Array<{
       name: string
       value: string
     }>
+    imports: Array<{
+      icss: boolean
+      importName: string
+      index: number
+      type: string
+      url: string
+    }>
     replacements: Array<{
-      replacementName: string
       importName: string
       localName: string
+      replacementName: string
     }>
   }) => Awaitable<void>
 }
 
-export type CSSLoaderExportType = LiteralUnion<'array' | 'string' | 'css-style-sheet'>
+export type CSSLoaderExportType = LiteralUnion<'array' | 'css-style-sheet' | 'string'>
 
 export interface CSSLoaderOptions {
   /**
@@ -174,7 +174,7 @@ export interface CSSLoaderOptions {
   /**
    * @see https://github.com/webpack-contrib/css-loader#modules
    */
-  modules?: boolean | CSSLoaderModulesUnion | CSSLoaderModulesObject
+  modules?: boolean | CSSLoaderModulesObject | CSSLoaderModulesUnion
 
   /**
    * @see https://github.com/webpack-contrib/css-loader#sourcemap

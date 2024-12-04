@@ -21,14 +21,14 @@ export type ParseOptions = ParserConfig & {
   target?: JscTarget
 }
 
-export type TerserEcmaVersion = 5 | 2015 | 2016 | string | number
+export type TerserEcmaVersion = 2015 | 2016 | 5 | number | string
 
 export interface JsMinifyOptions {
-  compress?: TerserCompressOptions | boolean
+  compress?: boolean | TerserCompressOptions
 
   format?: JsFormatOptions & ToSnakeCaseProperties<JsFormatOptions>
 
-  mangle?: TerserMangleOptions | boolean
+  mangle?: boolean | TerserMangleOptions
 
   ecma?: TerserEcmaVersion
 
@@ -36,7 +36,7 @@ export interface JsMinifyOptions {
 
   keep_fnames?: boolean
 
-  module?: boolean | 'unknown'
+  module?: 'unknown' | boolean
 
   safari10?: boolean
 
@@ -94,7 +94,7 @@ export interface JsFormatOptions {
    * - `'all'`: preserves all comments
    * @default false
    */
-  comments?: false | 'some' | 'all'
+  comments?: 'all' | 'some' | false
 
   /**
    * Currently noop.
@@ -136,7 +136,7 @@ export interface JsFormatOptions {
    * Currently noop.
    * @alias max_line_len
    */
-  maxLineLen?: number | false
+  maxLineLen?: false | number
 
   /**
    * Currently noop.
@@ -436,7 +436,7 @@ export interface Options extends Config {
    * to skip loading any swc.config.js files in the project root,
    * which can lead to unexpected errors and compilation failure.
    */
-  rootMode?: 'root' | 'upward' | 'upward-optional'
+  rootMode?: 'root' | 'upward-optional' | 'upward'
 
   /**
    * The current active environment used during configuration loading.
@@ -463,7 +463,7 @@ export interface Options extends Config {
    *
    * Defaults to `path.resolve(opts.root, ".swcrc")`
    */
-  configFile?: string | boolean
+  configFile?: boolean | string
 
   /**
    * true will enable searching for configuration files relative to the "filename" provided to Swc.
@@ -523,7 +523,7 @@ export interface Options extends Config {
 
   plugin?: Plugin
 
-  isModule?: boolean | 'unknown'
+  isModule?: 'unknown' | boolean
 
   /**
    * Destination path. Note that this value is used only to fix source path
@@ -567,7 +567,7 @@ export interface Config {
    * - Note: These options are bit weird, so it may make the most sense to just use true
    *  and handle the rest in your own code, depending on your use case.
    */
-  sourceMaps?: boolean | 'inline'
+  sourceMaps?: 'inline' | boolean
 
   inlineSourcesContent?: boolean
 }
@@ -576,7 +576,7 @@ export interface Config {
  * Configuration ported from babel-preset-env
  */
 export interface EnvConfig {
-  mode?: 'usage' | 'entry'
+  mode?: 'entry' | 'usage'
   debug?: boolean
   dynamicImport?: boolean
 
@@ -715,8 +715,6 @@ export interface JscConfig {
 }
 
 export type JscTarget =
-  | 'es3'
-  | 'es5'
   | 'es2015'
   | 'es2016'
   | 'es2017'
@@ -727,9 +725,11 @@ export type JscTarget =
   | 'es2022'
   | 'es2023'
   | 'es2024'
+  | 'es3'
+  | 'es5'
   | 'esnext'
 
-export type ParserConfig = TsParserConfig | EsParserConfig
+export type ParserConfig = EsParserConfig | TsParserConfig
 export interface TsParserConfig {
   syntax: 'typescript'
   /**
@@ -961,7 +961,7 @@ export interface GlobalPassOption {
    *
    * Defaults to `["NODE_ENV", "SWC_ENV"]`
    */
-  envs?: string[] | Record<string, string>
+  envs?: Record<string, string> | string[]
 
   /**
    * Replaces typeof calls for passed variables with corresponding value
@@ -972,12 +972,12 @@ export interface GlobalPassOption {
 }
 
 export type ModuleConfig =
-  | Es6Config
-  | CommonJsConfig
-  | UmdConfig
   | AmdConfig
+  | CommonJsConfig
+  | Es6Config
   | NodeNextConfig
   | SystemjsConfig
+  | UmdConfig
 
 export interface BaseModuleConfig {
   /**
@@ -1133,7 +1133,7 @@ export interface BaseModuleConfig {
    * _bar.bar;
    * ```
    */
-  importInterop?: 'swc' | 'babel' | 'node' | 'none'
+  importInterop?: 'babel' | 'node' | 'none' | 'swc'
   /**
    * Emits `cjs-module-lexer` annotation
    * `cjs-module-lexer` is used in Node.js core for detecting the named exports available when importing a CJS module into ESM.
@@ -1210,7 +1210,7 @@ export interface HasDecorator {
   decorators?: Decorator[]
 }
 
-export interface Class extends HasSpan, HasDecorator {
+export interface Class extends HasDecorator, HasSpan {
   body: ClassMember[]
 
   superClass?: Expression
@@ -1225,16 +1225,16 @@ export interface Class extends HasSpan, HasDecorator {
 }
 
 export type ClassMember =
-  | Constructor
   | ClassMethod
-  | PrivateMethod
   | ClassProperty
-  | PrivateProperty
-  | TsIndexSignature
+  | Constructor
   | EmptyStatement
+  | PrivateMethod
+  | PrivateProperty
   | StaticBlock
+  | TsIndexSignature
 
-export interface ClassPropertyBase extends Node, HasSpan, HasDecorator {
+export interface ClassPropertyBase extends HasDecorator, HasSpan, Node {
   value?: Expression
 
   typeAnnotation?: TsTypeAnnotation
@@ -1268,17 +1268,17 @@ export interface PrivateProperty extends ClassPropertyBase {
   key: PrivateName
 }
 
-export interface Param extends Node, HasSpan, HasDecorator {
+export interface Param extends HasDecorator, HasSpan, Node {
   type: 'Parameter'
   pat: Pattern
 }
 
-export interface Constructor extends Node, HasSpan {
+export interface Constructor extends HasSpan, Node {
   type: 'Constructor'
 
   key: PropertyName
 
-  params: (TsParameterProperty | Param)[]
+  params: (Param | TsParameterProperty)[]
 
   body?: BlockStatement
 
@@ -1287,7 +1287,7 @@ export interface Constructor extends Node, HasSpan {
   isOptional: boolean
 }
 
-export interface ClassMethodBase extends Node, HasSpan {
+export interface ClassMethodBase extends HasSpan, Node {
   function: Fn
 
   kind: MethodKind
@@ -1315,28 +1315,28 @@ export interface PrivateMethod extends ClassMethodBase {
   key: PrivateName
 }
 
-export interface StaticBlock extends Node, HasSpan {
+export interface StaticBlock extends HasSpan, Node {
   type: 'StaticBlock'
 
   body: BlockStatement
 }
 
-export interface Decorator extends Node, HasSpan {
+export interface Decorator extends HasSpan, Node {
   type: 'Decorator'
 
   expression: Expression
 }
 
-export type MethodKind = 'method' | 'getter' | 'setter'
+export type MethodKind = 'getter' | 'method' | 'setter'
 
 export type Declaration =
   | ClassDeclaration
   | FunctionDeclaration
-  | VariableDeclaration
-  | TsInterfaceDeclaration
-  | TsTypeAliasDeclaration
   | TsEnumDeclaration
+  | TsInterfaceDeclaration
   | TsModuleDeclaration
+  | TsTypeAliasDeclaration
+  | VariableDeclaration
 
 export interface FunctionDeclaration extends Fn {
   type: 'FunctionDeclaration'
@@ -1354,7 +1354,7 @@ export interface ClassDeclaration extends Class, Node {
   declare: boolean
 }
 
-export interface VariableDeclaration extends Node, HasSpan {
+export interface VariableDeclaration extends HasSpan, Node {
   type: 'VariableDeclaration'
 
   kind: VariableDeclarationKind
@@ -1364,9 +1364,9 @@ export interface VariableDeclaration extends Node, HasSpan {
   declarations: VariableDeclarator[]
 }
 
-export type VariableDeclarationKind = 'var' | 'let' | 'const'
+export type VariableDeclarationKind = 'const' | 'let' | 'var'
 
-export interface VariableDeclarator extends Node, HasSpan {
+export interface VariableDeclarator extends HasSpan, Node {
   type: 'VariableDeclarator'
 
   id: Pattern
@@ -1379,46 +1379,46 @@ export interface VariableDeclarator extends Node, HasSpan {
 }
 
 export type Expression =
-  | ThisExpression
   | ArrayExpression
-  | ObjectExpression
-  | FunctionExpression
-  | UnaryExpression
-  | UpdateExpression
-  | BinaryExpression
-  | AssignmentExpression
-  | MemberExpression
-  | SuperPropExpression
-  | ConditionalExpression
-  | CallExpression
-  | NewExpression
-  | SequenceExpression
-  | Identifier
-  | Literal
-  | TemplateLiteral
-  | TaggedTemplateExpression
   | ArrowFunctionExpression
-  | ClassExpression
-  | YieldExpression
-  | MetaProperty
+  | AssignmentExpression
   | AwaitExpression
-  | ParenthesisExpression
+  | BinaryExpression
+  | CallExpression
+  | ClassExpression
+  | ConditionalExpression
+  | FunctionExpression
+  | Identifier
+  | Invalid
+  | JSXElement
+  | JSXEmptyExpression
+  | JSXFragment
   | JSXMemberExpression
   | JSXNamespacedName
-  | JSXEmptyExpression
-  | JSXElement
-  | JSXFragment
-  | TsTypeAssertion
-  | TsConstAssertion
-  | TsNonNullExpression
-  | TsAsExpression
-  | TsSatisfiesExpression
-  | TsInstantiation
-  | PrivateName
+  | Literal
+  | MemberExpression
+  | MetaProperty
+  | NewExpression
+  | ObjectExpression
   | OptionalChainingExpression
-  | Invalid
+  | ParenthesisExpression
+  | PrivateName
+  | SequenceExpression
+  | SuperPropExpression
+  | TaggedTemplateExpression
+  | TemplateLiteral
+  | ThisExpression
+  | TsAsExpression
+  | TsConstAssertion
+  | TsInstantiation
+  | TsNonNullExpression
+  | TsSatisfiesExpression
+  | TsTypeAssertion
+  | UnaryExpression
+  | UpdateExpression
+  | YieldExpression
 
-interface ExpressionBase extends Node, HasSpan {}
+interface ExpressionBase extends HasSpan, Node {}
 
 export interface Identifier extends ExpressionBase {
   type: 'Identifier'
@@ -1463,7 +1463,7 @@ export interface ExprOrSpread {
 export interface ObjectExpression extends ExpressionBase {
   type: 'ObjectExpression'
 
-  properties: (SpreadElement | Property)[]
+  properties: (Property | SpreadElement)[]
 }
 
 export interface Argument {
@@ -1507,7 +1507,7 @@ export interface BinaryExpression extends ExpressionBase {
   right: Expression
 }
 
-export interface FunctionExpression extends Fn, ExpressionBase {
+export interface FunctionExpression extends ExpressionBase, Fn {
   type: 'FunctionExpression'
 
   identifier?: Identifier
@@ -1534,7 +1534,7 @@ export interface MemberExpression extends ExpressionBase {
 
   object: Expression
 
-  property: Identifier | PrivateName | ComputedPropName
+  property: ComputedPropName | Identifier | PrivateName
 }
 
 export interface SuperPropExpression extends ExpressionBase {
@@ -1542,7 +1542,7 @@ export interface SuperPropExpression extends ExpressionBase {
 
   obj: Super
 
-  property: Identifier | ComputedPropName
+  property: ComputedPropName | Identifier
 }
 
 export interface ConditionalExpression extends ExpressionBase {
@@ -1555,18 +1555,18 @@ export interface ConditionalExpression extends ExpressionBase {
   alternate: Expression
 }
 
-export interface Super extends Node, HasSpan {
+export interface Super extends HasSpan, Node {
   type: 'Super'
 }
 
-export interface Import extends Node, HasSpan {
+export interface Import extends HasSpan, Node {
   type: 'Import'
 }
 
 export interface CallExpression extends ExpressionBase {
   type: 'CallExpression'
 
-  callee: Super | Import | Expression
+  callee: Expression | Import | Super
 
   arguments: Argument[]
 
@@ -1613,10 +1613,10 @@ export interface YieldExpression extends ExpressionBase {
   delegate: boolean
 }
 
-export interface MetaProperty extends Node, HasSpan {
+export interface MetaProperty extends HasSpan, Node {
   type: 'MetaProperty'
 
-  kind: 'new.target' | 'import.meta'
+  kind: 'import.meta' | 'new.target'
 }
 
 export interface AwaitExpression extends ExpressionBase {
@@ -1657,7 +1657,7 @@ export interface ParenthesisExpression extends ExpressionBase {
   expression: Expression
 }
 
-export interface Fn extends HasSpan, HasDecorator {
+export interface Fn extends HasDecorator, HasSpan {
   params: Param[]
 
   body?: BlockStatement
@@ -1671,7 +1671,7 @@ export interface Fn extends HasSpan, HasDecorator {
   returnType?: TsTypeAnnotation
 }
 
-interface PatternBase extends Node, HasSpan {
+interface PatternBase extends HasSpan, Node {
   typeAnnotation?: TsTypeAnnotation
 }
 
@@ -1681,7 +1681,7 @@ export interface PrivateName extends ExpressionBase {
   id: Identifier
 }
 
-export type JSXObject = JSXMemberExpression | Identifier
+export type JSXObject = Identifier | JSXMemberExpression
 
 export interface JSXMemberExpression extends Node {
   type: 'JSXMemberExpression'
@@ -1700,19 +1700,19 @@ export interface JSXNamespacedName extends Node {
   name: Identifier
 }
 
-export interface JSXEmptyExpression extends Node, HasSpan {
+export interface JSXEmptyExpression extends HasSpan, Node {
   type: 'JSXEmptyExpression'
 }
 
-export interface JSXExpressionContainer extends Node, HasSpan {
+export interface JSXExpressionContainer extends HasSpan, Node {
   type: 'JSXExpressionContainer'
 
   expression: JSXExpression
 }
 
-export type JSXExpression = JSXEmptyExpression | Expression
+export type JSXExpression = Expression | JSXEmptyExpression
 
-export interface JSXSpreadChild extends Node, HasSpan {
+export interface JSXSpreadChild extends HasSpan, Node {
   type: 'JSXSpreadChild'
 
   expression: Expression
@@ -1720,7 +1720,7 @@ export interface JSXSpreadChild extends Node, HasSpan {
 
 export type JSXElementName = Identifier | JSXMemberExpression | JSXNamespacedName
 
-export interface JSXOpeningElement extends Node, HasSpan {
+export interface JSXOpeningElement extends HasSpan, Node {
   type: 'JSXOpeningElement'
 
   name: JSXElementName
@@ -1734,13 +1734,13 @@ export interface JSXOpeningElement extends Node, HasSpan {
 
 export type JSXAttributeOrSpread = JSXAttribute | SpreadElement
 
-export interface JSXClosingElement extends Node, HasSpan {
+export interface JSXClosingElement extends HasSpan, Node {
   type: 'JSXClosingElement'
 
   name: JSXElementName
 }
 
-export interface JSXAttribute extends Node, HasSpan {
+export interface JSXAttribute extends HasSpan, Node {
   type: 'JSXAttribute'
 
   name: JSXAttributeName
@@ -1750,16 +1750,16 @@ export interface JSXAttribute extends Node, HasSpan {
 
 export type JSXAttributeName = Identifier | JSXNamespacedName
 
-export type JSXAttrValue = Literal | JSXExpressionContainer | JSXElement | JSXFragment
+export type JSXAttrValue = JSXElement | JSXExpressionContainer | JSXFragment | Literal
 
-export interface JSXText extends Node, HasSpan {
+export interface JSXText extends HasSpan, Node {
   type: 'JSXText'
 
   value: string
   raw: string
 }
 
-export interface JSXElement extends Node, HasSpan {
+export interface JSXElement extends HasSpan, Node {
   type: 'JSXElement'
 
   opening: JSXOpeningElement
@@ -1768,13 +1768,13 @@ export interface JSXElement extends Node, HasSpan {
 }
 
 export type JSXElementChild =
-  | JSXText
-  | JSXExpressionContainer
-  | JSXSpreadChild
   | JSXElement
+  | JSXExpressionContainer
   | JSXFragment
+  | JSXSpreadChild
+  | JSXText
 
-export interface JSXFragment extends Node, HasSpan {
+export interface JSXFragment extends HasSpan, Node {
   type: 'JSXFragment'
 
   opening: JSXOpeningFragment
@@ -1784,24 +1784,24 @@ export interface JSXFragment extends Node, HasSpan {
   closing: JSXClosingFragment
 }
 
-export interface JSXOpeningFragment extends Node, HasSpan {
+export interface JSXOpeningFragment extends HasSpan, Node {
   type: 'JSXOpeningFragment'
 }
 
-export interface JSXClosingFragment extends Node, HasSpan {
+export interface JSXClosingFragment extends HasSpan, Node {
   type: 'JSXClosingFragment'
 }
 
 export type Literal =
-  | StringLiteral
+  | BigIntLiteral
   | BooleanLiteral
+  | JSXText
   | NullLiteral
   | NumericLiteral
-  | BigIntLiteral
   | RegExpLiteral
-  | JSXText
+  | StringLiteral
 
-export interface StringLiteral extends Node, HasSpan {
+export interface StringLiteral extends HasSpan, Node {
   type: 'StringLiteral'
 
   value: string
@@ -1809,24 +1809,24 @@ export interface StringLiteral extends Node, HasSpan {
   raw?: string
 }
 
-export interface BooleanLiteral extends Node, HasSpan {
+export interface BooleanLiteral extends HasSpan, Node {
   type: 'BooleanLiteral'
 
   value: boolean
 }
 
-export interface NullLiteral extends Node, HasSpan {
+export interface NullLiteral extends HasSpan, Node {
   type: 'NullLiteral'
 }
 
-export interface RegExpLiteral extends Node, HasSpan {
+export interface RegExpLiteral extends HasSpan, Node {
   type: 'RegExpLiteral'
 
   pattern: string
   flags: string
 }
 
-export interface NumericLiteral extends Node, HasSpan {
+export interface NumericLiteral extends HasSpan, Node {
   type: 'NumericLiteral'
 
   value: number
@@ -1834,7 +1834,7 @@ export interface NumericLiteral extends Node, HasSpan {
   raw?: string
 }
 
-export interface BigIntLiteral extends Node, HasSpan {
+export interface BigIntLiteral extends HasSpan, Node {
   type: 'BigIntLiteral'
 
   value: bigint
@@ -1843,29 +1843,29 @@ export interface BigIntLiteral extends Node, HasSpan {
 }
 
 export type ModuleDeclaration =
-  | ImportDeclaration
+  | ExportAllDeclaration
   | ExportDeclaration
-  | ExportNamedDeclaration
   | ExportDefaultDeclaration
   | ExportDefaultExpression
-  | ExportAllDeclaration
-  | TsImportEqualsDeclaration
+  | ExportNamedDeclaration
+  | ImportDeclaration
   | TsExportAssignment
+  | TsImportEqualsDeclaration
   | TsNamespaceExportDeclaration
 
-export interface ExportDefaultExpression extends Node, HasSpan {
+export interface ExportDefaultExpression extends HasSpan, Node {
   type: 'ExportDefaultExpression'
 
   expression: Expression
 }
 
-export interface ExportDeclaration extends Node, HasSpan {
+export interface ExportDeclaration extends HasSpan, Node {
   type: 'ExportDeclaration'
 
   declaration: Declaration
 }
 
-export interface ImportDeclaration extends Node, HasSpan {
+export interface ImportDeclaration extends HasSpan, Node {
   type: 'ImportDeclaration'
 
   specifiers: ImportSpecifier[]
@@ -1877,7 +1877,7 @@ export interface ImportDeclaration extends Node, HasSpan {
   asserts?: ObjectExpression
 }
 
-export interface ExportAllDeclaration extends Node, HasSpan {
+export interface ExportAllDeclaration extends HasSpan, Node {
   type: 'ExportAllDeclaration'
 
   source: StringLiteral
@@ -1889,7 +1889,7 @@ export interface ExportAllDeclaration extends Node, HasSpan {
  * - `export { foo } from 'mod'`
  * - `export { foo as bar } from 'mod'`
  */
-export interface ExportNamedDeclaration extends Node, HasSpan {
+export interface ExportNamedDeclaration extends HasSpan, Node {
   type: 'ExportNamedDeclaration'
 
   specifiers: ExportSpecifier[]
@@ -1901,7 +1901,7 @@ export interface ExportNamedDeclaration extends Node, HasSpan {
   asserts?: ObjectExpression
 }
 
-export interface ExportDefaultDeclaration extends Node, HasSpan {
+export interface ExportDefaultDeclaration extends HasSpan, Node {
   type: 'ExportDefaultDeclaration'
 
   decl: DefaultDecl
@@ -1910,14 +1910,14 @@ export interface ExportDefaultDeclaration extends Node, HasSpan {
 export type DefaultDecl = ClassExpression | FunctionExpression | TsInterfaceDeclaration
 
 export type ImportSpecifier =
-  | NamedImportSpecifier
   | ImportDefaultSpecifier
   | ImportNamespaceSpecifier
+  | NamedImportSpecifier
 
 /**
  * e.g. `import foo from 'mod.js'`
  */
-export interface ImportDefaultSpecifier extends Node, HasSpan {
+export interface ImportDefaultSpecifier extends HasSpan, Node {
   type: 'ImportDefaultSpecifier'
   local: Identifier
 }
@@ -1925,7 +1925,7 @@ export interface ImportDefaultSpecifier extends Node, HasSpan {
 /**
  * e.g. `import * as foo from 'mod.js'`.
  */
-export interface ImportNamespaceSpecifier extends Node, HasSpan {
+export interface ImportNamespaceSpecifier extends HasSpan, Node {
   type: 'ImportNamespaceSpecifier'
 
   local: Identifier
@@ -1940,7 +1940,7 @@ export interface ImportNamespaceSpecifier extends Node, HasSpan {
  *
  * local = bar, imported = Some(foo) for
  */
-export interface NamedImportSpecifier extends Node, HasSpan {
+export interface NamedImportSpecifier extends HasSpan, Node {
   type: 'ImportSpecifier'
   local: Identifier
   imported?: ModuleExportName
@@ -1950,26 +1950,26 @@ export interface NamedImportSpecifier extends Node, HasSpan {
 export type ModuleExportName = Identifier | StringLiteral
 
 export type ExportSpecifier =
-  | ExportNamespaceSpecifier
   | ExportDefaultSpecifier
+  | ExportNamespaceSpecifier
   | NamedExportSpecifier
 
 /**
  * `export * as foo from 'src';`
  */
-export interface ExportNamespaceSpecifier extends Node, HasSpan {
+export interface ExportNamespaceSpecifier extends HasSpan, Node {
   type: 'ExportNamespaceSpecifier'
 
   name: ModuleExportName
 }
 
-export interface ExportDefaultSpecifier extends Node, HasSpan {
+export interface ExportDefaultSpecifier extends HasSpan, Node {
   type: 'ExportDefaultSpecifier'
 
   exported: Identifier
 }
 
-export interface NamedExportSpecifier extends Node, HasSpan {
+export interface NamedExportSpecifier extends HasSpan, Node {
   type: 'ExportSpecifier'
 
   orig: ModuleExportName
@@ -1989,13 +1989,13 @@ interface HasInterpreter {
 
 export type Program = Module | Script
 
-export interface Module extends Node, HasSpan, HasInterpreter {
+export interface Module extends HasInterpreter, HasSpan, Node {
   type: 'Module'
 
   body: ModuleItem[]
 }
 
-export interface Script extends Node, HasSpan, HasInterpreter {
+export interface Script extends HasInterpreter, HasSpan, Node {
   type: 'Script'
 
   body: Statement[]
@@ -2004,62 +2004,62 @@ export interface Script extends Node, HasSpan, HasInterpreter {
 export type ModuleItem = ModuleDeclaration | Statement
 
 export type BinaryOperator =
-  | '=='
+  | '-'
   | '!='
-  | '==='
   | '!=='
+  | '??'
+  | '*'
+  | '**'
+  | '/'
+  | '&'
+  | '&&'
+  | '%'
+  | '^'
+  | '+'
   | '<'
+  | '<<'
   | '<='
+  | '=='
+  | '==='
   | '>'
   | '>='
-  | '<<'
   | '>>'
   | '>>>'
-  | '+'
-  | '-'
-  | '*'
-  | '/'
-  | '%'
   | '|'
-  | '^'
-  | '&'
   | '||'
-  | '&&'
   | 'in'
   | 'instanceof'
-  | '**'
-  | '??'
 
 export type AssignmentOperator =
-  | '='
-  | '+='
   | '-='
+  | '??='
+  | '**='
   | '*='
   | '/='
+  | '&&='
+  | '&='
   | '%='
+  | '^='
+  | '+='
   | '<<='
+  | '='
   | '>>='
   | '>>>='
   | '|='
-  | '^='
-  | '&='
-  | '**='
-  | '&&='
   | '||='
-  | '??='
 
-export type UpdateOperator = '++' | '--'
+export type UpdateOperator = '--' | '++'
 
-export type UnaryOperator = '-' | '+' | '!' | '~' | 'typeof' | 'void' | 'delete'
+export type UnaryOperator = '-' | '!' | '+' | '~' | 'delete' | 'typeof' | 'void'
 
 export type Pattern =
-  | BindingIdentifier
   | ArrayPattern
-  | RestElement
-  | ObjectPattern
   | AssignmentPattern
-  | Invalid
+  | BindingIdentifier
   | Expression
+  | Invalid
+  | ObjectPattern
+  | RestElement
 
 export interface BindingIdentifier extends PatternBase {
   type: 'Identifier'
@@ -2099,8 +2099,8 @@ export interface RestElement extends PatternBase {
 }
 
 export type ObjectPatternProperty =
-  | KeyValuePatternProperty
   | AssignmentPatternProperty
+  | KeyValuePatternProperty
   | RestElement
 
 /**
@@ -2116,7 +2116,7 @@ export interface KeyValuePatternProperty extends Node {
 /**
  * `{key}` or `{key = value}`
  */
-export interface AssignmentPatternProperty extends Node, HasSpan {
+export interface AssignmentPatternProperty extends HasSpan, Node {
   type: 'AssignmentPatternProperty'
 
   key: Identifier
@@ -2125,12 +2125,12 @@ export interface AssignmentPatternProperty extends Node, HasSpan {
 
 /** Identifier is `a` in `{ a, }` */
 export type Property =
-  | Identifier
-  | KeyValueProperty
   | AssignmentProperty
   | GetterProperty
-  | SetterProperty
+  | Identifier
+  | KeyValueProperty
   | MethodProperty
+  | SetterProperty
 
 interface PropBase extends Node {
   key: PropertyName
@@ -2149,7 +2149,7 @@ export interface AssignmentProperty extends Node {
   value: Expression
 }
 
-export interface GetterProperty extends PropBase, HasSpan {
+export interface GetterProperty extends HasSpan, PropBase {
   type: 'GetterProperty'
 
   typeAnnotation?: TsTypeAnnotation
@@ -2157,102 +2157,102 @@ export interface GetterProperty extends PropBase, HasSpan {
   body?: BlockStatement
 }
 
-export interface SetterProperty extends PropBase, HasSpan {
+export interface SetterProperty extends HasSpan, PropBase {
   type: 'SetterProperty'
 
   param: Pattern
   body?: BlockStatement
 }
 
-export interface MethodProperty extends PropBase, Fn {
+export interface MethodProperty extends Fn, PropBase {
   type: 'MethodProperty'
 }
 
 export type PropertyName =
-  | Identifier
-  | StringLiteral
-  | NumericLiteral
-  | ComputedPropName
   | BigIntLiteral
+  | ComputedPropName
+  | Identifier
+  | NumericLiteral
+  | StringLiteral
 
-export interface ComputedPropName extends Node, HasSpan {
+export interface ComputedPropName extends HasSpan, Node {
   type: 'Computed'
   expression: Expression
 }
 
-export interface BlockStatement extends Node, HasSpan {
+export interface BlockStatement extends HasSpan, Node {
   type: 'BlockStatement'
 
   stmts: Statement[]
 }
 
-export interface ExpressionStatement extends Node, HasSpan {
+export interface ExpressionStatement extends HasSpan, Node {
   type: 'ExpressionStatement'
   expression: Expression
 }
 
 export type Statement =
   | BlockStatement
-  | EmptyStatement
-  | DebuggerStatement
-  | WithStatement
-  | ReturnStatement
-  | LabeledStatement
   | BreakStatement
   | ContinueStatement
+  | DebuggerStatement
+  | Declaration
+  | DoWhileStatement
+  | EmptyStatement
+  | ExpressionStatement
+  | ForInStatement
+  | ForOfStatement
+  | ForStatement
   | IfStatement
+  | LabeledStatement
+  | ReturnStatement
   | SwitchStatement
   | ThrowStatement
   | TryStatement
   | WhileStatement
-  | DoWhileStatement
-  | ForStatement
-  | ForInStatement
-  | ForOfStatement
-  | Declaration
-  | ExpressionStatement
+  | WithStatement
 
-export interface EmptyStatement extends Node, HasSpan {
+export interface EmptyStatement extends HasSpan, Node {
   type: 'EmptyStatement'
 }
 
-export interface DebuggerStatement extends Node, HasSpan {
+export interface DebuggerStatement extends HasSpan, Node {
   type: 'DebuggerStatement'
 }
 
-export interface WithStatement extends Node, HasSpan {
+export interface WithStatement extends HasSpan, Node {
   type: 'WithStatement'
 
   object: Expression
   body: Statement
 }
 
-export interface ReturnStatement extends Node, HasSpan {
+export interface ReturnStatement extends HasSpan, Node {
   type: 'ReturnStatement'
 
   argument?: Expression
 }
 
-export interface LabeledStatement extends Node, HasSpan {
+export interface LabeledStatement extends HasSpan, Node {
   type: 'LabeledStatement'
 
   label: Identifier
   body: Statement
 }
 
-export interface BreakStatement extends Node, HasSpan {
+export interface BreakStatement extends HasSpan, Node {
   type: 'BreakStatement'
 
   label?: Identifier
 }
 
-export interface ContinueStatement extends Node, HasSpan {
+export interface ContinueStatement extends HasSpan, Node {
   type: 'ContinueStatement'
 
   label?: Identifier
 }
 
-export interface IfStatement extends Node, HasSpan {
+export interface IfStatement extends HasSpan, Node {
   type: 'IfStatement'
 
   test: Expression
@@ -2260,20 +2260,20 @@ export interface IfStatement extends Node, HasSpan {
   alternate?: Statement
 }
 
-export interface SwitchStatement extends Node, HasSpan {
+export interface SwitchStatement extends HasSpan, Node {
   type: 'SwitchStatement'
 
   discriminant: Expression
   cases: SwitchCase[]
 }
 
-export interface ThrowStatement extends Node, HasSpan {
+export interface ThrowStatement extends HasSpan, Node {
   type: 'ThrowStatement'
 
   argument: Expression
 }
 
-export interface TryStatement extends Node, HasSpan {
+export interface TryStatement extends HasSpan, Node {
   type: 'TryStatement'
 
   block: BlockStatement
@@ -2281,38 +2281,38 @@ export interface TryStatement extends Node, HasSpan {
   finalizer?: BlockStatement
 }
 
-export interface WhileStatement extends Node, HasSpan {
+export interface WhileStatement extends HasSpan, Node {
   type: 'WhileStatement'
 
   test: Expression
   body: Statement
 }
 
-export interface DoWhileStatement extends Node, HasSpan {
+export interface DoWhileStatement extends HasSpan, Node {
   type: 'DoWhileStatement'
 
   test: Expression
   body: Statement
 }
 
-export interface ForStatement extends Node, HasSpan {
+export interface ForStatement extends HasSpan, Node {
   type: 'ForStatement'
 
-  init?: VariableDeclaration | Expression
+  init?: Expression | VariableDeclaration
   test?: Expression
   update?: Expression
   body: Statement
 }
 
-export interface ForInStatement extends Node, HasSpan {
+export interface ForInStatement extends HasSpan, Node {
   type: 'ForInStatement'
 
-  left: VariableDeclaration | Pattern
+  left: Pattern | VariableDeclaration
   right: Expression
   body: Statement
 }
 
-export interface ForOfStatement extends Node, HasSpan {
+export interface ForOfStatement extends HasSpan, Node {
   type: 'ForOfStatement'
 
   /**
@@ -2321,12 +2321,12 @@ export interface ForOfStatement extends Node, HasSpan {
    *  es2018 for-await-of statements, e.g., `for await (const x of xs) {`
    */
   await?: Span
-  left: VariableDeclaration | Pattern
+  left: Pattern | VariableDeclaration
   right: Expression
   body: Statement
 }
 
-export interface SwitchCase extends Node, HasSpan {
+export interface SwitchCase extends HasSpan, Node {
   type: 'SwitchCase'
 
   /**
@@ -2336,7 +2336,7 @@ export interface SwitchCase extends Node, HasSpan {
   consequent: Statement[]
 }
 
-export interface CatchClause extends Node, HasSpan {
+export interface CatchClause extends HasSpan, Node {
   type: 'CatchClause'
 
   /**
@@ -2346,19 +2346,19 @@ export interface CatchClause extends Node, HasSpan {
   body: BlockStatement
 }
 
-export interface TsTypeAnnotation extends Node, HasSpan {
+export interface TsTypeAnnotation extends HasSpan, Node {
   type: 'TsTypeAnnotation'
 
   typeAnnotation: TsType
 }
 
-export interface TsTypeParameterDeclaration extends Node, HasSpan {
+export interface TsTypeParameterDeclaration extends HasSpan, Node {
   type: 'TsTypeParameterDeclaration'
 
   parameters: TsTypeParameter[]
 }
 
-export interface TsTypeParameter extends Node, HasSpan {
+export interface TsTypeParameter extends HasSpan, Node {
   type: 'TsTypeParameter'
 
   name: Identifier
@@ -2368,13 +2368,13 @@ export interface TsTypeParameter extends Node, HasSpan {
   default?: TsType
 }
 
-export interface TsTypeParameterInstantiation extends Node, HasSpan {
+export interface TsTypeParameterInstantiation extends HasSpan, Node {
   type: 'TsTypeParameterInstantiation'
 
   params: TsType[]
 }
 
-export interface TsParameterProperty extends Node, HasSpan, HasDecorator {
+export interface TsParameterProperty extends HasDecorator, HasSpan, Node {
   type: 'TsParameterProperty'
 
   accessibility?: Accessibility
@@ -2383,7 +2383,7 @@ export interface TsParameterProperty extends Node, HasSpan, HasDecorator {
   param: TsParameterPropertyParameter
 }
 
-export type TsParameterPropertyParameter = BindingIdentifier | AssignmentPattern
+export type TsParameterPropertyParameter = AssignmentPattern | BindingIdentifier
 
 export interface TsQualifiedName extends Node {
   type: 'TsQualifiedName'
@@ -2392,18 +2392,18 @@ export interface TsQualifiedName extends Node {
   right: Identifier
 }
 
-export type TsEntityName = TsQualifiedName | Identifier
+export type TsEntityName = Identifier | TsQualifiedName
 
 export type TsTypeElement =
   | TsCallSignatureDeclaration
   | TsConstructSignatureDeclaration
-  | TsPropertySignature
   | TsGetterSignature
-  | TsSetterSignature
-  | TsMethodSignature
   | TsIndexSignature
+  | TsMethodSignature
+  | TsPropertySignature
+  | TsSetterSignature
 
-export interface TsCallSignatureDeclaration extends Node, HasSpan {
+export interface TsCallSignatureDeclaration extends HasSpan, Node {
   type: 'TsCallSignatureDeclaration'
 
   params: TsFnParameter[]
@@ -2411,7 +2411,7 @@ export interface TsCallSignatureDeclaration extends Node, HasSpan {
   typeParams?: TsTypeParameterDeclaration
 }
 
-export interface TsConstructSignatureDeclaration extends Node, HasSpan {
+export interface TsConstructSignatureDeclaration extends HasSpan, Node {
   type: 'TsConstructSignatureDeclaration'
 
   params: TsFnParameter[]
@@ -2419,7 +2419,7 @@ export interface TsConstructSignatureDeclaration extends Node, HasSpan {
   typeParams?: TsTypeParameterDeclaration
 }
 
-export interface TsPropertySignature extends Node, HasSpan {
+export interface TsPropertySignature extends HasSpan, Node {
   type: 'TsPropertySignature'
 
   readonly: boolean
@@ -2430,7 +2430,7 @@ export interface TsPropertySignature extends Node, HasSpan {
   typeAnnotation?: TsTypeAnnotation
 }
 
-export interface TsGetterSignature extends Node, HasSpan {
+export interface TsGetterSignature extends HasSpan, Node {
   type: 'TsGetterSignature'
 
   readonly: boolean
@@ -2440,7 +2440,7 @@ export interface TsGetterSignature extends Node, HasSpan {
   typeAnnotation?: TsTypeAnnotation
 }
 
-export interface TsSetterSignature extends Node, HasSpan {
+export interface TsSetterSignature extends HasSpan, Node {
   type: 'TsSetterSignature'
 
   readonly: boolean
@@ -2450,7 +2450,7 @@ export interface TsSetterSignature extends Node, HasSpan {
   param: TsFnParameter
 }
 
-export interface TsMethodSignature extends Node, HasSpan {
+export interface TsMethodSignature extends HasSpan, Node {
   type: 'TsMethodSignature'
 
   readonly: boolean
@@ -2463,7 +2463,7 @@ export interface TsMethodSignature extends Node, HasSpan {
   typeParams?: TsTypeParameterDeclaration
 }
 
-export interface TsIndexSignature extends Node, HasSpan {
+export interface TsIndexSignature extends HasSpan, Node {
   type: 'TsIndexSignature'
 
   params: TsFnParameter[]
@@ -2475,30 +2475,30 @@ export interface TsIndexSignature extends Node, HasSpan {
 }
 
 export type TsType =
-  | TsKeywordType
-  | TsThisType
-  | TsFnOrConstructorType
-  | TsTypeReference
-  | TsTypeQuery
-  | TsTypeLiteral
   | TsArrayType
-  | TsTupleType
-  | TsOptionalType
-  | TsRestType
-  | TsUnionOrIntersectionType
   | TsConditionalType
-  | TsInferType
-  | TsParenthesizedType
-  | TsTypeOperator
-  | TsIndexedAccessType
-  | TsMappedType
-  | TsLiteralType
-  | TsTypePredicate
+  | TsFnOrConstructorType
   | TsImportType
+  | TsIndexedAccessType
+  | TsInferType
+  | TsKeywordType
+  | TsLiteralType
+  | TsMappedType
+  | TsOptionalType
+  | TsParenthesizedType
+  | TsRestType
+  | TsThisType
+  | TsTupleType
+  | TsTypeLiteral
+  | TsTypeOperator
+  | TsTypePredicate
+  | TsTypeQuery
+  | TsTypeReference
+  | TsUnionOrIntersectionType
 
-export type TsFnOrConstructorType = TsFunctionType | TsConstructorType
+export type TsFnOrConstructorType = TsConstructorType | TsFunctionType
 
-export interface TsKeywordType extends Node, HasSpan {
+export interface TsKeywordType extends HasSpan, Node {
   type: 'TsKeywordType'
 
   kind: TsKeywordTypeKind
@@ -2506,26 +2506,26 @@ export interface TsKeywordType extends Node, HasSpan {
 
 export type TsKeywordTypeKind =
   | 'any'
-  | 'unknown'
+  | 'bigint'
+  | 'boolean'
+  | 'intrinsic'
+  | 'never'
+  | 'null'
   | 'number'
   | 'object'
-  | 'boolean'
-  | 'bigint'
   | 'string'
   | 'symbol'
-  | 'void'
   | 'undefined'
-  | 'null'
-  | 'never'
-  | 'intrinsic'
+  | 'unknown'
+  | 'void'
 
-export interface TsThisType extends Node, HasSpan {
+export interface TsThisType extends HasSpan, Node {
   type: 'TsThisType'
 }
 
-export type TsFnParameter = BindingIdentifier | ArrayPattern | RestElement | ObjectPattern
+export type TsFnParameter = ArrayPattern | BindingIdentifier | ObjectPattern | RestElement
 
-export interface TsFunctionType extends Node, HasSpan {
+export interface TsFunctionType extends HasSpan, Node {
   type: 'TsFunctionType'
 
   params: TsFnParameter[]
@@ -2534,7 +2534,7 @@ export interface TsFunctionType extends Node, HasSpan {
   typeAnnotation: TsTypeAnnotation
 }
 
-export interface TsConstructorType extends Node, HasSpan {
+export interface TsConstructorType extends HasSpan, Node {
   type: 'TsConstructorType'
 
   params: TsFnParameter[]
@@ -2544,14 +2544,14 @@ export interface TsConstructorType extends Node, HasSpan {
   isAbstract: boolean
 }
 
-export interface TsTypeReference extends Node, HasSpan {
+export interface TsTypeReference extends HasSpan, Node {
   type: 'TsTypeReference'
 
   typeName: TsEntityName
   typeParams?: TsTypeParameterInstantiation
 }
 
-export interface TsTypePredicate extends Node, HasSpan {
+export interface TsTypePredicate extends HasSpan, Node {
   type: 'TsTypePredicate'
 
   asserts: boolean
@@ -2560,9 +2560,9 @@ export interface TsTypePredicate extends Node, HasSpan {
   typeAnnotation?: TsTypeAnnotation
 }
 
-export type TsThisTypeOrIdent = TsThisType | Identifier
+export type TsThisTypeOrIdent = Identifier | TsThisType
 
-export interface TsImportType extends Node, HasSpan {
+export interface TsImportType extends HasSpan, Node {
   type: 'TsImportType'
 
   argument: StringLiteral
@@ -2573,7 +2573,7 @@ export interface TsImportType extends Node, HasSpan {
 /**
  * `typeof` operator
  */
-export interface TsTypeQuery extends Node, HasSpan {
+export interface TsTypeQuery extends HasSpan, Node {
   type: 'TsTypeQuery'
 
   exprName: TsTypeQueryExpr
@@ -2582,58 +2582,58 @@ export interface TsTypeQuery extends Node, HasSpan {
 
 export type TsTypeQueryExpr = TsEntityName | TsImportType
 
-export interface TsTypeLiteral extends Node, HasSpan {
+export interface TsTypeLiteral extends HasSpan, Node {
   type: 'TsTypeLiteral'
 
   members: TsTypeElement[]
 }
 
-export interface TsArrayType extends Node, HasSpan {
+export interface TsArrayType extends HasSpan, Node {
   type: 'TsArrayType'
 
   elemType: TsType
 }
 
-export interface TsTupleType extends Node, HasSpan {
+export interface TsTupleType extends HasSpan, Node {
   type: 'TsTupleType'
 
   elemTypes: TsTupleElement[]
 }
 
-export interface TsTupleElement extends Node, HasSpan {
+export interface TsTupleElement extends HasSpan, Node {
   type: 'TsTupleElement'
 
   label?: Pattern
   ty: TsType
 }
 
-export interface TsOptionalType extends Node, HasSpan {
+export interface TsOptionalType extends HasSpan, Node {
   type: 'TsOptionalType'
 
   typeAnnotation: TsType
 }
 
-export interface TsRestType extends Node, HasSpan {
+export interface TsRestType extends HasSpan, Node {
   type: 'TsRestType'
 
   typeAnnotation: TsType
 }
 
-export type TsUnionOrIntersectionType = TsUnionType | TsIntersectionType
+export type TsUnionOrIntersectionType = TsIntersectionType | TsUnionType
 
-export interface TsUnionType extends Node, HasSpan {
+export interface TsUnionType extends HasSpan, Node {
   type: 'TsUnionType'
 
   types: TsType[]
 }
 
-export interface TsIntersectionType extends Node, HasSpan {
+export interface TsIntersectionType extends HasSpan, Node {
   type: 'TsIntersectionType'
 
   types: TsType[]
 }
 
-export interface TsConditionalType extends Node, HasSpan {
+export interface TsConditionalType extends HasSpan, Node {
   type: 'TsConditionalType'
 
   checkType: TsType
@@ -2642,28 +2642,28 @@ export interface TsConditionalType extends Node, HasSpan {
   falseType: TsType
 }
 
-export interface TsInferType extends Node, HasSpan {
+export interface TsInferType extends HasSpan, Node {
   type: 'TsInferType'
 
   typeParam: TsTypeParameter
 }
 
-export interface TsParenthesizedType extends Node, HasSpan {
+export interface TsParenthesizedType extends HasSpan, Node {
   type: 'TsParenthesizedType'
 
   typeAnnotation: TsType
 }
 
-export interface TsTypeOperator extends Node, HasSpan {
+export interface TsTypeOperator extends HasSpan, Node {
   type: 'TsTypeOperator'
 
   op: TsTypeOperatorOp
   typeAnnotation: TsType
 }
 
-export type TsTypeOperatorOp = 'keyof' | 'unique' | 'readonly'
+export type TsTypeOperatorOp = 'keyof' | 'readonly' | 'unique'
 
-export interface TsIndexedAccessType extends Node, HasSpan {
+export interface TsIndexedAccessType extends HasSpan, Node {
   type: 'TsIndexedAccessType'
 
   readonly: boolean
@@ -2671,9 +2671,9 @@ export interface TsIndexedAccessType extends Node, HasSpan {
   indexType: TsType
 }
 
-export type TruePlusMinus = true | '+' | '-'
+export type TruePlusMinus = '-' | '+' | true
 
-export interface TsMappedType extends Node, HasSpan {
+export interface TsMappedType extends HasSpan, Node {
   type: 'TsMappedType'
 
   readonly?: TruePlusMinus
@@ -2683,20 +2683,20 @@ export interface TsMappedType extends Node, HasSpan {
   typeAnnotation?: TsType
 }
 
-export interface TsLiteralType extends Node, HasSpan {
+export interface TsLiteralType extends HasSpan, Node {
   type: 'TsLiteralType'
 
   literal: TsLiteral
 }
 
 export type TsLiteral =
+  | BigIntLiteral
+  | BooleanLiteral
   | NumericLiteral
   | StringLiteral
-  | BooleanLiteral
-  | BigIntLiteral
   | TsTemplateLiteralType
 
-export interface TsTemplateLiteralType extends Node, HasSpan {
+export interface TsTemplateLiteralType extends HasSpan, Node {
   type: 'TemplateLiteral'
   types: TsType[]
   quasis: TemplateElement[]
@@ -2706,7 +2706,7 @@ export interface TsTemplateLiteralType extends Node, HasSpan {
 // // TypeScript declarations
 // // ================
 
-export interface TsInterfaceDeclaration extends Node, HasSpan {
+export interface TsInterfaceDeclaration extends HasSpan, Node {
   type: 'TsInterfaceDeclaration'
 
   id: Identifier
@@ -2716,20 +2716,20 @@ export interface TsInterfaceDeclaration extends Node, HasSpan {
   body: TsInterfaceBody
 }
 
-export interface TsInterfaceBody extends Node, HasSpan {
+export interface TsInterfaceBody extends HasSpan, Node {
   type: 'TsInterfaceBody'
 
   body: TsTypeElement[]
 }
 
-export interface TsExpressionWithTypeArguments extends Node, HasSpan {
+export interface TsExpressionWithTypeArguments extends HasSpan, Node {
   type: 'TsExpressionWithTypeArguments'
 
   expression: Expression
   typeArguments?: TsTypeParameterInstantiation
 }
 
-export interface TsTypeAliasDeclaration extends Node, HasSpan {
+export interface TsTypeAliasDeclaration extends HasSpan, Node {
   type: 'TsTypeAliasDeclaration'
 
   declare: boolean
@@ -2738,7 +2738,7 @@ export interface TsTypeAliasDeclaration extends Node, HasSpan {
   typeAnnotation: TsType
 }
 
-export interface TsEnumDeclaration extends Node, HasSpan {
+export interface TsEnumDeclaration extends HasSpan, Node {
   type: 'TsEnumDeclaration'
 
   declare: boolean
@@ -2747,7 +2747,7 @@ export interface TsEnumDeclaration extends Node, HasSpan {
   members: TsEnumMember[]
 }
 
-export interface TsEnumMember extends Node, HasSpan {
+export interface TsEnumMember extends HasSpan, Node {
   type: 'TsEnumMember'
 
   id: TsEnumMemberId
@@ -2756,7 +2756,7 @@ export interface TsEnumMember extends Node, HasSpan {
 
 export type TsEnumMemberId = Identifier | StringLiteral
 
-export interface TsModuleDeclaration extends Node, HasSpan {
+export interface TsModuleDeclaration extends HasSpan, Node {
   type: 'TsModuleDeclaration'
 
   declare: boolean
@@ -2770,13 +2770,13 @@ export interface TsModuleDeclaration extends Node, HasSpan {
  */
 export type TsNamespaceBody = TsModuleBlock | TsNamespaceDeclaration
 
-export interface TsModuleBlock extends Node, HasSpan {
+export interface TsModuleBlock extends HasSpan, Node {
   type: 'TsModuleBlock'
 
   body: ModuleItem[]
 }
 
-export interface TsNamespaceDeclaration extends Node, HasSpan {
+export interface TsNamespaceDeclaration extends HasSpan, Node {
   type: 'TsNamespaceDeclaration'
 
   declare: boolean
@@ -2787,7 +2787,7 @@ export interface TsNamespaceDeclaration extends Node, HasSpan {
 
 export type TsModuleName = Identifier | StringLiteral
 
-export interface TsImportEqualsDeclaration extends Node, HasSpan {
+export interface TsImportEqualsDeclaration extends HasSpan, Node {
   type: 'TsImportEqualsDeclaration'
 
   declare: boolean
@@ -2799,19 +2799,19 @@ export interface TsImportEqualsDeclaration extends Node, HasSpan {
 
 export type TsModuleReference = TsEntityName | TsExternalModuleReference
 
-export interface TsExternalModuleReference extends Node, HasSpan {
+export interface TsExternalModuleReference extends HasSpan, Node {
   type: 'TsExternalModuleReference'
 
   expression: StringLiteral
 }
 
-export interface TsExportAssignment extends Node, HasSpan {
+export interface TsExportAssignment extends HasSpan, Node {
   type: 'TsExportAssignment'
 
   expression: Expression
 }
 
-export interface TsNamespaceExportDeclaration extends Node, HasSpan {
+export interface TsNamespaceExportDeclaration extends HasSpan, Node {
   type: 'TsNamespaceExportDeclaration'
 
   id: Identifier
@@ -2831,7 +2831,7 @@ export interface TsSatisfiesExpression extends ExpressionBase {
   typeAnnotation: TsType
 }
 
-export interface TsInstantiation extends Node, HasSpan {
+export interface TsInstantiation extends HasSpan, Node {
   type: 'TsInstantiation'
 
   expression: Expression
@@ -2857,9 +2857,9 @@ export interface TsNonNullExpression extends ExpressionBase {
   expression: Expression
 }
 
-export type Accessibility = 'public' | 'protected' | 'private'
+export type Accessibility = 'private' | 'protected' | 'public'
 
-export interface Invalid extends Node, HasSpan {
+export interface Invalid extends HasSpan, Node {
   type: 'Invalid'
 }
 

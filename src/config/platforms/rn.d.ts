@@ -19,9 +19,9 @@ import type {
 /**
  * @internal
  */
-type ProcessorOptionsWithAdditionalData<T, P extends 'sass' | 'less' | 'stylus'> = {
-  options?: T
+type ProcessorOptionsWithAdditionalData<T, P extends 'less' | 'sass' | 'stylus'> = {
   additionalData?: LoaderAdditionalData<P>
+  options?: T
 }
 
 /**
@@ -90,8 +90,8 @@ export interface PlatformRNNativeComponents {
   modifyRollupConfig?: (
     config: RollupOptions,
     innerPlugins: {
-      taroResolver: any
       styleTransformer: any
+      taroResolver: any
     },
   ) => RollupOptions
 }
@@ -130,7 +130,7 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: ProcessorOptionsWithAdditionalData<NodeSassOptions | DartSassOptions, 'sass'>
+  sass?: ProcessorOptionsWithAdditionalData<DartSassOptions | NodeSassOptions, 'sass'>
 
   /**
    * `less` 相关配置

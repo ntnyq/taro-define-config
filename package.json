@@ -1,7 +1,7 @@
 {
   "name": "taro-define-config",
   "version": "0.10.1",
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@9.14.4",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -53,27 +53,27 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.6",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^22.10.0",
-    "rollup": "^4.27.4",
+    "@types/node": "^22.10.1",
+    "rollup": "^4.28.0",
     "tapable": "^2.2.1",
-    "vite": "^6.0.1",
-    "webpack": "^5.96.1",
+    "vite": "^6.0.2",
+    "webpack": "^5.97.0",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.1.0"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^3.5.1",
+    "@ntnyq/eslint-config": "^3.8.1",
     "@ntnyq/prettier-config": "^1.22.0",
     "bumpp": "^9.8.1",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
     "npm-run-all2": "^7.0.1",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "taro-define-config": "workspace:*",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {

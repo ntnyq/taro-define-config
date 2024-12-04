@@ -44,7 +44,7 @@ export interface AutoprefixerOptions {
    *
    * @default true
    */
-  flexbox?: boolean | 'no-2009' | string
+  flexbox?: 'no-2009' | boolean | string
 
   /**
    * should Autoprefixer add IE 10-11 prefixes for Grid Layout properties
@@ -55,7 +55,7 @@ export interface AutoprefixerOptions {
    *
    * @default false
    */
-  grid?: false | 'autoplace' | 'no-autoplace'
+  grid?: 'autoplace' | 'no-autoplace' | false
 
   /**
    * custom usage statistics for > 10% in my stats browsers query

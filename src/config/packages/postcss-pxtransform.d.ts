@@ -13,7 +13,7 @@ export interface PostcssPxtransformOptions {
    *
    * @default `weapp`
    */
-  platform?: LiteralUnion<'weapp' | 'h5' | 'rn' | 'quickapp' | 'harmony'>
+  platform?: LiteralUnion<'h5' | 'harmony' | 'quickapp' | 'rn' | 'weapp'>
 
   /**
    * 设计稿尺寸
@@ -139,7 +139,7 @@ export interface PostcssPxtransformOptions {
    * 转换后的单位，当前仅支持小程序 (默认 `rpx`) 和 Web 端 (默认 `rem`)
    * @description Web 端使用 rem 单位时会注入脚本用于设置 body 上的 font-size 属性，其他单位无该操作
    */
-  targetUnit?: LiteralUnion<'rpx' | 'rem' | 'vw'>
+  targetUnit?: LiteralUnion<'rem' | 'rpx' | 'vw'>
 
   /**
    * 启用的能力 Scope

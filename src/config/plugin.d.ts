@@ -39,13 +39,13 @@ export interface OfficialPluginOptionsMap {
   'tarojs-plugin-platform-nextjs': PluginPlatformNextJsOptions
 }
 export interface CustomPluginOptionsMap {}
-export type PluginsOptionsMap = OfficialPluginOptionsMap & CustomPluginOptionsMap
+export type PluginsOptionsMap = CustomPluginOptionsMap & OfficialPluginOptionsMap
 
 export type PluginName = keyof PluginsOptionsMap
 
 export type PluginTuple<T extends PluginName = PluginName> =
-  | [T]
-  | [T, ExcludeEmptyObjects<PluginsOptionsMap>[T]]
   | [T, () => Awaitable<ExcludeEmptyObjects<PluginsOptionsMap>[T]>]
+  | [T, ExcludeEmptyObjects<PluginsOptionsMap>[T]]
+  | [T]
 
 export type Plugin = PluginName | PluginTuple

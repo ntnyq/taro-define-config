@@ -53,7 +53,7 @@ export interface MiniCSSExtractPluginOptions {
    * @see https://github.com/webpack-contrib/mini-css-extract-plugin#linktype
    * @default `text/css`
    */
-  linkType?: string | false
+  linkType?: false | string
 
   /**
    * Allows to enable/disable the runtime generation

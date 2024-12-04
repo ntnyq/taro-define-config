@@ -65,7 +65,7 @@ export interface LessOptions {
    * @see https://lesscss.org/usage/#less-options-rewrite-urls
    * @default `off`
    */
-  rewriteUrls?: LiteralUnion<'off' | 'all' | 'local'>
+  rewriteUrls?: LiteralUnion<'all' | 'local' | 'off'>
 
   /**
    * Math mode options for avoiding symbol conflicts on math expressions
@@ -75,7 +75,7 @@ export interface LessOptions {
    *  - `parens` | `strict` - Parens required for all math expressions
    *  - `strict-legacy` (removed in 4.0) - In some cases, math will not be evaluated if any part of the expression cannot be evaluated
    */
-  math?: 'always' | 'strict' | 'parens-division' | 'parens' | 'strict-legacy'
+  math?: 'always' | 'parens-division' | 'parens' | 'strict-legacy' | 'strict'
 
   /**
    * If true, stops any warnings from being shown
@@ -144,7 +144,7 @@ export interface LessOptions {
    *
    * @deprecated
    */
-  dumpLineNumbers?: 'comments' | 'mediaquery' | 'all' | string
+  dumpLineNumbers?: 'all' | 'comments' | 'mediaquery' | string
 
   /**
    * If true, enable evaluation of JavaScript inline in `.less` files

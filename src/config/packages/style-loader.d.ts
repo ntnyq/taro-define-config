@@ -9,13 +9,13 @@
 import type { LiteralUnion } from '../../utility-types'
 
 export type StyleLoaderInjectType = LiteralUnion<
-  | 'styleTag'
-  | 'singletonStyleTag'
   | 'autoStyleTag'
-  | 'lazyStyleTag'
-  | 'lazySingletonStyleTag'
   | 'lazyAutoStyleTag'
+  | 'lazySingletonStyleTag'
+  | 'lazyStyleTag'
   | 'linkTag'
+  | 'singletonStyleTag'
+  | 'styleTag'
 >
 
 export interface StyleLoaderOptions {

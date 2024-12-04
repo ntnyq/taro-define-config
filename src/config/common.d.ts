@@ -24,34 +24,34 @@ import type { Awaitable, LiteralUnion } from '../utility-types'
  * @see https://webpack.js.org/configuration/devtool/#devtool
  */
 export type SourceMapType = LiteralUnion<
-  | 'eval'
-  | 'eval-cheap-source-map'
-  | 'eval-cheap-module-source-map'
-  | 'eval-source-map'
-  | 'cheap-source-map'
   | 'cheap-module-source-map'
-  | 'source-map'
-  | 'inline-cheap-source-map'
-  | 'inline-cheap-module-source-map'
-  | 'inline-source-map'
-  | 'eval-nosources-cheap-source-map'
+  | 'cheap-source-map'
+  | 'eval-cheap-module-source-map'
+  | 'eval-cheap-source-map'
   | 'eval-nosources-cheap-module-source-map'
+  | 'eval-nosources-cheap-source-map'
   | 'eval-nosources-source-map'
-  | 'inline-nosources-cheap-source-map'
-  | 'inline-nosources-cheap-module-source-map'
-  | 'inline-nosources-source-map'
-  | 'nosources-cheap-source-map'
-  | 'nosources-cheap-module-source-map'
-  | 'nosources-source-map'
-  | 'hidden-nosources-cheap-source-map'
-  | 'hidden-nosources-cheap-module-source-map'
-  | 'hidden-nosources-source-map'
-  | 'hidden-cheap-source-map'
+  | 'eval-source-map'
+  | 'eval'
   | 'hidden-cheap-module-source-map'
+  | 'hidden-cheap-source-map'
+  | 'hidden-nosources-cheap-module-source-map'
+  | 'hidden-nosources-cheap-source-map'
+  | 'hidden-nosources-source-map'
   | 'hidden-source-map'
+  | 'inline-cheap-module-source-map'
+  | 'inline-cheap-source-map'
+  | 'inline-nosources-cheap-module-source-map'
+  | 'inline-nosources-cheap-source-map'
+  | 'inline-nosources-source-map'
+  | 'inline-source-map'
+  | 'nosources-cheap-module-source-map'
+  | 'nosources-cheap-source-map'
+  | 'nosources-source-map'
+  | 'source-map'
 >
 
-export type PlatformUnion = LiteralUnion<'h5' | 'mini' | 'rn' | 'harmony'>
+export type PlatformUnion = LiteralUnion<'h5' | 'harmony' | 'mini' | 'rn'>
 
 export interface ConfigurablePlugin<T extends Record<string, any>> {
   enable?: boolean
@@ -91,14 +91,14 @@ export interface IOutputEnhance {
   clean?:
     | boolean
     | {
-        keep?: Array<string | RegExp> | string | RegExp
+        keep?: string | Array<string | RegExp> | RegExp
       }
 }
 
 /**
  * 小程序编译时的文件类型集合
  */
-export type ParseAstType = LiteralUnion<'ENTRY' | 'PAGE' | 'COMPONENT' | 'NORMAL' | 'STATIC'>
+export type ParseAstType = LiteralUnion<'COMPONENT' | 'ENTRY' | 'NORMAL' | 'PAGE' | 'STATIC'>
 
 export interface BasePostCSSOptions {
   autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
@@ -199,7 +199,7 @@ export type CommonWebpackConfigOptions<T extends PlatformUnion> = T extends 'h5'
  *  - `sass-loader` 附加数据
  *  - `stylus-loader` 附加数据
  */
-export type LoaderAdditionalData<T extends 'sass' | 'less' | 'stylus'> =
+export type LoaderAdditionalData<T extends 'less' | 'sass' | 'stylus'> =
   | string
   | (T extends 'stylus'
       ? (

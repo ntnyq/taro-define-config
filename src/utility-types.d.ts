@@ -1,7 +1,7 @@
 /**
  * Promise or not
  */
-export type Awaitable<T> = T | PromiseLike<T>
+export type Awaitable<T> = PromiseLike<T> | T
 
 /**
  * Array or not

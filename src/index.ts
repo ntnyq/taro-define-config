@@ -37,7 +37,7 @@ export type TaroConfigExport<T extends CompilerTypes = CompilerWebpackTypes> =
 /**
  * Define a Taro config
  *
- * @param config Taro config
+ * @param config - Taro config
  * @returns Taro config
  */
 export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(

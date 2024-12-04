@@ -20,7 +20,7 @@ export interface SassLoaderOptions {
    * @see https://github.com/webpack-contrib/sass-loader#implementation
    * @default `sass`
    */
-  implementation?: string | object
+  implementation?: object | string
 
   /**
    * Options for Dart Sass or Node Sass implementation
@@ -73,7 +73,7 @@ export interface SassLoaderOptions {
    * @see https://sass-lang.com/documentation/js-api/
    * @default `modern` for `sass (dart-sass)` and `sass-embedded`, or `legacy` for `node-sass`
    */
-  api?: LiteralUnion<'legacy' | 'modern' | 'modern-compiler'>
+  api?: LiteralUnion<'legacy' | 'modern-compiler' | 'modern'>
 
   [key: string]: any
 }

@@ -17,7 +17,7 @@ type Except<ObjectType, Properties> = {
   [Key in keyof ObjectType as Key extends Properties ? never : Key]: ObjectType[Key]
 }
 
-type LoaderOptions = Except<TransformOptions, 'sourcemap' | 'sourcefile'> & {
+type LoaderOptions = Except<TransformOptions, 'sourcefile' | 'sourcemap'> & {
   /** Pass a custom esbuild implementation */
   implementation?: Implementation
 
@@ -27,10 +27,10 @@ type LoaderOptions = Except<TransformOptions, 'sourcemap' | 'sourcefile'> & {
   tsconfig?: string
 }
 
-type EsbuildPluginOptions = Except<TransformOptions, 'sourcemap' | 'sourcefile'> & {
-  include?: Filter | Filter[]
-  exclude?: Filter | Filter[]
+type EsbuildPluginOptions = Except<TransformOptions, 'sourcefile' | 'sourcemap'> & {
   css?: boolean
+  exclude?: Filter | Filter[]
+  include?: Filter | Filter[]
 
   /** Pass a custom esbuild implementation */
   implementation?: Implementation

@@ -195,7 +195,7 @@ export type DeprecationOrId = Deprecation | keyof Deprecations
  * The only "user" deprecation is "user-authored", which is used for deprecation
  * warnings coming from user code.
  */
-export type DeprecationStatus = 'active' | 'user' | 'future' | 'obsolete'
+export type DeprecationStatus = 'active' | 'future' | 'obsolete' | 'user'
 
 /**
  * A deprecated feature in the language.
@@ -249,10 +249,10 @@ export class Version {
 }
 
 type CallbackValue =
-  | string
-  | number
   | boolean
-  | Array<string | number | boolean>
+  | number
+  | string
+  | Array<boolean | number | string>
   | Record<PropertyKey, any>
 type Context = {
   options: NodeSassOptions
@@ -265,7 +265,7 @@ interface AsyncContext extends Context {
 interface SyncContext extends Context {
   callback: undefined
 }
-type ImporterReturnType = { file: string } | { file?: string; contents: string } | Error | null
+type ImporterReturnType = Error | { contents: string; file?: string } | { file: string } | null
 type AsyncImporter = (
   this: AsyncContext,
   url: string,
@@ -275,30 +275,30 @@ type AsyncImporter = (
 type SyncImporter = (this: SyncContext, url: string, prev: string) => ImporterReturnType
 
 type SourceSpan = {
-  start: {
-    line: number
-    column: number
-    offset: number
-  }
-  end: {
-    line: number
-    column: number
-    offset: number
-  }
-  url: URL
   text: string
+  url: URL
   context?: string
+  end: {
+    column: number
+    line: number
+    offset: number
+  }
+  start: {
+    column: number
+    line: number
+    offset: number
+  }
 }
-type LoggerWarnOptions = (
+type LoggerWarnOptions = {
+  span?: SourceSpan
+  stack?: string
+} & (
+  | { deprecation: false }
   | {
       deprecation: true
       deprecationType: Deprecation
     }
-  | { deprecation: false }
-) & {
-  span?: SourceSpan
-  stack?: string
-}
+)
 interface Logger {
   /**
    * If this is `undefined`, Sass will print warnings to standard error
@@ -361,7 +361,7 @@ interface CommonSassOptions {
    *
    * @experimental
    */
-  importer?: AsyncImporter | SyncImporter | Array<AsyncImporter | SyncImporter>
+  importer?: Array<AsyncImporter | SyncImporter> | AsyncImporter | SyncImporter
 
   /**
    * holds a collection of custom functions that may be invoked by the sass files being compiled
@@ -437,14 +437,14 @@ export interface NodeSassOptions extends CommonSassOptions {
    *
    * @default `nested`
    */
-  outputStyle?: LiteralUnion<'nested' | 'expanded' | 'compact' | 'compressed'>
+  outputStyle?: LiteralUnion<'compact' | 'compressed' | 'expanded' | 'nested'>
 
   /**
    * determine whether to use space or tab character for indentation
    *
    * @default `space`
    */
-  indentType?: LiteralUnion<'tab' | 'space'>
+  indentType?: LiteralUnion<'space' | 'tab'>
 
   /**
    * determine the number of spaces or tabs to be used for indentation, max is 10
@@ -458,7 +458,7 @@ export interface NodeSassOptions extends CommonSassOptions {
    *
    * @default `lf`
    */
-  linefeed?: LiteralUnion<'if' | 'cf' | 'crlf' | 'lfcr'>
+  linefeed?: LiteralUnion<'cf' | 'crlf' | 'if' | 'lfcr'>
 
   /**
    * determine how many digits after the decimal will be allowed
@@ -506,14 +506,14 @@ export interface DartSassOptions extends CommonSassOptions {
    * @default `expanded`
    * @deprecated use `style` instead
    */
-  outputStyle?: LiteralUnion<'expanded' | 'compressed'>
+  outputStyle?: LiteralUnion<'compressed' | 'expanded'>
 
   /**
    * Determines the output format of the final CSS style
    *
    * @default `expanded`
    */
-  style?: LiteralUnion<'expanded' | 'compressed'>
+  style?: LiteralUnion<'compressed' | 'expanded'>
 
   /**
    * By default, if the CSS document contains non-ASCII characters, Sass adds a

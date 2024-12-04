@@ -5,8 +5,8 @@
  * @compatibility 0.24.0
  */
 
-export type Platform = 'browser' | 'node' | 'neutral'
-export type Format = 'iife' | 'cjs' | 'esm'
+export type Platform = 'browser' | 'neutral' | 'node'
+export type Format = 'cjs' | 'esm' | 'iife'
 export type Loader =
   | 'base64'
   | 'binary'
@@ -23,15 +23,15 @@ export type Loader =
   | 'text'
   | 'ts'
   | 'tsx'
-export type LogLevel = 'verbose' | 'debug' | 'info' | 'warning' | 'error' | 'silent'
+export type LogLevel = 'debug' | 'error' | 'info' | 'silent' | 'verbose' | 'warning'
 export type Charset = 'ascii' | 'utf8'
 export type Drop = 'console' | 'debugger'
 
 interface CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#sourcemap */
-  sourcemap?: boolean | 'linked' | 'inline' | 'external' | 'both'
+  sourcemap?: 'both' | 'external' | 'inline' | 'linked' | boolean
   /** Documentation: https://esbuild.github.io/api/#legal-comments */
-  legalComments?: 'none' | 'inline' | 'eof' | 'linked' | 'external'
+  legalComments?: 'eof' | 'external' | 'inline' | 'linked' | 'none'
   /** Documentation: https://esbuild.github.io/api/#source-root */
   sourceRoot?: string
   /** Documentation: https://esbuild.github.io/api/#sources-content */
@@ -55,7 +55,7 @@ interface CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#mangle-props */
   mangleQuoted?: boolean
   /** Documentation: https://esbuild.github.io/api/#mangle-props */
-  mangleCache?: Record<string, string | false>
+  mangleCache?: Record<string, false | string>
   /** Documentation: https://esbuild.github.io/api/#drop */
   drop?: Drop[]
   /** Documentation: https://esbuild.github.io/api/#drop-labels */
@@ -78,7 +78,7 @@ interface CommonOptions {
   ignoreAnnotations?: boolean
 
   /** Documentation: https://esbuild.github.io/api/#jsx */
-  jsx?: 'transform' | 'preserve' | 'automatic'
+  jsx?: 'automatic' | 'preserve' | 'transform'
   /** Documentation: https://esbuild.github.io/api/#jsx-factory */
   jsxFactory?: string
   /** Documentation: https://esbuild.github.io/api/#jsx-fragment */
@@ -115,8 +115,8 @@ export interface TsconfigRaw {
     alwaysStrict?: boolean
     baseUrl?: string
     experimentalDecorators?: boolean
-    importsNotUsedAsValues?: 'remove' | 'preserve' | 'error'
-    jsx?: 'preserve' | 'react-native' | 'react' | 'react-jsx' | 'react-jsxdev'
+    importsNotUsedAsValues?: 'error' | 'preserve' | 'remove'
+    jsx?: 'preserve' | 'react-jsx' | 'react-jsxdev' | 'react-native' | 'react'
     jsxFactory?: string
     jsxFragmentFactory?: string
     jsxImportSource?: string
@@ -181,7 +181,7 @@ export interface BuildOptions extends CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#footer */
   footer?: { [type: string]: string }
   /** Documentation: https://esbuild.github.io/api/#entry-points */
-  entryPoints?: string[] | Record<string, string> | { in: string; out: string }[]
+  entryPoints?: { in: string; out: string }[] | Record<string, string> | string[]
   /** Documentation: https://esbuild.github.io/api/#stdin */
   stdin?: StdinOptions
   /** Documentation: https://esbuild.github.io/plugins/ */
@@ -248,7 +248,7 @@ export interface BuildResult<ProvidedOptions extends BuildOptions = BuildOptions
   metafile: Metafile | (ProvidedOptions['metafile'] extends true ? never : undefined)
   /** Only when "mangleCache" is present */
   mangleCache:
-    | Record<string, string | false>
+    | Record<string, false | string>
     | (ProvidedOptions['mangleCache'] extends object ? never : undefined)
 }
 
@@ -300,7 +300,7 @@ export interface TransformResult<ProvidedOptions extends TransformOptions = Tran
   warnings: Message[]
   /** Only when "mangleCache" is present */
   mangleCache:
-    | Record<string, string | false>
+    | Record<string, false | string>
     | (ProvidedOptions['mangleCache'] extends object ? never : undefined)
   /** Only when "legalComments" is "external" */
   legalComments: string | (ProvidedOptions['legalComments'] extends 'external' ? never : undefined)
@@ -313,7 +313,7 @@ export interface TransformFailure extends Error {
 
 export interface Plugin {
   name: string
-  setup: (build: PluginBuild) => void | Promise<void>
+  setup: (build: PluginBuild) => Promise<void> | void
 }
 
 export interface PluginBuild {
@@ -324,13 +324,13 @@ export interface PluginBuild {
   resolve(path: string, options?: ResolveOptions): Promise<ResolveResult>
 
   /** Documentation: https://esbuild.github.io/plugins/#on-start */
-  onStart(callback: () => OnStartResult | null | void | Promise<OnStartResult | null | void>): void
+  onStart(callback: () => OnStartResult | Promise<OnStartResult | null | void> | null | void): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-end */
   onEnd(
     callback: (
       result: BuildResult,
-    ) => OnEndResult | null | void | Promise<OnEndResult | null | void>,
+    ) => OnEndResult | Promise<OnEndResult | null | void> | null | void,
   ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-resolve */
@@ -338,7 +338,7 @@ export interface PluginBuild {
     options: OnResolveOptions,
     callback: (
       args: OnResolveArgs,
-    ) => OnResolveResult | null | undefined | Promise<OnResolveResult | null | undefined>,
+    ) => OnResolveResult | Promise<OnResolveResult | null | undefined> | null | undefined,
   ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-load */
@@ -346,7 +346,7 @@ export interface PluginBuild {
     options: OnLoadOptions,
     callback: (
       args: OnLoadArgs,
-    ) => OnLoadResult | null | undefined | Promise<OnLoadResult | null | undefined>,
+    ) => OnLoadResult | Promise<OnLoadResult | null | undefined> | null | undefined,
   ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-dispose */
@@ -354,16 +354,16 @@ export interface PluginBuild {
 
   // This is a full copy of the esbuild library in case you need it
   esbuild: {
-    context: typeof context
-    build: typeof build
-    buildSync: typeof buildSync
-    transform: typeof transform
-    transformSync: typeof transformSync
-    formatMessages: typeof formatMessages
-    formatMessagesSync: typeof formatMessagesSync
     analyzeMetafile: typeof analyzeMetafile
     analyzeMetafileSync: typeof analyzeMetafileSync
+    build: typeof build
+    buildSync: typeof buildSync
+    context: typeof context
+    formatMessages: typeof formatMessages
+    formatMessagesSync: typeof formatMessagesSync
     initialize: typeof initialize
+    transform: typeof transform
+    transformSync: typeof transformSync
     version: typeof version
   }
 }
@@ -423,14 +423,14 @@ export type ImportKind =
   | 'entry-point'
 
   // JS
+  | 'dynamic-import'
   | 'import-statement'
   | 'require-call'
-  | 'dynamic-import'
   | 'require-resolve'
 
   // CSS
-  | 'import-rule'
   | 'composes-from'
+  | 'import-rule'
   | 'url-token'
 
 /** Documentation: https://esbuild.github.io/plugins/#on-resolve-results */
@@ -501,33 +501,33 @@ export interface Metafile {
   inputs: {
     [path: string]: {
       bytes: number
+      format?: 'cjs' | 'esm'
+      with?: Record<string, string>
       imports: {
-        path: string
         kind: ImportKind
+        path: string
         external?: boolean
         original?: string
         with?: Record<string, string>
       }[]
-      format?: 'cjs' | 'esm'
-      with?: Record<string, string>
     }
   }
   outputs: {
     [path: string]: {
       bytes: number
+      exports: string[]
+      cssBundle?: string
+      entryPoint?: string
+      imports: {
+        kind: 'file-loader' | ImportKind
+        path: string
+        external?: boolean
+      }[]
       inputs: {
         [path: string]: {
           bytesInOutput: number
         }
       }
-      imports: {
-        path: string
-        kind: ImportKind | 'file-loader'
-        external?: boolean
-      }[]
-      exports: string[]
-      entryPoint?: string
-      cssBundle?: string
     }
   }
 }
@@ -631,7 +631,7 @@ export declare function formatMessages(
  * Documentation: https://esbuild.github.io/api/#analyze
  */
 export declare function analyzeMetafile(
-  metafile: Metafile | string,
+  metafile: string | Metafile,
   options?: AnalyzeMetafileOptions,
 ): Promise<string>
 
@@ -680,7 +680,7 @@ export declare function formatMessagesSync(
  * Documentation: https://esbuild.github.io/api/#analyze
  */
 export declare function analyzeMetafileSync(
-  metafile: Metafile | string,
+  metafile: string | Metafile,
   options?: AnalyzeMetafileOptions,
 ): string
 

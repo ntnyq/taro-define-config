@@ -7,7 +7,7 @@
 
 import type { AnyFn } from '../../utility-types'
 
-export type StylusOptionsDefineItem = [string, string | number | boolean, boolean?]
+export type StylusOptionsDefineItem = [string, boolean | number | string, boolean?]
 
 export interface StylusOptions {
   /**
@@ -29,7 +29,7 @@ export interface StylusOptions {
    * Define Stylus variables or functions
    * @default {}
    */
-  define?: StylusOptionsDefineItem[] | Record<string, string | number | boolean>
+  define?: Record<string, boolean | number | string> | StylusOptionsDefineItem[]
 
   /**
    * Include regular CSS on \@import

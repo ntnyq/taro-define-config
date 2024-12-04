@@ -17,7 +17,7 @@ import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 
 export type Framework = LiteralUnion<
-  'react' | 'preact' | 'solid' | 'nerv' | 'vue' | 'vue3' | 'none'
+  'nerv' | 'none' | 'preact' | 'react' | 'solid' | 'vue' | 'vue3'
 >
 
 /**

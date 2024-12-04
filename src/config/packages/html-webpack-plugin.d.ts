@@ -32,7 +32,7 @@ declare class HtmlWebpackPlugin {
    */
   static createHtmlTagObject(
     tagName: string,
-    attributes?: { [attributeName: string]: string | boolean },
+    attributes?: { [attributeName: string]: boolean | string },
     innerHTML?: string,
   ): HtmlWebpackPlugin.HtmlTagObject
 
@@ -59,8 +59,8 @@ declare namespace HtmlWebpackPlugin {
     chunksSortMode?:
       | 'auto'
       // `none` is deprecated and an alias for `auto` now.
-      | 'none'
       | 'manual'
+      | 'none'
       | ((entryNameA: string, entryNameB: string) => number)
     /**
      * List all entries which should not be injected
@@ -83,7 +83,7 @@ declare namespace HtmlWebpackPlugin {
      * By default the public path is set to `auto` - that way the html-webpack-plugin will try
      * to set the publicPath according to the current filename and the webpack publicPath setting
      */
-    publicPath?: string | 'auto'
+    publicPath?: 'auto' | string
     /**
      * If `true` then append a unique `webpack` compilation hash to all included scripts and CSS files.
      * This is useful for cache busting
@@ -93,10 +93,10 @@ declare namespace HtmlWebpackPlugin {
      * Inject all assets into the given `template` or `templateContent`.
      */
     inject?:
-      | false // Don't inject scripts
-      | true // Inject scripts into body
       | 'body' // Inject scripts into body
       | 'head' // Inject scripts into head
+      | false // Don't inject scripts
+      | true // Inject scripts into body
     /**
      * Set up script loading
      * blocking will result in <script src="..."></script>
@@ -112,9 +112,9 @@ declare namespace HtmlWebpackPlugin {
       | false // Disable injection
       | {
           [name: string]:
-            | string
             | false // name content pair e.g. {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}`
-            | { [attributeName: string]: string | boolean } // custom properties e.g. { name:"viewport" content:"width=500, initial-scale=1" }
+            | string
+            | { [attributeName: string]: boolean | string } // custom properties e.g. { name:"viewport" content:"width=500, initial-scale=1" }
         }
     /**
      * HTML Minification options accepts the following values:
@@ -139,8 +139,8 @@ declare namespace HtmlWebpackPlugin {
     templateContent?:
       | false // Use the template option instead to load a file
       | string
-      | ((templateParameters: { [option: string]: any }) => string | Promise<string>)
       | Promise<string>
+      | ((templateParameters: { [option: string]: any }) => string | Promise<string>)
     /**
      * Allows to overwrite the parameters used in the template
      */
@@ -149,18 +149,18 @@ declare namespace HtmlWebpackPlugin {
       | ((
           compilation: WebpackCompilation,
           assets: {
-            publicPath: string
-            js: Array<string>
             css: Array<string>
-            manifest?: string
+            js: Array<string>
+            publicPath: string
             favicon?: string
+            manifest?: string
           },
           assetTags: {
-            headTags: HtmlTagObject[]
             bodyTags: HtmlTagObject[]
+            headTags: HtmlTagObject[]
           },
           options: ProcessedOptions,
-        ) => { [option: string]: any } | Promise<{ [option: string]: any }>)
+        ) => Promise<{ [option: string]: any }> | { [option: string]: any })
       | { [option: string]: any }
     /**
      * The title to use for the generated HTML document
@@ -192,60 +192,60 @@ declare namespace HtmlWebpackPlugin {
   interface TemplateParameter {
     compilation: WebpackCompilation
     htmlWebpackPlugin: {
-      tags: {
-        headTags: HtmlTagObject[]
-        bodyTags: HtmlTagObject[]
-      }
-      files: {
-        publicPath: string
-        js: Array<string>
-        css: Array<string>
-        manifest?: string
-        favicon?: string
-      }
       options: Options
+      files: {
+        css: Array<string>
+        js: Array<string>
+        publicPath: string
+        favicon?: string
+        manifest?: string
+      }
+      tags: {
+        bodyTags: HtmlTagObject[]
+        headTags: HtmlTagObject[]
+      }
     }
     webpackConfig: any
   }
 
   interface Hooks {
     alterAssetTags: AsyncSeriesWaterfallHook<{
-      assetTags: {
-        scripts: HtmlTagObject[]
-        styles: HtmlTagObject[]
-        meta: HtmlTagObject[]
-      }
-      publicPath: string
       outputName: string
       plugin: HtmlWebpackPlugin
+      publicPath: string
+      assetTags: {
+        meta: HtmlTagObject[]
+        scripts: HtmlTagObject[]
+        styles: HtmlTagObject[]
+      }
     }>
 
     alterAssetTagGroups: AsyncSeriesWaterfallHook<{
-      headTags: HtmlTagObject[]
       bodyTags: HtmlTagObject[]
+      headTags: HtmlTagObject[]
       outputName: string
-      publicPath: string
       plugin: HtmlWebpackPlugin
+      publicPath: string
     }>
 
     afterTemplateExecution: AsyncSeriesWaterfallHook<{
-      html: string
-      headTags: HtmlTagObject[]
       bodyTags: HtmlTagObject[]
+      headTags: HtmlTagObject[]
+      html: string
       outputName: string
       plugin: HtmlWebpackPlugin
     }>
 
     beforeAssetTagGeneration: AsyncSeriesWaterfallHook<{
+      outputName: string
+      plugin: HtmlWebpackPlugin
       assets: {
-        publicPath: string
-        js: Array<string>
         css: Array<string>
+        js: Array<string>
+        publicPath: string
         favicon?: string
         manifest?: string
       }
-      outputName: string
-      plugin: HtmlWebpackPlugin
     }>
 
     beforeEmit: AsyncSeriesWaterfallHook<{
@@ -269,7 +269,7 @@ declare namespace HtmlWebpackPlugin {
      * E.g. `{'disabled': true, 'value': 'demo'}`
      */
     attributes: {
-      [attributeName: string]: string | boolean | null | undefined
+      [attributeName: string]: boolean | string | null | undefined
     }
     /**
      * The tag name e.g. `'div'`

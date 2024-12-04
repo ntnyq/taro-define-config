@@ -15,7 +15,7 @@ import type {
   SectionedSourceMapInput,
 } from '@jridgewell/source-map'
 
-export type ECMA = 5 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020
+export type ECMA = 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 5
 
 export type ConsoleProperty = keyof typeof console
 type DropConsoleOption = boolean | ConsoleProperty[]
@@ -64,14 +64,14 @@ export interface CompressOptions {
   properties?: boolean
   pure_funcs?: string[]
   pure_new?: boolean
-  pure_getters?: boolean | 'strict'
+  pure_getters?: 'strict' | boolean
   reduce_funcs?: boolean
   reduce_vars?: boolean
   sequences?: boolean | number
   side_effects?: boolean
   switches?: boolean
   toplevel?: boolean
-  top_retain?: null | string | string[] | RegExp
+  top_retain?: string | RegExp | string[] | null
   typeofs?: boolean
   unsafe_arrows?: boolean
   unsafe?: boolean
@@ -113,7 +113,7 @@ export interface SimpleIdentifierMangler {
    * Obtains the nth most favored (usually shortest) identifier to rename a variable to.
    * The mangler will increment n and retry until the return value is not in use in scope, and is not a reserved word.
    * This function is expected to be stable; Evaluating get(n) === get(n) should always return true.
-   * @param n The ordinal of the identifier.
+   * @param n - The ordinal of the identifier.
    */
   get(n: number): string
 }
@@ -125,8 +125,8 @@ export interface WeightedIdentifierMangler extends SimpleIdentifierMangler {
   /**
    * Modifies the internal weighting of the input characters by the specified delta.
    * Will be invoked on the entire printed AST, and then deduct mangleable identifiers.
-   * @param chars The characters to modify the weighting of.
-   * @param delta The numeric weight to add to the characters.
+   * @param chars - The characters to modify the weighting of.
+   * @param delta - The numeric weight to add to the characters.
    */
   consider(chars: string, delta: number): number
   /**
@@ -142,9 +142,9 @@ export interface WeightedIdentifierMangler extends SimpleIdentifierMangler {
 export interface ManglePropertiesOptions {
   builtins?: boolean
   debug?: boolean
-  keep_quoted?: boolean | 'strict'
+  keep_quoted?: 'strict' | boolean
   nth_identifier?: SimpleIdentifierMangler | WeightedIdentifierMangler
-  regex?: RegExp | string
+  regex?: string | RegExp
   reserved?: string[]
 }
 
@@ -154,18 +154,18 @@ export interface FormatOptions {
   beautify?: boolean
   braces?: boolean
   comments?:
-    | boolean
     | 'all'
     | 'some'
+    | boolean
     | RegExp
     | ((
         node: any,
         comment: {
-          value: string
-          type: 'comment1' | 'comment2' | 'comment3' | 'comment4'
-          pos: number
-          line: number
           col: number
+          line: number
+          pos: number
+          type: 'comment1' | 'comment2' | 'comment3' | 'comment4'
+          value: string
         },
       ) => boolean)
   ecma?: ECMA
@@ -175,7 +175,7 @@ export interface FormatOptions {
   indent_start?: number
   inline_script?: boolean
   keep_quoted_props?: boolean
-  max_line_len?: number | false
+  max_line_len?: false | number
   preamble?: string
   preserve_annotations?: boolean
   quote_keys?: boolean
@@ -219,18 +219,18 @@ export interface MinifyOptions {
 
 export interface MinifyOutput {
   code?: string
-  map?: EncodedSourceMap | string
+  map?: string | EncodedSourceMap
   decoded_map?: DecodedSourceMap | null
 }
 
 export interface SourceMapOptions {
   /** Source map object, 'inline' or source map file content */
-  content?: SectionedSourceMapInput | string
+  content?: string | SectionedSourceMapInput
   includeSources?: boolean
   filename?: string
   root?: string
   asObject?: boolean
-  url?: string | 'inline'
+  url?: 'inline' | string
 }
 
 export function minify(
