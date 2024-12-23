@@ -62,7 +62,7 @@
     "webpack-dev-server": "^5.2.0"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^3.9.4",
+    "@ntnyq/eslint-config": "^3.10.1",
     "@ntnyq/prettier-config": "^1.22.0",
     "bumpp": "^9.9.2",
     "eslint": "^9.17.0",
