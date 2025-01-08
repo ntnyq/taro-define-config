@@ -12,15 +12,15 @@
 
 ## Install
 
-```bash
+```shell
 npm i taro-define-config -D
 ```
 
-```bash
+```shell
 yarn add taro-define-config -D
 ```
 
-```bash
+```shell
 pnpm add taro-define-config -D
 ```
 

@@ -2,9 +2,8 @@
  * @file `esbuild` 类型
  *
  * @see https://www.npmjs.com/package/esbuild?activeTab=code
- * @compatibility 0.24.0
+ * @compatibility 0.24.2
  */
-
 export type Platform = 'browser' | 'neutral' | 'node'
 export type Format = 'cjs' | 'esm' | 'iife'
 export type Loader =

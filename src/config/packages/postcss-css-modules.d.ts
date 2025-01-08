@@ -2,7 +2,7 @@
  * `postcss-modules` 配置
  *
  * @see https://github.com/madyankin/postcss-modules
- * @compatibility 6.0.0
+ * @compatibility 6.0.1
  */
 
 import type { LiteralUnion } from '../../utility-types'

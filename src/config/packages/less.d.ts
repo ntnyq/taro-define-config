@@ -2,8 +2,8 @@
  * `less` 配置
  *
  * @see https://lesscss.org/usage/#less-options
- * @see https://lesscss.org/usage/#less-options-source-map-options
- * @compatibility 4.2.0
+ * @see https://www.npmjs.com/package/@types/less?activeTab=code
+ * @compatibility 4.2.1
  */
 
 import type { AnyFn, LiteralUnion } from '../../utility-types'
