@@ -1,13 +1,13 @@
 /**
  * `autoprefixer` 配置
  *
- * @see https://github.com/postcss/autoprefixer#options
+ * @see https://github.com/postcss/autoprefixer/blob/main/lib/autoprefixer.d.ts
  * @compatibility 10.4.20
  */
 
 export interface AutoprefixerOptions {
   /**
-   * environment for Browserslist
+   * environment for `Browserslist`
    */
   env?: string
 
@@ -44,7 +44,7 @@ export interface AutoprefixerOptions {
    *
    * @default true
    */
-  flexbox?: 'no-2009' | boolean | string
+  flexbox?: 'no-2009' | boolean
 
   /**
    * should Autoprefixer add IE 10-11 prefixes for Grid Layout properties
@@ -55,7 +55,7 @@ export interface AutoprefixerOptions {
    *
    * @default false
    */
-  grid?: 'autoplace' | 'no-autoplace' | false
+  grid?: 'autoplace' | 'no-autoplace' | boolean
 
   /**
    * custom usage statistics for > 10% in my stats browsers query
@@ -64,15 +64,16 @@ export interface AutoprefixerOptions {
 
   /**
    * list of queries for target browsers
-   * @description `browserslist` key in `package.json` or a `.browserslistrc` file is much more recommended. So it can be shared with Babel, ESLint and Styelint.
+   *
+   * @description Try to not use it. The best practice is to use `.browserslistrc` config or `browserslist` key in `package.json` to share target browsers with Babel, ESLint and Stylelint
    *
    * @see https://github.com/browserslist/browserslist#queries
    * @default ['defaults']
    */
-  overrideBrowserslist?: string[]
+  overrideBrowserslist?: string | string[]
 
   /**
-   * do not raise error on unknown browser version in Browserslist config
+   * do not raise error on unknown browser version in `Browserslist` config
    *
    * @default false
    */
