@@ -3,16 +3,6 @@
 import { defineESLintConfig } from '@ntnyq/eslint-config'
 
 export default defineESLintConfig({
-  jsdoc: {
-    overrides: {
-      'jsdoc/check-tag-names': [
-        'error',
-        {
-          definedTags: ['compatibility', 'category', 'experimental'],
-        },
-      ],
-    },
-  },
   perfectionist: {
     overridesTypesRules: {
       'perfectionist/sort-interfaces': 'off',
