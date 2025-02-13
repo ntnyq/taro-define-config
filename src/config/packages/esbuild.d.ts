@@ -2,7 +2,7 @@
  * @file `esbuild` 类型
  *
  * @see https://www.npmjs.com/package/esbuild?activeTab=code
- * @compatibility 0.24.2
+ * @compatibility 0.25.0
  */
 
 export type Platform = 'browser' | 'neutral' | 'node'
@@ -295,7 +295,7 @@ export interface ServeOnRequestArgs {
 /** Documentation: https://esbuild.github.io/api/#serve-return-values */
 export interface ServeResult {
   port: number
-  host: string
+  hosts: string[]
 }
 
 export interface TransformOptions extends CommonOptions {

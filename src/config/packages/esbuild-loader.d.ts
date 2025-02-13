@@ -2,10 +2,10 @@
  * @file `esbuild-loader` 配置
  *
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
- * @compatibility 4.2.2
+ * @compatibility 4.3.0
  */
 
-import type { transform, TransformOptions } from './esbuild'
+import type { transform, TransformOptions } from 'esbuild'
 
 type Filter = string | RegExp
 

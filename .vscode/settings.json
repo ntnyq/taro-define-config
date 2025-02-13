@@ -4,7 +4,7 @@
   "editor.formatOnSave": true,
   "prettier.configPath": "./prettier.config.mjs",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "never",
+    "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never",
     "source.sortImports": "never"
   },
