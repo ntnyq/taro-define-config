@@ -98,7 +98,9 @@ export interface IOutputEnhance {
 /**
  * 小程序编译时的文件类型集合
  */
-export type ParseAstType = LiteralUnion<'COMPONENT' | 'ENTRY' | 'NORMAL' | 'PAGE' | 'STATIC'>
+export type ParseAstType = LiteralUnion<
+  'COMPONENT' | 'ENTRY' | 'NORMAL' | 'PAGE' | 'STATIC'
+>
 
 export interface BasePostCSSOptions {
   autoprefixer?: ConfigurablePlugin<AutoprefixerOptions>
@@ -123,32 +125,11 @@ export type BaseWebpackConfigOptions = {
   cssLoaderOption?: CSSLoaderOptions
 
   /**
-   * `sass-loader` 的附加配置
+   * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
    *
-   * @see https://github.com/webpack-contrib/sass-loader
+   * @see https://github.com/webpack-contrib/url-loader
    */
-  sassLoaderOption?: SassLoaderOptions
-
-  /**
-   * `less-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/less-loader
-   */
-  lessLoaderOption?: LessLoaderOptions
-
-  /**
-   * `stylus-loader` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/stylus-loader
-   */
-  stylusLoaderOption?: StylusLoaderOptions
-
-  /**
-   * `mini-css-extract-plugin` 的附加配置
-   *
-   * @see https://github.com/webpack-contrib/mini-css-extract-plugin
-   */
-  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
+  fontUrlLoaderOption?: URLLoaderOptions
 
   /**
    * 针对 `png | jpg | jpeg | gif | bpm | svg` 文件 `url-loader` 的配置
@@ -158,6 +139,13 @@ export type BaseWebpackConfigOptions = {
   imageUrlLoaderOption?: URLLoaderOptions
 
   /**
+   * `less-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/less-loader
+   */
+  lessLoaderOption?: LessLoaderOptions
+
+  /**
    * 针对 `mp4 | webm | ogg | mp3 | wav | flac | aac` 文件 `url-loader` 的配置
    *
    * @see https://github.com/webpack-contrib/url-loader
@@ -165,11 +153,25 @@ export type BaseWebpackConfigOptions = {
   mediaUrlLoaderOption?: URLLoaderOptions
 
   /**
-   * 针对 `woff | woff2 | eot | ttf | otf` 文件 `url-loader` 的配置
+   * `mini-css-extract-plugin` 的附加配置
    *
-   * @see https://github.com/webpack-contrib/url-loader
+   * @see https://github.com/webpack-contrib/mini-css-extract-plugin
    */
-  fontUrlLoaderOption?: URLLoaderOptions
+  miniCssExtractPluginOption?: MiniCSSExtractPluginOptions
+
+  /**
+   * `sass-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/sass-loader
+   */
+  sassLoaderOption?: SassLoaderOptions
+
+  /**
+   * `stylus-loader` 的附加配置
+   *
+   * @see https://github.com/webpack-contrib/stylus-loader
+   */
+  stylusLoaderOption?: StylusLoaderOptions
 
   /**
    * 自定义 `Webpack` 配置
@@ -207,4 +209,7 @@ export type LoaderAdditionalData<T extends 'less' | 'sass' | 'stylus'> =
           loaderContext: WebpackLoaderContext,
           meta: any,
         ) => Awaitable<string>
-      : (content: string, loaderContext: WebpackLoaderContext) => Awaitable<string>)
+      : (
+          content: string,
+          loaderContext: WebpackLoaderContext,
+        ) => Awaitable<string>)

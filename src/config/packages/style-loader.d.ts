@@ -38,14 +38,20 @@ export interface StyleLoaderOptions {
    * @see https://github.com/webpack-contrib/style-loader#insert
    * @default `head`
    */
-  insert?: string | ((htmlElement: HTMLElement, options: Record<string, any>) => void)
+  insert?:
+    | string
+    | ((htmlElement: HTMLElement, options: Record<string, any>) => void)
 
   /**
    * @see https://github.com/webpack-contrib/style-loader#styleTagTransform
    */
   styleTagTransform?:
     | string
-    | ((css: string, styleElement: HTMLStyleElement, options: Record<string, any>) => void)
+    | ((
+        css: string,
+        styleElement: HTMLStyleElement,
+        options: Record<string, any>,
+      ) => void)
 
   /**
    * @see https://github.com/webpack-contrib/style-loader#base

@@ -15,7 +15,9 @@ export interface LessLoaderOptions {
    *
    * @see https://github.com/webpack-contrib/less-loader#lessoptions
    */
-  lessOptions?: LessOptions | ((loaderConext: WebpackLoaderContext) => LessOptions)
+  lessOptions?:
+    | LessOptions
+    | ((loaderConext: WebpackLoaderContext) => LessOptions)
 
   /**
    * prepends/appends Less code to the actual entry file

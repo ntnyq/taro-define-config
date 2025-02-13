@@ -265,14 +265,22 @@ interface AsyncContext extends Context {
 interface SyncContext extends Context {
   callback: undefined
 }
-type ImporterReturnType = Error | { contents: string; file?: string } | { file: string } | null
+type ImporterReturnType =
+  | Error
+  | { contents: string; file?: string }
+  | { file: string }
+  | null
 type AsyncImporter = (
   this: AsyncContext,
   url: string,
   prev: string,
   done: (data: ImporterReturnType) => void,
 ) => void
-type SyncImporter = (this: SyncContext, url: string, prev: string) => ImporterReturnType
+type SyncImporter = (
+  this: SyncContext,
+  url: string,
+  prev: string,
+) => ImporterReturnType
 
 type SourceSpan = {
   text: string

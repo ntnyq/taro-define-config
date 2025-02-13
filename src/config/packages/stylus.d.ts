@@ -7,7 +7,11 @@
 
 import type { AnyFn } from '../../utility-types'
 
-export type StylusOptionsDefineItem = [string, boolean | number | string, boolean?]
+export type StylusOptionsDefineItem = [
+  string,
+  boolean | number | string,
+  boolean?,
+]
 
 export interface StylusOptions {
   /**

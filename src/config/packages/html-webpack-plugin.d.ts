@@ -25,7 +25,9 @@ declare class HtmlWebpackPlugin {
   apply(compiler: WebpackCompiler): void
 
   static getHooks(compilation: WebpackCompilation): HtmlWebpackPlugin.Hooks
-  static getCompilationHooks(compilation: WebpackCompilation): HtmlWebpackPlugin.Hooks
+  static getCompilationHooks(
+    compilation: WebpackCompilation,
+  ): HtmlWebpackPlugin.Hooks
 
   /**
    * Static helper to create a tag object to be get injected into the dom
@@ -140,7 +142,9 @@ declare namespace HtmlWebpackPlugin {
       | false // Use the template option instead to load a file
       | string
       | Promise<string>
-      | ((templateParameters: { [option: string]: any }) => string | Promise<string>)
+      | ((templateParameters: {
+          [option: string]: any
+        }) => string | Promise<string>)
     /**
      * Allows to overwrite the parameters used in the template
      */

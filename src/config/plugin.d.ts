@@ -39,7 +39,8 @@ export interface OfficialPluginOptionsMap {
   'tarojs-plugin-platform-nextjs': PluginPlatformNextJsOptions
 }
 export interface CustomPluginOptionsMap {}
-export type PluginsOptionsMap = CustomPluginOptionsMap & OfficialPluginOptionsMap
+export type PluginsOptionsMap = CustomPluginOptionsMap
+  & OfficialPluginOptionsMap
 
 export type PluginName = keyof PluginsOptionsMap
 

@@ -19,7 +19,10 @@ import type {
 /**
  * @internal
  */
-type ProcessorOptionsWithAdditionalData<T, P extends 'less' | 'sass' | 'stylus'> = {
+type ProcessorOptionsWithAdditionalData<
+  T,
+  P extends 'less' | 'sass' | 'stylus',
+> = {
   additionalData?: LoaderAdditionalData<P>
   options?: T
 }
@@ -68,7 +71,9 @@ export interface PlatformRNNativeComponents {
   /**
    * 外部依赖
    */
-  external?: Array<string | RegExp> | ((array: Array<string | RegExp>) => Array<string | RegExp>)
+  external?:
+    | Array<string | RegExp>
+    | ((array: Array<string | RegExp>) => Array<string | RegExp>)
 
   /**
    * 设置外部依赖，如果返回 `string`, 则将该值作为 `external`
@@ -130,7 +135,10 @@ export interface PlatformRN {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#rnsass
    */
-  sass?: ProcessorOptionsWithAdditionalData<DartSassOptions | NodeSassOptions, 'sass'>
+  sass?: ProcessorOptionsWithAdditionalData<
+    DartSassOptions | NodeSassOptions,
+    'sass'
+  >
 
   /**
    * `less` 相关配置

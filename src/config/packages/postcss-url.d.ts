@@ -38,7 +38,9 @@ export interface PostcssUrlOptions {
    * @see https://github.com/postcss/postcss-url#url
    * @default `rebase`
    */
-  url?: PostCSSUrlUrl | ((asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string)
+  url?:
+    | PostCSSUrlUrl
+    | ((asset: PostCSSUrlUrlAsset, dir: PostCSSUrlUrlDir) => string)
 
   /**
    * @see https://github.com/postcss/postcss-url#maxsize

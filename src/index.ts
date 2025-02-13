@@ -13,16 +13,15 @@ export interface TaroConfigEnv {
   command: string
 }
 
-export type WebpackMerge = (...configs: Array<object | null | undefined>) => object
+export type WebpackMerge = (
+  ...configs: Array<object | null | undefined>
+) => object
 
-export type TaroConfigFnObject<T extends CompilerTypes = CompilerWebpackTypes> = (
-  merge: WebpackMerge,
-  env: TaroConfigEnv,
-) => TaroConfig<T>
-export type TaroConfigFnPromise<T extends CompilerTypes = CompilerWebpackTypes> = (
-  merge: WebpackMerge,
-  env: TaroConfigEnv,
-) => Promise<TaroConfig<T>>
+export type TaroConfigFnObject<T extends CompilerTypes = CompilerWebpackTypes> =
+  (merge: WebpackMerge, env: TaroConfigEnv) => TaroConfig<T>
+export type TaroConfigFnPromise<
+  T extends CompilerTypes = CompilerWebpackTypes,
+> = (merge: WebpackMerge, env: TaroConfigEnv) => Promise<TaroConfig<T>>
 export type TaroConfigFn<T extends CompilerTypes = CompilerWebpackTypes> = (
   merge: WebpackMerge,
   env: TaroConfigEnv,

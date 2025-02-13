@@ -6,7 +6,9 @@
 
 import type { LiteralUnion } from '../../utility-types'
 
-export type PostcssHtmlTransformPlatform = LiteralUnion<'h5' | 'mini-program' | 'quickapp' | 'rn'>
+export type PostcssHtmlTransformPlatform = LiteralUnion<
+  'h5' | 'mini-program' | 'quickapp' | 'rn'
+>
 
 export interface PostcssHtmlTransformOptions {
   /**

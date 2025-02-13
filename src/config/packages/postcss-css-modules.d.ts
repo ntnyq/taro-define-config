@@ -10,20 +10,32 @@ import type { LiteralUnion } from '../../utility-types'
 export class CustomLoader {
   constructor(root: string, plugins: any[])
 
-  fetch(file: string, relativeTo: string, depTrace: string): Promise<Record<string, string>>
+  fetch(
+    file: string,
+    relativeTo: string,
+    depTrace: string,
+  ): Promise<Record<string, string>>
 
   finalSource?: string
 }
 
 export interface PostcssCssModulesOptions {
-  getJSON?: (cssFilename: string, json: Record<string, string>, outputFilename: string) => void
+  getJSON?: (
+    cssFilename: string,
+    json: Record<string, string>,
+    outputFilename: string,
+  ) => void
 
   /**
    * style of exported classnames, the keys in your json
    */
   localsConvention?:
     | LiteralUnion<'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'>
-    | ((originalClassName: string, generatedClassName: string, inputFile: string) => string)
+    | ((
+        originalClassName: string,
+        generatedClassName: string,
+        inputFile: string,
+      ) => string)
 
   /**
    * change all the classes are local or global
@@ -45,7 +57,9 @@ export interface PostcssCssModulesOptions {
   /**
    * generate custom classes
    */
-  generateScopedName?: string | ((name: string, filename: string, css: string) => string)
+  generateScopedName?:
+    | string
+    | ((name: string, filename: string, css: string) => string)
 
   /**
    * add custom hash to generate more unique classes
@@ -70,7 +84,10 @@ export interface PostcssCssModulesOptions {
   /**
    * resolve custom path alias
    */
-  resolve?: (file: string, importer: string) => string | Promise<string | null> | null
+  resolve?: (
+    file: string,
+    importer: string,
+  ) => string | Promise<string | null> | null
 
   [key: string]: any
 }

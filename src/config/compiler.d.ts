@@ -1,5 +1,10 @@
 import type { FilterOptions } from './common'
-import type { ESBuildBuildOptions, SWCConfig, VitePlugin, WebpackConfiguration } from './packages'
+import type {
+  ESBuildBuildOptions,
+  SWCConfig,
+  VitePlugin,
+  WebpackConfiguration,
+} from './packages'
 
 export type CompilerViteTypes = 'vite'
 export type CompilerWebpackTypes = 'webpack5'
@@ -87,4 +92,6 @@ export interface CompilerConfig<T> {
   vitePlugins?: VitePlugin[]
 }
 
-export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> = CompilerConfig<T> | T
+export type Compiler<T extends CompilerTypes = CompilerWebpackTypes> =
+  | CompilerConfig<T>
+  | T

@@ -645,7 +645,37 @@ export interface JscConfig {
    * This is experimental, and can be removed without a major version bump.
    */
   experimental?: {
-    optimizeHygiene?: boolean
+    /**
+     * Specify the location where SWC stores its intermediate cache files.
+     * Currently only transform plugin uses this. If not specified, SWC will
+     * create `.swc` directories.
+     */
+    cacheRoot?: string
+
+    /**
+     * Disable all lint rules.
+     */
+    disableAllLints?: boolean
+
+    /**
+     * Disable builtin transforms. If enabled, only Wasm plugins are used.
+     */
+    disableBuiltinTransformsForInternalTesting?: boolean
+
+    /**
+     * Use `assert` instead of `with` for imports and exports.
+     * This option only works when `keepImportAttributes` is `true`.
+     */
+    emitAssertForImportAttributes?: boolean
+    /**
+     * Emit isolated dts files for each module.
+     */
+    emitIsolatedDts?: boolean
+
+    /**
+     * Keep import assertions.
+     */
+    keepImportAssertions?: boolean
 
     /**
      * Preserve `with` in imports and exports.
@@ -654,18 +684,8 @@ export interface JscConfig {
      */
     keepImportAttributes?: boolean
 
-    /**
-     * Use `assert` instead of `with` for imports and exports.
-     * This option only works when `keepImportAttributes` is `true`.
-     */
-    emitAssertForImportAttributes?: boolean
+    optimizeHygiene?: boolean
 
-    /**
-     * Specify the location where SWC stores its intermediate cache files.
-     * Currently only transform plugin uses this. If not specified, SWC will
-     * create `.swc` directories.
-     */
-    cacheRoot?: string
     /**
      * List of custom transform plugins written in WebAssembly.
      * First parameter of tuple indicates the name of the plugin - it can be either
@@ -681,26 +701,6 @@ export interface JscConfig {
      * See https://github.com/swc-project/swc/issues/9132 for more details.
      */
     runPluginFirst?: boolean
-
-    /**
-     * Disable builtin transforms. If enabled, only Wasm plugins are used.
-     */
-    disableBuiltinTransformsForInternalTesting?: boolean
-
-    /**
-     * Emit isolated dts files for each module.
-     */
-    emitIsolatedDts?: boolean
-
-    /**
-     * Disable all lint rules.
-     */
-    disableAllLints?: boolean
-
-    /**
-     * Keep import assertions.
-     */
-    keepImportAssertions?: boolean
   }
 
   baseUrl?: string
@@ -1718,7 +1718,10 @@ export interface JSXSpreadChild extends HasSpan, Node {
   expression: Expression
 }
 
-export type JSXElementName = Identifier | JSXMemberExpression | JSXNamespacedName
+export type JSXElementName =
+  | Identifier
+  | JSXMemberExpression
+  | JSXNamespacedName
 
 export interface JSXOpeningElement extends HasSpan, Node {
   type: 'JSXOpeningElement'
@@ -1750,7 +1753,11 @@ export interface JSXAttribute extends HasSpan, Node {
 
 export type JSXAttributeName = Identifier | JSXNamespacedName
 
-export type JSXAttrValue = JSXElement | JSXExpressionContainer | JSXFragment | Literal
+export type JSXAttrValue =
+  | JSXElement
+  | JSXExpressionContainer
+  | JSXFragment
+  | Literal
 
 export interface JSXText extends HasSpan, Node {
   type: 'JSXText'
@@ -1907,7 +1914,10 @@ export interface ExportDefaultDeclaration extends HasSpan, Node {
   decl: DefaultDecl
 }
 
-export type DefaultDecl = ClassExpression | FunctionExpression | TsInterfaceDeclaration
+export type DefaultDecl =
+  | ClassExpression
+  | FunctionExpression
+  | TsInterfaceDeclaration
 
 export type ImportSpecifier =
   | ImportDefaultSpecifier
@@ -2523,7 +2533,11 @@ export interface TsThisType extends HasSpan, Node {
   type: 'TsThisType'
 }
 
-export type TsFnParameter = ArrayPattern | BindingIdentifier | ObjectPattern | RestElement
+export type TsFnParameter =
+  | ArrayPattern
+  | BindingIdentifier
+  | ObjectPattern
+  | RestElement
 
 export interface TsFunctionType extends HasSpan, Node {
   type: 'TsFunctionType'

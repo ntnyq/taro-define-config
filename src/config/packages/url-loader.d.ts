@@ -39,7 +39,12 @@ export interface URLLoaderOptions {
    *
    * @see https://github.com/webpack-contrib/url-loader#generator
    */
-  generator?: (mimetype: string, encoding: string, content: string, resourcePath: string) => string
+  generator?: (
+    mimetype: string,
+    encoding: string,
+    content: string,
+    resourcePath: string,
+  ) => string
 
   /**
    * Specifies an alternative loader to use when a target file's size exceeds the limit

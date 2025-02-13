@@ -7,7 +7,15 @@
 import type { LiteralUnion } from '../../utility-types'
 
 type HTTPMethod = LiteralUnion<
-  'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE'
+  | 'CONNECT'
+  | 'DELETE'
+  | 'GET'
+  | 'HEAD'
+  | 'OPTIONS'
+  | 'PATCH'
+  | 'POST'
+  | 'PUT'
+  | 'TRACE'
 >
 
 export interface PluginMockOptions {

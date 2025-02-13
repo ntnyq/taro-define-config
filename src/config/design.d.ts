@@ -17,7 +17,9 @@ export interface DesignWidthInput {
  *
  * @returns 设计稿尺寸
  */
-export type DesignWidth = number | ((input?: number | string | DesignWidthInput) => number)
+export type DesignWidth =
+  | number
+  | ((input?: number | string | DesignWidthInput) => number)
 
 /**
  * 设计稿尺寸换算规则

@@ -23,7 +23,13 @@ export type Loader =
   | 'text'
   | 'ts'
   | 'tsx'
-export type LogLevel = 'debug' | 'error' | 'info' | 'silent' | 'verbose' | 'warning'
+export type LogLevel =
+  | 'debug'
+  | 'error'
+  | 'info'
+  | 'silent'
+  | 'verbose'
+  | 'warning'
 export type Charset = 'ascii' | 'utf8'
 export type Drop = 'console' | 'debugger'
 
@@ -181,7 +187,10 @@ export interface BuildOptions extends CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#footer */
   footer?: { [type: string]: string }
   /** Documentation: https://esbuild.github.io/api/#entry-points */
-  entryPoints?: { in: string; out: string }[] | Record<string, string> | string[]
+  entryPoints?:
+    | { in: string; out: string }[]
+    | Record<string, string>
+    | string[]
   /** Documentation: https://esbuild.github.io/api/#stdin */
   stdin?: StdinOptions
   /** Documentation: https://esbuild.github.io/plugins/ */
@@ -239,13 +248,19 @@ export interface OutputFile {
   readonly text: string
 }
 
-export interface BuildResult<ProvidedOptions extends BuildOptions = BuildOptions> {
+export interface BuildResult<
+  ProvidedOptions extends BuildOptions = BuildOptions,
+> {
   errors: Message[]
   warnings: Message[]
   /** Only when "write: false" */
-  outputFiles: OutputFile[] | (ProvidedOptions['write'] extends false ? never : undefined)
+  outputFiles:
+    | OutputFile[]
+    | (ProvidedOptions['write'] extends false ? never : undefined)
   /** Only when "metafile: true" */
-  metafile: Metafile | (ProvidedOptions['metafile'] extends true ? never : undefined)
+  metafile:
+    | Metafile
+    | (ProvidedOptions['metafile'] extends true ? never : undefined)
   /** Only when "mangleCache" is present */
   mangleCache:
     | Record<string, false | string>
@@ -294,7 +309,9 @@ export interface TransformOptions extends CommonOptions {
   footer?: string
 }
 
-export interface TransformResult<ProvidedOptions extends TransformOptions = TransformOptions> {
+export interface TransformResult<
+  ProvidedOptions extends TransformOptions = TransformOptions,
+> {
   code: string
   map: string
   warnings: Message[]
@@ -303,7 +320,9 @@ export interface TransformResult<ProvidedOptions extends TransformOptions = Tran
     | Record<string, false | string>
     | (ProvidedOptions['mangleCache'] extends object ? never : undefined)
   /** Only when "legalComments" is "external" */
-  legalComments: string | (ProvidedOptions['legalComments'] extends 'external' ? never : undefined)
+  legalComments:
+    | string
+    | (ProvidedOptions['legalComments'] extends 'external' ? never : undefined)
 }
 
 export interface TransformFailure extends Error {
@@ -324,7 +343,13 @@ export interface PluginBuild {
   resolve(path: string, options?: ResolveOptions): Promise<ResolveResult>
 
   /** Documentation: https://esbuild.github.io/plugins/#on-start */
-  onStart(callback: () => OnStartResult | Promise<OnStartResult | null | void> | null | void): void
+  onStart(
+    callback: () =>
+      | OnStartResult
+      | Promise<OnStartResult | null | void>
+      | null
+      | void,
+  ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-end */
   onEnd(
@@ -338,7 +363,11 @@ export interface PluginBuild {
     options: OnResolveOptions,
     callback: (
       args: OnResolveArgs,
-    ) => OnResolveResult | Promise<OnResolveResult | null | undefined> | null | undefined,
+    ) =>
+      | OnResolveResult
+      | Promise<OnResolveResult | null | undefined>
+      | null
+      | undefined,
   ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-load */
@@ -346,7 +375,11 @@ export interface PluginBuild {
     options: OnLoadOptions,
     callback: (
       args: OnLoadArgs,
-    ) => OnLoadResult | Promise<OnLoadResult | null | undefined> | null | undefined,
+    ) =>
+      | OnLoadResult
+      | Promise<OnLoadResult | null | undefined>
+      | null
+      | undefined,
   ): void
 
   /** Documentation: https://esbuild.github.io/plugins/#on-dispose */
@@ -420,17 +453,17 @@ export interface OnResolveArgs {
 }
 
 export type ImportKind =
-  | 'entry-point'
+  | 'composes-from'
 
   // JS
   | 'dynamic-import'
+  | 'entry-point'
+  | 'import-rule'
   | 'import-statement'
-  | 'require-call'
-  | 'require-resolve'
 
   // CSS
-  | 'composes-from'
-  | 'import-rule'
+  | 'require-call'
+  | 'require-resolve'
   | 'url-token'
 
 /** Documentation: https://esbuild.github.io/plugins/#on-resolve-results */
@@ -545,7 +578,9 @@ export interface AnalyzeMetafileOptions {
 
 export interface WatchOptions {}
 
-export interface BuildContext<ProvidedOptions extends BuildOptions = BuildOptions> {
+export interface BuildContext<
+  ProvidedOptions extends BuildOptions = BuildOptions,
+> {
   /** Documentation: https://esbuild.github.io/api/#rebuild */
   rebuild(): Promise<BuildResult<ProvidedOptions>>
 
@@ -562,7 +597,9 @@ export interface BuildContext<ProvidedOptions extends BuildOptions = BuildOption
 // This is a TypeScript type-level function which replaces any keys in "In"
 // that aren't in "Out" with "never". We use this to reject properties with
 // typos in object literals. See: https://stackoverflow.com/questions/49580725
-type SameShape<Out, In extends Out> = In & { [Key in Exclude<keyof In, keyof Out>]: never }
+type SameShape<Out, In extends Out> = In & {
+  [Key in Exclude<keyof In, keyof Out>]: never
+}
 
 /**
  * This function invokes the "esbuild" command-line tool for you. It returns a

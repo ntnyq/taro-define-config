@@ -12,7 +12,12 @@ import type {
   TerserMinimizer,
 } from './minimizers'
 import type { TaroSassOptions } from './packages'
-import type { PlatformH5, PlatformHarmony, PlatformMini, PlatformRN } from './platforms'
+import type {
+  PlatformH5,
+  PlatformHarmony,
+  PlatformMini,
+  PlatformRN,
+} from './platforms'
 import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 
