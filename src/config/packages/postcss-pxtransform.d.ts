@@ -2,6 +2,7 @@
  * `postcss-pxtransform` 配置
  *
  * @see https://github.com/NervJS/taro/tree/main/packages/postcss-pxtransform#配置-options
+ * @compatibility 4.0.9
  */
 
 import type { LiteralUnion } from '../../utility-types'

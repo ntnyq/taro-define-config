@@ -3,7 +3,7 @@
  *
  * @see https://lesscss.org/usage/#less-options
  * @see https://www.npmjs.com/package/@types/less?activeTab=code
- * @compatibility 4.2.1
+ * @compatibility 4.2.2
  */
 
 import type { AnyFn, LiteralUnion } from '../../utility-types'

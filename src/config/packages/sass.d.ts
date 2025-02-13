@@ -415,6 +415,7 @@ interface CommonSassOptions {
  *
  * @see https://www.npmjs.com/package/@types/node-sass?activeTab=code
  * @compatibility 9.0.0
+ * @deprecated
  */
 export interface NodeSassOptions extends CommonSassOptions {
   /**
@@ -489,7 +490,7 @@ export interface NodeSassOptions extends CommonSassOptions {
  * `dart-sass` 配置, `sass-loader` 仅支持部分配置
  *
  * @see https://github.com/sass/dart-sass
- * @compatibility 1.81.0
+ * @compatibility 1.83.4
  */
 export interface DartSassOptions extends CommonSassOptions {
   /**

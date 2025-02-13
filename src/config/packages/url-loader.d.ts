@@ -3,6 +3,7 @@
  *
  * @see https://github.com/webpack-contrib/url-loader#options
  * @compatibility 4.1.1
+ * @deprecated
  */
 
 export interface URLLoaderOptions {
