@@ -192,10 +192,10 @@ export interface FormatOptions {
 }
 
 export enum OutputQuoteStyle {
-  PreferDouble = 0,
-  AlwaysSingle = 1,
   AlwaysDouble = 2,
   AlwaysOriginal = 3,
+  AlwaysSingle = 1,
+  PreferDouble = 0,
 }
 
 export interface MinifyOptions {
