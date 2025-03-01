@@ -1,6 +1,6 @@
 {
   "name": "taro-define-config",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "packageManager": "pnpm@10.5.2",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
