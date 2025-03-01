@@ -2,8 +2,8 @@
  * @file swc 类型
  * @see https://www.npmjs.com/package/@swc/core?activeTab=code
  * @see https://www.npmjs.com/package/@swc/types?activeTab=code
- * @compatibility 1.10.16 for @swc/core
- * @compatibility 0.1.17 for @swc/types
+ * @compatibility 1.11.5 for @swc/core
+ * @compatibility 0.1.19 for @swc/types
  */
 
 /* cSpell: disable */
@@ -851,12 +851,12 @@ export interface TransformConfig {
   optimizer?: OptimizerConfig
 
   /**
-   * https://swc.rs/docs/configuring-swc.html#jsctransformlegacydecorator
+   * https://swc.rs/docs/configuration/compilation#jsctransformlegacydecorator
    */
   legacyDecorator?: boolean
 
   /**
-   * https://swc.rs/docs/configuring-swc.html#jsctransformdecoratormetadata
+   * https://swc.rs/docs/configuration/compilation#jsctransformdecoratormetadata
    */
   decoratorMetadata?: boolean
 
@@ -867,7 +867,15 @@ export interface TransformConfig {
 
   treatConstEnumAsEnum?: boolean
 
+  /**
+   * https://www.typescriptlang.org/tsconfig#useDefineForClassFields
+   */
   useDefineForClassFields?: boolean
+
+  /**
+   * https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
+   */
+  verbatimModuleSyntax?: boolean
 }
 
 export interface ReactConfig {

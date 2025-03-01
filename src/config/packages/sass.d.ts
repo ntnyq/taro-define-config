@@ -181,7 +181,7 @@ export interface Deprecations {
  * the relevant compiler options.
  *
  * @category Messages
- * @compatibility dart: "1.74.0", node: false
+ * @compatibility dart: 1.85.1, node: false
  */
 export type DeprecationOrId = Deprecation | keyof Deprecations
 
@@ -490,7 +490,7 @@ export interface NodeSassOptions extends CommonSassOptions {
  * `dart-sass` 配置, `sass-loader` 仅支持部分配置
  *
  * @see https://github.com/sass/dart-sass
- * @compatibility 1.83.4
+ * @compatibility 1.85.1
  */
 export interface DartSassOptions extends CommonSassOptions {
   /**

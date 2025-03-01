@@ -2,7 +2,7 @@
  * `sass-loader` 配置
  *
  * @see https://github.com/webpack-contrib/sass-loader#options
- * @compatibility 16.0.4
+ * @compatibility 16.0.5
  */
 
 import type { Buffer } from 'node:buffer'
