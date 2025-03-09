@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - esbuild
+overrides:
+  esbuild: ^0.25.0
+packages:
+  - .

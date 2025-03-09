@@ -1,5 +1,6 @@
 {
   "name": "taro-define-config",
+  "type": "commonjs",
   "version": "0.10.5",
   "packageManager": "pnpm@10.6.1",
   "description": "Provide a defineConfig function for tarojs config",
@@ -73,14 +74,6 @@
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ],
-    "overrides": {
-      "esbuild": "^0.25.0"
-    }
   },
   "nano-staged": {
     "*.{js,ts,cjs,mjs,md,yml,yaml,json}": "eslint --fix"
