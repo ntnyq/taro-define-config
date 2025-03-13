@@ -124,6 +124,9 @@ it('define platform h5 config', () => {
         mediaUrlLoaderOption: {},
         imageUrlLoaderOption: {},
         fontUrlLoaderOption: {},
+        webpackChain(chain) {
+          chain.devtool('#cheap-eval-source-map')
+        },
       },
     }),
   ).toMatchTypeOf<TaroConfigExport>()

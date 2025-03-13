@@ -2,7 +2,7 @@
  * `autoprefixer` 配置
  *
  * @see https://github.com/postcss/autoprefixer/blob/main/lib/autoprefixer.d.ts
- * @compatibility 10.4.20
+ * @compatibility 10.4.21
  */
 
 export interface AutoprefixerOptions {
