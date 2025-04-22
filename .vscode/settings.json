@@ -46,6 +46,7 @@
     "tarojs",
     "taze",
     "tsup",
+    "unrs",
     "weapp"
   ],
   "cSpell.allowCompoundWords": true

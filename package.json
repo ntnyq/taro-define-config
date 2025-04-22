@@ -43,11 +43,12 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint": "eslint .",
+    "lint": "eslint",
     "prepare": "husky",
-    "release": "run-s build release:check release:publish",
+    "release": "run-s build release:check release:version release:publish",
     "release:check": "run-s lint typecheck",
-    "release:publish": "bumpp && pnpm publish",
+    "release:publish": "pnpm publish",
+    "release:version": "bumpp",
     "test": "vitest --typecheck",
     "typecheck": "tsc --noEmit"
   },
