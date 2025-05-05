@@ -58,7 +58,7 @@
     "@types/node": "^22.15.3",
     "rollup": "^4.40.1",
     "tapable": "^2.2.1",
-    "vite": "^6.3.3",
+    "vite": "^6.3.4",
     "webpack": "^5.99.7",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.1"
@@ -67,7 +67,7 @@
     "@ntnyq/eslint-config": "^4.1.0",
     "@ntnyq/prettier-config": "^2.0.0",
     "bumpp": "^10.1.0",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
     "npm-run-all2": "^7.0.2",
