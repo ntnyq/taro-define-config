@@ -2,7 +2,7 @@
  * @file `esbuild` 类型
  *
  * @see https://www.npmjs.com/package/esbuild?activeTab=code
- * @compatibility 0.25.2
+ * @compatibility 0.25.4
  */
 
 export type Platform = 'browser' | 'neutral' | 'node'
@@ -280,7 +280,13 @@ export interface ServeOptions {
   keyfile?: string
   certfile?: string
   fallback?: string
+  cors?: CORSOptions
   onRequest?: (args: ServeOnRequestArgs) => void
+}
+
+/** Documentation: https://esbuild.github.io/api/#cors */
+export interface CORSOptions {
+  origin?: string | string[]
 }
 
 export interface ServeOnRequestArgs {
