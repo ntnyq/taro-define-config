@@ -22,7 +22,7 @@ import type { Plugin } from './plugin'
 import type { Preset } from './preset'
 
 export type Framework = LiteralUnion<
-  'nerv' | 'none' | 'preact' | 'react' | 'solid' | 'vue' | 'vue3'
+  'none' | 'preact' | 'react' | 'solid' | 'vue3'
 >
 
 /**
@@ -213,7 +213,6 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
 }
 
 export * from './copy'
-
 export * from './cache'
 export * from './common'
 export * from './logger'
