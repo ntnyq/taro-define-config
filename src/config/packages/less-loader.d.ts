@@ -2,7 +2,7 @@
  * `less-loader` 配置
  *
  * @see https://github.com/webpack-contrib/less-loader#options
- * @compatibility 12.2.0
+ * @compatibility 12.3.0
  */
 
 import type { LoaderAdditionalData } from '../common'
@@ -40,7 +40,7 @@ export interface LessLoaderOptions {
    * @see https://github.com/webpack-contrib/less-loader#webpackimporter
    * @default true
    */
-  webpackImporter?: boolean
+  webpackImporter?: 'only' | boolean
 
   /**
    * determines which implementation of Less to use

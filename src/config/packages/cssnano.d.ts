@@ -2,7 +2,7 @@
  * `cssnano` 配置
  *
  * @see https://github.com/cssnano/cssnano/blob/master/packages/cssnano/types/index.d.ts
- * @compatibility 7.0.6
+ * @compatibility 7.0.7
  */
 
 import type { AnyFn } from '../../utility-types'
