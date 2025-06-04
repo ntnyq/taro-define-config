@@ -85,7 +85,7 @@ it('define base config', () => {
       rn: {},
       mini: {},
     }),
-  ).toMatchTypeOf<TaroConfigExport>()
+  ).toExtend<TaroConfigExport>()
 })
 
 it('define platform h5 config', () => {
@@ -129,7 +129,7 @@ it('define platform h5 config', () => {
         },
       },
     }),
-  ).toMatchTypeOf<TaroConfigExport>()
+  ).toExtend<TaroConfigExport>()
 })
 
 it('define platform rn config', () => {
@@ -156,7 +156,7 @@ it('define platform rn config', () => {
         enableSvgTransform: true,
       },
     }),
-  ).toMatchTypeOf<TaroConfigExport>()
+  ).toExtend<TaroConfigExport>()
 })
 
 it('define platform mini config', () => {
@@ -189,7 +189,7 @@ it('define platform mini config', () => {
         fontUrlLoaderOption: {},
       },
     }),
-  ).toMatchTypeOf<TaroConfigExport>()
+  ).toExtend<TaroConfigExport>()
 })
 
 it('define platform harmony config', () => {
@@ -199,5 +199,5 @@ it('define platform harmony config', () => {
         projectPath: '/app',
       },
     }),
-  ).toMatchTypeOf<TaroConfigExport>()
+  ).toExtend<TaroConfigExport>()
 })
