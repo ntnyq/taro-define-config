@@ -5,7 +5,7 @@
  */
 
 import type { URL } from 'node:url'
-import type { AnyFn, LiteralUnion } from '../../utility-types'
+import type { AnyFn, LiteralUnion } from '../../utils'
 
 /**
  * All of the deprecation types currently used by Sass.
@@ -223,7 +223,7 @@ export interface Deprecation<
 /**
  * A semantic version of the compiler.
  */
-export class Version {
+export declare class Version {
   /**
    * Constructs a new version.
    *
@@ -297,7 +297,8 @@ type SourceSpan = {
     offset: number
   }
 }
-type LoggerWarnOptions = {
+
+export type LoggerWarnOptions = {
   span?: SourceSpan
   stack?: string
 } & (
@@ -307,7 +308,7 @@ type LoggerWarnOptions = {
       deprecationType: Deprecation
     }
 )
-interface Logger {
+interface SassLogger {
   /**
    * If this is `undefined`, Sass will print warnings to standard error
    */
@@ -320,7 +321,7 @@ interface Logger {
 }
 
 declare const nodePackageImporterKey: unique symbol
-class NodePackageImporter {
+declare class NodePackageImporter {
   private readonly [nodePackageImporterKey]: true
 
   constructor(entryPointDirectory?: string)
@@ -571,7 +572,7 @@ export interface DartSassOptions extends CommonSassOptions {
   /**
    * An object to use to handle warnings and/or debug messages from Sass
    */
-  logger?: Logger
+  logger?: SassLogger
 
   /**
    * If this option is set to an instance of `NodePackageImporter`, Sass will

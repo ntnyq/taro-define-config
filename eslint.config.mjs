@@ -11,6 +11,9 @@ export default defineESLintConfig({
   },
   typescript: {
     tsconfigPath: './tsconfig.json',
+    overrides: {
+      '@typescript-eslint/no-use-before-define': 'off',
+    },
     overridesTypeAwareRules: {
       '@typescript-eslint/no-redundant-type-constituents': 'off',
     },

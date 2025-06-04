@@ -6,7 +6,7 @@
  * @compatibility 4.3.0
  */
 
-import type { AnyFn, LiteralUnion } from '../../utility-types'
+import type { AnyFn, LiteralUnion } from '../../utils'
 
 export interface LessSourceMap {
   outputFilename?: string

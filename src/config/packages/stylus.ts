@@ -5,7 +5,7 @@
  * @compatibility 0.64.0
  */
 
-import type { AnyFn } from '../../utility-types'
+import type { AnyFn } from '../../utils'
 
 export type StylusOptionsDefineItem = [
   string,

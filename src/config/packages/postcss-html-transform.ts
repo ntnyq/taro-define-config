@@ -5,7 +5,7 @@
  * @compatibility 4.0.9
  */
 
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 
 export type PostcssHtmlTransformPlatform = LiteralUnion<
   'h5' | 'mini-program' | 'quickapp' | 'rn'

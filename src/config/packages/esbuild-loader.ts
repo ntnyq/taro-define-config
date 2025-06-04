@@ -5,7 +5,7 @@
  * @compatibility 4.3.0
  */
 
-import type { transform, TransformOptions } from 'esbuild'
+import type { transform, TransformOptions } from './esbuild'
 
 type Filter = string | RegExp
 

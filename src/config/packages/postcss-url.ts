@@ -6,7 +6,7 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 
 export type PostCSSUrlUrl = LiteralUnion<'copy' | 'inline' | 'rebase'>
 

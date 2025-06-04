@@ -764,7 +764,7 @@ export interface InitializeOptions {
   worker?: boolean
 }
 
-export const version: string
+export declare const version: string
 
 // Call this function to terminate esbuild's child process. The child process
 // is not terminated and re-created after each API call because it's more

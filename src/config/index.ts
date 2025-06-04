@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../utility-types'
+import type { LiteralUnion } from '../utils'
 import type { Cache } from './cache'
 import type { Compiler, CompilerTypes, CompilerWebpackTypes } from './compiler'
 import type { Copy } from './copy'
@@ -218,7 +218,6 @@ export * from './common'
 export * from './logger'
 export * from './plugin'
 export * from './preset'
-
 export * from './packages'
 export * from './platforms'
 export * from './minimizers'

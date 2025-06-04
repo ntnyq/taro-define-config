@@ -233,11 +233,11 @@ export interface SourceMapOptions {
   url?: 'inline' | string
 }
 
-export function minify(
+export declare function minify(
   files: string | string[] | { [file: string]: string },
   options?: MinifyOptions,
 ): Promise<MinifyOutput>
-export function minify_sync(
+export declare function minify_sync(
   files: string | string[] | { [file: string]: string },
   options?: MinifyOptions,
 ): MinifyOutput

@@ -5,7 +5,7 @@
  * @compatibility 8.1.1
  */
 
-import type { AnyFn } from '../../utility-types'
+import type { AnyFn } from '../../utils'
 import type { LoaderAdditionalData } from '../common'
 import type { StylusOptions } from './stylus'
 import type { WebpackLoaderContext } from './webpack'

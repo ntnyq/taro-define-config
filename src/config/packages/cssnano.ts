@@ -5,7 +5,7 @@
  * @compatibility 7.0.7
  */
 
-import type { AnyFn } from '../../utility-types'
+import type { AnyFn } from '../../utils'
 
 export type CSSNanoConfig<T> = T | [T, Record<string, any>] | [T]
 

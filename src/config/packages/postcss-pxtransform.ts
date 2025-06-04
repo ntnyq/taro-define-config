@@ -5,7 +5,7 @@
  * @compatibility 4.0.9
  */
 
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 import type { DesignRatio, DesignWidth } from '../design'
 
 export interface PostcssPxtransformOptions {

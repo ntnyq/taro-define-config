@@ -6,7 +6,7 @@
  */
 
 import type { Buffer } from 'node:buffer'
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 import type { LoaderAdditionalData } from '../common'
 import type { DartSassOptions, NodeSassOptions } from './sass'
 import type { WebpackLoaderContext } from './webpack'

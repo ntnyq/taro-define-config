@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 import type { ConfigurablePlugin } from '../common'
 import type { CSSNanoOptions } from '../packages'
 

@@ -4,7 +4,7 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5
  */
 
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 import type {
   CommonWebpackConfigOptions,
   ICompileOptions,

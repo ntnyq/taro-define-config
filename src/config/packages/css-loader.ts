@@ -5,7 +5,7 @@
  * @compatibility 7.1.2
  */
 
-import type { Awaitable, LiteralUnion } from '../../utility-types'
+import type { Awaitable, LiteralUnion } from '../../utils'
 import type { WebpackLoaderContext } from './webpack'
 
 export interface CSSLoaderUrl {

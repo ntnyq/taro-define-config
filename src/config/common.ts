@@ -1,4 +1,5 @@
 import type { Buffer } from 'node:buffer'
+import type { Awaitable, LiteralUnion } from '../utils'
 import type {
   AutoprefixerOptions,
   ChainableWebpackConfig,
@@ -15,8 +16,7 @@ import type {
   URLLoaderOptions,
   Webpack,
   WebpackLoaderContext,
-} from '../config/packages'
-import type { Awaitable, LiteralUnion } from '../utility-types'
+} from './packages'
 
 /**
  * `Webpack devtool` 类型

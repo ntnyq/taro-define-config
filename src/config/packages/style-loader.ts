@@ -6,7 +6,7 @@
  * @compatibility 4.0.0
  */
 
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 
 export type StyleLoaderInjectType = LiteralUnion<
   | 'autoStyleTag'

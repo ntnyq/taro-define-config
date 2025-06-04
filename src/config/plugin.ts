@@ -4,7 +4,7 @@
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#plugins
  */
 
-import type { Awaitable, ExcludeEmptyObjects } from '../utility-types'
+import type { Awaitable, ExcludeEmptyObjects } from '../utils'
 import type {
   PluginHtmlOptions,
   PluginHttpOptions,

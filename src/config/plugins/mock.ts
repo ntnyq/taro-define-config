@@ -4,7 +4,7 @@
  * @see https://github.com/NervJS/taro-plugin-mock
  */
 
-import type { LiteralUnion } from '../../utility-types'
+import type { LiteralUnion } from '../../utils'
 
 type HTTPMethod = LiteralUnion<
   | 'CONNECT'
