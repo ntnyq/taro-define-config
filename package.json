@@ -67,7 +67,7 @@
     "@ntnyq/eslint-config": "^5.0.0-beta.6",
     "@ntnyq/prettier-config": "^2.2.0",
     "bumpp": "^10.1.1",
-    "eslint": "^9.28.0",
+    "eslint": "^9.29.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
     "npm-run-all2": "^8.0.4",
