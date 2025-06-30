@@ -58,7 +58,7 @@
     "@types/node": "^22.15.32",
     "rollup": "^4.44.0",
     "tapable": "^2.2.2",
-    "vite": "^6.3.5",
+    "vite": "^7.0.0",
     "webpack": "^5.99.9",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.2"
