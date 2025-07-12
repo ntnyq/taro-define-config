@@ -2,7 +2,7 @@
   "name": "taro-define-config",
   "type": "module",
   "version": "0.11.0",
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.13.1",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -55,11 +55,11 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.10",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^22.16.0",
-    "rollup": "^4.44.2",
+    "@types/node": "^22.16.3",
+    "rollup": "^4.45.0",
     "tapable": "^2.2.2",
-    "vite": "^7.0.2",
-    "webpack": "^5.99.9",
+    "vite": "^7.0.4",
+    "webpack": "^5.100.1",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.2"
   },
@@ -67,7 +67,7 @@
     "@ntnyq/eslint-config": "^5.0.0",
     "@ntnyq/prettier-config": "^3.0.1",
     "bumpp": "^10.2.0",
-    "eslint": "^9.30.1",
+    "eslint": "^9.31.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
     "npm-run-all2": "^8.0.4",
