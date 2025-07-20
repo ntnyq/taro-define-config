@@ -1,9 +1,10 @@
 // @ts-check
 
-import { defineESLintConfig } from '@ntnyq/eslint-config'
+import { defineESLintConfig, GLOB_TYPES } from '@ntnyq/eslint-config'
 
 export default defineESLintConfig({
   perfectionist: {
+    filesTypes: [...GLOB_TYPES, '**/config/**/*.ts'],
     overridesTypesRules: {
       'perfectionist/sort-interfaces': 'off',
       'perfectionist/sort-modules': 'off',

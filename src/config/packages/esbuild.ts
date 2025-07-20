@@ -2,7 +2,7 @@
  * @file `esbuild` 类型
  *
  * @see https://www.npmjs.com/package/esbuild?activeTab=code
- * @compatibility 0.25.5
+ * @compatibility 0.25.8
  */
 
 export type Platform = 'browser' | 'neutral' | 'node'
@@ -32,6 +32,7 @@ export type LogLevel =
   | 'warning'
 export type Charset = 'ascii' | 'utf8'
 export type Drop = 'console' | 'debugger'
+export type AbsPaths = 'code' | 'log' | 'metafile'
 
 interface CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#sourcemap */
@@ -103,6 +104,8 @@ interface CommonOptions {
   /** Documentation: https://esbuild.github.io/api/#keep-names */
   keepNames?: boolean
 
+  /** Documentation: https://esbuild.github.io/api/#abs-paths */
+  absPaths?: AbsPaths[]
   /** Documentation: https://esbuild.github.io/api/#color */
   color?: boolean
   /** Documentation: https://esbuild.github.io/api/#log-level */
@@ -188,9 +191,8 @@ export interface BuildOptions extends CommonOptions {
   footer?: { [type: string]: string }
   /** Documentation: https://esbuild.github.io/api/#entry-points */
   entryPoints?:
-    | { in: string; out: string }[]
+    | (string | { in: string; out: string })[]
     | Record<string, string>
-    | string[]
   /** Documentation: https://esbuild.github.io/api/#stdin */
   stdin?: StdinOptions
   /** Documentation: https://esbuild.github.io/plugins/ */
@@ -582,7 +584,10 @@ export interface AnalyzeMetafileOptions {
   verbose?: boolean
 }
 
-export interface WatchOptions {}
+/** Documentation: https://esbuild.github.io/api/#watch-arguments */
+export interface WatchOptions {
+  delay?: number // In milliseconds
+}
 
 export interface BuildContext<
   ProvidedOptions extends BuildOptions = BuildOptions,
