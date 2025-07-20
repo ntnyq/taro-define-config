@@ -55,11 +55,11 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.10",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^22.16.3",
-    "rollup": "^4.45.0",
+    "@types/node": "^22.16.5",
+    "rollup": "^4.45.1",
     "tapable": "^2.2.2",
-    "vite": "^7.0.4",
-    "webpack": "^5.100.1",
+    "vite": "^7.0.5",
+    "webpack": "^5.100.2",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.2"
   },
