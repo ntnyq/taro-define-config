@@ -1,6 +1,6 @@
 import type { LiteralUnion } from '../../utils'
 import type { ConfigurablePlugin } from '../common'
-import type { EsbuildPluginOptions, TerserMinifyOptions } from '../packages'
+import type { ESBuildPluginOptions, TerserMinifyOptions } from '../packages'
 
 export type JSMinimizer = LiteralUnion<'esbuild' | 'terser'>
 
@@ -12,5 +12,5 @@ export interface EsbuildMinimizer {
    *
    * @see https://github.com/esbuild-kit/esbuild-loader#minification
    */
-  minify?: ConfigurablePlugin<EsbuildPluginOptions>
+  minify?: ConfigurablePlugin<ESBuildPluginOptions>
 }

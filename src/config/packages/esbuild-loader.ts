@@ -19,7 +19,10 @@ type Except<ObjectType, Properties> = {
     : Key]: ObjectType[Key]
 }
 
-type LoaderOptions = Except<TransformOptions, 'sourcefile' | 'sourcemap'> & {
+export type ESBuildLoaderOptions = Except<
+  TransformOptions,
+  'sourcefile' | 'sourcemap'
+> & {
   /** Pass a custom esbuild implementation */
   implementation?: Implementation
 
@@ -29,7 +32,7 @@ type LoaderOptions = Except<TransformOptions, 'sourcefile' | 'sourcemap'> & {
   tsconfig?: string
 }
 
-type EsbuildPluginOptions = Except<
+export type ESBuildPluginOptions = Except<
   TransformOptions,
   'sourcefile' | 'sourcemap'
 > & {
@@ -41,10 +44,8 @@ type EsbuildPluginOptions = Except<
   include?: Filter | Filter[]
 }
 
-declare class EsbuildPlugin {
-  constructor(options?: EsbuildPluginOptions)
+export declare class ESBuildPlugin {
+  constructor(options?: ESBuildPluginOptions)
 
   apply(): void
 }
-
-export { EsbuildPlugin, type EsbuildPluginOptions, type LoaderOptions }
