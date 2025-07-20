@@ -2,8 +2,8 @@
  * @file swc 类型
  * @see https://www.npmjs.com/package/@swc/core?activeTab=code
  * @see https://www.npmjs.com/package/@swc/types?activeTab=code
- * @compatibility 1.11.29 for @swc/core
- * @compatibility 0.1.21 for @swc/types
+ * @compatibility 1.13.1 for @swc/core
+ * @compatibility 0.1.23 for @swc/types
  */
 
 /* cSpell: disable */
@@ -72,9 +72,16 @@ export interface JsFormatOptions {
    * - `false`: removes all comments
    * - `'some'`: preserves some comments
    * - `'all'`: preserves all comments
+   * - `{ regex: string }`: preserves comments that match the regex
    * @default false
    */
-  comments?: 'all' | 'some' | false
+  comments?:
+    | 'all'
+    | 'some'
+    | false
+    | {
+        regex: string
+      }
   /**
    * Currently noop.
    * @default 5
@@ -555,6 +562,14 @@ export interface JscConfig {
   }
   minify?: JsMinifyOptions
   preserveAllComments?: boolean
+  output?: {
+    /**
+     * This can be used to keep the output ascii-only.
+     * If this option is set, `minify.format.asciiOnly` will be ignored.
+     * @default 'utf8'
+     */
+    charset?: 'ascii' | 'utf8'
+  }
 }
 export type JscTarget =
   | 'es2015'
@@ -1000,6 +1015,10 @@ export interface BaseModuleConfig {
   ignoreDynamic?: boolean
   allowTopLevelThis?: boolean
   preserveImportMeta?: boolean
+  /**
+   * If set to true, This will resolve top .mjs
+   */
+  resolveFully?: boolean
 }
 export interface Es6Config extends BaseModuleConfig {
   type: 'es6'
