@@ -58,6 +58,7 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    * 项目源码目录
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#sourceroot
+   * @default `src`
    */
   sourceRoot?: string
 
@@ -65,6 +66,7 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    * 项目产出目录
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#outputroot
+   * @default `dist`
    */
   outputRoot?: string
 
@@ -173,6 +175,7 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    * CSS 压缩工具
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#cssminimizer
+   * @default `csso`
    */
   cssMinimizer?: CSSMinimizer
 
