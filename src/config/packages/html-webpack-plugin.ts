@@ -2,7 +2,7 @@
  * `html-webpack-plugin` 配置
  *
  * @see https://github.com/jantimon/html-webpack-plugin#options
- * @compatibility 5.6.3
+ * @compatibility 5.6.4
  */
 
 import type { Options as HtmlMinifierOptions } from 'html-minifier-terser'

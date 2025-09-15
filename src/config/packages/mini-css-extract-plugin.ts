@@ -3,7 +3,7 @@
  *
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin#plugin-options
  * @see https://github.com/webpack-contrib/mini-css-extract-plugin/blob/master/types/index.d.ts
- * @compatibility 2.9.2
+ * @compatibility 2.9.4
  */
 
 import type { WebpackConfiguration } from './webpack'

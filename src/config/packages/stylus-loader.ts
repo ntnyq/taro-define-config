@@ -2,7 +2,7 @@
  * `stylus-loader` 配置
  *
  * @see https://github.com/webpack-contrib/stylus-loader#options
- * @compatibility 8.1.1
+ * @compatibility 8.1.2
  */
 
 import type { AnyFn } from '../../utils'

@@ -4,7 +4,7 @@
  * @file `terser` 类型
  *
  * @see {@link https://github.com/terser/terser/blob/master/tools/terser.d.ts}
- * @compatibility 5.43.1
+ * @compatibility 5.44.0
  */
 
 /* cSpell: disable */

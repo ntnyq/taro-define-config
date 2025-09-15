@@ -506,7 +506,7 @@ export interface NodeSassOptions extends CommonSassOptions {
  *
  * @see https://github.com/sass/dart-sass
  * @see https://www.npmjs.com/package/sass?activeTab=code
- * @compatibility 1.89.2
+ * @compatibility 1.92.1
  */
 export interface DartSassOptions extends CommonSassOptions {
   /**
