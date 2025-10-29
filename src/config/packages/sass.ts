@@ -328,28 +328,35 @@ export interface DartSassOptions extends CommonSassOptions {
 }
 
 export type {
+  Deprecation as DartSassDeprecation,
+  DeprecationOrId as DartSassDeprecationOrId,
+  Deprecations as DartSassDeprecations,
+  DeprecationStatus as DartSassDeprecationStatus,
+  LoggerWarnOptions as DartSassLoggerWarnOptions,
+  Version as DartSassVersion,
+
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassDeprecation` instead
    */
   Deprecation,
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassDeprecationOrId` instead
    */
   DeprecationOrId,
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassDeprecations` instead
    */
   Deprecations,
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassDeprecationStatus` instead
    */
   DeprecationStatus,
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassLoggerWarnOptions` instead
    */
   LoggerWarnOptions,
   /**
-   * @deprecated import from `@sass/types` instead
+   * @deprecated use `DartSassVersion` instead
    */
   Version,
 } from '@sass/types'
