@@ -17,6 +17,8 @@ import type {
   PluginPlatformLarkOptions,
   PluginPlatformNextJsOptions,
   PluginPlatformXhsOptions,
+  PluginReactDevtoolsOptions,
+  PluginVueDevtoolsOptions,
 } from './plugins'
 
 export interface OfficialPluginOptionsMap {
@@ -28,16 +30,26 @@ export interface OfficialPluginOptionsMap {
   '@tarojs/plugin-mini-ci': PluginMiniCIOptions
 
   /**
-   * Platform plugins
+   * devtools
+   */
+  '@tarojs/plugin-react-devtools': PluginReactDevtoolsOptions
+  '@tarojs/plugin-vue-devtools': PluginVueDevtoolsOptions
+
+  /**
+   * platform
    */
   '@tarojs/plugin-platform-xhs': PluginPlatformXhsOptions
   '@tarojs/plugin-platform-lark': PluginPlatformLarkOptions
   '@tarojs/plugin-platform-kwai': PluginPlatformKwaiOptions
   '@tarojs/plugin-platform-alipay-dd': PluginPlatformAlipayDdOptions
 
-  // Official
+  // not in `@tarojs` scope
   'tarojs-plugin-platform-nextjs': PluginPlatformNextJsOptions
 }
+
+/**
+ * 自定义插件配置
+ */
 export interface CustomPluginOptionsMap {}
 
 export type PluginsOptionsMap = CustomPluginOptionsMap
