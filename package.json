@@ -2,7 +2,7 @@
   "name": "taro-define-config",
   "type": "module",
   "version": "0.13.0",
-  "packageManager": "pnpm@10.21.0",
+  "packageManager": "pnpm@10.22.0",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -53,29 +53,29 @@
   },
   "dependencies": {
     "@jridgewell/source-map": "^0.3.11",
-    "@sass/types": "^1.93.2",
+    "@sass/types": "^1.94.1",
     "@swc/types": "^0.1.25",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^24.10.0",
-    "rollup": "^4.53.1",
+    "@types/node": "^24.10.1",
+    "rollup": "^4.53.2",
     "tapable": "^2.3.0",
     "vite": "^7.2.2",
-    "webpack": "^5.102.1",
+    "webpack": "^5.103.0",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.2"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^5.7.0",
+    "@ntnyq/eslint-config": "^5.8.0",
     "@ntnyq/prettier-config": "^3.0.1",
     "bumpp": "^10.3.1",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
-    "nano-staged": "^0.8.0",
+    "nano-staged": "^0.9.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
-    "tsdown": "^0.16.1",
+    "tsdown": "^0.16.5",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.10"
   },
   "nano-staged": {
     "*.{js,ts,cjs,mjs,md,yml,yaml,json}": "eslint --fix"

@@ -35,10 +35,11 @@ export interface OfficialPluginOptionsMap {
   '@tarojs/plugin-platform-kwai': PluginPlatformKwaiOptions
   '@tarojs/plugin-platform-alipay-dd': PluginPlatformAlipayDdOptions
 
-  // // Official
+  // Official
   'tarojs-plugin-platform-nextjs': PluginPlatformNextJsOptions
 }
 export interface CustomPluginOptionsMap {}
+
 export type PluginsOptionsMap = CustomPluginOptionsMap
   & OfficialPluginOptionsMap
 

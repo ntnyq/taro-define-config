@@ -2,7 +2,7 @@
  * @file `esbuild-loader` 配置
  *
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
- * @compatibility 4.3.0
+ * @compatibility 4.4.0
  */
 
 import type { transform, TransformOptions } from './esbuild'
@@ -40,7 +40,6 @@ export type ESBuildPluginOptions = Except<
   exclude?: Filter | Filter[]
   /** Pass a custom esbuild implementation */
   implementation?: Implementation
-
   include?: Filter | Filter[]
 }
 
