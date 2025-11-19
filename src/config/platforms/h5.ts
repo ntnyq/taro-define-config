@@ -14,11 +14,12 @@ import type {
 } from '../common'
 import type { Compiler, CompilerTypes, CompilerWebpackTypes } from '../compiler'
 import type {
-  DevServerConfiguration,
   HtmlWebpackPluginOptions,
   RollupOutputOptions,
+  ViteServerOptions,
   Webpack,
   WebpackConfiguration,
+  WebpackDevServerConfiguration,
 } from '../packages'
 
 export interface PlatformH5Router {
@@ -107,7 +108,9 @@ export interface PlatformH5<T extends CompilerTypes = CompilerWebpackTypes>
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5devserver
    */
-  devServer?: DevServerConfiguration
+  devServer?: T extends 'vite'
+    ? ViteServerOptions
+    : WebpackDevServerConfiguration
 
   /**
    * 路由相关的配置
