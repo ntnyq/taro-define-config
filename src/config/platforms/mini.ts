@@ -54,8 +54,9 @@ export interface PlatformMiniRuntime {
  *
  * @see https://nervjs.github.io/taro-docs/docs/config-detail#mini
  */
-export interface PlatformMini<T extends CompilerTypes = CompilerWebpackTypes>
-  extends CommonWebpackConfigOptions<'mini'> {
+export interface PlatformMini<
+  T extends CompilerTypes = CompilerWebpackTypes,
+> extends CommonWebpackConfigOptions<'mini'> {
   /**
    * 对于 `template` 模板不支持递归的小程序（如：微信、QQ、京东），Taro 会对所有模板循环 `baseLevel` 次，以支持同类模板的循环调用
    *
