@@ -34,8 +34,9 @@ export interface PlatformHarmonyRouter {
   customRoutes?: Record<string, any>
 }
 
-export interface PlatformHarmony<T extends CompilerTypes = CompilerViteTypes>
-  extends CommonWebpackConfigOptions<'harmony'> {
+export interface PlatformHarmony<
+  T extends CompilerTypes = CompilerViteTypes,
+> extends CommonWebpackConfigOptions<'harmony'> {
   /**
    * 项目地址
    */
