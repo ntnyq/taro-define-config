@@ -53,8 +53,9 @@ export interface PlatformH5Router {
   enhanceAnimation?: boolean
 }
 
-export interface PlatformH5<T extends CompilerTypes = CompilerWebpackTypes>
-  extends CommonWebpackConfigOptions<'h5'> {
+export interface PlatformH5<
+  T extends CompilerTypes = CompilerWebpackTypes,
+> extends CommonWebpackConfigOptions<'h5'> {
   /**
    * 可用于修改、拓展 `Webpack` 的 `input` 选项
    *
