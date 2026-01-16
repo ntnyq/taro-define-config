@@ -2,7 +2,7 @@
  * @file `esbuild-loader` 配置
  *
  * @see https://www.npmjs.com/package/esbuild-loader?activeTab=code
- * @compatibility 4.4.0
+ * @compatibility 4.4.2
  */
 
 import type { transform, TransformOptions } from './esbuild'
@@ -19,7 +19,7 @@ type Except<ObjectType, Properties> = {
     : Key]: ObjectType[Key]
 }
 
-export type ESBuildLoaderOptions = Except<
+type ESBuildLoaderOptions = Except<
   TransformOptions,
   'sourcefile' | 'sourcemap'
 > & {
@@ -32,7 +32,7 @@ export type ESBuildLoaderOptions = Except<
   tsconfig?: string
 }
 
-export type ESBuildPluginOptions = Except<
+type ESBuildPluginOptions = Except<
   TransformOptions,
   'sourcefile' | 'sourcemap'
 > & {
@@ -40,11 +40,21 @@ export type ESBuildPluginOptions = Except<
   exclude?: Filter | Filter[]
   /** Pass a custom esbuild implementation */
   implementation?: Implementation
+
   include?: Filter | Filter[]
 }
 
-export declare class ESBuildPlugin {
+declare class ESBuildPlugin {
   constructor(options?: ESBuildPluginOptions)
 
   apply(): void
+}
+
+export { ESBuildPlugin }
+export type {
+  ESBuildLoaderOptions,
+  ESBuildPluginOptions,
+  Except,
+  Filter,
+  Implementation,
 }
