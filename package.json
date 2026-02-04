@@ -2,7 +2,7 @@
   "name": "taro-define-config",
   "type": "module",
   "version": "0.14.0",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.2",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -53,11 +53,11 @@
   },
   "dependencies": {
     "@jridgewell/source-map": "^0.3.11",
-    "@sass/types": "^1.97.2",
+    "@sass/types": "^1.97.3",
     "@swc/types": "^0.1.25",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^25.0.9",
-    "rollup": "^4.55.1",
+    "@types/node": "^25.1.0",
+    "rollup": "^4.57.0",
     "tapable": "^2.3.0",
     "vite": "^7.3.1",
     "webpack": "^5.104.1",
@@ -72,10 +72,10 @@
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
     "npm-run-all2": "^8.0.4",
-    "prettier": "^3.8.0",
-    "tsdown": "^0.20.0-beta.3",
+    "prettier": "^3.8.1",
+    "tsdown": "^0.20.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
   "nano-staged": {
     "*.{js,ts,cjs,mjs,md,yml,yaml,json}": "eslint --fix"
