@@ -2,7 +2,7 @@
   "name": "taro-define-config",
   "type": "module",
   "version": "0.14.0",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.2",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -42,42 +42,45 @@
   ],
   "scripts": {
     "build": "tsdown",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "lint": "eslint",
     "prepare": "husky",
     "prepublishOnly": "npm run build",
     "release": "run-s build release:check release:version",
-    "release:check": "run-s lint typecheck",
+    "release:check": "run-s format:check lint typecheck",
     "release:version": "bumpp",
-    "test": "vitest --typecheck",
-    "typecheck": "tsc --noEmit"
+    "test": "vitest",
+    "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
     "@jridgewell/source-map": "^0.3.11",
-    "@sass/types": "^1.97.2",
+    "@sass/types": "^1.97.3",
     "@swc/types": "^0.1.25",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^25.0.9",
-    "rollup": "^4.55.1",
+    "@types/node": "^25.2.0",
+    "rollup": "^4.57.1",
     "tapable": "^2.3.0",
     "vite": "^7.3.1",
-    "webpack": "^5.104.1",
+    "webpack": "^5.105.0",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.3"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^5.9.0",
-    "@ntnyq/prettier-config": "^3.0.1",
+    "@ntnyq/eslint-config": "^6.0.0-beta.7",
+    "@typescript/native-preview": "^7.0.0-dev.20260204.1",
     "bumpp": "^10.4.0",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
     "npm-run-all2": "^8.0.4",
-    "prettier": "^3.8.0",
-    "tsdown": "^0.20.0-beta.3",
+    "oxfmt": "^0.28.0",
+    "tsdown": "^0.20.2",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
   "nano-staged": {
-    "*.{js,ts,cjs,mjs,md,yml,yaml,json}": "eslint --fix"
+    "*.{js,ts,mjs,md,yml,yaml,json}": "eslint --fix",
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   }
 }
