@@ -2,7 +2,7 @@
  * `css-loader` 配置
  *
  * @see https://github.com/webpack-contrib/css-loader#options
- * @compatibility 7.1.2
+ * @compatibility 7.1.4
  */
 
 import type { Awaitable, LiteralUnion } from '../../utils'
