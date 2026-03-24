@@ -144,22 +144,22 @@ export interface CSSLoaderModulesObject {
     replacements,
   }: {
     resourcePath: string
-    exports: Array<{
+    exports: {
       name: string
       value: string
-    }>
-    imports: Array<{
+    }[]
+    imports: {
       icss: boolean
       importName: string
       index: number
       type: string
       url: string
-    }>
-    replacements: Array<{
+    }[]
+    replacements: {
       importName: string
       localName: string
       replacementName: string
-    }>
+    }[]
   }) => Awaitable<void>
 }
 

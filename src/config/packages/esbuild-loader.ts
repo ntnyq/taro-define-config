@@ -9,7 +9,7 @@ import type { transform, TransformOptions } from './esbuild'
 
 type Filter = string | RegExp
 
-type Implementation = {
+interface Implementation {
   transform: typeof transform
 }
 

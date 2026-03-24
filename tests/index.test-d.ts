@@ -1,10 +1,10 @@
 import { defineConfig } from 'taro-define-config'
-import { expectTypeOf, it } from 'vitest'
 import type {
   TaroConfig,
   TaroConfigExport,
   TaroConfigFnObject,
 } from 'taro-define-config'
+import { expectTypeOf, it } from 'vitest'
 
 declare module 'taro-define-config' {
   export interface CustomPluginOptionsMap {

@@ -50,6 +50,7 @@ export interface OfficialPluginOptionsMap {
 /**
  * 自定义插件配置
  */
+// oxlint-disable-next-line typescript/no-empty-interface
 export interface CustomPluginOptionsMap {}
 
 export type PluginsOptionsMap = CustomPluginOptionsMap &

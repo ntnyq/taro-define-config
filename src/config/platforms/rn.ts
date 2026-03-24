@@ -19,10 +19,10 @@ import type {
 /**
  * @internal
  */
-type ProcessorOptionsWithAdditionalData<
+interface ProcessorOptionsWithAdditionalData<
   T,
   P extends 'less' | 'sass' | 'stylus',
-> = {
+> {
   additionalData?: LoaderAdditionalData<P>
   options?: T
 }
@@ -72,8 +72,8 @@ export interface PlatformRNNativeComponents {
    * 外部依赖
    */
   external?:
-    | Array<string | RegExp>
-    | ((array: Array<string | RegExp>) => Array<string | RegExp>)
+    | (string | RegExp)[]
+    | ((array: (string | RegExp)[]) => (string | RegExp)[])
 
   /**
    * 设置外部依赖，如果返回 `string`, 则将该值作为 `external`

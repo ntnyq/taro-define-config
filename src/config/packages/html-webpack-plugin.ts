@@ -34,13 +34,14 @@ declare class HtmlWebpackPlugin {
    */
   static createHtmlTagObject(
     tagName: string,
-    attributes?: { [attributeName: string]: boolean | string },
+    attributes?: Record<string, boolean | string>,
     innerHTML?: string,
   ): HtmlWebpackPlugin.HtmlTagObject
 
   static readonly version: number
 }
 
+// oxlint-disable-next-line typescript/no-namespace
 declare namespace HtmlWebpackPlugin {
   type MinifyOptions = HtmlMinifierOptions
 
@@ -112,12 +113,12 @@ declare namespace HtmlWebpackPlugin {
      */
     meta?:
       | false // Disable injection
-      | {
-          [name: string]:
-            | false // name content pair e.g. {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}`
-            | string
-            | { [attributeName: string]: boolean | string } // custom properties e.g. { name:"viewport" content:"width=500, initial-scale=1" }
-        }
+      | Record<
+          string,
+          | false // name content pair e.g. {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}`
+          | string
+          | Record<string, boolean | string>
+        >
     /**
      * HTML Minification options accepts the following values:
      * - Set to `false` to disable minification
@@ -142,9 +143,7 @@ declare namespace HtmlWebpackPlugin {
       | false // Use the template option instead to load a file
       | string
       | Promise<string>
-      | ((templateParameters: {
-          [option: string]: any
-        }) => string | Promise<string>)
+      | ((templateParameters: Record<string, any>) => string | Promise<string>)
     /**
      * Allows to overwrite the parameters used in the template
      */
@@ -153,8 +152,8 @@ declare namespace HtmlWebpackPlugin {
       | ((
           compilation: WebpackCompilation,
           assets: {
-            css: Array<string>
-            js: Array<string>
+            css: string[]
+            js: string[]
             publicPath: string
             favicon?: string
             manifest?: string
@@ -164,8 +163,8 @@ declare namespace HtmlWebpackPlugin {
             headTags: HtmlTagObject[]
           },
           options: ProcessedOptions,
-        ) => Promise<{ [option: string]: any }> | { [option: string]: any })
-      | { [option: string]: any }
+        ) => Promise<Record<string, any>> | Record<string, any>)
+      | Record<string, any>
     /**
      * The title to use for the generated HTML document
      */
@@ -198,8 +197,8 @@ declare namespace HtmlWebpackPlugin {
     htmlWebpackPlugin: {
       options: Options
       files: {
-        css: Array<string>
-        js: Array<string>
+        css: string[]
+        js: string[]
         publicPath: string
         favicon?: string
         manifest?: string
@@ -244,8 +243,8 @@ declare namespace HtmlWebpackPlugin {
       outputName: string
       plugin: HtmlWebpackPlugin
       assets: {
-        css: Array<string>
-        js: Array<string>
+        css: string[]
+        js: string[]
         publicPath: string
         favicon?: string
         manifest?: string
@@ -272,9 +271,7 @@ declare namespace HtmlWebpackPlugin {
      * Attributes of the html tag
      * E.g. `{'disabled': true, 'value': 'demo'}`
      */
-    attributes: {
-      [attributeName: string]: boolean | string | null | undefined
-    }
+    attributes: Record<string, boolean | string | null | undefined>
     /**
      * The tag name e.g. `'div'`
      */

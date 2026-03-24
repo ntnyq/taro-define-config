@@ -16,18 +16,19 @@ import type { RollupOutputOptions, WebpackConfiguration } from '../packages'
 
 export interface PlatformHarmonyOhPackage {
   main?: string
-  dependencies?: { [name: string]: string }
-  devDependencies?: { [name: string]: string }
+  dependencies?: Record<string, string>
+  devDependencies?: Record<string, string>
   [k: string]: any
 }
 
 export interface PlatformHarmonyCompileModeSetting {
-  componentReplace?: {
-    [key: string]: {
+  componentReplace?: Record<
+    string,
+    {
       current_init: string
       dependency_define: string
     }
-  }
+  >
 }
 
 export interface PlatformHarmonyRouter {

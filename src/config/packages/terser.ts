@@ -15,6 +15,7 @@ import type {
   SectionedSourceMapInput,
 } from '@jridgewell/source-map'
 
+// oxlint-disable-next-line no-magic-numbers
 export type ECMA = 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 5
 
 export type ConsoleProperty = keyof typeof console
@@ -235,10 +236,10 @@ export interface SourceMapOptions {
 }
 
 export declare function minify(
-  files: string | string[] | { [file: string]: string },
+  files: string | string[] | Record<string, string>,
   options?: MinifyOptions,
 ): Promise<MinifyOutput>
 export declare function minify_sync(
-  files: string | string[] | { [file: string]: string },
+  files: string | string[] | Record<string, string>,
   options?: MinifyOptions,
 ): MinifyOutput

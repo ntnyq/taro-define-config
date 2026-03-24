@@ -96,7 +96,7 @@ export interface IOutputEnhance {
   clean?:
     | boolean
     | {
-        keep?: string | Array<string | RegExp> | RegExp
+        keep?: string | (string | RegExp)[] | RegExp
       }
 }
 
@@ -121,7 +121,7 @@ export type PostCSSOptions<T extends PlatformUnion> = T extends 'h5'
 /**
  * 通用 webpack 配置选项
  */
-export type BaseWebpackConfigOptions = {
+export interface BaseWebpackConfigOptions {
   /**
    * `css-loader` 的附加配置
    *

@@ -16,9 +16,9 @@ type CallbackValue =
   | boolean
   | number
   | string
-  | Array<boolean | number | string>
+  | (boolean | number | string)[]
   | Record<PropertyKey, any>
-type Context = {
+interface Context {
   options: NodeSassOptions
   callback?: (result: CallbackValue) => void
   [data: string]: any
@@ -89,7 +89,7 @@ interface CommonSassOptions {
    *
    * @experimental
    */
-  importer?: Array<AsyncImporter | SyncImporter> | AsyncImporter | SyncImporter
+  importer?: (AsyncImporter | SyncImporter)[] | AsyncImporter | SyncImporter
 
   /**
    * holds a collection of custom functions that may be invoked by the sass files being compiled

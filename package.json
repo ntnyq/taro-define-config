@@ -1,8 +1,6 @@
 {
   "name": "taro-define-config",
-  "type": "module",
   "version": "0.14.1",
-  "packageManager": "pnpm@10.32.1",
   "description": "Provide a defineConfig function for tarojs config",
   "keywords": [
     "config",
@@ -12,16 +10,22 @@
     "tarojs",
     "typescript"
   ],
+  "homepage": "https://github.com/ntnyq/taro-define-config#readme",
+  "bugs": {
+    "url": "https://github.com/ntnyq/taro-define-config/issues"
+  },
   "license": "MIT",
   "author": {
     "name": "ntnyq",
     "email": "ntnyq13@gmail.com"
   },
-  "homepage": "https://github.com/ntnyq/taro-define-config#readme",
   "repository": "ntnyq/taro-define-config",
-  "bugs": {
-    "url": "https://github.com/ntnyq/taro-define-config/issues"
-  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -35,16 +39,11 @@
       }
     }
   },
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsdown",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
-    "lint": "eslint",
+    "lint": "oxlint",
     "prepare": "husky",
     "prepublishOnly": "npm run build",
     "release": "run-s build release:check release:version",
@@ -56,31 +55,30 @@
   "dependencies": {
     "@jridgewell/source-map": "^0.3.11",
     "@sass/types": "^1.98.0",
-    "@swc/types": "^0.1.25",
+    "@swc/types": "^0.1.26",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^25.5.0",
-    "rollup": "^4.59.0",
-    "tapable": "^2.3.0",
-    "vite": "^8.0.0",
+    "rollup": "^4.60.0",
+    "tapable": "^2.3.2",
+    "vite": "^8.0.3",
     "webpack": "^5.105.4",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.3"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^6.0.0-beta.13",
-    "@typescript/native-preview": "^7.0.0-dev.20260315.1",
-    "bumpp": "^11.0.0",
-    "eslint": "^10.0.3",
+    "@typescript/native-preview": "^7.0.0-dev.20260329.1",
+    "bumpp": "^11.0.1",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
     "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.40.0",
-    "tsdown": "^0.21.3",
-    "typescript": "^5.9.3",
-    "vitest": "^4.1.0"
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
+    "tsdown": "^0.21.7",
+    "vitest": "^4.1.2"
   },
   "nano-staged": {
-    "*.{js,ts,mjs,md,yml,yaml,json}": "eslint --fix",
+    "*.{js,ts,mjs,tsx}": "oxlint --fix",
     "*": "oxfmt --no-error-on-unmatched-pattern"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

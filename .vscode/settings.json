@@ -1,28 +1,13 @@
 {
   "oxc.enable": true,
-  "eslint.enable": true,
+  "eslint.enable": false,
   "prettier.enable": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never",
-    "source.sortImports": "never"
+    "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": [
-    "vue",
-    "yaml",
-    "toml",
-    "json",
-    "jsonc",
-    "json5",
-    "markdown",
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact"
-  ],
-  "typescript.experimental.useTsgo": true,
+  "js/ts.experimental.useTsgo": true,
   "cSpell.words": [
     "browserslistrc",
     "bumpp",
@@ -42,6 +27,7 @@
     "nosources",
     "ohpm",
     "oxfmt",
+    "oxlint",
     "pnpm",
     "pxtransform",
     "systemjs",

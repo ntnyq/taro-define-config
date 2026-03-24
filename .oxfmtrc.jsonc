@@ -5,32 +5,23 @@
   "bracketSpacing": true,
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",
-  "sortPackageJson": false,
+  "sortPackageJson": {
+    "sortScripts": true,
+  },
+  "sortImports": {
+    "newlinesBetween": false,
+  },
   "htmlWhitespaceSensitivity": "css",
   "ignorePatterns": [
-    "**/node_modules/**",
-    "**/dist/**",
     "pnpm-lock.yaml",
     "**/*.min.*",
-    "**/tests/fixtures/**"
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/fixtures/**",
   ],
   "insertFinalNewline": true,
   "jsxSingleQuote": true,
   "objectWrap": "preserve",
-  "overrides": [
-    {
-      "files": ["**/*.{css,scss}"],
-      "options": {
-        "singleQuote": false
-      }
-    },
-    {
-      "files": ["**/*.html"],
-      "options": {
-        "singleAttributePerLine": false
-      }
-    }
-  ],
   "printWidth": 80,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
@@ -40,5 +31,5 @@
   "tabWidth": 2,
   "trailingComma": "all",
   "useTabs": false,
-  "vueIndentScriptAndStyle": false
+  "vueIndentScriptAndStyle": false,
 }
