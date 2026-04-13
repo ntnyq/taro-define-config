@@ -4,10 +4,4 @@
  * @see https://github.com/webpack/webpack-dev-server
  */
 
-export type {
-  /**
-   * @deprecated use `WebpackDevServerConfiguration` instead
-   */
-  Configuration as DevServerConfiguration,
-  Configuration as WebpackDevServerConfiguration,
-} from 'webpack-dev-server'
+export type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'

@@ -334,29 +334,4 @@ export type {
   DeprecationStatus as DartSassDeprecationStatus,
   LoggerWarnOptions as DartSassLoggerWarnOptions,
   Version as DartSassVersion,
-
-  /**
-   * @deprecated use `DartSassDeprecation` instead
-   */
-  Deprecation,
-  /**
-   * @deprecated use `DartSassDeprecationOrId` instead
-   */
-  DeprecationOrId,
-  /**
-   * @deprecated use `DartSassDeprecations` instead
-   */
-  Deprecations,
-  /**
-   * @deprecated use `DartSassDeprecationStatus` instead
-   */
-  DeprecationStatus,
-  /**
-   * @deprecated use `DartSassLoggerWarnOptions` instead
-   */
-  LoggerWarnOptions,
-  /**
-   * @deprecated use `DartSassVersion` instead
-   */
-  Version,
 } from '@sass/types'
