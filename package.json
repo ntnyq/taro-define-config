@@ -59,26 +59,26 @@
     "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^25.6.0",
     "rollup": "^4.60.2",
-    "tapable": "^2.3.2",
-    "vite": "^8.0.9",
+    "tapable": "^2.3.3",
+    "vite": "^8.0.10",
     "webpack": "^5.106.2",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^5.2.3"
   },
   "devDependencies": {
-    "@typescript/native-preview": "^7.0.0-dev.20260420.1",
+    "@typescript/native-preview": "^7.0.0-dev.20260426.1",
     "bumpp": "^11.0.1",
     "husky": "^9.1.7",
     "nano-staged": "^1.0.2",
     "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.45.0",
-    "oxlint": "^1.60.0",
-    "tsdown": "^0.21.9",
-    "vitest": "^4.1.4"
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "tsdown": "^0.21.10",
+    "vitest": "^4.1.5"
   },
   "nano-staged": {
     "*.{js,ts,mjs,tsx}": "oxlint --fix",
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }
