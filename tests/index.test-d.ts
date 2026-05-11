@@ -19,19 +19,19 @@ const getConfigurablePluginConfig = () => ({
   config: {},
 })
 
-it('define object config', () => {
+test('define object config', () => {
   expectTypeOf(defineConfig({})).toEqualTypeOf<TaroConfig>()
 })
 
-it('define function config', () => {
+test('define function config', () => {
   expectTypeOf(defineConfig(() => ({}))).toEqualTypeOf<TaroConfigFnObject>()
 })
 
-it('define async function config', () => {
+test('define async function config', () => {
   expectTypeOf(defineConfig(async () => ({}))).toEqualTypeOf<TaroConfigExport>()
 })
 
-it('define base config', () => {
+test('define base config', () => {
   expectTypeOf(
     defineConfig({
       deviceRatio: {},
@@ -87,7 +87,7 @@ it('define base config', () => {
   ).toExtend<TaroConfigExport>()
 })
 
-it('define platform h5 config', () => {
+test('define platform h5 config', () => {
   expectTypeOf(
     defineConfig({
       h5: {
@@ -131,7 +131,7 @@ it('define platform h5 config', () => {
   ).toExtend<TaroConfigExport>()
 })
 
-it('define platform rn config', () => {
+test('define platform rn config', () => {
   expectTypeOf(
     defineConfig({
       rn: {
@@ -158,7 +158,7 @@ it('define platform rn config', () => {
   ).toExtend<TaroConfigExport>()
 })
 
-it('define platform mini config', () => {
+test('define platform mini config', () => {
   expectTypeOf(
     defineConfig({
       mini: {
@@ -191,7 +191,7 @@ it('define platform mini config', () => {
   ).toExtend<TaroConfigExport>()
 })
 
-it('define platform harmony config', () => {
+test('define platform harmony config', () => {
   expectTypeOf(
     defineConfig({
       harmony: {
