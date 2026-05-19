@@ -30,7 +30,7 @@ jobs:
     needs: [check]
     strategy:
       matrix:
-        node: [20.x, 22.x, 24.x]
+        node: [22.x, 24.x, 26.x]
       fail-fast: false
     steps:
       - uses: actions/checkout@v6
