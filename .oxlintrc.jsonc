@@ -49,6 +49,7 @@
     "promise/prefer-await-to-callbacks": "off",
     "typescript/ban-types": "off",
     "typescript/no-explicit-any": "off",
+    "typescript/method-signature-style": "off",
     "typescript/no-empty-object-type": "off",
     "typescript/no-invalid-void-type": "off",
     "typescript/no-non-null-assertion": "off",

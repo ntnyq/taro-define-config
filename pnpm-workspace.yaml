@@ -1,15 +1,6 @@
 ignoreWorkspaceRootCheck: true
 
-minimumReleaseAgeExclude:
-  - '@types/node@25.9.0'
-  - '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-darwin-x64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-linux-arm64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-linux-arm@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-linux-x64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-win32-arm64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview-win32-x64@7.0.0-dev.20260518.1'
-  - '@typescript/native-preview@7.0.0-dev.20260518.1'
+minimumReleaseAge: 0
 
 overrides:
   esbuild: ^0.28.1
