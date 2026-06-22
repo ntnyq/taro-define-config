@@ -12,6 +12,6 @@ minimumReleaseAgeExclude:
   - '@typescript/native-preview@7.0.0-dev.20260518.1'
 
 overrides:
-  esbuild: ^0.28.0
+  esbuild: ^0.28.1
 
 packageManagerStrict: false
