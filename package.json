@@ -57,7 +57,7 @@
     "@sass/types": "^1.102.0",
     "@swc/types": "^0.1.28",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "rollup": "^4.62.4",
     "tapable": "^2.3.3",
     "vite": "^8.2.1",
@@ -81,5 +81,5 @@
     "*.{js,ts,mjs,tsx}": "oxlint --fix",
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@11.21.0"
 }
