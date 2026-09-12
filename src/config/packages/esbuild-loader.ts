@@ -14,9 +14,9 @@ interface Implementation {
 }
 
 type Except<ObjectType, Properties> = {
-  [Key in keyof ObjectType as Key extends Properties
-    ? never
-    : Key]: ObjectType[Key]
+  [
+    Key in keyof ObjectType as Key extends Properties ? never : Key
+  ]: ObjectType[Key]
 }
 
 type ESBuildLoaderOptions = Except<
