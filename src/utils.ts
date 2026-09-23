@@ -25,7 +25,11 @@ export type LiteralUnion<Union extends Base, Base = string> =
 /**
  * Non empty object `{}`
  */
-export type NonEmptyObject<T> = T extends Record<string, never> ? never : T
+export type NonEmptyObject<T> = T extends unknown
+  ? keyof T extends never
+    ? never
+    : T
+  : never
 
 /**
  * Exclude empty object properties from a type

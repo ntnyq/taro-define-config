@@ -5,7 +5,6 @@
  * @compatibility 16.0.5
  */
 
-import type { Buffer } from 'node:buffer'
 import type { LiteralUnion } from '../../utils'
 import type { LoaderAdditionalData } from '../common'
 import type { DartSassOptions, NodeSassOptions } from './sass'
@@ -29,11 +28,7 @@ export interface SassLoaderOptions {
    */
   sassOptions?:
     | SassLoaderSassOptions
-    | ((
-        content: string | Buffer,
-        loaderContext: WebpackLoaderContext,
-        meta: any,
-      ) => SassLoaderSassOptions)
+    | ((loaderContext: WebpackLoaderContext) => SassLoaderSassOptions)
 
   /**
    * Enables/Disables generation of source maps

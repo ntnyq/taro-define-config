@@ -3,6 +3,7 @@ import type {
   TaroConfig,
   TaroConfigExport,
   TaroConfigFnObject,
+  TaroConfigFnPromise,
 } from 'taro-define-config'
 import { describe, expectTypeOf, it } from 'vitest'
 
@@ -31,7 +32,7 @@ describe('core', () => {
   it('define async function config', () => {
     expectTypeOf(
       defineConfig(async () => ({})),
-    ).toEqualTypeOf<TaroConfigExport>()
+    ).toEqualTypeOf<TaroConfigFnPromise>()
   })
 
   it('define base config', () => {

@@ -191,7 +191,10 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#h5
    */
-  h5?: PlatformH5
+  h5?:
+    | PlatformH5<NoInfer<T>>
+    | (PlatformH5<'vite'> & { compiler: Compiler<'vite'> })
+    | (PlatformH5<'webpack5'> & { compiler: Compiler<'webpack5'> })
 
   /**
    * ReactNative 端专用配置
@@ -205,7 +208,10 @@ export interface TaroConfig<T extends CompilerTypes = CompilerWebpackTypes> {
    *
    * @see https://nervjs.github.io/taro-docs/docs/config-detail#mini
    */
-  mini?: PlatformMini
+  mini?:
+    | PlatformMini<NoInfer<T>>
+    | (PlatformMini<'vite'> & { compiler: Compiler<'vite'> })
+    | (PlatformMini<'webpack5'> & { compiler: Compiler<'webpack5'> })
 
   /**
    * 鸿蒙端专用配置

@@ -6,6 +6,8 @@
  * @deprecated
  */
 
+import type { Buffer } from 'node:buffer'
+
 export interface URLLoaderOptions {
   /**
    * Specify the name of the chunk
@@ -41,9 +43,9 @@ export interface URLLoaderOptions {
    * @see https://github.com/webpack-contrib/url-loader#generator
    */
   generator?: (
+    content: Buffer,
     mimetype: string,
     encoding: string,
-    content: string,
     resourcePath: string,
   ) => string
 

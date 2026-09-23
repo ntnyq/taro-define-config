@@ -64,6 +64,9 @@ Improve your TaroJS project configuration experience with:
 
 ## Extend plugin types
 
+Plugin tuples validate options against the selected plugin name. Register
+third-party plugin options through module augmentation:
+
 ```ts
 declare module 'taro-define-config' {
   export interface CustomPluginOptionsMap {
@@ -72,6 +75,27 @@ declare module 'taro-define-config' {
     }
   }
 }
+```
+
+## Compiler-specific options
+
+Platform options inherit the top-level compiler. A platform can select its own
+compiler explicitly:
+
+```ts
+import { defineConfig } from 'taro-define-config'
+
+export default defineConfig({
+  compiler: 'vite',
+  h5: {
+    legacy: true,
+    devServer: { strictPort: true },
+  },
+  mini: {
+    compiler: 'webpack5',
+    output: { chunkFilename: '[name].js' },
+  },
+})
 ```
 
 ## Prior Art

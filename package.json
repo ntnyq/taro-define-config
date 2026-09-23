@@ -21,7 +21,9 @@
   },
   "repository": "ntnyq/taro-define-config",
   "files": [
-    "dist"
+    "dist",
+    "src/config/packages/webpack-chain.ts",
+    "LICENSE.webpack-chain"
   ],
   "type": "module",
   "main": "./dist/index.mjs",
@@ -50,7 +52,7 @@
     "release:check": "run-s format:check lint typecheck",
     "release:version": "bumpp",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json"
   },
   "dependencies": {
     "@jridgewell/source-map": "^0.3.11",
@@ -58,11 +60,11 @@
     "@swc/types": "^0.1.28",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^26.6.2",
+    "immutable": "^5.1.9",
     "rollup": "^4.63.4",
     "tapable": "^2.3.3",
     "vite": "^8.3.0",
     "webpack": "^5.111.1",
-    "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^6.0.0"
   },
   "devDependencies": {
@@ -74,7 +76,8 @@
     "oxlint": "^1.85.0",
     "tsdown": "^0.23.0",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.1",
+    "webpack-chain": "^6.5.1"
   },
   "nano-staged": {
     "*.{js,ts,mjs,tsx}": "oxlint --fix",

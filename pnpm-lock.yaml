@@ -184,6 +184,9 @@ importers:
       '@types/node':
         specifier: ^26.6.2
         version: 26.6.2
+      immutable:
+        specifier: ^5.1.9
+        version: 5.1.9
       rollup:
         specifier: ^4.63.4
         version: 4.63.4
@@ -196,9 +199,6 @@ importers:
       webpack:
         specifier: ^5.111.1
         version: 5.111.1(lightningcss@1.33.0)(postcss@8.5.28)
-      webpack-chain:
-        specifier: ^6.5.1
-        version: 6.5.1
       webpack-dev-server:
         specifier: ^6.0.0
         version: 6.0.0(supports-color@8.1.1)(webpack@5.111.1(lightningcss@1.33.0)(postcss@8.5.28))
@@ -230,6 +230,9 @@ importers:
       vitest:
         specifier: ^5.0.1
         version: 5.0.1(@types/node@26.6.2)(vite@8.3.0(@types/node@26.6.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      webpack-chain:
+        specifier: ^6.5.1
+        version: 6.5.1
 
 packages:
 
@@ -1696,6 +1699,9 @@ packages:
   iconv-lite@0.7.3:
     resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
     engines: {node: '>=0.10.0'}
+
+  immutable@5.1.9:
+    resolution: {integrity: sha512-m8nVez3rwrgmWxtLMt1ZYXB2Lv7OKYn/disyxAlSDYAlKSlFoPPfIAmAM/M5xqL4m4C/wAPw7S2/CNaUii1Hxg==}
 
   import-without-cache@0.4.1:
     resolution: {integrity: sha512-vXoV9PjKHEednCUu01e98TkImxy67e3BJXbTIOmIq4Hyzw3IAwYRcuPkfeTzJzwyyts4kjuA73x+pWJLc4f86A==}
@@ -3768,6 +3774,8 @@ snapshots:
   iconv-lite@0.7.3:
     dependencies:
       safer-buffer: 2.1.2
+
+  immutable@5.1.9: {}
 
   import-without-cache@0.4.1: {}
 

@@ -47,6 +47,12 @@ export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(
   config: TaroConfigFnObject<T>,
 ): TaroConfigFnObject<T>
 export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(
+  config: TaroConfigFnPromise<T>,
+): TaroConfigFnPromise<T>
+export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(
+  config: TaroConfigFn<T>,
+): TaroConfigFn<T>
+export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(
   config: TaroConfigExport<T>,
 ): TaroConfigExport<T>
 export function defineConfig<T extends CompilerTypes = CompilerWebpackTypes>(

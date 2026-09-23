@@ -58,9 +58,11 @@ export type PluginsOptionsMap = CustomPluginOptionsMap &
 
 export type PluginName = keyof PluginsOptionsMap
 
-export type PluginTuple<T extends PluginName = PluginName> =
-  | [T, () => Awaitable<ExcludeEmptyObjects<PluginsOptionsMap>[T]>]
-  | [T, ExcludeEmptyObjects<PluginsOptionsMap>[T]]
-  | [T]
+export type PluginTuple<T extends PluginName = PluginName> = {
+  [K in T]:
+    | [K, () => Awaitable<ExcludeEmptyObjects<PluginsOptionsMap>[K]>]
+    | [K, ExcludeEmptyObjects<PluginsOptionsMap>[K]]
+    | [K]
+}[T]
 
 export type Plugin = PluginName | PluginTuple
