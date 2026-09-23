@@ -1,8 +1,6 @@
-ignoreWorkspaceRootCheck: true
-
-minimumReleaseAge: 0
-
 overrides:
   esbuild: ^0.28.2
 
-packageManagerStrict: false
+pmOnFail: warn
+ignoreWorkspaceRootCheck: true
+minimumReleaseAge: 0
