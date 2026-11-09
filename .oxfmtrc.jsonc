@@ -3,6 +3,7 @@
   "arrowParens": "avoid",
   "bracketSameLine": false,
   "bracketSpacing": true,
+  "experimentalOperatorPosition": "end",
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",
   "sortPackageJson": {
