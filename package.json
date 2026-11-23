@@ -62,9 +62,9 @@
     "@swc/types": "^0.1.28",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^26.6.6",
-    "immutable": "^5.1.10",
-    "rollup": "^4.68.2",
-    "tapable": "^2.3.3",
+    "immutable": "^5.2.1",
+    "rollup": "^4.68.3",
+    "tapable": "^2.3.4",
     "vite": "^8.3.8",
     "webpack": "^5.112.2",
     "webpack-dev-server": "^6.1.0"
@@ -77,7 +77,7 @@
     "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
     "tsdown": "^0.23.7",
-    "typescript": "^7.1.0-dev.20261110.1",
+    "typescript": "^7.1.0-dev.20261115.1",
     "vitest": "^5.1.0",
     "webpack-chain": "^6.5.1"
   },
@@ -85,5 +85,5 @@
     "*.{js,ts,mjs,tsx}": "oxlint --fix",
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
-  "packageManager": "pnpm@12.19.0"
+  "packageManager": "pnpm@12.21.0"
 }
